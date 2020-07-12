@@ -1,0 +1,197 @@
+.one {
+    display: flex;
+    flex-direction: row;
+    margin: 0px 20px;
+}
+
+.one__left{
+    background-color: rgb(26, 167, 167);
+    width: 50%;
+}
+
+.one__left > p {
+    text-transform: uppercase;
+    position: relative;
+    top: 20%;
+    left: 20%;
+    color: white;
+    letter-spacing: 4px;
+}
+
+.one > img{
+    width: 60%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.two {
+    display: flex;
+    flex-direction: row;
+    margin: 0px 20px;
+   
+}
+
+.two > img{
+    width: 40%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.two__right-text {
+    font-size: 0.84em;
+    font-weight: 300;
+    padding: 20px 80px;
+}
+
+.two__right-text > h2 {
+    line-height: 1.1em;
+}
+
+@media (max-width:845px){
+    .two{
+        flex-direction: column;
+    }
+    .two > img{
+        width: 80%;
+        padding-top: 10%;
+        padding-left: 10%;
+    }
+}
+
+@media (max-width: 510px){
+    .two__right-text{
+        width: 100%;
+        margin-left: -80px;
+    }
+}
+@media (max-width: 350px){
+    .two__right-text{
+        width: 120%;
+        margin-left: -100px;
+    }
+}
+
+.three{
+    background-color: #ccc;
+    height: auto;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+}
+
+.empty{
+    width: 50%;
+}
+
+.three__text{
+    padding: 20px;
+    width: 40%;
+    font-size: 0.84em;
+    font-weight: 300;
+}
+
+@media(max-width: 845px){
+    .three__text{
+        width: auto;
+        padding: 0%;
+        padding-right: 20%;
+        font-size: 15px;
+    }
+
+}
+.four{
+    display: flex;
+    flex-direction: row;
+}
+
+.four > img {
+    width: 50%;
+    height: 25em;
+    object-fit: cover;
+}
+
+.four__text {
+    padding: 20px;
+    width: 40%;
+    font-size: 0.84em;
+    font-weight: 300;    
+}
+@media (max-width:845px ){
+    .four{
+        flex-direction: column;
+        align-items: center;
+    }
+    .four__text{
+        width: 80%;
+    }
+}
+.five{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(228, 225, 225);
+}
+
+.five__left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.five__left > img{
+    width: 35%;
+    height: 10em;
+    object-fit: cover;
+}
+.five__text{
+    padding: 140px 20px;
+    width:120%;
+    font-size: 0.84em;
+    font-weight: 300;   
+}
+
+.little__right{
+    margin-left: 40%;
+}
+
+@media (max-width: 645px){
+    .five{
+        flex-direction: column;
+        width: 110%;
+        margin-left: 10px;
+
+    }
+    .five__text{
+        padding: 20px;
+        width: 94%;
+    }
+}
+.six{
+    background: url('./Img/woman-running-on-sand-near-white-concrete-building-736505.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30em;
+}
+
+.six__right--img > img{
+    width: 13%;
+    object-fit: cover;
+    height: 5em;
+}
+.six__right--img {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 100px;
+}
+
+
+@media (max-width: 1000px){
+    .six__right--img{
+        padding: 14%;
+        
+    }
+    .six__right--img > img{
+        width: 32%;
+    }
+   
+}
