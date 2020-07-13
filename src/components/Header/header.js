@@ -1,23 +1,34 @@
-import React, {Component} from 'react';
-import './header.css';
+import React, { Component } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Navbar, Nav} from 'react-bootstrap';
+
 
 class Header extends Component{
     render(){
         return(
-            <div className="navbar-container">
-                <div className="logo">
-                    <img src={require("../HomePage/Img/logo.png")} className="logo"/>
-                </div>
-
-                <div className="nav-items ">
-                    <a href="#">Home</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Product</a>
-                    <a href="#">Gallery</a>
-                    <a href="#">R&D</a>
-                    <a href="#">Contact Us</a>
-                </div>
-            </div>
+            <Navbar className="border" bg="light"  expand="lg">
+            <Navbar.Brand href="#home">
+                <img
+                    src={require("../HomePage/Img/logo.png")}
+                    width="70"
+                    height="40"
+                    className="d-inline-block align-top"
+                    alt="React Bootstrap logo"
+                />
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto  text-uppercase">
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="#link">About us</Nav.Link>
+                <Nav.Link href="#home">Product</Nav.Link>
+                <Nav.Link href="#link">Gallery</Nav.Link>
+                <Nav.Link href="#home">R & D</Nav.Link>
+                <Nav.Link href="#link">Contact us</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+           
         )}}
 
 
