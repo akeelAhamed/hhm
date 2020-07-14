@@ -1,0 +1,18 @@
+
+a{
+    color: white;
+    font-size: small;
+} 
+
+li{
+    text-align: left;
+    text-indent: 6em;
+}
+
+p{
+    font-size: small;
+}
+
+.b{
+    background-color: #08a3a3;
+}

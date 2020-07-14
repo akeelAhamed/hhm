@@ -2,18 +2,17 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header/header';
-// import Main from './components/AboutUs/main';
-// import Footer from './components/Footer/footer';
+import FooterPage from './components/FooterPage/footer';
 
 import HomePage from './components/HomePage/homepage';
 
 
 function App() {
   return (
-    <div className="container">
+    <div className="Container">
       <Header />
-      {/* <Main /> */}
-       <HomePage/>
+      <HomePage/>
+      <FooterPage />
     </div>
   );
 }

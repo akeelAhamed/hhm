@@ -8,9 +8,9 @@ class HomePage extends Component {
     return (
         <div>
             <Container fluid>
-                <Row className="no-gutters ">
-                    <Col  className="bg-info text-uppercase ">
-                        <p className="float-right">higher living</p>
+                <Row className="no-gutters">
+                    <Col  className="b text-uppercase text-monospace white ">
+                        <strong className="float-right p-5">higher living</strong>
                     </Col>
                     <Col  xs={8}>
                     <img className="img-fluid" alt="" src={require("../AboutUs/img/santosh-verma-us6C9t4wz_U-unsplash(1).jpg")}/>
@@ -22,9 +22,9 @@ class HomePage extends Component {
           <div className="d-md-inline-flex">
 
               <div className="p-2">
-              <img className="img-fluid" alt="" src={require('../HomePage/Img/first.jpg')}/>
+              <img className="img-fluid" alt="" src={require('../HomePage/Img/meditating women.jpg')}/>
               </div>
-              <div className="p-2 ">
+              <div className="p-5">
                       <h4 className="font-weight-bold text-uppercase">Holistic human metaphysics</h4>
                       <h5 className="text-uppercase">a scientific way of living</h5>
                       <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
@@ -34,8 +34,8 @@ class HomePage extends Component {
           </div>
 
 
-          <div className="">
-            <div className="bg-primary p-5">
+          <div className="back-color">
+            <div className="p-5">
                   <h4 className="font-weight-bold text-uppercase">Holistic human metaphysics</h4>
                   <h5 className="text-uppercase">a scientific way of living</h5>
                   <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
@@ -48,10 +48,10 @@ class HomePage extends Component {
 
           <div className="d-md-inline-flex">
 
-          <div className="">
+          <div className="my-5">
           <img className="img-fluid" alt="" src={require('../HomePage/Img/amir-khan-4x0imdL55bQ-unsplash.jpg')}/>
           </div>
-          <div className="my-4">
+          <div className="my-4 p-5">
                   <h4 className="font-weight-bold text-uppercase">Holistic human metaphysics</h4>
                   <h5 className="text-uppercase">a scientific way of living</h5>
                   <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
@@ -62,14 +62,14 @@ class HomePage extends Component {
           
 
 
-          <div className="d-md-inline-flex my-4 bg-secondary">
+          <div className="d-md-inline-flex my-4 back-color">
 
                 <div className="d-flex flex-column align-items-center">
                   <img className="img-fluid w-25" alt="" src={require('../HomePage/Img/first.jpg')}/>
                   <img className="img-fluid w-50" alt="" src={require('../HomePage/Img/middle.jpg')}/>
                   <img className="img-fluid w-25" alt="" src={require('../HomePage/Img/third.jpg')}/>
                 </div>
-                <div className="my-4">
+                <div className="my-4 p-5">
                         <h4 className="font-weight-bold text-uppercase">Holistic human metaphysics</h4>
                         <h5 className="text-uppercase">a scientific way of living</h5>
                         <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>

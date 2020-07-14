@@ -1,5 +1,5 @@
 .bg{
-    height: 300px;
+    height: 400px;
     background-image: url('../HomePage/Img/woman-running-on-sand-near-white-concrete-building-736505.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,4 +8,16 @@
 
 .bg img{
     width: 12%;
+}
+
+.back-color{
+    background-color: #ccc;
+}
+
+.white{
+    color: white;
+}
+
+.b {
+    background-color: #08a3a3;
 }

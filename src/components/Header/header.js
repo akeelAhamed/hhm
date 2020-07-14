@@ -6,7 +6,7 @@ import {Navbar, Nav} from 'react-bootstrap';
 class Header extends Component{
     render(){
         return(
-            <Navbar className="border" bg="light"  expand="lg">
+            <Navbar className="" bg="light"  expand="lg">
             <Navbar.Brand href="#home">
                 <img
                     src={require("../HomePage/Img/logo.png")}
@@ -17,12 +17,12 @@ class Header extends Component{
                 />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mr-auto  text-uppercase">
+            <Navbar.Collapse id="basic-navbar-nav ">
+              <Nav className="mr-auto  text-uppercase  border">
                 <Nav.Link href="#home">Home</Nav.Link>
                 <Nav.Link href="#link">About us</Nav.Link>
                 <Nav.Link href="#home">Product</Nav.Link>
-                <Nav.Link href="#link">Gallery</Nav.Link>
+                <Nav.Link href="#link">allery</Nav.Link>
                 <Nav.Link href="#home">R & D</Nav.Link>
                 <Nav.Link href="#link">Contact us</Nav.Link>
               </Nav>
