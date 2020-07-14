@@ -13,16 +13,17 @@ class Header extends Component{
                     width="70"
                     height="40"
                     className="d-inline-block align-top"
-                    alt="React Bootstrap logo"
+                    alt="logo"
                 />
             </Navbar.Brand>
+      
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav ">
-              <Nav className="mr-auto  text-uppercase  border">
+              <Nav className="ml-auto text-uppercase">
                 <Nav.Link href="#home">Home</Nav.Link>
                 <Nav.Link href="#link">About us</Nav.Link>
                 <Nav.Link href="#home">Product</Nav.Link>
-                <Nav.Link href="#link">allery</Nav.Link>
+                <Nav.Link href="#link">Gallery</Nav.Link>
                 <Nav.Link href="#home">R & D</Nav.Link>
                 <Nav.Link href="#link">Contact us</Nav.Link>
               </Nav>

@@ -9,33 +9,34 @@ class HomePage extends Component {
         <div>
             <Container fluid>
                 <Row className="no-gutters">
-                    <Col  className="b text-uppercase text-monospace white ">
+                    <Col className="b text-uppercase text-monospace white">
                         <strong className="float-right p-5">higher living</strong>
                     </Col>
-                    <Col  xs={8}>
+                    <Col >
                     <img className="img-fluid" alt="" src={require("../AboutUs/img/santosh-verma-us6C9t4wz_U-unsplash(1).jpg")}/>
                     </Col>
                 </Row>
             </Container>
+           
 
-            
-          <div className="d-md-inline-flex">
-
-              <div className="p-2">
-              <img className="img-fluid" alt="" src={require('../HomePage/Img/meditating women.jpg')}/>
+             <div className="d-md-flex flex-row second m-2">
+                <div >
+                <img className="img-fluid" alt="" src={require("../HomePage/Img/erik-brolin-ZARfCYDaVg0-unsplash.jpg")}/>
               </div>
-              <div className="p-5">
-                      <h4 className="font-weight-bold text-uppercase">Holistic human metaphysics</h4>
-                      <h5 className="text-uppercase">a scientific way of living</h5>
-                      <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
-                      <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</small>
-                      <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata</small>
-                </div>
-          </div>
+
+              <div className="my-5 p-2">
+                  <h4 className="font-weight-bold text-uppercase">Holistic human metaphysics</h4>
+                  <h5 className="text-uppercase">a scientific way of living</h5>
+                  <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
+                  <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</small>
+              </div>
+            </div> 
+            
+        
 
 
-          <div className="back-color">
-            <div className="p-5">
+          <div className="">
+            <div className="p-5 back-color ">
                   <h4 className="font-weight-bold text-uppercase">Holistic human metaphysics</h4>
                   <h5 className="text-uppercase">a scientific way of living</h5>
                   <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
@@ -85,10 +86,6 @@ class HomePage extends Component {
               <img className="img-fluid" alt="" src={require('../HomePage/Img/david-hofmann-klWtuMJE8Ho-unsplash.jpg')}/>
             </div>
           </div>
-
-
-
-
 
           
         </div>

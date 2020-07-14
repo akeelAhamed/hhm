@@ -4,22 +4,23 @@ import './footer.css';
 
 const FooterPage = () => {
   return (
+    
     <MDBFooter   className="font-small text-white pt-4 mt-4 b color" >
-      <MDBContainer fluid className="text-center text-md-left">
+      <MDBContainer fluid className="text-md-left">
         <MDBRow>
-          <MDBCol className="" md="4">
+          <MDBCol className="" md="6">
           <img
                     src={require("../HomePage/Img/logo.png")}
                     width="70"
                     height="40"
                     className="d-inline-block align-top"
-                    alt="React Bootstrap logo"
+                    alt="logo"
                 />
             <p>
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
           </MDBCol>
-          <MDBCol className="text-center" md="4">
+          <MDBCol  md="3">
             <h5 className="title ">Useful links</h5>
             <ul className="text-uppercase font-small">
               <li className="list-unstyled">
@@ -46,7 +47,7 @@ const FooterPage = () => {
             </ul>
           </MDBCol>
 
-          <MDBCol className=" text-center" md="4">
+          <MDBCol  md="3">
             <h5 className="title">Social media</h5>
             <ul className="text-uppercase">
               <li className="list-unstyled">
@@ -62,11 +63,6 @@ const FooterPage = () => {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
-      <div className="footer-copyright text-center py-3">
-        <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Copyright:
-        </MDBContainer>
-      </div>
     </MDBFooter>
   );
 }
