@@ -30,8 +30,8 @@ class HomePage extends Component {
       
           <div className="">
             <div className="p-5 back-color ">
-                  <h4 className="font-weight-bold text-uppercase">Holistic human metaphysics</h4>
-                  <h5 className="text-uppercase">a scientific way of living</h5>
+                  <h4 className="font-weight-bold text-uppercase">Aushmat pure</h4>
+                  <h5 className="text-uppercase">Re energising your life</h5>
                   <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
                   <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</small>
                   <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata</small>
@@ -46,11 +46,13 @@ class HomePage extends Component {
               </Col>
 
               <Col md lg xl="6" sm="auto" className="mt-5">
-                   <h4 className="font-weight-bold text-uppercase">Holistic human metaphysics</h4>
-                    <h5 className="text-uppercase">a scientific way of living</h5>
-                    <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
-                    <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</small>
-                    <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata</small>
+                   <h4 className="font-weight-bold text-uppercase border-left border-info">Dr. T.P.Jayakrishnan -</h4>
+                    <h5 className="text-uppercase border-left border-info">The Man with a mission</h5>
+                  <blockquote><cite> "Illuminating occult to make it obvious" </cite>
+                   <footer> Dr.T.P. Jayakrishnan </footer> </blockquote>
+
+                    <small>Dr.T.P Jayakrishnan, the founder of Holistic Metaphysics beleives that to live fruitfully, recognizing the deep bond between us and the universal energy around us is essential. He strives to understand truths that have not unveiled itself to us yet and makes wy for science to tread on. His unquenched curiosity to find the path towards meaningful existence led to the birth of a new way of living. HHM. "Illuminating the occult to make it obvious" is his idea of combining ancient and modern science</small> <br/>
+                    <small>Dr.T.P Jayakrishnan is based in Chalavara, Kerala.He is the chairman of Aushmat Research Trush (ART) which works on spreading awareness on HHm Aushmath Biconsciences, as laboratory under ART, is dedicated to conduct scientific experience in the field of HHM and conservation of natural resources. The visionary that he is, Dr.Jayakrishnan ahs opened a new door of science, rooted in ancient scriplures of India which once was the most reliable healthcare source of the world </small>
               </Col>
             </Row>
           </Container>
