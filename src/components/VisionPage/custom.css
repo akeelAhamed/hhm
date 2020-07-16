@@ -1,0 +1,8 @@
+.bg{
+    background-image: url('./img/cemetry.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 25em ;
+    margin: 10px;
+}

@@ -1,0 +1,87 @@
+.bg-image-1{
+    height: 400px;
+    background-image: url('../AboutUs/img/hand.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-image-1 > p{
+    position: relative;
+    font-weight: bolder;
+    font-size: 35px;
+    color: teal;
+    font-family: 'Times New Roman', Times, serif;
+    left:10%;
+    top:20%;
+}
+
+.bg-image-2{
+    height: 400px;
+    background-image: url('../HomePage/Img/woman-running.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-image-2  img{
+    width: 12%;
+    padding-bottom: 4px;
+}
+
+.back-color{
+    background-color: #ccc;
+}
+
+.white{
+    color: white;
+}
+
+.b {
+    background-color: #08a3a3;
+}
+
+.videos{
+    position: relative;
+    font-weight: 900;
+    font-size: xx-large;
+    left: 45%;
+    top: 10%;
+    text-transform: uppercase;
+    border-left: 7px solid teal;
+}
+
+span{
+    position: relative;
+    left: 2%;
+}
+
+.second img, .third img, .fourth img{
+    height: 100%;
+    object-fit: cover;
+}
+
+.bg-img{
+    background-image: url('./Img/women-yoga.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    padding: 10px;
+}
+
+.text{
+    position: relative;
+    top: 10%;
+    width: 100%;
+    padding: 15px;
+}
+
+
+
+@media(max-width:576px){
+    .flex-sm-column{
+        display: flex;
+        flex-direction: column;
+    }
+}
