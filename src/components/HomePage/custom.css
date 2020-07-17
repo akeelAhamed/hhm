@@ -1,12 +1,12 @@
-.bg-image-1{
+.home-bg-1{
     height: 400px;
-    background-image: url('../AboutUs/img/hand.jpg');
+    background-image: url('../HomePage/Img/fwdhhmhomepagedummypics/Home\ 01.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.bg-image-1 > p{
+.home-bg-1 > p {
     position: relative;
     font-weight: bolder;
     font-size: 35px;
@@ -16,72 +16,57 @@
     top:20%;
 }
 
-.bg-image-2{
-    height: 400px;
-    background-image: url('../HomePage/Img/woman-running.jpg');
+.home-bg-2{
+    height: 37em;
+    background-image: url('./Img//fwdhhmhomepagedummypics/Home\ 03.jpg');
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
 }
 
-.bg-image-2  img{
-    width: 12%;
-    padding-bottom: 4px;
+.home-bg-2_text{
+    position: relative;
+    left: 50%;
+    width: 50%;
+    padding-top: 3%;
+    padding-right: 3% ;
 }
 
-.back-color{
+@media (max-width: 570px){
+    .home-bg-2_text{
+        position: relative;
+        left: 2%;
+        top: 3%;
+        width: 100%;
+    }
+}
+
+.bg-gray{
     background-color: #ccc;
 }
 
-.white{
-    color: white;
+
+.home-bg-3{
+    height: 400px;
+    background-image: url('./Img/fwdhhmhomepagedummypics/Home\ 07.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
-.b {
-    background-color: #08a3a3;
+.home-bg-3  img{
+    width: 30vh;
+    padding-bottom: 4px;
 }
 
-.videos{
-    position: relative;
-    font-weight: 900;
-    font-size: xx-large;
-    left: 45%;
-    top: 10%;
-    text-transform: uppercase;
-    border-left: 7px solid teal;
-}
-
-span{
-    position: relative;
-    left: 2%;
-}
-
-.second img, .third img, .fourth img{
-    height: 100%;
-    object-fit: cover;
-}
-
-.bg-img{
-    background-image: url('./Img/women-yoga.jpg');
+.bg-yoga{
+    background-image: url('./Img/fwdhhmhomepagedummypics/Home\ 09.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
-    padding: 10px;
 }
 
-.text{
-    position: relative;
-    top: 10%;
-    width: 100%;
-    padding: 15px;
-}
-
-
-
-@media(max-width:576px){
-    .flex-sm-column{
-        display: flex;
-        flex-direction: column;
-    }
+.border-teal{
+    border-left: 5px solid teal;
+    padding-left: 4px;
 }

@@ -1,0 +1,17 @@
+.bg-image{
+        background-image: url("../AboutUs/img/hand.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 25em;
+        margin: 10px;
+ }
+
+ .bg-image > h3 {
+    position: relative;
+    top: 10%;
+    left: 10%;
+    font-family: 'Lato';
+    color: white;
+    font-weight: 900;
+}

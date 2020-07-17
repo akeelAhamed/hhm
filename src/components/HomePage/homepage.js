@@ -8,19 +8,18 @@ class HomePage extends Component {
     return (
         <div>
             
-            <div className="bg-image-1 ml-3 mr-3"> 
+            <div className="home-bg-1 ml-3 mr-3"> 
               <p>Elevate Life</p>
              </div>
 
             <Container fluid>
                 <Row  className="no-gutters">
                   <Col xl md lg="6" sm="auto" >
-                      <img  className="img-fluid" alt="" src={require("./Img/med-women.jpg")}/>
+                      <img  className="img-fluid" alt="" src={require("./Img/fwdhhmhomepagedummypics/Home 02.jpg")}/>
                   </Col>
                    
-                   <Col xl md lg="6" sm="auto" className="p-3">
-                      <h4 className="font-weight-bold text-uppercase">Holistic human metaphysics</h4>
-                      <h5 className="text-uppercase">a scientific way of living</h5>
+                   <Col xl md lg="6" sm="auto" className="my-auto p-3">
+                      <h5 className="border-teal text-uppercase">Holistic human metaphysics <br/> a scientific way of living </h5>
                       <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
                    </Col>
                 </Row>
@@ -28,12 +27,12 @@ class HomePage extends Component {
 
             
       
-          <div className="">
-            <div className="p-5 back-color ">
-                  <h4 className="font-weight-bold text-uppercase">Aushmat pure</h4>
-                  <h5 className="text-uppercase">Re energising your life</h5>
-                  <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
-                  <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</small>
+          <div className="home-bg-2">
+            <div className="home-bg-2_text">
+                  <h5 className="text-uppercase border-teal">Aushmat pure <br/> Re energising your life</h5>
+                  <br/>
+                  <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small><br/><br/>
+                  <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</small><br/><br/>
                   <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata</small>
             </div>
           </div>
@@ -42,12 +41,11 @@ class HomePage extends Component {
           <Container fluid>
             <Row>
               <Col md lg xl="6" sm="auto">
-                <img className="img-fluid" alt="" src={require('./Img/business-man.jpg')} />
+                <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 04.jpg')} />
               </Col>
 
-              <Col md lg xl="6" sm="auto" className="mt-5">
-                   <h4 className="font-weight-bold text-uppercase border-left border-info">Dr. T.P.Jayakrishnan -</h4>
-                    <h5 className="text-uppercase border-left border-info">The Man with a mission</h5>
+              <Col md lg xl="6" sm="auto" className="mt-5 ">
+                  <h5 className="text-uppercase border-teal">Dr.T.P Jayakrishnan <br/> Re energising your life</h5>
                   <blockquote><cite> "Illuminating occult to make it obvious" </cite>
                    <footer> Dr.T.P. Jayakrishnan </footer> </blockquote>
 
@@ -58,19 +56,18 @@ class HomePage extends Component {
           </Container>
 
 
-          <Container fluid className="back-color">
+          <Container fluid className="bg-gray">
             <Row>
-              <Col xl md lg="6" sm="auto">   
+              <Col xl md lg="6" sm="auto" className="m-auto">   
                  <div className="d-flex flex-column align-items-center">
-                  <img className="img-fluid w-25" alt="" src={require('../HomePage/Img/first.jpg')}/>
-                  <img className="img-fluid w-50" alt="" src={require('../HomePage/Img/middle.jpg')}/>
-                  <img className="img-fluid w-25" alt="" src={require('../HomePage/Img/third.jpg')}/>
+                  <img className="img-fluid align-self-start m-1" alt="girl" src={require('./Img/fwdhhmhomepagedummypics/Home 05.jpg')}/>
+                  <img className="img-fluid align-self-end m-1" alt="boy" src={require('./Img/fwdhhmhomepagedummypics/Home 06.jpg')}/>
+                  <img className="img-fluid align-self-start m-1" alt="girl" src={require('./Img/fwdhhmhomepagedummypics/Home 05.jpg')}/>
                 </div>
               </Col>
 
-              <Col xl md lg="6" sm="auto" className="mt-5" >
-                    <h4 className="font-weight-bold text-uppercase">Success Stories</h4>
-                    <h5 className="text-uppercase">a scientific way of living</h5>
+              <Col xl md lg="6" sm="auto" className="my-auto" >
+                    <h5 className="border-teal text-uppercase">Success Stories <br/> a scientific way of living </h5>
                     <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
                     <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</small>
                     <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata</small>
@@ -78,35 +75,34 @@ class HomePage extends Component {
             </Row>
           </Container>
 
-          <div className="bg-image-2">
-            <p className="videos"><span>Videos</span></p>
-            <div className="d-flex flex-column align-items-end pr-5 py-5">
-              <img className="img-fluid" alt="" src={require('../HomePage/Img/dance-woman.jpg')}/>
-              <img className="img-fluid" alt="" src={require('../HomePage/Img/dance-woman.jpg')}/>
-              <img className="img-fluid" alt="" src={require('../HomePage/Img/dance-woman.jpg')}/>
+          <div className="home-bg-3">
+            <h3 className="text-center"><span className="border-teal"> Videos </span></h3>
+            <div className="d-flex flex-column align-items-end m-2">
+              <img className="img-fluid mt-1" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/>
+              <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/>
+              <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/>
             </div>
           </div>
 
 
 
-          {/* last section */}
-          <p className="videos m-3"><span>Blogs</span></p>
+          
+          <h5 className="text-center m-3"><span className="border-teal">  Blogs </span></h5>
 
-          <div className="d-flex flex-xl-row flex-lg-row flex-md-column flex-sm-column m-3">
-              <div className="bg-img text-white">
-                <h5 className="bg-info">HHM</h5>
-                <div className="text bg-black">
-                  <p>Is HHM an incredibly complex and dynamic process?</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p>
+          <Container fluid>
+            <Row className="no-gutters">
+              <Col xl lg md="6" sm="12"  className="bg-yoga">
+                <div className="d-flex flex-column">
+                  <div className="bg-info"><h5>HHM</h5></div>
+                  <div className="p-2 align-self-end"><p>Is HHM an incredibly complex and dynamic process? <br/>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p></div>
                 </div>
-              </div>
-
-            <div className="d-flex flex-row">
-                <div className="second"><img className="img-fluid" src={require('./Img/dance-woman.jpg')} alt=""/></div>
-                <div className="third"><img className="img-fluid" src={require('./Img/med-women.jpg')} alt=""/></div>
-                <div className="fourth"><img className="img-fluid" src={require('../AboutUs/img/hand.jpg')} alt=""/></div>
-            </div>
-          </div>
+              </Col>
+              <Col xl lg md="6" sm="12" >
+              <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 10.jpg')}/>
+              </Col>
+            </Row>
+          </Container>
 
 
           
