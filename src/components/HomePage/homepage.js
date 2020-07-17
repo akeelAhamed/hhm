@@ -77,8 +77,8 @@ class HomePage extends Component {
 
           <div className="home-bg-3">
             <h3 className="text-center"><span className="border-teal"> Videos </span></h3>
-            <div className="d-flex flex-column align-items-end m-2">
-              <img className="img-fluid mt-1" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/>
+            <div className="d-flex flex-column align-items-end ">
+              <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/>
               <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/>
               <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/>
             </div>

@@ -47,7 +47,7 @@
 
 
 .home-bg-3{
-    height: 400px;
+    height: fit-content;
     background-image: url('./Img/fwdhhmhomepagedummypics/Home\ 07.jpg');
     background-repeat: no-repeat;
     background-size: cover;
