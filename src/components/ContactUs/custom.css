@@ -1,5 +1,5 @@
 .bg-image{
-        background-image: url("../AboutUs/img/hand.jpg");
+        background-image: url("../HomePage/Img/fwdhhmhomepagedummypics/Home\ 01.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -15,3 +15,13 @@
     color: white;
     font-weight: 900;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+  }

@@ -1,15 +1,7 @@
-
-a{
+a {
     color: white;
-    font-size: small;
-} 
-
-
-
-p{
-    font-size: small;
 }
 
-.b{
-    background-color: #08a3a3;
+.bg-inf{
+    background-color: tomato;
 }
