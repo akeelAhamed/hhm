@@ -7,13 +7,11 @@
 }
 
 .home-bg-1 > p {
-    position: relative;
+    padding: 8%;
     font-weight: bolder;
     font-size: 35px;
     color: teal;
     font-family: 'Times New Roman', Times, serif;
-    left:10%;
-    top:20%;
 }
 
 .home-bg-2{
@@ -25,19 +23,14 @@
 }
 
 .home-bg-2_text{
-    position: relative;
-    left: 50%;
-    width: 50%;
-    padding-top: 3%;
-    padding-right: 3% ;
+   padding-left: 50%;
+   padding-top: 5%;
+   width: 92%;
 }
 
 @media (max-width: 570px){
     .home-bg-2_text{
-        position: relative;
-        left: 2%;
-        top: 3%;
-        width: 100%;
+       padding-left: 10%;
     }
 }
 
