@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar, Nav} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 class Header extends Component{
@@ -20,12 +21,12 @@ class Header extends Component{
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav ">
               <Nav className="ml-auto text-uppercase">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">About us</Nav.Link>
-                <Nav.Link href="#home">Product</Nav.Link>
-                <Nav.Link href="#link">Gallery</Nav.Link>
-                <Nav.Link href="#home">R & D</Nav.Link>
-                <Nav.Link href="#link">Contact us</Nav.Link>
+                <Nav.Link as={Link} to='/' >Home</Nav.Link>
+                <Nav.Link as={Link} to='/about' >About us</Nav.Link>
+                <Nav.Link as={Link}>Product</Nav.Link>
+                <Nav.Link as={Link}>Gallery</Nav.Link>
+                <Nav.Link as={Link}>R & D</Nav.Link>
+                <Nav.Link as={Link} to='/contactus' >Contact us</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
