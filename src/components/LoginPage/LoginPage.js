@@ -30,7 +30,7 @@ class LoginPage extends Component {
               <p className="shadow p-3 mt-3 bg-light rounded">3. Order Summary</p>
               <p className="shadow p-3 mt-3 bg-light rounded">4. Payment Options</p>
             </Col>
-            <Col lg={4}>
+            <Col lg={4} className="p-3">
               <p>
                 Safe and Secure Payments. Easy returns.
                 <br />

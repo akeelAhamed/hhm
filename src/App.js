@@ -13,7 +13,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import ContactUs from './components/ContactUs/contactus';
 // import ProductPage from './components/ProductPage/ProductPage';
 // import CartPage from './components/CartPage/CartPage';
-import LoginPage from './components/LoginPage/LoginPage';
+// import LoginPage from './components/LoginPage/LoginPage';
+import CheckOut from './components/CheckOut/checkout';
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
         </Switch> */}
         {/* <ProductPage /> */}
         {/* <CartPage /> */}
-        <LoginPage />
+        {/* <LoginPage /> */}
+        <CheckOut />
         <FooterPage />
       </div>
     </Router>
