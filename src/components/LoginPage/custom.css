@@ -1,0 +1,9 @@
+.bb{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid teal;
+}
+.gray{
+    background-color: rgb(243, 243, 243);
+}

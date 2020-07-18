@@ -11,7 +11,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import Vision from "./components/VisionPage/vision";
 // import BlogPage from './components/BlogPage/blogpage';
 // import ContactUs from './components/ContactUs/contactus';
-import ProductPage from './components/ProducePage/ProductPage'
+// import ProductPage from './components/ProductPage/ProductPage';
+// import CartPage from './components/CartPage/CartPage';
+import LoginPage from './components/LoginPage/LoginPage';
 
 function App() {
   return (
@@ -23,7 +25,9 @@ function App() {
           <Route path="/about" component={AboutUs} />
           <Route path="/contactus" component={ContactUs} />
         </Switch> */}
-        <ProductPage />
+        {/* <ProductPage /> */}
+        {/* <CartPage /> */}
+        <LoginPage />
         <FooterPage />
       </div>
     </Router>
