@@ -1,0 +1,58 @@
+.home_bg-1 {
+    background: url('../HomePage/Img/fwdhhmhomepagedummypics/Home\ 01.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 25em;
+}
+
+.home_bg-1 > h3 {
+    padding: 4%;
+    color: white;
+    font-family: 'Lato';
+}
+
+.home_bg-2 {
+    background: url('../HomePage//Img/fwdhhmhomepagedummypics/Home\ 03.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 40em;
+}
+
+.home_bg-2-text{
+    padding-left: 50%;
+    padding-top: 5%;
+    width: 92%;
+ }
+
+ .home_bg-3 {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 37em;
+}
+
+.home_bg-3-text{
+    padding-left: 40%;
+    padding-top: 15%;
+    width: 92%;
+ }
+
+.home_bg-4{
+    background: url('../HomePage/Img/fwdhhmhomepagedummypics/Home\ 07.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: fit-content;
+}
+
+.home_bg-4  img{
+    width: 30vh;
+    padding: 8px;
+}
+
+ .border-teal{
+    border-left: 5px solid teal;
+    padding-left: 4px;
+}

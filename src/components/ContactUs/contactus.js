@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./custom.css";
 import { Col, Form,Button,Container,Row } from "react-bootstrap";
+// import mapboxgl from 'mapbox-gl';
 
 class ContactUs extends Component {
   render() {
@@ -58,9 +59,9 @@ class ContactUs extends Component {
         </section>
 
         <Container fluid>
-          <Row>
-            <Col className="my-auto text-center">
-              <h1 className="text-uppercase">India Office</h1>
+          <Row  className="my-auto">
+            <Col lg xl md sm="auto" className="my-auto">
+              <h3 className="text-uppercase">India Office</h3>
               <ul className="list-unstyled  mt-3">
                 <li>AUSHMATH Life Products Pvt Ltd</li>
                 <li>Door No, 2/1, First Floor</li>
@@ -70,14 +71,14 @@ class ContactUs extends Component {
                 <li>Tamil Nadu. 641041</li>
               </ul>
             </Col>
-            <Col className="text-center">
-              <img className="img-fluid w-50" src={require('../VisionPage/img/lens.jpg')} alt=""/>
+            <Col lg xl md sm="auto" className="text-center">
+              <img className="img-fluid " src={require('../VisionPage/img/lens.jpg')} alt=""/>
             </Col>
           </Row>
 
           <Row className="mt-5">
-            <Col className="my-auto text-center">
-              <h1 className="text-uppercase">Malaysia Office</h1>
+            <Col className="my-auto">
+              <h3 className="text-uppercase">Malaysia Office</h3>
               <ul className="list-unstyled  mt-3">
                 <li>AUSHMATH Life Products Pvt Ltd</li>
                 <li>Door No, 2/1, First Floor</li>
@@ -87,8 +88,8 @@ class ContactUs extends Component {
                 <li>Tamil Nadu. 641041</li>
               </ul>
             </Col>
-            <Col className="text-center">
-              <img className="img-fluid w-50" src={require('../VisionPage/img/lens.jpg')} alt=""/>
+            <Col className="">
+              <img className="img-fluid " src={require('../VisionPage/img/lens.jpg')} alt=""/>
             </Col>
           </Row>
 

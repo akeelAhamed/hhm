@@ -6,7 +6,7 @@ import './custom.css';
 class HomePage extends Component {
   render() {
     return (
-        <div>
+        <div className="main-container">
             
             <div className="home-bg-1 ml-3 mr-3"> 
               <p>Elevate Life</p>
