@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./components/Header/header";
 import FooterPage from "./components/FooterPage/footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import OrderConfirm from "./components/OrderConfirm/orderconfirm";
 
 // import HomePage from "./components/HomePage/homepage";
 // import AboutUs from "./components/AboutUs/aboutus";
@@ -14,7 +15,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import ProductPage from './components/ProductPage/ProductPage';
 // import CartPage from './components/CartPage/CartPage';
 // import LoginPage from './components/LoginPage/LoginPage';
-import CheckOut from './components/CheckOut/checkout';
+// import FinalCheckOut from './components/FinalCheckOut/finalcheckout';
+// import CheckOut from './components/CheckOut/checkout';
 
 function App() {
   return (
@@ -29,7 +31,9 @@ function App() {
         {/* <ProductPage /> */}
         {/* <CartPage /> */}
         {/* <LoginPage /> */}
-        <CheckOut />
+        {/* <CheckOut /> */}
+        {/* <FinalCheckOut /> */}
+        <OrderConfirm />
         <FooterPage />
       </div>
     </Router>

@@ -1,0 +1,11 @@
+.main{
+    max-width: 50em;
+    margin: 10vw;
+}
+
+.b-left{
+    border: 5px solid teal;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+}
