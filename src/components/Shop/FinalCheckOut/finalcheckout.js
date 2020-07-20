@@ -6,14 +6,14 @@ class FinalCheckOut extends Component {
   render() {
     return (
       <div className="main-container">
-        <h1 className="p-4 bg-info"></h1>
+        <h1 className="p-2 bg-info text-info">1</h1>
 
         <Row className="">
           <Col className="d-sm-flex justify-content-center p-4">
             <img
               className="img-fluid image"
               alt=""
-              src={require("../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg")}
+              src={require("../../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg")}
             />
 
             <div className="p-2">

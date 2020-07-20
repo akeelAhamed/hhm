@@ -16,7 +16,7 @@ class LoginPage extends Component {
                   <p>Enter Email/Mobile number</p>
                   <input className="bb" type="text" id="" required />
                   <br /><br />
-                  <Button variant="secondary" >Continue</Button>
+                  <Button variant="secondary" ><a href="/checkout">Continue</a></Button>
                 </div>
 
                 <div className="p-2">

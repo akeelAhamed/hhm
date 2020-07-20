@@ -14,7 +14,7 @@ class CartPage extends Component {
               <section className="d-flex flex-lg-row flex-xl-row flex-md-row flex-sm  p-2">
                 <img
                   className="img-fluid p-3 image m-auto"
-                  src={require("../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg")}
+                  src={require("../../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg")}
                   alt=""
                 />
                 <div className="my-auto">
@@ -37,7 +37,7 @@ class CartPage extends Component {
               <p>Estimated shipping: <p className="float-right"> Free</p></p>
               <h4 className="border-top pt-3">ORDER TOTAL<p className="float-right"> $60,000</p></h4>
             
-              <Button className="mt-5" variant="info" block>PROCEED TO CHECKOUT</Button>
+              <Button className="mt-5" variant="info" block><a href="/loginpage">PROCEED TO CHECKOUT</a></Button>
             </Col>
           </Row>
         </Container>

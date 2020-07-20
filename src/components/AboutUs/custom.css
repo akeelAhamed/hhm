@@ -1,4 +1,4 @@
-.bg{
+.bkg{
     background-image: url('../HomePage/Img/fwdhhmhomepagedummypics/Home\ 01.jpg');
     height: 25em;
     background-repeat: no-repeat;
@@ -7,7 +7,7 @@
     margin: 10px;
 }
 
-.bg-text{
+.bkg-text{
     padding: 8%;
     font-family: 'Lato';
     color: white;

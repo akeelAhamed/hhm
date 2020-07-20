@@ -77,7 +77,7 @@ class ContactUs extends Component {
           </Row>
 
           <Row className="mt-5">
-            <Col className="my-auto">
+            <Col  lg xl md sm="auto" className="my-auto">
               <h3 className="text-uppercase">Malaysia Office</h3>
               <ul className="list-unstyled  mt-3">
                 <li>AUSHMATH Life Products Pvt Ltd</li>
@@ -88,7 +88,7 @@ class ContactUs extends Component {
                 <li>Tamil Nadu. 641041</li>
               </ul>
             </Col>
-            <Col className="">
+            <Col  lg xl md sm="auto" className="">
               <img className="img-fluid " src={require('../VisionPage/img/lens.jpg')} alt=""/>
             </Col>
           </Row>

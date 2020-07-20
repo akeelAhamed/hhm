@@ -16,7 +16,7 @@ class CheckOut extends Component {
                         <section className="border border-left-0 border-right-0">
                        
                         <div className="d-flex">
-                            <img className="img-fluid w-25 pt-1" alt='' src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')} />
+                            <img className="img-fluid w-25 pt-1" alt='' src={require('../../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')} />
                             <div className="m-auto">
                             <p>1 item</p>
                             <select className="border-0 text-info">
@@ -62,7 +62,7 @@ class CheckOut extends Component {
 
                             <h6 className="pt-2">Payment Instruction</h6>
                             <small>We wil Contact you at phone number that you've provided us with above to arrange the payment</small>
-                            <Button className="mb-4 mt-2" variant="info" block>Place Order</Button>
+                            <Button className="mb-4 mt-2" variant="info" block><a href="/finalcheckout">Place Order</a></Button>
                         </section>
                         </Col>
                     </Row>

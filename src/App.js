@@ -13,11 +13,11 @@ import Vision from "./components/VisionPage/vision";
 // import BlogPage from './components/BlogPage/blogpage';
 import ContactUs from './components/ContactUs/contactus';
 import ProductPage from './components/ProductPage/ProductPage';
-// import CartPage from './components/CartPage/CartPage';
-// import LoginPage from './components/LoginPage/LoginPage';
-// import FinalCheckOut from './components/FinalCheckOut/finalcheckout';
-// import OrderConfirm from "./components/OrderConfirm/orderconfirm";
-// import CheckOut from './components/CheckOut/checkout';
+import CartPage from './components/Shop/CartPage/CartPage';
+import LoginPage from './components/Shop/LoginPage/LoginPage';
+import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
+import OrderConfirm from "./components/Shop/OrderConfirm/orderconfirm";
+import CheckOut from './components/Shop/CheckOut/checkout';
 
 function App() {
   return (
@@ -30,17 +30,16 @@ function App() {
           <Route path="/product" component={ProductPage} />
           <Route path="/vision" component={Vision} />
           <Route path="/contactus" component={ContactUs} />
+          <Route path="/cartpage" component={CartPage} />
+          <Route path="/loginpage" component={LoginPage} />
+          <Route path="/checkout" component={CheckOut} />
+          <Route path="/finalcheckout" component={FinalCheckOut} />
+          <Route path="/orderconfirm" component={OrderConfirm} />
         </Switch>
-        {/* <ProductPage /> */}
-        {/* <CartPage /> */}
-        {/* <LoginPage /> */}
-        {/* <CheckOut /> */}
-        {/* <FinalCheckOut /> */}
-        {/* <OrderConfirm /> */}
+
         <FooterPage />
       </div>
     </Router>
   );
 }
-
 export default App;
