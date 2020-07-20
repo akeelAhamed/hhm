@@ -23,9 +23,9 @@ class Header extends Component{
               <Nav className="ml-auto text-uppercase">
                 <Nav.Link as={Link} to='/' >Home</Nav.Link>
                 <Nav.Link as={Link} to='/about' >About us</Nav.Link>
-                <Nav.Link as={Link}>Product</Nav.Link>
+                <Nav.Link as={Link} to='/product'>Product</Nav.Link>
                 <Nav.Link as={Link}>Gallery</Nav.Link>
-                <Nav.Link as={Link}>R & D</Nav.Link>
+                <Nav.Link as={Link} to='/vision'>R & D</Nav.Link>
                 <Nav.Link as={Link} to='/contactus' >Contact us</Nav.Link>
               </Nav>
             </Navbar.Collapse>

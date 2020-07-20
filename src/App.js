@@ -7,12 +7,12 @@ import FooterPage from "./components/FooterPage/footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 
-// import HomePage from "./components/HomePage/homepage";
-// import AboutUs from "./components/AboutUs/aboutus";
+import HomePage from "./components/HomePage/homepage";
+import AboutUs from "./components/AboutUs/aboutus";
 import Vision from "./components/VisionPage/vision";
 // import BlogPage from './components/BlogPage/blogpage';
-// import ContactUs from './components/ContactUs/contactus';
-// import ProductPage from './components/ProductPage/ProductPage';
+import ContactUs from './components/ContactUs/contactus';
+import ProductPage from './components/ProductPage/ProductPage';
 // import CartPage from './components/CartPage/CartPage';
 // import LoginPage from './components/LoginPage/LoginPage';
 // import FinalCheckOut from './components/FinalCheckOut/finalcheckout';
@@ -24,18 +24,19 @@ function App() {
     <Router>
       <div className="Container">
         <Header />
-        {/* <Switch>
+        <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/about" component={AboutUs} />
+          <Route path="/product" component={ProductPage} />
+          <Route path="/vision" component={Vision} />
           <Route path="/contactus" component={ContactUs} />
-        </Switch> */}
+        </Switch>
         {/* <ProductPage /> */}
         {/* <CartPage /> */}
         {/* <LoginPage /> */}
         {/* <CheckOut /> */}
         {/* <FinalCheckOut /> */}
         {/* <OrderConfirm /> */}
-        <Vision />
         <FooterPage />
       </div>
     </Router>
