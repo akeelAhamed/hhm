@@ -24,7 +24,7 @@ class Header extends Component{
                 <Nav.Link as={Link} to='/' >Home</Nav.Link>
                 <Nav.Link as={Link} to='/about' >About us</Nav.Link>
                 <Nav.Link as={Link} to='/product'>Product</Nav.Link>
-                <Nav.Link as={Link}>Gallery</Nav.Link>
+                <Nav.Link as={Link} to='#'>Gallery</Nav.Link>
                 <Nav.Link as={Link} to='/vision'>R & D</Nav.Link>
                 <Nav.Link as={Link} to='/contactus' >Contact us</Nav.Link>
               </Nav>

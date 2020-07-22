@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./custom.css";
 import { Container, Row, Col } from "react-bootstrap";
+import axios from "axios";
 
 const FooterPage = () => {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = () => {
+    var proxy = 'https://cors-anywhere.herokuapp.com/'
+    axios.get(proxy + 'http://www.hhmlife.org/api/home', {
+      headers: {
+        'Content-Type' : 'application/json',
+        'Accept' : 'application/json',
+        'Authorization' : 'Bearer Test@123'
+      }
+    })
+    .then(res => {
+      console.log(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  };
+
   return (
     <Container fluid>
       <Row className="bg-info text-white">
-        <Col xl lg md="6" sm="12" >
+        <Col xl lg md="6" sm="12">
           <img
             src={require("../HomePage/Img/logo.png")}
             width="70"
@@ -24,7 +48,7 @@ const FooterPage = () => {
 
         <Col xl lg md="12" sm="12">
           <section className="d-flex justify-content-around flex-lg-row flex-xl-row flex-md-column">
-            <div >
+            <div>
               <h5 className="title border-1">Useful links</h5>
               <ul className="text-uppercase font-small">
                 <li className="list-unstyled">
