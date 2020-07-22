@@ -5,6 +5,7 @@ import axios from "axios";
 
 const FooterPage = () => {
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({})
 
   useEffect(() => {
     getData();
@@ -16,16 +17,19 @@ const FooterPage = () => {
       headers: {
         'Content-Type' : 'application/json',
         'Accept' : 'application/json',
-        'Authorization' : 'Bearer Test@123'
+        'APP_KEY' : 'Test@123'
       }
     })
     .then(res => {
-      console.log(res.data)
+      setData({...res.data})
     })
     .catch(err => {
       console.log(err)
+      setData({})
     })
   };
+
+  console.log(data)
 
   return (
     <Container fluid>
