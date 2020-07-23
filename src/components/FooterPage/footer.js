@@ -5,7 +5,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 
 const FooterPage = props => {
-  console.log(props.data)
+  // console.log(props.data.footer)
 
   return (
     // loading ? <Spinner /> :
@@ -20,7 +20,7 @@ const FooterPage = props => {
             alt="logo"
           />
           <p>
-            {props.data.footer}
+            {props.data.heade_footer.footer}
           </p>
         </Col>
 
