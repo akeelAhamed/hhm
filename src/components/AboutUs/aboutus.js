@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import './custom.css';
 import {Row, Col, Container} from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 
 class AboutUs extends Component{
     render(){
+        console.log(this.props.data)
         return(
           <div id="main">
              <div className="bkg text-uppercase">
@@ -28,4 +30,10 @@ class AboutUs extends Component{
     }
 }
 
-export default AboutUs;
+const mapStateToProps = state => {
+    return {
+      data: state.data
+    }
+  }
+
+export default connect(mapStateToProps)(AboutUs);

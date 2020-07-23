@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import "./custom.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import { connect } from "react-redux";
 
 class LoginPage extends Component {
   render() {
+    console.log(this.props.data)
     return (
       <div className="main-container">
         <Container fluid className="gray">
@@ -44,4 +46,10 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+const mapStateToProps = state => {
+  return {
+    data: state.data
+  }
+}
+
+export default connect(mapStateToProps)(LoginPage);

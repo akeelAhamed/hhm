@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Navbar, Nav} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 class Header extends Component{
     render(){
+      console.log(this.props.data)
         return(
             <Navbar className="" bg="light"  expand="lg">
             <Navbar.Brand href="#home">
@@ -33,5 +35,10 @@ class Header extends Component{
            
         )}}
 
+        const mapStateToProps = state => {
+          return {
+            data: state.data
+          }
+        }
 
-export default Header;
+export default connect(mapStateToProps)(Header);

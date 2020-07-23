@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -18,10 +18,22 @@ import LoginPage from './components/Shop/LoginPage/LoginPage';
 import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
 import OrderConfirm from "./components/Shop/OrderConfirm/orderconfirm";
 import CheckOut from './components/Shop/CheckOut/checkout';
+import { connect } from "react-redux";
+import * as actions from './components/store/actions/index'
+import Spinner from './components/UI/Spinner/Spinner'
 
-function App() {
+function App(props) {
+
+  useEffect(() => {
+    props.loadData()
+  }, [])
+
   return (
     <Router>
+      {props.loading ? 
+      <div className='Container'>
+        <Spinner /> 
+      </div>:
       <div className="Container">
         <Header />
         <Switch>
@@ -39,7 +51,22 @@ function App() {
 
         <FooterPage />
       </div>
+      }
     </Router>
   );
 }
-export default App;
+
+const mapStateToProps = state => {
+  return {
+    data: state.data,
+    loading: state.loading
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadData: () => dispatch(actions.loadData())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

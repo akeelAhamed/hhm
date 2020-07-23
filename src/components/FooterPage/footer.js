@@ -1,36 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./custom.css";
-import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 // import axios from "axios";
-import { globalData } from '../globalData'
+import { connect } from "react-redux";
 
-const FooterPage = () => {
-  // const [loading, setLoading] = useState(false);
-  // const [data, setData] = useState({})
-
-  // useEffect(() => {
-  //   getData();
-  // }, []);
-
-  // const getData = () => {
-  //   var proxy = 'https://cors-anywhere.herokuapp.com/'
-  //   axios.get(proxy + 'http://www.hhmlife.org/api/home', {
-  //     headers: {
-  //       'Content-Type' : 'application/json',
-  //       'Accept' : 'application/json',
-  //       'APP_KEY' : 'Test@123'
-  //     }
-  //   })
-  //   .then(res => {
-  //     setData({...res.data})
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //     setData({})
-  //   })
-  // };
-
-  // console.log(data)
+const FooterPage = props => {
+  console.log(props.data)
 
   return (
     // loading ? <Spinner /> :
@@ -38,14 +13,14 @@ const FooterPage = () => {
       <Row className="bg-info text-white">
         <Col xl lg md="6" sm="12">
           <img
-            src={require("../HomePage/Img/logo.png")}
+            src={require("../HomePage/Img/logo.png" )}
             width="70"
             height="40"
             className="d-inline-block align-top"
             alt="logo"
           />
           <p>
-            {globalData.heade_footer.footer}
+            "Hello"
           </p>
         </Col>
 
@@ -67,7 +42,7 @@ const FooterPage = () => {
                   <a href="#!">Gallery</a>
                 </li>
                 <li className="list-unstyled">
-                  <a href="#!">R & D</a>
+                  <a href="#!">R {'&'} D</a>
                 </li>
                 <li className="list-unstyled">
                   <a href="#!">Contact us</a>
@@ -99,4 +74,10 @@ const FooterPage = () => {
   );
 };
 
-export default FooterPage;
+const mapStateToProps = state => {
+  return {
+    data: state.data
+  }
+}
+
+export default connect(mapStateToProps)(FooterPage);

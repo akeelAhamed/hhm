@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./custom.css";
 import {Button} from 'react-bootstrap';
+import { connect } from "react-redux";
 
 class ProductPage extends Component {
   render() {
+    console.log(this.props.data)
     return (
       <div className="main-container">
         <div className="home_bg-1 text-uppercase">
@@ -66,4 +68,10 @@ class ProductPage extends Component {
   }
 }
 
-export default ProductPage;
+const mapStateToProps = state => {
+  return {
+    data: state.data
+  }
+}
+
+export default connect(mapStateToProps)(ProductPage);

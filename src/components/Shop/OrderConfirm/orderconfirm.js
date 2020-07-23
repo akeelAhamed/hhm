@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import "./custom.css";
+import { connect } from "react-redux";
 
 class OrderConfirm extends Component {
   render() {
+    console.log(this.props.data)
     return (
       <div className="main">
         <div className="main-content">
@@ -19,4 +21,10 @@ class OrderConfirm extends Component {
   }
 }
 
-export default OrderConfirm;
+const mapStateToProps = state => {
+  return {
+    data: state.data
+  }
+}
+
+export default connect(mapStateToProps)(OrderConfirm);

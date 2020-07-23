@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import "./custom.css";
 import { Col, Form,Button,Container,Row } from "react-bootstrap";
+import { connect } from "react-redux";
 // import mapboxgl from 'mapbox-gl';
 
 class ContactUs extends Component {
   render() {
+    console.log(this.props.data)
     return (
       <div className="main-container ">
         <div className="bg-image">
@@ -99,4 +101,10 @@ class ContactUs extends Component {
   }
 }
 
-export default ContactUs;
+const mapStateToProps = state => {
+  return {
+    data: state.data
+  }
+}
+
+export default connect(mapStateToProps)(ContactUs);

@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Container, Row, Col} from "react-bootstrap";
 import './custom.css';
+import { connect } from "react-redux";
 
 class HomePage extends Component {
   render() {
+    console.log(this.props.data)
     return (
         <div className="main-container">
             
             <div className="home-bg-1 ml-3 mr-3"> 
-              <p>Elevate Life</p>
+              <p style={{fontFamily: `"Comic Sans MS", "Comic Sans", cursive`}}>Elevate Life</p>
              </div>
 
             <Container fluid>
@@ -111,4 +113,10 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+const mapStateToProps = state => {
+  return {
+    data: state.data
+  }
+}
+
+export default connect(mapStateToProps)(HomePage);

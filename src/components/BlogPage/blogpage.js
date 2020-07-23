@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./custom.css";
 import { Container, Row, Col, Pagination } from "react-bootstrap";
+import { connect } from "react-redux";
 
 class BlogPage extends Component {
   render() {
+    console.log(this.props.data)
     return (
       <div className="Container">
         <div className="bg-image m-3">
@@ -184,4 +186,10 @@ class BlogPage extends Component {
   }
 }
 
-export default BlogPage;
+const mapStateToProps = state => {
+  return {
+    data: state.data
+  }
+}
+
+export default connect(mapStateToProps)(BlogPage);
