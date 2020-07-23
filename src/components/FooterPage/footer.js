@@ -20,7 +20,7 @@ const FooterPage = props => {
             alt="logo"
           />
           <p>
-            "Hello"
+            {props.data.footer}
           </p>
         </Col>
 
