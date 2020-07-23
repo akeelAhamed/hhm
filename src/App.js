@@ -30,7 +30,7 @@ function App(props) {
 
   return (
     <Router>
-      {props.loading ? 
+      {props.loading || props.data === null ? 
       <div className='Container'>
         <Spinner /> 
       </div>:

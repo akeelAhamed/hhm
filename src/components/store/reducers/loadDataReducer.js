@@ -1,8 +1,10 @@
 import * as actionTypes from '../actions/actionTypes'
+import { globalData } from '../../globalData'
 
 const initialState = {
     loading: false,
     data: null,
+    // data: {...globalData},
     error: false
 }
 
