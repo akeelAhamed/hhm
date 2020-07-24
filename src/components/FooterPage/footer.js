@@ -24,7 +24,7 @@ const FooterPage = (props) => {
               <h5 className="title border-1">Useful links</h5>
               <ul className="text-uppercase font-small">
                 <li className="list-unstyled">
-                  <a href="">Home</a>
+                  <a href="#!">Home</a>
                 </li>
                 <li className="list-unstyled">
                   <a href="#!">About Us</a>
@@ -54,7 +54,7 @@ const FooterPage = (props) => {
                   <ul className="list-unstyled text-uppercase">
                     <li>
                       {" "}
-                      <a key={el.id} href={el.gplus}>
+                      <a key={el.id} href={el.facebook}>
                         facebook{" "}
                       </a>{" "}
                     </li>
@@ -66,13 +66,13 @@ const FooterPage = (props) => {
                     </li>
                     <li>
                       {" "}
-                      <a key={el.id} href={el.gplus}>
+                      <a key={el.id} href={el.twitter}>
                         twitter{" "}
                       </a>{" "}
                     </li>
                     <li>
                       {" "}
-                      <a key={el.id} href={el.gplus}>
+                      <a key={el.id} href={el.linkedin}>
                         linkedin{" "}
                       </a>{" "}
                     </li>

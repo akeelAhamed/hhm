@@ -50,7 +50,7 @@ class ProductPage extends Component {
             eiusmod tempor incmaididunt ut labore et dolore magna aliqua. Ut
             enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
             ut aliquip ex ea commodo consequat.</p>
-            <Button className="" variant="info"><a href="/cartpage">Buy Now</a> </Button>
+            <a href="/cartpage"> <Button className="" variant="info">Buy Now </Button></a>
             </div>    
          </div>
 
