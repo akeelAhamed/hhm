@@ -9,7 +9,7 @@ const FooterPage = (props) => {
       <Row className="bg-info text-white">
         <Col xl lg md="6" sm="12">
           <img
-            src={require("../HomePage/Img/logo.png")}
+            src={require(`${props.data.heade_footer.logo}`)}
             width="70"
             height="40"
             className="d-inline-block align-top"
