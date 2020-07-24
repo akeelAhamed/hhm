@@ -1,27 +1,21 @@
 import React from "react";
 import "./custom.css";
 import { Container, Row, Col } from "react-bootstrap";
-// import axios from "axios";
 import { connect } from "react-redux";
 
-const FooterPage = props => {
-  // console.log(props.data.footer)
-
+const FooterPage = (props) => {
   return (
-    // loading ? <Spinner /> :
     <Container fluid>
       <Row className="bg-info text-white">
         <Col xl lg md="6" sm="12">
           <img
-            src={require("../HomePage/Img/logo.png" )}
+            src={require("../HomePage/Img/logo.png")}
             width="70"
             height="40"
             className="d-inline-block align-top"
             alt="logo"
           />
-          <p>
-            {props.data.heade_footer.footer}
-          </p>
+          <p>{props.data.heade_footer.footer}</p>
         </Col>
 
         <Col xl lg md="12" sm="12">
@@ -30,7 +24,7 @@ const FooterPage = props => {
               <h5 className="title border-1">Useful links</h5>
               <ul className="text-uppercase font-small">
                 <li className="list-unstyled">
-                  <a href="#!">Home</a>
+                  <a href="">Home</a>
                 </li>
                 <li className="list-unstyled">
                   <a href="#!">About Us</a>
@@ -42,7 +36,7 @@ const FooterPage = props => {
                   <a href="#!">Gallery</a>
                 </li>
                 <li className="list-unstyled">
-                  <a href="#!">R {'&'} D</a>
+                  <a href="#!">R {"&"} D</a>
                 </li>
                 <li className="list-unstyled">
                   <a href="#!">Contact us</a>
@@ -55,17 +49,36 @@ const FooterPage = props => {
 
             <div className="flex-md-column">
               <h5 className="title">Social media</h5>
-              <ul className="text-uppercase">
-                <li className="list-unstyled">
-                  <a href="#!">facebook</a>
-                </li>
-                <li className="list-unstyled">
-                  <a href="#!">twitter</a>
-                </li>
-                <li className="list-unstyled">
-                  <a href="#!">instagram</a>
-                </li>
-              </ul>
+              {props.data.sociallinks.map((el) => (
+                <React.Fragment>
+                  <ul className="list-unstyled text-uppercase">
+                    <li>
+                      {" "}
+                      <a key={el.id} href={el.gplus}>
+                        facebook{" "}
+                      </a>{" "}
+                    </li>
+                    <li>
+                      {" "}
+                      <a key={el.id} href={el.gplus}>
+                        gplus{" "}
+                      </a>{" "}
+                    </li>
+                    <li>
+                      {" "}
+                      <a key={el.id} href={el.gplus}>
+                        twitter{" "}
+                      </a>{" "}
+                    </li>
+                    <li>
+                      {" "}
+                      <a key={el.id} href={el.gplus}>
+                        linkedin{" "}
+                      </a>{" "}
+                    </li>
+                  </ul>
+                </React.Fragment>
+              ))}
             </div>
           </section>
         </Col>
@@ -74,10 +87,10 @@ const FooterPage = props => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    data: state.data
-  }
-}
+    data: state.data,
+  };
+};
 
 export default connect(mapStateToProps)(FooterPage);
