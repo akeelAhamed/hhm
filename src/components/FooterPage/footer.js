@@ -49,9 +49,8 @@ const FooterPage = (props) => {
 
             <div className="flex-md-column">
               <h5 className="title">Social media</h5>
-              {props.data.sociallinks.map((el) => (
-                <React.Fragment>
-                  <ul className="list-unstyled text-uppercase">
+              {props.data.sociallinks.map((el, index) => (
+                  <ul key={index} className="list-unstyled text-uppercase">
                     <li>
                       {" "}
                       <a key={el.id} href={el.facebook}>
@@ -77,7 +76,6 @@ const FooterPage = (props) => {
                       </a>{" "}
                     </li>
                   </ul>
-                </React.Fragment>
               ))}
             </div>
           </section>
