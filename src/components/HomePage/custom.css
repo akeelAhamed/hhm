@@ -47,9 +47,8 @@
     background-position: center;
 }
 
-.home-bg-3  img{
-    width: 30vh;
-    padding-bottom: 4px;
+.player{
+    display: block;
 }
 
 .bg-yoga{

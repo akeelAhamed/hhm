@@ -12,7 +12,7 @@ class Header extends Component{
             <Navbar className="" bg="light"  expand="lg">
             <Navbar.Brand href="#home">
                 <img
-                    src={require("../HomePage/Img/logo.png")}
+                    src={this.props.data.heade_footer.logo}
                     width="70"
                     height="40"
                     className="d-inline-block align-top"
