@@ -26,6 +26,7 @@ function App(props) {
 
   useEffect(() => {
     props.loadData()
+ // eslint-disable-next-line 
   }, [])
 
   return (
