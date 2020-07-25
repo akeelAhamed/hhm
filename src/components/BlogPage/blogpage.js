@@ -1,9 +1,12 @@
-import React, { Component } from "react";
+import BaseComponent from '../BaseComponent';
 import "./custom.css";
 import { Container, Row, Col, Pagination } from "react-bootstrap";
 import { connect } from "react-redux";
 
-class BlogPage extends Component {
+class BlogPage extends BaseComponent {
+  constructor(props) {
+    super();
+  }
   render() {
     console.log(this.props.data)
     return (
@@ -170,7 +173,7 @@ class BlogPage extends Component {
           </Row>
         </Container>
 
-       
+
         <Pagination className="mt-2 d-flex justify-content-center" >
           <Pagination.First />
           <Pagination.Prev />
@@ -180,8 +183,8 @@ class BlogPage extends Component {
           <Pagination.Next />
           <Pagination.Last />
         </Pagination>
-        
-        </div>
+
+      </div>
     );
   }
 }

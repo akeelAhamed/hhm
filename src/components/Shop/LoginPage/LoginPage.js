@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import BaseComponent from '../../BaseComponent';
+import React from "react";
 import "./custom.css";
 import { Container, Row, Col } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
 
-class LoginPage extends Component {
+
+class LoginPage extends BaseComponent {
+  constructor(props) {
+    super();
+  }
   render() {
     console.log(this.props.data)
     return (

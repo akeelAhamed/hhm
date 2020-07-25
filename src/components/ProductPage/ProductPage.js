@@ -1,9 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
+import BaseComponent from '../BaseComponent';
 import "./custom.css";
-import {Button} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { connect } from "react-redux";
 
-class ProductPage extends Component {
+class ProductPage extends BaseComponent {
+  constructor(props) {
+    super();
+  }
+
   render() {
     console.log(this.props.data)
     return (
@@ -44,24 +49,24 @@ class ProductPage extends Component {
         <div className="home_bg-2"> </div>
 
         <div className="home_bg-3 bg-secondary my-auto">
-            <div className="home_bg-3-text my-auto">
-                <h3 className="text-capitalize">pana ultimte for rousing energy</h3> <br/>
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          <div className="home_bg-3-text my-auto">
+            <h3 className="text-capitalize">pana ultimte for rousing energy</h3> <br />
+            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incmaididunt ut labore et dolore magna aliqua. Ut
             enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
             ut aliquip ex ea commodo consequat.</p>
             <a href="/cartpage"> <Button className="" variant="info">Buy Now </Button></a>
-            </div>    
-         </div>
+          </div>
+        </div>
 
-         <div className="home_bg-4">
-         <h3 className="text-center"><span className="border-teal"> Videos </span></h3>
-            <div className="d-flex flex-column align-items-end ">
-              <img className="img-fluid" alt="" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')}/>
-              <img className="img-fluid" alt="" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')}/>
-              <img className="img-fluid" alt="" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')}/>
-            </div>
-         </div>
+        <div className="home_bg-4">
+          <h3 className="text-center"><span className="border-teal"> Videos </span></h3>
+          <div className="d-flex flex-column align-items-end ">
+            <img className="img-fluid" alt="" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')} />
+            <img className="img-fluid" alt="" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')} />
+            <img className="img-fluid" alt="" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')} />
+          </div>
+        </div>
 
       </div>
     );

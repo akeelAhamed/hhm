@@ -1,9 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
+import BaseComponent from '../../BaseComponent';
 import "./custom.css";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 
-class CartPage extends Component {
+class CartPage extends BaseComponent {
+  constructor(props) {
+    super();
+  }
+
   render() {
     console.log(this.props.data)
     return (
@@ -25,7 +30,7 @@ class CartPage extends Component {
                   <p>4GB RAM</p>
                   <p>Seller Rumadita Fashions</p>
                   <p>09,499 010,999 13% Off1 offer applied</p>
-                  <p> Qty:-|2|+</p> 
+                  <p> Qty:-|2|+</p>
                   <p>Edit | Remove</p>
                 </div>
               </section>
@@ -34,11 +39,11 @@ class CartPage extends Component {
             <Col xl lg md="6" sm="12">
               <h4 className="border_teal-bottom">Order summary</h4>
               <h5 className="border text p-3">HAVE A PROMO CODE</h5>
-              
+
               <p>Merchandise: <p className="float-right"> $60,000/-</p> </p>
               <p>Estimated shipping: <p className="float-right"> Free</p></p>
               <h4 className="border-top pt-3">ORDER TOTAL<p className="float-right"> $60,000</p></h4>
-            
+
               <Button className="mt-5" variant="info" block><a href="/loginpage">PROCEED TO CHECKOUT</a></Button>
             </Col>
           </Row>

@@ -15,7 +15,8 @@
 }
 
 .home-bg-2{
-    height: 37em;
+    height: fit-content;
+    min-height: 45em;
     background-image: url('./Img//fwdhhmhomepagedummypics/Home\ 03.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -23,14 +24,15 @@
 }
 
 .home-bg-2_text{
-   padding-left: 50%;
+   padding-left: 45%;
    padding-top: 5%;
-   width: 92%;
+   padding-bottom: 3%;
+   width: auto;
 }
 
 @media (max-width: 570px){
     .home-bg-2_text{
-       padding-left: 10%;
+       padding-left: 6%;
     }
 }
 
@@ -45,10 +47,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-}
-
-.player{
-    display: block;
 }
 
 .bg-yoga{

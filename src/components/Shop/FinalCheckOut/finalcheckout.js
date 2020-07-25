@@ -1,9 +1,13 @@
-import React, { Component } from "react";
+import BaseComponent from '../../BaseComponent';
+import React from "react";
 import "./custom.css";
 import { Row, Col, ProgressBar } from "react-bootstrap";
 import { connect } from "react-redux";
 
-class FinalCheckOut extends Component {
+class FinalCheckOut extends BaseComponent {
+  constructor(props) {
+    super();
+  }
   render() {
     console.log(this.props.data)
     return (
