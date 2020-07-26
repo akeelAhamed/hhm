@@ -3,6 +3,7 @@ import BaseComponent from '../BaseComponent';
 import "./custom.css";
 import { Button } from 'react-bootstrap';
 import { connect } from "react-redux";
+import ReactPlayer from 'react-player';
 
 class ProductPage extends BaseComponent {
   constructor(props) {
@@ -62,9 +63,7 @@ class ProductPage extends BaseComponent {
         <div className="home_bg-4">
           <h3 className="text-center"><span className="border-teal"> Videos </span></h3>
           <div className="d-flex flex-column align-items-end ">
-            <img className="img-fluid" alt="" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')} />
-            <img className="img-fluid" alt="" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')} />
-            <img className="img-fluid" alt="" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')} />
+            {this.props.data.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
           </div>
         </div>
 
