@@ -13,7 +13,7 @@ class HomePage extends BaseComponent {
   }
   render() {
 
-    console.log(this.props.data)
+    console.log(this.props.categoryData)
     return (
       <div className="main-container">
 
@@ -125,7 +125,8 @@ class HomePage extends BaseComponent {
 
 const mapStateToProps = state => {
   return {
-    data: state.data
+    data: state.data,
+    categoryData: state.categoryData
   }
 }
 
