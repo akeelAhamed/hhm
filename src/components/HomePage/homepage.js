@@ -40,7 +40,7 @@ class HomePage extends BaseComponent {
           <div className="home-bg-2_text">
             <h5 className="text-uppercase border-teal"> {this.props.data.feature_products[0].name} </h5>
             <br />
-            <small> {this.props.data.feature_products[0].details} </small> <br />
+            <div> {this.props.data.feature_products[0].details} </div> <br />
             <Button className="mt-3" variant="primary"> Buy Now </Button>
           </div>
         </div>
