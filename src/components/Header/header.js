@@ -3,18 +3,17 @@ import BaseComponent from '../BaseComponent';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-class Header extends BaseComponent {
+export default class Header extends BaseComponent {
   constructor(props) {
     super();
+    this.init();
   }
 
   render() {
-    console.log(this.props.data)
     return (
       <Navbar className="" bg="light" expand="lg">
-        <Navbar.Brand href="#home">
+        {/* <Navbar.Brand href="#home">
           <img
             src={this.props.data.heade_footer.logo}
             width="70"
@@ -34,19 +33,11 @@ class Header extends BaseComponent {
                 
                 <Nav.Link as={Link} to='#'>Gallery</Nav.Link>
                 <Nav.Link as={Link} to='/vision'>R & D</Nav.Link>
-                <Nav.Link as={Link} to='/contactus' >Contact us</Nav.Link> */}
+                <Nav.Link as={Link} to='/contactus' >Contact us</Nav.Link> 
           </Nav>
-        </Navbar.Collapse>
+        </Navbar.Collapse> */}
+      
       </Navbar>
-
     )
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    data: state.data
-  }
-}
-
-export default connect(mapStateToProps)(Header);

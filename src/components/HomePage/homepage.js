@@ -3,17 +3,15 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 import './custom.css';
-import { connect } from "react-redux";
 import ReactPlayer from 'react-player';
 import { Button } from 'react-bootstrap';
 
-class HomePage extends BaseComponent {
+export default class HomePage extends BaseComponent {
   constructor(props) {
     super();
   }
+  
   render() {
-
-    console.log(this.props.categoryData)
     return (
       <div className="main-container">
 
@@ -46,7 +44,7 @@ class HomePage extends BaseComponent {
         </div>
 
 
-        <Container fluid>
+        {/* <Container fluid>
           <Row>
             <Col md lg xl="6" sm="auto">
               <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 04.jpg')} />
@@ -62,7 +60,6 @@ class HomePage extends BaseComponent {
             </Col>
           </Row>
         </Container>
-
 
         <Container fluid className="bg-gray">
           <Row>
@@ -83,6 +80,7 @@ class HomePage extends BaseComponent {
             </Col>
           </Row>
         </Container>
+ */}
 
         <div className="home-bg-3">
           <h3 className="text-center"><span className="border-teal"> Videos </span></h3>
@@ -95,8 +93,6 @@ class HomePage extends BaseComponent {
             {/* <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/> */}
           </div>
         </div>
-
-
 
 
         <h5 className="text-center m-3"><span className="border-teal">  Blogs </span></h5>
@@ -116,18 +112,7 @@ class HomePage extends BaseComponent {
           </Row>
         </Container>
 
-
-
       </div >
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    data: state.data,
-    categoryData: state.categoryData
-  }
-}
-
-export default connect(mapStateToProps)(HomePage);

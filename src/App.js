@@ -18,8 +18,6 @@ import LoginPage from './components/Shop/LoginPage/LoginPage';
 import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
 import OrderConfirm from "./components/Shop/OrderConfirm/orderconfirm";
 import CheckOut from './components/Shop/CheckOut/checkout';
-import { connect } from "react-redux";
-import * as actions from './components/store/actions/index'
 import Spinner from './components/UI/Spinner/Spinner'
 
 function App(props) {
@@ -57,17 +55,4 @@ function App(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    data: state.data,
-    loading: state.loading
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    loadData: () => dispatch(actions.loadData())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
