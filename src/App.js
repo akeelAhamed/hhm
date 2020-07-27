@@ -48,7 +48,9 @@ class App extends BaseComponent{
     return (
       <Router>
         <div className="Container">
-          <Header {...this.state} />
+          {
+            typeof this.state.page === "boolean" || <Header {...this.state} />
+          }
           <Switch>
             <Route path="/" exact render={(props) => this.component(HomePage)} />
             <Route path="/about" component={(props) => this.component(AboutUs)} />
@@ -64,7 +66,9 @@ class App extends BaseComponent{
             <Route component={NotFound} />
           </Switch>
   
-          <FooterPage {...this.state}/>
+          {
+            typeof this.state.page === "boolean" || <FooterPage {...this.state}/>
+          }
         </div>
       </Router>
     );

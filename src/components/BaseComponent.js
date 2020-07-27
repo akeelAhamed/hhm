@@ -40,14 +40,18 @@ export default class BaseComponent extends React.Component {
     let page = window.location.pathname === '/'?'home':window.location.pathname;
     await this.api.get(page)
     .then((result) => {
+      console.log(result);
       if(result.status === 200){
         this.setState({
           page : result.data
         })
       }
-    })
-    .catch(function (error) {
-      console.log(error);
+    }).catch(error => {
+      if(error.response.status === 404){
+        this.setState({
+          page : true
+        })
+      }
     });
   }
 
