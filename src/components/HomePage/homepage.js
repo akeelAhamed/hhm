@@ -36,15 +36,15 @@ export default class HomePage extends BaseComponent {
 
         <div className="home-bg-2">
           <div className="home-bg-2_text">
-            <h5 className="text-uppercase border-teal"> {this.props.data.feature_products[0].name} </h5>
+            <h5 className="text-uppercase border-teal"> {this.props.page.feature_products[0].name} </h5>
             <br />
-            <div> {this.props.data.feature_products[0].details} </div> <br />
+            <div dangerouslySetInnerHTML={{ __html: this.props.page.feature_products[0].details }} /><br />
             <Button className="mt-3" variant="primary"> Buy Now </Button>
           </div>
         </div>
 
 
-        {/* <Container fluid>
+        <Container fluid>
           <Row>
             <Col md lg xl="6" sm="auto">
               <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 04.jpg')} />
@@ -80,13 +80,13 @@ export default class HomePage extends BaseComponent {
             </Col>
           </Row>
         </Container>
- */}
+
 
         <div className="home-bg-3">
           <h3 className="text-center"><span className="border-teal"> Videos </span></h3>
           <div className="d-flex flex-column align-items-end player">
-            {this.props.data.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
-            {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> {/*{this.props.data.videos[0].details} */}
+            {this.props.page.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
+            {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> {/*{this.props.page.videos[0].details} */}
             {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> */}
             {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> */}
             {/* <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/> */}

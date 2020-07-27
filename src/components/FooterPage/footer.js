@@ -9,18 +9,19 @@ export default class FooterPage extends BaseComponent {
   }
 
   render(){
+    console.log(this.props);
     return (
       <Container fluid>
         <Row className="bg-info text-white">
           <Col xl lg md="6" sm="12">
             <img
-              src={this.props.data.heade_footer.logo}
+              src={this.props.page.heade_footer.logo}
               width="70"
               height="40"
               className="d-inline-block align-top"
               alt="logo"
             />
-            <p>{this.props.data.heade_footer.footer}</p>
+            <p>{this.props.page.heade_footer.footer}</p>
           </Col>
   
           <Col xl lg md="12" sm="12">
@@ -54,7 +55,7 @@ export default class FooterPage extends BaseComponent {
   
               <div className="flex-md-column">
                 <h5 className="title">Social media</h5>
-                {this.props.data.sociallinks.map((el, index) => (
+                {this.props.page.sociallinks.map((el, index) => (
                     <ul key={index} className="list-unstyled text-uppercase">
                       <li>
                         {" "}
