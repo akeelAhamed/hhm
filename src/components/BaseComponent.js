@@ -9,18 +9,27 @@ export default class BaseComponent extends React.Component {
 
   constructor(props) {
     super();
-    this.state = {
-      user: null,
-      isLoggedIn: false
-    };
-    
+    const loged = this.isLoggedIn();
 
-    this.api = Axios;
-    this.api.defaults.baseURL = 'http://cors-anywhere.herokuapp.com/http://www.hhmlife.org/api/';
-    this.api.defaults.headers.common['APP_KEY'] = 'Test@123';
-    // this.api.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-    // this.api.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS';
+    this.state = {
+      user: loged,
+      isLoggedIn: loged !== null
+    };
+
+    this.api = true; // Load api
+
+    this.axios = Axios;
+    this.axios.defaults.baseURL = 'http://cors-anywhere.herokuapp.com/http://www.hhmlife.org/api/';
+    this.axios.defaults.headers.common['APP_KEY'] = 'Test@123';
+    // this.axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+    // this.axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS';
+    
+    this.back = this.back.bind(this);
     this.logOut = this.logOut.bind(this);
+  }
+
+  isLoggedIn(){
+    return localStorage.getItem('_AUTHTOKEN');
   }
 
   logOut() {
@@ -28,7 +37,7 @@ export default class BaseComponent extends React.Component {
       isLoggedIn: false,
       user: null
     };
-    localStorage["appState"] = JSON.stringify(appState);
+    localStorage.removeItem('_AUTHTOKEN');
     this.setState(appState);
     this.props.history.push('/login');
   }
@@ -37,22 +46,58 @@ export default class BaseComponent extends React.Component {
    * Init base function
    */
   async init(){
-    let page = window.location.pathname === '/'?'home':window.location.pathname;
-    await this.api.get(page)
-    .then((result) => {
-      console.log(result);
-      if(result.status === 200){
-        this.setState({
-          page : result.data
-        })
-      }
-    }).catch(error => {
-      if(error.response.status === 404){
-        this.setState({
-          page : true
-        })
-      }
-    });
+    let page = window.location.pathname;
+    
+    switch (page) {
+      case "register":
+        this.api = false;
+        break;
+
+      default:
+        break;
+    }
+
+    let $this = this;
+
+    if(this.api){
+      await this.axios.get(page)
+      .then((result) => {
+        if(result.status === 200){
+          $this.setState({
+            page : result.data
+          })
+        }
+      }).catch(function(error){
+        if(error.response !== undefined && error.response.status === 404){
+          $this.setState({
+            page : true
+          })
+        }
+      });
+    }else{
+      // no api request
+      $this.setState({
+        page : {}
+      })
+    }
+  }
+
+  /**
+   * Generate url
+   * @param {string} page 
+   */
+  url(page=''){
+    return window.location.host+'/'+page;
+  }
+
+  /**
+   * Go to back page
+   * @param {object} e 
+   */
+  back(e){
+    e.preventDefault();
+    window.history.go(-1);
+    return false;
   }
 
 }

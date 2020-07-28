@@ -9,7 +9,6 @@ export default class FooterPage extends BaseComponent {
   }
 
   render(){
-    console.log(this.props);
     return (
       <Container fluid>
         <Row className="bg-info text-white">

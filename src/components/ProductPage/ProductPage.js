@@ -2,7 +2,6 @@ import React from "react";
 import BaseComponent from '../BaseComponent';
 import "./custom.css";
 import { Button } from 'react-bootstrap';
-import { connect } from "react-redux";
 import ReactPlayer from 'react-player';
 
 class ProductPage extends BaseComponent {
@@ -11,7 +10,7 @@ class ProductPage extends BaseComponent {
   }
 
   render() {
-    console.log(this.props.data)
+    console.log(this.props.page)
     return (
       <div className="main-container">
         <div className="home_bg-1 text-uppercase">
@@ -63,7 +62,7 @@ class ProductPage extends BaseComponent {
         <div className="home_bg-4">
           <h3 className="text-center"><span className="border-teal"> Videos </span></h3>
           <div className="d-flex flex-column align-items-end ">
-            {this.props.data.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
+            {this.props.page.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
           </div>
         </div>
 
@@ -72,10 +71,4 @@ class ProductPage extends BaseComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    data: state.data
-  }
-}
-
-export default connect(mapStateToProps)(ProductPage);
+export default ProductPage;

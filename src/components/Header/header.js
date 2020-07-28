@@ -7,12 +7,13 @@ import { Link } from 'react-router-dom';
 export default class Header extends BaseComponent {
   constructor(props) {
     super();
+    console.log(this.state);
   }
 
   render() {
     return (
       <Navbar className="" bg="light" expand="lg">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href={this.url()}>
           <img
             src={this.props.page.heade_footer.logo}
             width="70"
@@ -25,14 +26,17 @@ export default class Header extends BaseComponent {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav ">
           <Nav className="ml-auto text-uppercase">
-            {this.props.page.heade_menu.map(el => <Nav.Link key={el.id} as={Link} to={'/' + el.slug} >{el.title}</Nav.Link>)}
-            <Nav.Link as={Link} to='/product'>Product</Nav.Link>
-            {/* <Nav.Link as={Link} to='/' >Home</Nav.Link>
-                <Nav.Link as={Link} to='/about' >About us</Nav.Link>
-                
-                <Nav.Link as={Link} to='#'>Gallery</Nav.Link>
-                <Nav.Link as={Link} to='/vision'>R & D</Nav.Link>
-                <Nav.Link as={Link} to='/contactus' >Contact us</Nav.Link> */} 
+            {
+              this.props.page.heade_menu.map(el => 
+              <Nav.Link key={el.id} as={Link} to={'/' + el.slug} >{el.title}</Nav.Link>)
+            }
+            <Nav.Link as={Link} to='/products'>Products</Nav.Link>
+
+            {
+              (this.state.isLoggedIn)
+              ?<Nav.Link as={Link} to='/dashboard'>Product</Nav.Link>
+              :<Nav.Link as={Link} to='/login'>Login</Nav.Link>
+            }
           </Nav>
         </Navbar.Collapse>
       

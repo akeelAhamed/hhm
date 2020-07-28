@@ -16,7 +16,7 @@ export default class HomePage extends BaseComponent {
       <div className="main-container">
 
         <div className="home-bg-1 ml-3 mr-3">
-          <p style={{ fontFamily: `"Comic Sans MS", "Comic Sans", cursive` }}>Elevate Life</p>
+          <p>{this.props.page.sliders[0].details_text}</p>
         </div>
 
         <Container fluid>

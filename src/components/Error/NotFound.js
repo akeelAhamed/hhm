@@ -8,14 +8,12 @@ export default class NotFound extends BaseComponent {
   }
   render() {
     return (
-      <div className="main-container ">
+      <div className="main-container center">
         <Container fluid>
           <Row className="my-auto">
             <Col lg xl md sm="auto" className="my-auto">
-                <h3>404 page not found</h3>
-            </Col>
-            <Col lg xl md sm="auto" className="text-center">
-              <img className="img-fluid " src={require('../VisionPage/img/lens.jpg')} alt="" />
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid*/}
+                <h3>404 page not found <a href="#" onClick={this.back}>Go back</a></h3>
             </Col>
           </Row>
         </Container>
