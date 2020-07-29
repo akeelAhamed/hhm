@@ -13,12 +13,15 @@ import Vision from "./components/VisionPage/vision";
 // import BlogPage from './components/BlogPage/blogpage';
 import ContactUs from './components/ContactUs/contactus';
 import ProductPage from './components/ProductPage/ProductPage';
+import Products from './components/Products/Producs';
 import CartPage from './components/Shop/CartPage/CartPage';
 import LoginPage from './components/Shop/LoginPage/LoginPage';
 import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
 import OrderConfirm from "./components/Shop/OrderConfirm/orderconfirm";
 import CheckOut from './components/Shop/CheckOut/checkout';
 import { Spinner } from "react-bootstrap";
+
+import Login from "./components/Form/Login";
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
@@ -38,7 +41,9 @@ class App extends BaseComponent{
     this.state = {
       page : null
     };
-    this.init();
+    setTimeout(() => {
+      this.init();
+    }, 500);
   }
 
   component(Component) {
@@ -63,11 +68,12 @@ class App extends BaseComponent{
     
     return (
       <Router>
-        {!this.api || <Header {...this.state} />}
+        {/* {!this.api || <Header {...this.state} />} */}
         <Switch>
           <Route path="/" exact render={(props) => this.component(HomePage)} />
           <Route path="/about" component={(props) => this.component(AboutUs)} />
-          <Route path="/product" component={(props) => this.component(ProductPage) } />
+          <Route path="/Products" component={(props) => this.component(Products) } />
+          <Route path="/Products/:name" component={(props) => this.component(ProductPage) } />
           <Route path="/vision" component={(props) => this.component(Vision) } />
           <Route path="/contactus" component={(props) => this.component(ContactUs) } />
           <Route path="/cartpage" component={(props) => this.component(CartPage) } />
@@ -76,12 +82,16 @@ class App extends BaseComponent{
           <Route path="/finalcheckout" component={(props) => this.component(FinalCheckOut) } />
           <Route path="/orderconfirm" component={(props) => this.component(OrderConfirm) } />
 
+          {/* Form */}
+          <Route path="/login" component={(props) => this.component(Login) } />
+          <Route path="/register" component={(props) => this.component(Login) } />
+
           <PrivateRoute authed={this.state.isLoggedIn} path='/dashboard' component={(props) => (<h1>Hi</h1>)}/>
 
           <Route component={NotFound} />
         </Switch>
 
-        {!this.api || <FooterPage {...this.state}/>}
+        {/* {!this.api || <FooterPage {...this.state}/>} */}
       </Router>
     );
   }

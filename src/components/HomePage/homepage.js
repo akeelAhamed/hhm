@@ -9,6 +9,7 @@ import { Button } from 'react-bootstrap';
 export default class HomePage extends BaseComponent {
   constructor(props) {
     super();
+    //this.init();
   }
   
   render() {
@@ -83,7 +84,7 @@ export default class HomePage extends BaseComponent {
 
 
         <div className="home-bg-3">
-          <h3 className="text-center"><span className="border-teal"> Videos </span></h3>
+          <h3 className="m-3"><span className="border-teal"> Videos </span></h3>
           <div className="d-flex flex-column align-items-end player">
             {this.props.page.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
             {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> {/*{this.props.page.videos[0].details} */}
@@ -95,7 +96,7 @@ export default class HomePage extends BaseComponent {
         </div>
 
 
-        <h5 className="text-center m-3"><span className="border-teal">  Blogs </span></h5>
+        <h5 className="m-3"><span className="border-teal">  Blogs </span></h5>
 
         <Container fluid>
           <Row className="no-gutters">

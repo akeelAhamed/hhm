@@ -2,7 +2,6 @@ import BaseComponent from '../BaseComponent';
 import React from 'react';
 import './custom.css';
 import { Row, Col, Container } from 'react-bootstrap';
-import { connect } from 'react-redux';
 
 
 class AboutUs extends BaseComponent {
@@ -11,7 +10,6 @@ class AboutUs extends BaseComponent {
   }
 
   render() {
-    console.log(this.props.data)
     return (
       <div id="main">
         <div className="bkg text-uppercase">
@@ -35,10 +33,4 @@ class AboutUs extends BaseComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    data: state.data
-  }
-}
-
-export default connect(mapStateToProps)(AboutUs);
+export default AboutUs;

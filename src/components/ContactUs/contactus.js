@@ -2,14 +2,13 @@ import BaseComponent from '../BaseComponent';
 import React from "react";
 import "./custom.css";
 import { Col, Form, Button, Container, Row } from "react-bootstrap";
-import { connect } from "react-redux";
 
 class ContactUs extends BaseComponent {
   constructor(props) {
     super();
   }
+  
   render() {
-    console.log(this.props.data)
     return (
       <div className="main-container ">
         <div className="bg-image">
@@ -104,10 +103,4 @@ class ContactUs extends BaseComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    data: state.data
-  }
-}
-
-export default connect(mapStateToProps)(ContactUs);
+export default ContactUs;

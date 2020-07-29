@@ -4,7 +4,7 @@ import "./custom.css";
 import { Button } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 
-class ProductPage extends BaseComponent {
+class Products extends BaseComponent {
   constructor(props) {
     super();
   }
@@ -70,4 +70,4 @@ class ProductPage extends BaseComponent {
   }
 }
 
-export default ProductPage;
+export default Products;

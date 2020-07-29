@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Axios from "axios";
+import includes from "lodash/includes";
 
 /**
  * Base component for this application & to be extented to all component
@@ -16,7 +17,10 @@ export default class BaseComponent extends React.Component {
       isLoggedIn: loged !== null
     };
 
-    this.api = true; // Load api
+    const exceptApi = ['/register', '/login'];
+
+    this.page = window.location.pathname;
+    this.api = !includes(exceptApi, this.page); // Load api
 
     this.axios = Axios;
     this.axios.defaults.baseURL = 'http://cors-anywhere.herokuapp.com/http://www.hhmlife.org/api/';
@@ -46,9 +50,7 @@ export default class BaseComponent extends React.Component {
    * Init base function
    */
   async init(){
-    let page = window.location.pathname;
-    
-    switch (page) {
+    switch (this.page) {
       case "register":
         this.api = false;
         break;
@@ -60,7 +62,7 @@ export default class BaseComponent extends React.Component {
     let $this = this;
 
     if(this.api){
-      await this.axios.get(page)
+      await this.axios.get($this.page)
       .then((result) => {
         if(result.status === 200){
           $this.setState({
