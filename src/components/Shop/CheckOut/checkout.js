@@ -3,14 +3,12 @@ import React from 'react';
 import './custom.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
 
 class CheckOut extends BaseComponent {
     constructor(props) {
         super();
     }
     render() {
-        console.log(this.props.data)
         return (
             <div className="main-container">
                 <h1 className="bg-info p-2 text-info">1</h1>
@@ -78,10 +76,4 @@ class CheckOut extends BaseComponent {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        data: state.data
-    }
-}
-
-export default connect(mapStateToProps)(CheckOut);
+export default CheckOut;

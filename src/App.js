@@ -1,13 +1,11 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import BaseComponent from "./components/BaseComponent";
 import Header from "./components/Header/header";
-import FooterPage from "./components/FooterPage/footer";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import NotFound from "./components/Error/NotFound";
 
 import HomePage from "./components/HomePage/homepage";
-import NotFound from "./components/Error/NotFound";
 import AboutUs from "./components/AboutUs/aboutus";
 import Vision from "./components/VisionPage/vision";
 // import BlogPage from './components/BlogPage/blogpage';
@@ -19,9 +17,9 @@ import LoginPage from './components/Shop/LoginPage/LoginPage';
 import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
 import OrderConfirm from "./components/Shop/OrderConfirm/orderconfirm";
 import CheckOut from './components/Shop/CheckOut/checkout';
-import { Spinner } from "react-bootstrap";
 
 import Login from "./components/Form/Login";
+import Register from "./components/Form/Register";
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
@@ -34,16 +32,14 @@ function PrivateRoute ({component: Component, authed, ...rest}) {
   )
 }
 
-class App extends BaseComponent{
+export default class App extends React.Component{
 
   constructor(props){
     super();
     this.state = {
-      page : null
+      headerFooter: null,
+      pageLoaded: true
     };
-    setTimeout(() => {
-      this.init();
-    }, 500);
   }
 
   component(Component) {
@@ -51,29 +47,15 @@ class App extends BaseComponent{
   }
 
   render(){
-
-    if(this.state.page === null){
-      return (
-        <div className='center'>
-          <Spinner style={{width: '5rem', height: '5rem'}} animation="border" variant="primary" />
-        </div>
-      )
-    }
-
-    if(this.state.page === true){
-      return (
-        <NotFound />
-      )
-    }
     
     return (
       <Router>
-        {/* {!this.api || <Header {...this.state} />} */}
+        <Header page={this.state.headerFooter}>
         <Switch>
           <Route path="/" exact render={(props) => this.component(HomePage)} />
           <Route path="/about" component={(props) => this.component(AboutUs)} />
-          <Route path="/Products" component={(props) => this.component(Products) } />
-          <Route path="/Products/:name" component={(props) => this.component(ProductPage) } />
+          <Route path="/products" exact component={(props) => this.component(Products) } />
+          <Route path="/products/:name" component={(props) => this.component(ProductPage) } />
           <Route path="/vision" component={(props) => this.component(Vision) } />
           <Route path="/contactus" component={(props) => this.component(ContactUs) } />
           <Route path="/cartpage" component={(props) => this.component(CartPage) } />
@@ -84,17 +66,14 @@ class App extends BaseComponent{
 
           {/* Form */}
           <Route path="/login" component={(props) => this.component(Login) } />
-          <Route path="/register" component={(props) => this.component(Login) } />
+          <Route path="/register" component={(props) => this.component(Register) } />
 
           <PrivateRoute authed={this.state.isLoggedIn} path='/dashboard' component={(props) => (<h1>Hi</h1>)}/>
 
           <Route component={NotFound} />
         </Switch>
-
-        {/* {!this.api || <FooterPage {...this.state}/>} */}
+        </Header>
       </Router>
     );
   }
 }
-
-export default App;

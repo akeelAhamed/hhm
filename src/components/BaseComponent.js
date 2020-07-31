@@ -1,7 +1,8 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Axios from "axios";
 import includes from "lodash/includes";
+import Spinner from "react-bootstrap/Spinner";
+import NotFound from "../components/Error/NotFound";
 
 /**
  * Base component for this application & to be extented to all component
@@ -17,39 +18,27 @@ export default class BaseComponent extends React.Component {
       isLoggedIn: loged !== null
     };
 
-    const exceptApi = ['/register', '/login'];
+    const exceptApi = ['/register', '/login', '/register', '/products/item'];
 
+    this.pageContent = null;
     this.page = window.location.pathname;
     this.api = !includes(exceptApi, this.page); // Load api
 
-    this.axios = Axios;
-    this.axios.defaults.baseURL = 'http://cors-anywhere.herokuapp.com/http://www.hhmlife.org/api/';
-    this.axios.defaults.headers.common['APP_KEY'] = 'Test@123';
-    // this.axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-    // this.axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS';
-    
+    setTimeout(() => {
+      this.init();
+    }, 500);
+
     this.back = this.back.bind(this);
     this.logOut = this.logOut.bind(this);
-  }
-
-  isLoggedIn(){
-    return localStorage.getItem('_AUTHTOKEN');
-  }
-
-  logOut() {
-    let appState = {
-      isLoggedIn: false,
-      user: null
-    };
-    localStorage.removeItem('_AUTHTOKEN');
-    this.setState(appState);
-    this.props.history.push('/login');
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   /**
    * Init base function
    */
-  async init(){
+  init(){
+    let $this = this;
     switch (this.page) {
       case "register":
         this.api = false;
@@ -58,29 +47,41 @@ export default class BaseComponent extends React.Component {
       default:
         break;
     }
-
-    let $this = this;
-
-    if(this.api){
-      await this.axios.get($this.page)
+    
+    if(this.api && !this.state.pageLoaded){
+      window._axios.get($this.page)
       .then((result) => {
         if(result.status === 200){
+          $this.pageContent = result.data;
           $this.setState({
-            page : result.data
+            pageLoaded: true
           })
         }
       }).catch(function(error){
         if(error.response !== undefined && error.response.status === 404){
-          $this.setState({
-            page : true
-          })
+          $this.pageContent = true;
         }
       });
     }else{
       // no api request
-      $this.setState({
-        page : {}
-      })
+      $this.pageContent = {};
+    }
+  }
+
+  /**
+   * Return pre page, eg: spinner/notfound
+   */
+  prePage(){
+    if(this.pageContent === null){
+      return (
+        <div className='center'>
+          <Spinner style={{width: '5rem', height: '5rem'}} animation="border" variant="primary" />
+        </div>
+      )
+    }else if(this.pageContent === true){
+      return (
+        <NotFound />
+      )
     }
   }
 
@@ -100,6 +101,28 @@ export default class BaseComponent extends React.Component {
     e.preventDefault();
     window.history.go(-1);
     return false;
+  }
+
+  isLoggedIn(){
+    return localStorage.getItem('_AUTHTOKEN');
+  }
+
+  logOut() {
+    let appState = {
+      isLoggedIn: false,
+      user: null
+    };
+    localStorage.removeItem('_AUTHTOKEN');
+    this.setState(appState);
+    this.props.history.push('/login');
+  }
+
+  
+  onChange(event){
+  }
+  
+  onSubmit(event){
+    event.preventDefault();
   }
 
 }

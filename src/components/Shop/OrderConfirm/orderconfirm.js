@@ -1,14 +1,12 @@
 import BaseComponent from '../../BaseComponent';
 import React from "react";
 import "./custom.css";
-import { connect } from "react-redux";
 
 class OrderConfirm extends BaseComponent {
   constructor(props) {
     super();
   }
   render() {
-    console.log(this.props.data)
     return (
       <div className="main">
         <div className="main-content">
@@ -25,10 +23,4 @@ class OrderConfirm extends BaseComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    data: state.data
-  }
-}
-
-export default connect(mapStateToProps)(OrderConfirm);
+export default OrderConfirm;

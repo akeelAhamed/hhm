@@ -9,7 +9,7 @@ class ProductPage extends BaseComponent {
     super();
   }
 
-  render() {
+  content() {
     return (
       <div className="main-container">
         <div className="home_bg-1 text-uppercase">
@@ -67,6 +67,11 @@ class ProductPage extends BaseComponent {
 
       </div>
     );
+  }
+
+  render(){
+    alert();
+    return (!this.state.pageLoaded)?this.prePage():this.content();
   }
 }
 

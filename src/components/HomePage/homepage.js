@@ -9,15 +9,14 @@ import { Button } from 'react-bootstrap';
 export default class HomePage extends BaseComponent {
   constructor(props) {
     super();
-    //this.init();
   }
-  
-  render() {
+
+  content() {
     return (
       <div className="main-container">
 
         <div className="home-bg-1 ml-3 mr-3">
-          <p>{this.props.page.sliders[0].details_text}</p>
+          <p>{this.pageContent.sliders[0].details_text}</p>
         </div>
 
         <Container fluid>
@@ -37,9 +36,9 @@ export default class HomePage extends BaseComponent {
 
         <div className="home-bg-2">
           <div className="home-bg-2_text">
-            <h5 className="text-uppercase border-teal"> {this.props.page.feature_products[0].name} </h5>
+            <h5 className="text-uppercase border-teal"> {this.pageContent.feature_products[0].name} </h5>
             <br />
-            <div dangerouslySetInnerHTML={{ __html: this.props.page.feature_products[0].details }} /><br />
+            <div dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} /><br />
             <Button className="mt-3" variant="primary"> Buy Now </Button>
           </div>
         </div>
@@ -86,8 +85,8 @@ export default class HomePage extends BaseComponent {
         <div className="home-bg-3">
           <h3 className="m-3"><span className="border-teal"> Videos </span></h3>
           <div className="d-flex flex-column align-items-end player">
-            {this.props.page.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
-            {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> {/*{this.props.page.videos[0].details} */}
+            {this.pageContent.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
+            {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> {/*{this.pageContent.videos[0].details} */}
             {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> */}
             {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> */}
             {/* <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/> */}
@@ -115,5 +114,9 @@ export default class HomePage extends BaseComponent {
 
       </div >
     );
+  }
+
+  render(){
+    return !this.state.pageLoaded?this.prePage():this.content();
   }
 }

@@ -1,9 +1,8 @@
 import React from "react";
 import "./custom.css";
 import { Container, Row, Col } from "react-bootstrap";
-import BaseComponent from '../BaseComponent';
 
-export default class FooterPage extends BaseComponent {
+export default class FooterPage extends React.Component {
   constructor(props){
     super();
   }

@@ -1,8 +1,7 @@
-import BaseComponent from '../BaseComponent';
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
-export default class NotFound extends BaseComponent {
+export default class NotFound extends React.Component {
   constructor(props) {
     super();
   }

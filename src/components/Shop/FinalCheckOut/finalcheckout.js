@@ -2,14 +2,12 @@ import BaseComponent from '../../BaseComponent';
 import React from "react";
 import "./custom.css";
 import { Row, Col, ProgressBar } from "react-bootstrap";
-import { connect } from "react-redux";
 
 class FinalCheckOut extends BaseComponent {
   constructor(props) {
     super();
   }
   render() {
-    console.log(this.props.data)
     return (
       <div className="main-container">
         <h1 className="p-2 bg-info text-info">1</h1>
@@ -42,10 +40,4 @@ class FinalCheckOut extends BaseComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    data: state.data
-  }
-}
-
-export default connect(mapStateToProps)(FinalCheckOut);
+export default FinalCheckOut;

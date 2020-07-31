@@ -2,7 +2,6 @@ import React from "react";
 import BaseComponent from '../../BaseComponent';
 import "./custom.css";
 import { Row, Col, Container, Button } from "react-bootstrap";
-import { connect } from "react-redux";
 
 class CartPage extends BaseComponent {
   constructor(props) {
@@ -10,7 +9,6 @@ class CartPage extends BaseComponent {
   }
 
   render() {
-    console.log(this.props.data)
     return (
       <div className="main-container">
         <Container fluid className="contr-width">
@@ -53,10 +51,4 @@ class CartPage extends BaseComponent {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    data: state.data
-  }
-}
-
-export default connect(mapStateToProps)(CartPage);
+export default CartPage;

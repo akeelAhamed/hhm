@@ -3,18 +3,22 @@ import BaseComponent from '../BaseComponent';
 import "./custom.css";
 import { Button } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
+import { Link } from "react-router-dom";
 
-class Products extends BaseComponent {
+export default class Products extends BaseComponent {
   constructor(props) {
     super();
   }
 
-  render() {
+  content() {
     return (
       <div className="main-container">
         <div className="home_bg-1 text-uppercase">
           <h3>Higher living</h3>
         </div>
+
+        <a className="btn btn-secondary" href='/products/item'>Product page</a>
+        <Link className="btn btn-secondary" to='/login'>Product page</Link>
 
         <div className="home_bg-2">
           <div className="home_bg-2-text">
@@ -61,13 +65,15 @@ class Products extends BaseComponent {
         <div className="home_bg-4">
           <h3 className="text-center"><span className="border-teal"> Videos </span></h3>
           <div className="d-flex flex-column align-items-end ">
-            {this.props.page.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
+            {this.pageContent.prods.data.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
           </div>
         </div>
 
       </div>
     );
   }
-}
 
-export default Products;
+  render(){
+    return (!this.state.pageLoaded)?this.prePage():this.content();
+  }
+}

@@ -13,12 +13,12 @@ class Login extends BaseComponent {
         <Container fluid className="gray">
           <Row>
             <Col lg={8} className="border-primary m-auto">
-              <h6 className="bg-info p-3 text-white">LOGIN OR SIGNUP</h6>
+              <h6 className="bg-info p-3 text-white">SIGNUP</h6>
 
-              <Card>
+              <Card className="my-2">
                 <Card.Body>
                 <Form onSubmit={this.onSubmit}>
-                    <h3>Login</h3>
+                    <h3>Register</h3>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Mobile number</Form.Label>
                         <Form.Control type="number" placeholder="Enter mobile number" required/>
@@ -30,19 +30,11 @@ class Login extends BaseComponent {
                     </Form.Group>
                     
                     <Button variant="primary" type="submit">
-                        Login
+                        Register
                     </Button>
                 </Form>
                 </Card.Body>
-            </Card>
-
-              <section className="d-sm-flex justify-content-around my-auto bg-light">
-                <div className="m-3 p-2">
-                  <p>Dont have an account?</p>
-                  <Button variant="secondary" ><a href="/register">Register</a></Button>
-                </div>
-
-              </section>
+              </Card>
             </Col>
           </Row>
         </Container>
