@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import includes from "lodash/includes";
+import has from "lodash/has";
 import Spinner from "react-bootstrap/Spinner";
 import NotFound from "../components/Error/NotFound";
 
@@ -103,10 +104,16 @@ export default class BaseComponent extends React.Component {
     return false;
   }
 
+  /**
+   * Is logged in
+   */
   isLoggedIn(){
     return localStorage.getItem('_AUTHTOKEN');
   }
 
+  /**
+   * Logout the application
+   */
   logOut() {
     let appState = {
       isLoggedIn: false,
@@ -117,12 +124,39 @@ export default class BaseComponent extends React.Component {
     this.props.history.push('/login');
   }
 
-  
+  /**
+   * Handle on change form event
+   * 
+   * @param object event 
+   */
   onChange(event){
+    const {name, value} = event.target;
+    this.setState({[name]: value});
   }
   
+  /**
+   * Handle on submit form event
+   * 
+   * @param object event 
+   */
   onSubmit(event){
     event.preventDefault();
+
+    if(has(event.target.dataset, 'action') && has(event.target.dataset, 'method')){
+      window._axios({
+        method: event.target.dataset.method,
+        url: event.target.dataset.action,
+        data: this.state
+      }).then((response) => {
+        if(has(event.target.dataset, 'callback')){
+          if(typeof this[event.target.dataset.callback] === "function"){
+            this[event.target.dataset.callback](response);
+          }
+        }
+      }, (error) => {
+        console.log(error.response);
+      });
+    }
   }
 
 }

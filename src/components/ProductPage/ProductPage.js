@@ -70,7 +70,6 @@ class ProductPage extends BaseComponent {
   }
 
   render(){
-    alert();
     return (!this.state.pageLoaded)?this.prePage():this.content();
   }
 }

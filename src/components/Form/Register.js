@@ -1,10 +1,19 @@
 import BaseComponent from '../BaseComponent';
 import React from "react";
 import { Form, Button, Container, Card, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class Login extends BaseComponent {
   constructor(props) {
     super();
+    this.state = {
+        userid  : '',
+        password: '',
+    }
+  }
+
+  afterSubmit(param){
+    console.log(param);
   }
   
   render() {
@@ -12,29 +21,37 @@ class Login extends BaseComponent {
       <div className="main-container">
         <Container fluid className="gray">
           <Row>
-            <Col lg={8} className="border-primary m-auto">
+            <Col md={8} className="border-primary m-auto">
               <h6 className="bg-info p-3 text-white">SIGNUP</h6>
 
               <Card className="my-2">
                 <Card.Body>
-                <Form onSubmit={this.onSubmit}>
-                    <h3>Register</h3>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Mobile number</Form.Label>
-                        <Form.Control type="number" placeholder="Enter mobile number" required/>
-                    </Form.Group>
+                    <Form data-action="register" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
+                        <h3>Register</h3>
+                        <Form.Group controlId="formUserid">
+                            <Form.Label>Mobile number/Email id</Form.Label>
+                            <Form.Control type="text" name="userid" onChange={this.onChange} value={this.state.userid} placeholder="Enter mobile number/Email id" required autoFocus/>
+                        </Form.Group>
 
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" required/>
-                    </Form.Group>
-                    
-                    <Button variant="primary" type="submit">
-                        Register
-                    </Button>
-                </Form>
+                        <Form.Group controlId="formPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password" required/>
+                        </Form.Group>
+                        
+                        <Button variant="primary" type="submit">
+                            Register
+                        </Button>
+                    </Form>
                 </Card.Body>
               </Card>
+
+              <section className="d-sm-flex justify-content-around my-auto bg-light">
+                <div className="m-3 p-2">
+                  <p>Already have an account?</p>
+                  <Link className="btn btn-secondary" to='/login'>Login</Link>
+                </div>
+
+              </section>
             </Col>
           </Row>
         </Container>
