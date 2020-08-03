@@ -1,10 +1,9 @@
-import BaseComponent from '../BaseComponent';
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 import './custom.css';
 import ReactPlayer from 'react-player';
-import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import BaseComponent from '../BaseComponent';
 
 export default class HomePage extends BaseComponent {
   constructor(props) {
@@ -34,12 +33,12 @@ export default class HomePage extends BaseComponent {
 
 
 
-        <div className="home-bg-2">
+        <div className="home-bg-2" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
           <div className="home-bg-2_text">
             <h5 className="text-uppercase border-teal"> {this.pageContent.feature_products[0].name} </h5>
             <br />
             <div dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} /><br />
-            <Button className="mt-3" variant="primary"> Buy Now </Button>
+            <Link className="mt-3 btn btn-primary" to="/products">View all products</Link>
           </div>
         </div>
 
@@ -101,7 +100,7 @@ export default class HomePage extends BaseComponent {
           <Row className="no-gutters">
             <Col xl lg md="6" sm="12" className="bg-yoga">
               <div className="d-flex flex-column">
-                <div className="bg-info"><h5>HHM</h5></div>
+                <h5>HHM</h5>
                 <div className="p-2 align-self-end"><p>Is HHM an incredibly complex and dynamic process? <br />
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p></div>
               </div>

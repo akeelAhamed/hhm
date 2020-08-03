@@ -2,18 +2,82 @@ import React from "react";
 import BaseComponent from '../BaseComponent';
 import "./custom.css";
 import { Button } from 'react-bootstrap';
-import ReactPlayer from 'react-player';
 
 class ProductPage extends BaseComponent {
   constructor(props) {
     super();
+    this.pageContent2 = {
+      "id": 187,
+      "sku": "hhm00100",
+      "product_type": "normal",
+      "affiliate_link": null,
+      "user_id": "0",
+      "category_id": "10",
+      "subcategory_id": null,
+      "childcategory_id": null,
+      "attributes": null,
+      "name": "HHMPURE",
+      "slug": "hhmpure-hhm00100",
+      "photo": "http://www.hhmlife.org/assets/images/products/15951373391H7vEF1C.png",
+      "thumbnail": "http://www.hhmlife.org/assets/images/thumbnails/15951373396gBAiaVq.jpg",
+      "file": null,
+      "size": "",
+      "size_qty": "",
+      "size_price": "",
+      "color": "",
+      "price": "50000",
+      "previous_price": "45000",
+      "details": "<span style=\"color: rgb(154, 160, 166); font-family: Roboto, HelveticaNeue, Arial, sans-serif; background-color: rgb(20, 21, 24);\">Buy Aushmath Agnihotra Kit Online from Devotional Store - Agnihotra Kit is a Vedic way to repair your mind and body. It had explored the various ...</span><br>",
+      "stock": "555",
+      "policy": "<span style=\"color: rgb(154, 160, 166); font-family: Roboto, HelveticaNeue, Arial, sans-serif; background-color: rgb(20, 21, 24);\">Buy Aushmath Agnihotra Kit Online from Devotional Store - Agnihotra Kit is a Vedic way to repair your mind and body. It had explored the various ...</span><br>",
+      "status": "1",
+      "views": 3,
+      "tags": "",
+      "features": [
+          "123456"
+      ],
+      "colors": [
+          "#000000"
+      ],
+      "product_condition": "2",
+      "ship": null,
+      "is_meta": "0",
+      "meta_tag": "",
+      "meta_description": null,
+      "youtube": "hhh.world",
+      "type": "Physical",
+      "license": "",
+      "license_qty": "",
+      "link": null,
+      "platform": null,
+      "region": null,
+      "licence_type": null,
+      "measure": null,
+      "featured": "0",
+      "best": "0",
+      "top": "0",
+      "hot": "0",
+      "latest": "0",
+      "big": "0",
+      "trending": "0",
+      "sale": "0",
+      "created_at": "2020-07-19 05:42:19",
+      "updated_at": "2020-08-03 07:02:31",
+      "is_discount": "0",
+      "discount_date": null,
+      "whole_sell_qty": "",
+      "whole_sell_discount": "",
+      "is_catalog": "0",
+      "catalog_id": "0"
+    }
   }
 
   content() {
+    console.log(this.pageContent2);
     return (
       <div className="main-container">
-        <div className="home_bg-1 text-uppercase">
-          <h3>Higher living</h3>
+        <div className="home_bg-1 text-uppercase" style={{background: 'url('+this.pageContent2.photo+')'}}>
+          <h3>{this.pageContent2.name}</h3>
         </div>
 
         <div className="home_bg-2">
@@ -61,7 +125,7 @@ class ProductPage extends BaseComponent {
         <div className="home_bg-4">
           <h3 className="text-center"><span className="border-teal"> Videos </span></h3>
           <div className="d-flex flex-column align-items-end ">
-            {this.props.page.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
+            {/* {this.pageContent.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)} */}
           </div>
         </div>
 

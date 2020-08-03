@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./components/Header/header";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import Header from "./components/Header/header";
+import BaseComponent from './components/BaseComponent';
 import NotFound from "./components/Error/NotFound";
 
 import HomePage from "./components/HomePage/homepage";
@@ -32,18 +33,22 @@ function PrivateRoute ({component: Component, authed, ...rest}) {
   )
 }
 
-export default class App extends React.Component{
+class App extends React.Component{
 
   constructor(props){
     super();
+    const base = new BaseComponent(props, false);
+    const loged = base.isLoggedIn();
     this.state = {
+      user: loged,
+      isLoggedIn: loged === null,
       headerFooter: null,
       pageLoaded: true
     };
   }
 
-  component(Component) {
-    return <Component {...this.state}/>;
+  component(props, Component) {
+    return <Component {...this.state} {...props}/>;
   }
 
   render(){
@@ -52,21 +57,21 @@ export default class App extends React.Component{
       <Router>
         <Header page={this.state.headerFooter}>
         <Switch>
-          <Route path="/" exact render={(props) => this.component(HomePage)} />
-          <Route path="/about" component={(props) => this.component(AboutUs)} />
-          <Route path="/products" exact component={(props) => this.component(Products) } />
-          <Route path="/products/:name" component={(props) => this.component(ProductPage) } />
-          <Route path="/vision" component={(props) => this.component(Vision) } />
-          <Route path="/contactus" component={(props) => this.component(ContactUs) } />
-          <Route path="/cartpage" component={(props) => this.component(CartPage) } />
-          <Route path="/loginpage" component={(props) => this.component(LoginPage) } />
-          <Route path="/checkout" component={(props) => this.component(CheckOut) } />
-          <Route path="/finalcheckout" component={(props) => this.component(FinalCheckOut) } />
-          <Route path="/orderconfirm" component={(props) => this.component(OrderConfirm) } />
+          <Route path="/" exact render={(props) => this.component(props, HomePage)} />
+          <Route path="/about" component={(props) => this.component(props, AboutUs)} />
+          <Route path="/products" exact component={(props) => this.component(props, Products) } />
+          <Route path="/item/:name" component={(props) => this.component(props, ProductPage) } />
+          <Route path="/vision" component={(props) => this.component(props, Vision) } />
+          <Route path="/contactus" component={(props) => this.component(props, ContactUs) } />
+          <Route path="/cartpage" component={(props) => this.component(props, CartPage) } />
+          <Route path="/loginpage" component={(props) => this.component(props, LoginPage) } />
+          <Route path="/checkout" component={(props) => this.component(props, CheckOut) } />
+          <Route path="/finalcheckout" component={(props) => this.component(props, FinalCheckOut) } />
+          <Route path="/orderconfirm" component={(props) => this.component(props, OrderConfirm) } />
 
           {/* Form */}
-          <Route path="/login" component={(props) => this.component(Login) } />
-          <Route path="/register" component={(props) => this.component(Register) } />
+          <Route path="/login" component={(props) => this.component(props, Login) } />
+          <Route path="/register" component={(props) => this.component(props, Register) } />
 
           <PrivateRoute authed={this.state.isLoggedIn} path='/dashboard' component={(props) => (<h1>Hi</h1>)}/>
 
@@ -77,3 +82,5 @@ export default class App extends React.Component{
     );
   }
 }
+
+export default App;

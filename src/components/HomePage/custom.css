@@ -15,10 +15,8 @@
 }
 
 .home-bg-2{
-    height: fit-content;
-    min-height: 45em;
-    background-image: url('./Img//fwdhhmhomepagedummypics/Home\ 03.jpg');
-    background-position: center;
+    height: auto;
+    background-position: top right;
     background-repeat: no-repeat;
     background-size: cover;
 }

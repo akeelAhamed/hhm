@@ -1,15 +1,13 @@
-import BaseComponent from '../BaseComponent';
 import React from "react";
+import BaseComponent from '../BaseComponent';
 import { Form, Button, Container, Card, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 class Login extends BaseComponent {
   constructor(props) {
     super();
-    this.state = {
-        userid  : '',
-        password: '',
-    }
+    this.state.email = '';
+    this.state.password = '';
   }
 
   afterSubmit(param){
@@ -28,9 +26,9 @@ class Login extends BaseComponent {
                 <Card.Body>
                     <Form data-action="login" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
                         <h3>Login</h3>
-                        <Form.Group controlId="formUserid">
-                            <Form.Label>Mobile number/Email id</Form.Label>
-                            <Form.Control type="text" name="userid" onChange={this.onChange} value={this.state.userid} placeholder="Enter mobile number/Email id" required autoFocus/>
+                        <Form.Group controlId="formemail">
+                            <Form.Label>Email id</Form.Label>
+                            <Form.Control type="email" name="email" onChange={this.onChange} value={this.state.email} placeholder="Email id" required autoFocus/>
                         </Form.Group>
 
                         <Form.Group controlId="formPassword">
@@ -38,8 +36,8 @@ class Login extends BaseComponent {
                             <Form.Control type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password" required/>
                         </Form.Group>
                         
-                        <Button variant="primary" type="submit">
-                            Register
+                        <Button variant="primary" type="submit" disabled ={this.state.disabled}>
+                            Login
                         </Button>
                     </Form>
                 </Card.Body>
