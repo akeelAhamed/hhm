@@ -11,7 +11,7 @@ export default class Products extends BaseComponent {
   content() {
     return (
       <div className="main-container">
-        <div className="home_bg-1 text-uppercase">
+        <div className="home_bg-1 text-uppercase" style={{backgroundImage: 'url('+require('../HomePage/Img/fwdhhmhomepagedummypics/Home-10.jpg')+')'}}>
           <h3>Our Product</h3>
         </div>
 

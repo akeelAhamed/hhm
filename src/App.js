@@ -1,6 +1,6 @@
 import React from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./components/Header/header";
 import BaseComponent from './components/BaseComponent';
@@ -41,7 +41,7 @@ class App extends React.Component{
     const loged = base.isLoggedIn();
     this.state = {
       user: loged,
-      isLoggedIn: loged === null,
+      isLoggedIn: loged !== '',
       headerFooter: null,
       pageLoaded: true
     };
@@ -55,25 +55,26 @@ class App extends React.Component{
     
     return (
       <Router>
-        <Header page={this.state.headerFooter}>
+        <Header {...this.state} {...this.props}>
         <Switch>
-          <Route path="/" exact render={(props) => this.component(props, HomePage)} />
+          <Route path="/" exact component={(props) => this.component(props, HomePage)} />
           <Route path="/about" component={(props) => this.component(props, AboutUs)} />
           <Route path="/products" exact component={(props) => this.component(props, Products) } />
           <Route path="/item/:name" component={(props) => this.component(props, ProductPage) } />
           <Route path="/vision" component={(props) => this.component(props, Vision) } />
           <Route path="/contactus" component={(props) => this.component(props, ContactUs) } />
-          <Route path="/cartpage" component={(props) => this.component(props, CartPage) } />
           <Route path="/loginpage" component={(props) => this.component(props, LoginPage) } />
-          <Route path="/checkout" component={(props) => this.component(props, CheckOut) } />
-          <Route path="/finalcheckout" component={(props) => this.component(props, FinalCheckOut) } />
-          <Route path="/orderconfirm" component={(props) => this.component(props, OrderConfirm) } />
 
           {/* Form */}
           <Route path="/login" component={(props) => this.component(props, Login) } />
           <Route path="/register" component={(props) => this.component(props, Register) } />
 
+          {/* Auth routes */}
           <PrivateRoute authed={this.state.isLoggedIn} path='/dashboard' component={(props) => (<h1>Hi</h1>)}/>
+          <PrivateRoute authed={this.state.isLoggedIn} path="/cartpage" component={(props) => this.component(props, CartPage) } />
+          <PrivateRoute authed={this.state.isLoggedIn} path="/checkout" component={(props) => this.component(props, CheckOut) } />
+          <PrivateRoute authed={this.state.isLoggedIn} path="/finalcheckout" component={(props) => this.component(props, FinalCheckOut) } />
+          <PrivateRoute authed={this.state.isLoggedIn} path="/orderconfirm" component={(props) => this.component(props, OrderConfirm) } />
 
           <Route component={NotFound} />
         </Switch>

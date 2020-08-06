@@ -38,7 +38,7 @@ export default class HomePage extends BaseComponent {
             <h5 className="text-uppercase border-teal"> {this.pageContent.feature_products[0].name} </h5>
             <br />
             <div dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} /><br />
-            <Link className="mt-3 btn btn-primary" to="/products">View all products</Link>
+            <Link className="mt-3 btn btn-primary" to="/products">View products</Link>
           </div>
         </div>
 
@@ -46,16 +46,13 @@ export default class HomePage extends BaseComponent {
         <Container fluid>
           <Row>
             <Col md lg xl="6" sm="auto">
-              <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 04.jpg')} />
+              <img className="img-fluid" alt="" src={this.pageContent.about_author.photo} />
             </Col>
 
             <Col md lg xl="6" sm="auto" className="mt-5 ">
-              <h5 className="text-uppercase border-teal">Dr.T.P Jayakrishnan <br /> Re energising your life</h5>
-              <blockquote><cite> "Illuminating occult to make it obvious" </cite>
-                <footer> Dr.T.P. Jayakrishnan </footer> </blockquote>
+              <h5 className="text-uppercase border-teal">{this.pageContent.about_author.link}</h5>
 
-              <small>Dr.T.P Jayakrishnan, the founder of Holistic Metaphysics beleives that to live fruitfully, recognizing the deep bond between us and the universal energy around us is essential. He strives to understand truths that have not unveiled itself to us yet and makes wy for science to tread on. His unquenched curiosity to find the path towards meaningful existence led to the birth of a new way of living. HHM. "Illuminating the occult to make it obvious" is his idea of combining ancient and modern science</small> <br />
-              <small>Dr.T.P Jayakrishnan is based in Chalavara, Kerala.He is the chairman of Aushmat Research Trush (ART) which works on spreading awareness on HHm Aushmath Biconsciences, as laboratory under ART, is dedicated to conduct scientific experience in the field of HHM and conservation of natural resources. The visionary that he is, Dr.Jayakrishnan ahs opened a new door of science, rooted in ancient scriplures of India which once was the most reliable healthcare source of the world </small>
+              <div dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} />
             </Col>
           </Row>
         </Container>
@@ -84,30 +81,28 @@ export default class HomePage extends BaseComponent {
         <div className="home-bg-3">
           <h3 className="m-3"><span className="border-teal"> Videos </span></h3>
           <div className="d-flex flex-column align-items-end player">
-            {this.pageContent.videos.map(el => <ReactPlayer className="m-3" controls width="30vw" height="25vh" key={el.id} url={el.details} />)}
-            {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> {/*{this.pageContent.videos[0].details} */}
-            {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> */}
-            {/* <ReactPlayer width="30vw" url="https://youtu.be/Jfyjx2rOQWk" controls /> */}
-            {/* <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/> */}
-            {/* <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 08.jpg')}/> */}
+            {
+              this.pageContent.videos.map(el => 
+                <ReactPlayer className="m-3" controls width="30%" height="30%" key={el.id} url={el.details} />
+              )
+            }
           </div>
         </div>
 
 
-        <h5 className="m-3"><span className="border-teal">  Blogs </span></h5>
+        <h5 className="m-3"><span className="border-teal"> Blogs </span></h5>
 
         <Container fluid>
           <Row className="no-gutters">
-            <Col xl lg md="6" sm="12" className="bg-yoga">
-              <div className="d-flex flex-column">
-                <h5>HHM</h5>
-                <div className="p-2 align-self-end"><p>Is HHM an incredibly complex and dynamic process? <br />
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</p></div>
-              </div>
-            </Col>
-            <Col xl lg md="6" sm="12" >
-              <img className="img-fluid" alt="" src={require('./Img/fwdhhmhomepagedummypics/Home 10.jpg')} />
-            </Col>
+            {
+              this.pageContent.blogs.map(blog => (
+              <Col md="4" key={blog.id} data-img={encodeURI(blog.photo)} style={{backgroundImage: 'url('+blog.photo+')'}} className="bg-yoga">
+                <div className="d-block p-2">
+                  <h5>{blog.title}</h5>
+                </div>
+              </Col>
+              ))
+            }
           </Row>
         </Container>
 

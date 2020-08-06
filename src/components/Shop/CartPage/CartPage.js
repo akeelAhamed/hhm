@@ -1,54 +1,83 @@
 import React from "react";
 import BaseComponent from '../../BaseComponent';
 import "./custom.css";
-import { Row, Col, Container, Button } from "react-bootstrap";
+import { Row, Col, Container, Button, ButtonGroup, FormControl } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-class CartPage extends BaseComponent {
+export default class CartPage extends BaseComponent {
   constructor(props) {
     super();
+
+    this.state.promo = '';
+    this.state.discount = 0;
+    this.cart = this.getCart();
+    console.log(this.cart);
   }
 
-  render() {
+  content() {
+    if(this.cart === ''){
+      return (
+          <div className="main-container">
+              <h1 className="bg-info p-2 text-info">1</h1>
+              <Container fluid>
+                  <Row className="justify-content-center pt-3" style={{height: '70vh'}}>
+                      <Col sm={6} className="m-auto text-center">
+                          <section className="p-1">
+                              <img className="img-fluid d-block" src={require("../img/emptycart.png")} alt="cart is empty" />
+                              <strong>Your cart is empty</strong>
+                              <Link to="/products" className="btn btn-info d-block">Shop now</Link>
+                          </section>
+                      </Col>
+                  </Row>
+              </Container>
+          </div>
+      );
+    }
+
+    this.cart.ship = this.cart.ship === null?0:0
+
     return (
       <div className="main-container">
         <Container fluid className="contr-width">
           <h2 className="border_teal-left" >Shopping Bag</h2>
           <Row className="">
             <Col xl lg md="6" sm="12">
-              <h5 className="border_teal-bottom">2 items</h5>
+              <h5 className="border_teal-bottom">{this.cart._qty} items</h5>
               <section className="d-flex flex-lg-row flex-xl-row flex-md-row flex-sm  p-2">
                 <img
                   className="img-fluid p-3 image m-auto"
-                  src={require("../../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg")}
-                  alt=""
+                  src={this.cart.photo}
+                  alt={this.cart.name}
                 />
                 <div className="my-auto">
-                  <h4>Aushmath's PURE</h4>
-                  <h4>(Pancea Ultimate for Rousing Energy)</h4>
-                  <p>4GB RAM</p>
-                  <p>Seller Rumadita Fashions</p>
-                  <p>09,499 010,999 13% Off1 offer applied</p>
-                  <p> Qty:-|2|+</p>
-                  <p>Edit | Remove</p>
+                  <h4>{this.cart.name}</h4>
+                  <p>Qty: {this.cart._qty}</p>
+                  <ButtonGroup>
+                    <Button variant="outline-secondary" onClick={this.back}>Edit</Button>
+                    <Button variant="outline-secondary" onClick={this.emptyCart}>Remove</Button>
+                  </ButtonGroup>
                 </div>
               </section>
             </Col>
 
             <Col xl lg md="6" sm="12">
               <h4 className="border_teal-bottom">Order summary</h4>
-              <h5 className="border text p-3">HAVE A PROMO CODE</h5>
+              <FormControl className="text-center" aria-label="Promo code" placeholder='Have a promo code...' value={this.state.qty} name="promo" onChange={this.onChange} />
 
-              <p>Merchandise: <p className="float-right"> $60,000/-</p> </p>
-              <p>Estimated shipping: <p className="float-right"> Free</p></p>
-              <h4 className="border-top pt-3">ORDER TOTAL<p className="float-right"> $60,000</p></h4>
+              <p>Merchandise: <span className="float-right"> ${this.cart.price}</span> </p>
+              <p>Quantity   : <span className="float-right"> {this.cart._qty}x</span> </p>
+              <p>Estimated shipping: <span className="float-right"> ${this.cart.ship}</span></p>
+              <h4 className="border-top pt-3">ORDER TOTAL<span className="float-right">${parseFloat(this.cart.ship + (this.cart.price * this.cart._qty) - this.state.discount)}</span></h4>
 
-              <Button className="mt-5" variant="info" block><a href="/loginpage">PROCEED TO CHECKOUT</a></Button>
+              <Link className="mt-1 btn btn-primary" to="/checkout">PROCEED TO CHECKOUT</Link>
             </Col>
           </Row>
         </Container>
       </div>
     );
   }
-}
 
-export default CartPage;
+  render(){
+    return (!this.state.pageLoaded)?this.prePage():this.content();
+  }
+}

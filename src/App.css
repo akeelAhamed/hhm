@@ -3,6 +3,7 @@
     padding: 0;
     scroll-behavior: smooth;
 }
+#appbody{min-height: 55vh;}
 body .center {
     height: 90vh;
     padding: 0;
@@ -15,9 +16,21 @@ body .center {
     align-items: center;
     justify-content: center;
 }
-body .center > div{
-    text-align: center;
-}
-a{
-    color: #758595;
+body .center > div{text-align: center;}
+a{color: #758595;}
+.btn-primary{background-color: #17a2b8;border-color: #17a2b8;}
+.btn-primary:hover{background-color: #099fb7;border-color:#099fb7;}
+.navbar-light .navbar-nav .nav-link.active{color: #17a2b8;}
+
+@media (min-width: 768px){
+    .header-nav .navbar-collapse a:not(:last-child):after {
+        content: '';
+        position: absolute;
+        width: 1.5px;
+        height: 14px;
+        background: #17a2b8;
+        z-index: 1080;
+        margin-top: 5px;
+        margin-left: 5px;
+    }
 }

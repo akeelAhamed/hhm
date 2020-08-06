@@ -16,7 +16,6 @@ export default class Header extends React.Component {
       }
     };
   }
-
   
   componentDidMount(){
     // window._axios.get('headerfooter')
@@ -38,7 +37,7 @@ export default class Header extends React.Component {
 
     return (
       <>
-        <Navbar className="" bg="light" expand="lg">
+        <Navbar className="header-nav" bg="light" expand="md">
           <Navbar.Brand>
             <Nav.Link as={Link} to=''>
             <img
@@ -54,23 +53,28 @@ export default class Header extends React.Component {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav ">
             <Nav className="ml-auto text-uppercase">
+              <Nav.Link active={window.location.pathname === '/'} href='/'>Home</Nav.Link>
+              <Nav.Link active={window.location.pathname === '/products'} href='/products'>Products</Nav.Link>
               {
-                this.state.headerFooter.heade_menu.map(el => 
-                <Nav.Link key={el.id} as={Link} to={'/' + el.slug} >{el.title}</Nav.Link>)
+                this.state.headerFooter.heade_menu.map(el => {
+                  // <Nav.Link key={el.id} active={window.location.pathname === '/' + el.slug} as={Link} to={'/' + el.slug} >{el.title}</Nav.Link>
+                  return(<Nav.Link key={el.id} active={window.location.pathname === '/' + el.slug} href={'/' + el.slug} >{el.title}</Nav.Link>)
+                })
               }
-              <Nav.Link as={Link} to='/products'>Products</Nav.Link>
 
               {
                 (this.props.isLoggedIn)
-                ?<Nav.Link as={Link} to='/dashboard'>Product</Nav.Link>
-                :<Nav.Link as={Link} to='/login'>Login</Nav.Link>
+                ?<Nav.Link active={window.location.pathname === '/dashboard'} href='/dashboard'>Dashboard</Nav.Link>
+                :<Nav.Link active={window.location.pathname === '/login'} href='/login'>Login</Nav.Link>
               }
             </Nav>
           </Navbar.Collapse>
         
         </Navbar>
 
-        {this.props.children}
+        <div id="appbody">
+          {this.props.children}
+        </div>
         
         <FooterPage page={this.state.headerFooter}/>
       </>

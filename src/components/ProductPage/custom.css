@@ -16,7 +16,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 40em;
 }
 
 .home_bg-2-text{
@@ -30,6 +29,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 37em;
+}
+
+.player > div{
+    width: 100% !important;
 }
 
 .home_bg-3-text{
@@ -54,4 +57,12 @@
  .border-teal{
     border-left: 5px solid teal;
     padding-left: 4px;
+}
+
+@media (min-width:768px){
+    .player > div{
+        width: 50%!important;
+        height: 25vh;
+    }
+    .buy{width:50%;}
 }

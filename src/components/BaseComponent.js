@@ -1,5 +1,4 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import includes from "lodash/includes";
 import has from "lodash/has";
 import each from "lodash/each";
@@ -18,13 +17,13 @@ export default class BaseComponent extends React.Component {
 
     this.state = {
       user: loged,
-      isLoggedIn: loged !== null,
+      isLoggedIn: loged !== '',
       disabled: false,
       errors  : [],
-      pageLoaded: false
+      pageLoaded: !false
     };
 
-    const exceptApi = ['/register', '/login', '/register', '/item'];
+    const exceptApi = ['/register', '/login', '/register', '/checkout'];
 
     this.pageContent = null;
     this.page = window.location.pathname;
@@ -58,10 +57,12 @@ export default class BaseComponent extends React.Component {
       window._axios.get($this.page)
       .then((result) => {
         if(result.status === 200){
-          $this.pageContent = result.data;
-          $this.setState({
-            pageLoaded: true
-          })
+          if(result.data !== ''){
+            $this.pageContent = result.data;
+            $this.setState({
+              pageLoaded: true
+            })
+          }
         }
       }).catch(function(error){
         if(error.response !== undefined && error.response.status === 404){
@@ -103,20 +104,20 @@ export default class BaseComponent extends React.Component {
   }
 
   /**
-   * Go to back page
-   * @param {object} e 
-   */
-  back(e){
-    e.preventDefault();
-    window.history.go(-1);
-    return false;
-  }
-
-  /**
    * Is logged in
    */
   isLoggedIn(){
-    return localStorage.getItem('_AUTHTOKEN');
+    return window.ls.get('_AUTHTOKEN');
+  }
+
+  /**
+   * Loggedin user
+   * 
+   * @param {object} data 
+   */
+  login(data){
+    window.ls.set('_AUTHTOKEN', data);
+    return window.location.href = 'dashboard';
   }
 
   /**
@@ -166,6 +167,12 @@ export default class BaseComponent extends React.Component {
         }
         console.log(response);
       }, (error) => {
+        this.toggleDisable();
+        if(has(data, 'callback')){
+          if(typeof this[data.callback] === "function"){
+            return this[data.callback](error.response.data);
+          }
+        }
         console.log(error.response);
       });
     }
@@ -176,6 +183,34 @@ export default class BaseComponent extends React.Component {
    */
   toggleDisable(){
     this.setState({disabled: !this.state.disabled});
+  }
+
+  /**
+   * Add to cart
+   * 
+   * @param {object} data
+   * @param {int}    qty 
+   */
+  addCart(data, qty=1){
+    data._qty = qty;
+    return window.ls.set('_CART', data);
+  }
+
+  /**
+   * Get cart data
+   * 
+   */
+  getCart(){
+    return window.ls.get('_CART')
+  }
+
+  /**
+   * Empty cart data
+   * 
+   */
+  emptyCart(){
+    window.ls.remove('_CART')
+    return window.history.go(-1);;
   }
 
   /**
@@ -210,4 +245,23 @@ export default class BaseComponent extends React.Component {
       </Toast>)
   }
 
+  
+  /**
+   * Redirect to url
+   * 
+   * @param {string} page 
+   */
+  redirect(page=''){
+    return this.props.history.push('/'+page);
+  }
+
+  /**
+   * Go to back page
+   * @param {object} e 
+   */
+  back(e=null){
+    e===null||e.preventDefault();
+    window.history.go(-1);
+    return false;
+  }
 }

@@ -3,12 +3,85 @@ import React from 'react';
 import './custom.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-class CheckOut extends BaseComponent {
+export default class CheckOut extends BaseComponent {
     constructor(props) {
         super();
+
+        this.cart = this.getCart();
+    
+        if(this.cart !== ''){
+            this.cart.ship = this.cart.ship === null?0:0
+            let options = {
+                "key": "rzp_test_xlJRG5Yh7YBbXa",
+                "amount": parseFloat((this.cart.ship + this.cart.price) * 1), // 100 paise = INR 1, amount in paisa
+                "name": "Merchant Name",
+                "description": "Purchase Description",
+                "handler": function (response){
+                    console.log(response);
+                },
+                "prefill": {
+                    "name": "user name",
+                    "email": "user@email.com",
+                    "contact": 123456789
+                },
+                "notes": {
+                "address": "my address"
+                },
+            };
+    
+            this.rzp = new window.Razorpay(options);
+            this.chekout = this.chekout.bind(this);
+        }
+        console.log(this.cart, this.state);
     }
-    render() {
+    
+    /**
+     * Checkout
+     * @param {object} e 
+     */
+    chekout(e){
+    this.rzp.open();
+    }
+
+    content() {
+        if(!this.state.isLoggedIn){
+            return (
+                <div className="main-container">
+                    <h1 className="bg-info p-2 text-info">1</h1>
+                    <Container fluid>
+                        <Row className="center">
+                            <Col sm={6} className="m-auto text-center">
+                                <section className="p-1">
+                                    <img className="img-fluid d-block" src={require("../img/emptycart.png")} alt="cart is empty" />
+                                    <strong>You are not logged in. Login to see cart</strong>
+                                    <Link to="/login" className="btn btn-info d-block">Login</Link>
+                                </section>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+            );
+        }else if(this.cart === ''){
+            return (
+                <div className="main-container">
+                    <h1 className="bg-info p-2 text-info">1</h1>
+                    <Container fluid>
+                        <Row className="justify-content-center pt-3" style={{height: '70vh'}}>
+                            <Col sm={6} className="m-auto text-center">
+                                <section className="p-1">
+                                    <img className="img-fluid d-block" src={require("../img/emptycart.png")} alt="cart is empty" />
+                                    <strong>Your cart is empty</strong>
+                                    <Link to="/products" className="btn btn-info d-block">Shop now</Link>
+                                </section>
+                            </Col>
+                        </Row>
+                    </Container>
+                </div>
+            );
+        }
+
         return (
             <div className="main-container">
                 <h1 className="bg-info p-2 text-info">1</h1>
@@ -20,7 +93,7 @@ class CheckOut extends BaseComponent {
                             <section className="border border-left-0 border-right-0">
 
                                 <div className="d-flex">
-                                    <img className="img-fluid w-25 pt-1" alt='' src={require('../../HomePage/Img/fwdhhmhomepagedummypics/Home 08.jpg')} />
+                                    <img className="img-fluid w-25 pt-1" alt='product' src={this.cart.thumbnail} />
                                     <div className="m-auto">
                                         <p>1 item</p>
                                         <select className="border-0 text-info">
@@ -29,44 +102,34 @@ class CheckOut extends BaseComponent {
                                     </div>
                                 </div>
                                 <div className="p-2">
-                                    <p>Subtotal<p className="float-right"> $60,000</p></p>
-                                    <p>Shipping<p className="float-right"> $500</p></p>
-                                    <h4>TOTAL <h4 className="float-right">$60,500</h4></h4>
+                                    <p>Subtotal<span className="float-right"> ${this.cart.price}</span></p>
+                                    <p>Shipping<span className="float-right"> ${this.cart.ship}</span></p>
+                                    <h4>TOTAL <span className="float-right">${parseFloat(this.cart.ship + this.cart.price)}</span></h4>
                                 </div>
                             </section>
                         </Col>
 
                         <Col sm={6} xl={4} md={6} lg={4}><h2>CHECKOUT</h2>
                             <section className="border border-left-0 border-right-0">
-                                <ul>
-                                    <li>Email<br /><small>johnjoe@gmail.com</small> <span className="pl-2 text-info">Change email</span></li>
-                                    <li>Contact<br /><small>johnjoe<br />+91 9880454789</small> <span className="pl-4 text-info">Change</span></li>
-                                    <li>Pickup Information <br /><small> Local Pickup</small> <span className="pl-5 text-info">Change method</span></li>
+                                <ul className="udetails">
+                                    <li>Email<br /><small>{this.state.user.email}</small></li>
+                                    <li>Contact<br /><small>johnjoe | +91 9880454789</small></li>
+                                    <li>Pickup Information <br /><small> Local Pickup</small></li>
                                 </ul>
                             </section>
 
                             <section className="p-1">
                                 <strong>Payment Information</strong>
-                                <p>Choose a way to pay for ypur order:</p>
+                                <p>Choose a way to pay for your order:</p>
 
                                 <div className="border p-2">
-                                    <input type="radio" id="payment" name="payment" value="delivery" />
-                                    <label className="pl-2" for="delivery">Phone order</label><br />
+                                    <input type="radio" id="razor" name="razor" value="razor" checked readOnly/>
+                                    <label className="pl-2" htmlFor="razor">Pay with razorpay</label><br />
                                 </div>
 
-                                <div className="border p-2">
-                                    <input type="radio" id="payment" name="payment" value="credit card" />
-                                    <label className="pl-2" for="credit card">Phone order</label><br />
-                                </div>
-
-                                <div className="border p-2">
-                                    <input type="radio" id="payment" name="payment" value="debit card" />
-                                    <label className="pl-2" for="debit card">Phone order</label><br />
-                                </div>
-
-                                <h6 className="pt-2">Payment Instruction</h6>
-                                <small>We wil Contact you at phone number that you've provided us with above to arrange the payment</small>
-                                <Button className="mb-4 mt-2" variant="info" block><a href="/finalcheckout">Place Order</a></Button>
+                                <h6 className="pt-2">Policy</h6>
+                                <small dangerouslySetInnerHTML={{ __html: this.cart.policy }}/>
+                                <Button className="mb-4 mt-2" variant="info" block onClick={this.chekout}>Place Order</Button>
                             </section>
                         </Col>
                     </Row>
@@ -74,6 +137,9 @@ class CheckOut extends BaseComponent {
             </div>
         )
     }
-}
 
-export default CheckOut;
+    render(){
+        return (!this.state.pageLoaded)?this.prePage():this.content();
+    }
+
+}

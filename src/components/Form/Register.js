@@ -17,7 +17,7 @@ class Login extends BaseComponent {
     if(has(response, 'errors')){
       return this.setError(response.errors);
     }
-    return this.props.history.push('/login');
+    return this.redirect('login');
   }
   
   render() {

@@ -25,6 +25,7 @@
    padding-left: 45%;
    padding-top: 5%;
    padding-bottom: 3%;
+   padding-right: 2%;
    width: auto;
 }
 
@@ -48,10 +49,11 @@
 }
 
 .bg-yoga{
-    background-image: url('./Img/fwdhhmhomepagedummypics/Home\ 09.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    color: #FFF;
+    height: 200px;
 }
 
 .border-teal{

@@ -1,20 +1,35 @@
 import React from "react";
 import BaseComponent from '../BaseComponent';
 import { Form, Button, Container, Card, Row, Col } from "react-bootstrap";
+import has from "lodash/has";
 import { Link } from "react-router-dom";
 
 class Login extends BaseComponent {
   constructor(props) {
     super();
-    this.state.email = '';
-    this.state.password = '';
+    this.state.email = 'akeel@gmail.com';
+    this.state.password = '123456';
+
+    if(this.state.isLoggedIn){
+      window.location.href = 'dashboard';
+    }
+
+    this.afterSubmit = this.afterSubmit.bind(this);
   }
 
-  afterSubmit(param){
-    console.log(param);
+  afterSubmit(response){
+    if(has(response, 'errors')){
+      return this.setError(response.errors);
+    }
+    response.email = this.state.email;
+    return this.login(response);
   }
 
   render() {
+
+    if(this.state.isLoggedIn){
+      return(<div className="main-container"></div>)
+    }
     return (
       <div className="main-container">
         <Container fluid className="gray">
