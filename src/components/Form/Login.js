@@ -26,7 +26,6 @@ class Login extends BaseComponent {
   }
 
   render() {
-
     if(this.state.isLoggedIn){
       return(<div className="main-container"></div>)
     }

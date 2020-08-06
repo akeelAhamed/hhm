@@ -20,10 +20,10 @@ export default class BaseComponent extends React.Component {
       isLoggedIn: loged !== '',
       disabled: false,
       errors  : [],
-      pageLoaded: !false
+      pageLoaded: false
     };
 
-    const exceptApi = ['/register', '/login', '/register', '/checkout'];
+    const exceptApi = ['/register', '/login', '/register', '/cartpage', '/checkout'];
 
     this.pageContent = null;
     this.page = window.location.pathname;
@@ -124,13 +124,8 @@ export default class BaseComponent extends React.Component {
    * Logout the application
    */
   logOut() {
-    let appState = {
-      isLoggedIn: false,
-      user: null
-    };
-    localStorage.removeItem('_AUTHTOKEN');
-    this.setState(appState);
-    this.props.history.push('/login');
+    window.ls.remove('_AUTHTOKEN');
+    window.location.href = '/login';
   }
 
   /**

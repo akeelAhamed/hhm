@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import { Navbar, Nav, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import FooterPage from "../FooterPage/footer";
 
@@ -7,32 +7,30 @@ export default class Header extends React.Component {
   constructor(props){
     super();
     this.state = {
-      headerFooter: {
-        footer_menu: [{id: "2", title: "Privacy & Policy", slug: "privacy"}],
-        heade_footer: {logo: "http://www.hhmlife.org/assets/images/1590831847logo-r.png"},
-        heade_menu: [{id: "1", title: "About Us", slug: "about"}, {id: "2", title: "Privacy & Policy", slug: "privacy"}],
-        pagesettings: {street: "3584 Hickory Heights Drive ,Hanover MD 21076, USA", phone: "00 000 000 000"},
-        sociallinks: [{facebook: "https://www.facebook.com/sathyaventhan.vasu", gplus: "https://plus.google.com/"}],
-      }
-    };
+      headerFooter: null
+    }
   }
   
   componentDidMount(){
-    // window._axios.get('headerfooter')
-    //   .then((result) => {
-    //     if(result.status === 200){
-    //       this.setState({
-    //         headerFooter : result.data
-    //       })
-    //     }
-    //   }).catch(function(error){
-    //     console.log(error);
-    //   });
+    window._axios.get('headerfooter')
+      .then((result) => {
+        if(result.status === 200){
+          this.setState({
+            headerFooter : result.data
+          })
+        }
+      }).catch(function(error){
+        console.log(error);
+      });
   }
 
   render() {
     if(this.state.headerFooter === null){
-      return (<div/>);
+      return (
+        <div className='center'>
+          <Spinner style={{width: '5rem', height: '5rem'}} animation="border" variant="primary" />
+        </div>
+      )
     }
 
     return (

@@ -19,8 +19,12 @@ import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
 import OrderConfirm from "./components/Shop/OrderConfirm/orderconfirm";
 import CheckOut from './components/Shop/CheckOut/checkout';
 
+// FORM
 import Login from "./components/Form/Login";
 import Register from "./components/Form/Register";
+
+// Dashboard
+import Dashboard from "./components/Dashboard/Index";
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
@@ -43,7 +47,7 @@ class App extends React.Component{
       user: loged,
       isLoggedIn: loged !== '',
       headerFooter: null,
-      pageLoaded: true
+      pageLoaded: false
     };
   }
 
@@ -70,7 +74,7 @@ class App extends React.Component{
           <Route path="/register" component={(props) => this.component(props, Register) } />
 
           {/* Auth routes */}
-          <PrivateRoute authed={this.state.isLoggedIn} path='/dashboard' component={(props) => (<h1>Hi</h1>)}/>
+          <PrivateRoute authed={this.state.isLoggedIn} path='/dashboard' component={(props) => this.component(props, Dashboard)}/>
           <PrivateRoute authed={this.state.isLoggedIn} path="/cartpage" component={(props) => this.component(props, CartPage) } />
           <PrivateRoute authed={this.state.isLoggedIn} path="/checkout" component={(props) => this.component(props, CheckOut) } />
           <PrivateRoute authed={this.state.isLoggedIn} path="/finalcheckout" component={(props) => this.component(props, FinalCheckOut) } />
