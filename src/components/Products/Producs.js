@@ -26,7 +26,7 @@ export default class Products extends BaseComponent {
                   <h1>{product.name}</h1>
                   <p className="product-desc" dangerouslySetInnerHTML={{ __html: product.details }}/>
                   <div className="buttons">
-                    <Link className="button view" to={"/item/"+product.slug}>View</Link>
+                    <Link className="button view" to={"/item/"+product.slug}>Buy now</Link>
                     <a className="button add" href="#!">Add to Cart</a>
                     <span className="button price">${product.price}</span>
                   </div>

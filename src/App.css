@@ -18,9 +18,10 @@ body .center {
 }
 body .center > div{text-align: center;}
 a{color: #758595;}
-.btn-primary{background-color: #17a2b8;border-color: #17a2b8;}
+.btn-primary{background-color: #00a19c;border-color: #00a19c;}
 .btn-primary:hover{background-color: #099fb7;border-color:#099fb7;}
-.navbar-light .navbar-nav .nav-link.active{color: #17a2b8;}
+.navbar-light .navbar-nav .nav-link.active{color: #00a19c;}
+.navbar-light .navbar-nav .nav-link{font-size: 14px;}
 
 @media (min-width: 768px){
     .header-nav .navbar-collapse a:not(:last-child):after {
@@ -28,7 +29,7 @@ a{color: #758595;}
         position: absolute;
         width: 1.5px;
         height: 14px;
-        background: #17a2b8;
+        background: #00a19c;
         z-index: 1080;
         margin-top: 5px;
         margin-left: 5px;

@@ -14,19 +14,19 @@ export default class HomePage extends BaseComponent {
     return (
       <div className="main-container">
 
-        <div className="home-bg-1 ml-3 mr-3">
+        <div className="home-bg-1 ml-3 mr-3" style={{backgroundImage: 'url('+this.pageContent.sliders[0].photo+')'}}>
           <p>{this.pageContent.sliders[0].details_text}</p>
         </div>
 
         <Container fluid>
           <Row className="no-gutters">
             <Col xl md lg="6" sm="auto" >
-              <img className="img-fluid" alt="" src={require("./Img/fwdhhmhomepagedummypics/Home 02.jpg")} />
+              <img className="img-fluid" alt="" src={this.pageContent.about_home.photo} />
             </Col>
 
             <Col xl md lg="6" sm="auto" className="my-auto p-3">
-              <h5 className="border-teal text-uppercase">Holistic human metaphysics <br /> a scientific way of living </h5>
-              <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
+              <h5 className="border-teal text-uppercase">{this.pageContent.about_home.title}  </h5>
+              <small>{this.pageContent.about_home.link} </small>
             </Col>
           </Row>
         </Container>
@@ -38,7 +38,7 @@ export default class HomePage extends BaseComponent {
             <h5 className="text-uppercase border-teal"> {this.pageContent.feature_products[0].name} </h5>
             <br />
             <div dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} /><br />
-            <Link className="mt-3 btn btn-primary" to="/products">View products</Link>
+            <Link className="mt-3 btn btn-primary" to={"/item/"+this.pageContent.feature_products[0].slug}>Buy now</Link>
           </div>
         </div>
 
@@ -50,6 +50,8 @@ export default class HomePage extends BaseComponent {
             </Col>
 
             <Col md lg xl="6" sm="auto" className="mt-5 ">
+              <h5 className="text-uppercase border-teal"> {this.pageContent.about_author.title} </h5>
+              <br />
               <div dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} />
             </Col>
           </Row>
@@ -58,11 +60,12 @@ export default class HomePage extends BaseComponent {
         <Container fluid className="bg-gray">
           <Row>
             <Col xl md lg="6" sm="auto" className="m-auto">
-              <div className="d-flex flex-column align-items-center">
-
-                <img className="img-fluid align-self-start m-1" alt="girl" src={require('./Img/fwdhhmhomepagedummypics/Home 05.jpg')} />
-                <img className="img-fluid align-self-end m-1" alt="boy" src={require('./Img/fwdhhmhomepagedummypics/Home 06.jpg')} />
-                <img className="img-fluid align-self-start m-1" alt="girl" src={require('./Img/fwdhhmhomepagedummypics/Home 05.jpg')} />
+              <div className="d-flex flex-column align-items-center tesimonial">
+                {
+                  this.pageContent.home_tesimonials.map((test, i) => (
+                    <img key={test.id} data-k={i % 2} className={"img-fluid m-1 "+((i % 2)?"align-self-end":"align-self-start")} alt={test.title} src={test.photo} />
+                  ))
+                }
               </div>
             </Col>
 

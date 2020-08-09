@@ -47,11 +47,11 @@
 }
 
 .border-teal-top{
-    border-top: 5px solid teal;
+    border-top: 5px solid #00a19c;
     padding-top: 4px;
 }
 .border-teal{
-    border-left: 5px solid teal;
+    border-left: 5px solid #00a19c;
     padding-left: 4px;
 }
 

@@ -9,9 +9,9 @@ export default class FooterPage extends React.Component {
 
   render(){
     return (
-      <Container fluid className="pt-3 bg-info text-white">
+      <Container fluid className="pt-3 footer text-white">
         <Row>
-          <Col xl lg md="6" sm="12">
+          <Col md="6" sm="12" className="px-5">
             <img
               src={this.props.page.heade_footer.logo}
               width="70"
@@ -22,9 +22,9 @@ export default class FooterPage extends React.Component {
             <p>{this.props.page.heade_footer.footer}</p>
           </Col>
   
-          <Col xl lg md="12" sm="12">
-            <section className="d-flex justify-content-around flex-lg-row flex-xl-row flex-md-column">
-              <div>
+          <Col md="3" xs="6">
+            <section className="">
+              <div className="flex-md-column">
                 <h5 className="title border-1">Useful links</h5>
                 <ul className="text-uppercase font-small">
                   <li className="list-unstyled">
@@ -50,7 +50,11 @@ export default class FooterPage extends React.Component {
                   </li>
                 </ul>
               </div>
-  
+            </section>
+          </Col>
+
+          <Col md="3" xs="6">
+            <section className="">
               <div className="flex-md-column">
                 <h5 className="title">Social media</h5>
                 {this.props.page.sociallinks.map((el, index) => (

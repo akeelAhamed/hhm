@@ -1,7 +1,9 @@
-a {
-    color: white;
+.footer{
+    background-image: url('../HomePage/Img/footer.png');
+    background-size: cover;
 }
 
-.bg-inf{
-    background-color: tomato;
+.footer a{
+    color: #EFEFEF;
+    font-size: 14px;
 }
