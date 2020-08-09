@@ -23,6 +23,8 @@ export default class BaseComponent extends React.Component {
       pageLoaded: false
     };
 
+    window.scrollTo(0, 0);
+
     const exceptApi = ['/register', '/login', '/register', '/dashboard', '/cartpage', '/checkout'];
 
     this.pageContent = null;
