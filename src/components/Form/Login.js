@@ -18,11 +18,12 @@ class Login extends BaseComponent {
   }
 
   afterSubmit(response){
-    if(has(response, 'errors')){
-      return this.setError(response.errors);
+    if(has(response, 'error')){
+      return this.setError(response.error);
     }
     response.email = this.state.email;
-    return this.login(response);
+    const { location: { search } } = this.props;
+    return this.login(response, search.replace('?', ''));
   }
 
   render() {

@@ -50,8 +50,6 @@ export default class HomePage extends BaseComponent {
             </Col>
 
             <Col md lg xl="6" sm="auto" className="mt-5 ">
-              <h5 className="text-uppercase border-teal">{this.pageContent.about_author.link}</h5>
-
               <div dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} />
             </Col>
           </Row>

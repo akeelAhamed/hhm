@@ -11,8 +11,9 @@ class ProductPage extends BaseComponent {
     super();
 
     this.state.qty = 1;
-
+    this.state.availability = '';
     this.buy = this.buy.bind(this);
+    this.toCart = this.toCart.bind(this);
     this.qtyClick = this.qtyClick.bind(this);
   }
 
@@ -24,6 +25,15 @@ class ProductPage extends BaseComponent {
   buy(e){
     this.addCart(this.pageContent, this.state.qty);
     return this.redirect('cartpage');
+  }
+
+  /**
+   * Cart added and checkout
+   * 
+   * @param {object} e 
+   */
+  toCart(e){
+    console.log(e);
   }
   
   /**
@@ -47,6 +57,10 @@ class ProductPage extends BaseComponent {
 
   buyButtom(){
     if(this.state.isLoggedIn){
+      if(this.pageContent.stock <= 0){
+        return(<span className="text-danger">Out of stock</span>);
+      }
+
       return(
           <InputGroup className="buy">
             <InputGroup.Prepend onClick={this.qtyClick}>
@@ -57,52 +71,54 @@ class ProductPage extends BaseComponent {
               <InputGroup.Text data-qty="1" className="btn">+</InputGroup.Text>
             </InputGroup.Append>
             <InputGroup.Append>
-            <Button className="btn btn-primary" onClick={this.buy}>Buy</Button>
+            <Button className="btn btn-primary" onClick={this.buy}>Buy now</Button>
             </InputGroup.Append>
+            <small>Secure transaction</small>
+
+            <input type="number" name="availability" placeholder="Enter pincode"/>
+            <span>{this.state.availability}</span>
           </InputGroup>
       );
     }
-    return(<Link className="mt-3 btn btn-primary" to="/login">Login & buy</Link>);
+    return(<Link className="mt-3 btn btn-primary" to={"/login?item/"+this.pageContent.slug}>Login & buy</Link>);
   }
 
   content() {
-    return(
-    <div className="main-container">
 
-        <div className="home-bg-1 ml-3 mr-3">
-          <p>{this.pageContent.name}</p>
-        </div>
+    return(
+      <div className="main-container py-4">
 
         <Container fluid>
           <Row className="no-gutters">
-            <Col xl md lg="6" sm="auto" >
-              <img className="img-fluid" alt="" src={this.pageContent.photo} />
+            <Col md="6" sm="auto" className="">
+              <strong className="text-uppercase border-teal"> {this.pageContent.name} </strong>
+              <img className="img-fluid border-teal-top" alt="" src={this.pageContent.photo} />
             </Col>
 
-            <Col xl md lg="6" sm="auto" className="my-auto p-3">
-              <h5 className="text-uppercase border-teal"> {this.pageContent.name} </h5>
-              <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} /><br />
-              {this.buyButtom()}
-            </Col>
-          </Row>
-        </Container>
+            <Col md="1"></Col>
 
-        <Container fluid className="bg-gray">
-          <Row>
-            <Col xl md lg="6" sm="auto" className="m-auto">
-              <div className="d-flex flex-column align-items-center">
+            <Col md="5" sm="auto">
+              <strong className="text-uppercase border-teal">Product summary</strong>
+              <div className="border-teal-top px-2 mt-3">
+                <b className="text-uppercase border-teal"> {this.pageContent.name} </b>
+                <div>
+                  <small>One year pack</small><br/>
+                  <b>Total amount: RS.{this.pageContent.price}</b> /- <cite>(Inclusive of all tax)</cite><br/>
+                  <small>Free shipping inside india</small>
+                </div>
+                
+                <hr/>
 
-                <img className="img-fluid align-self-start m-1" alt="girl" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 05.jpg')} />
-                <img className="img-fluid align-self-end m-1" alt="boy" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 06.jpg')} />
-                <img className="img-fluid align-self-start m-1" alt="girl" src={require('../HomePage/Img/fwdhhmhomepagedummypics/Home 05.jpg')} />
+                <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} /><br />
+                {this.buyButtom()}
+
+                <hr/>
+
+                <div>
+                  {this.pageContent.stock > 0?<span className="text-success">In stock</span>:<span className="text-danger">Out of stock</span>}
+                  <div dangerouslySetInnerHTML={{ __html: this.pageContent.policy }} />
+                </div>
               </div>
-            </Col>
-
-            <Col xl md lg="6" sm="auto" className="my-auto" >
-              <h5 className="border-teal text-uppercase">Success Stories <br /> a scientific way of living </h5>
-              <small>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</small>
-              <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,</small>
-              <small>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidata</small>
             </Col>
           </Row>
         </Container>

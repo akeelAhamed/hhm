@@ -11,7 +11,6 @@ export default class CartPage extends BaseComponent {
     this.state.promo = '';
     this.state.discount = 0;
     this.cart = this.getCart();
-    console.log(this.cart);
   }
 
   content() {
@@ -37,7 +36,7 @@ export default class CartPage extends BaseComponent {
     this.cart.ship = this.cart.ship === null?0:0
 
     return (
-      <div className="main-container">
+      <div className="main-container py-5">
         <Container fluid className="contr-width">
           <h2 className="border_teal-left" >Shopping Bag</h2>
           <Row className="">
@@ -64,10 +63,10 @@ export default class CartPage extends BaseComponent {
               <h4 className="border_teal-bottom">Order summary</h4>
               <FormControl className="text-center" aria-label="Promo code" placeholder='Have a promo code...' value={this.state.qty} name="promo" onChange={this.onChange} />
 
-              <p>Merchandise: <span className="float-right"> ${this.cart.price}</span> </p>
+              <p>Merchandise: <span className="float-right"> Rs.{this.cart.price}</span> </p>
               <p>Quantity   : <span className="float-right"> {this.cart._qty}x</span> </p>
-              <p>Estimated shipping: <span className="float-right"> ${this.cart.ship}</span></p>
-              <h4 className="border-top pt-3">ORDER TOTAL<span className="float-right">${parseFloat(this.cart.ship + (this.cart.price * this.cart._qty) - this.state.discount)}</span></h4>
+              <p>Estimated shipping: <span className="float-right"> Rs.{this.cart.ship}</span></p>
+              <h4 className="border-top pt-3">ORDER TOTAL<span className="float-right">Rs.{parseFloat(this.cart.ship + (this.cart.price * this.cart._qty) - this.state.discount)}</span></h4>
 
               <Link className="mt-1 btn btn-primary" to="/checkout">PROCEED TO CHECKOUT</Link>
             </Col>

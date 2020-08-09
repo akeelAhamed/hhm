@@ -23,7 +23,7 @@ export default class BaseComponent extends React.Component {
       pageLoaded: false
     };
 
-    const exceptApi = ['/register', '/login', '/register', '/cartpage', '/checkout'];
+    const exceptApi = ['/register', '/login', '/register', '/dashboard', '/cartpage', '/checkout'];
 
     this.pageContent = null;
     this.page = window.location.pathname;
@@ -113,11 +113,13 @@ export default class BaseComponent extends React.Component {
   /**
    * Loggedin user
    * 
-   * @param {object} data 
+   * @param {object} data
+   * @param {string} data
    */
-  login(data){
+  login(data, after=""){
+    after = after===""?'dashboard':after;
     window.ls.set('_AUTHTOKEN', data);
-    return window.location.href = 'dashboard';
+    return window.location.href = after;
   }
 
   /**
@@ -135,7 +137,15 @@ export default class BaseComponent extends React.Component {
    */
   onChange(event){
     const {name, value} = event.target;
-    this.setState({[name]: value});
+    let name2 = name.split('.');
+    (name2.length === 2)?
+    this.setState({
+      [name2[0]]:{
+        ...this.state[name2[0]],
+        [name2[1]]: value
+      }
+    })
+    :this.setState({[name]: value});
   }
   
   /**

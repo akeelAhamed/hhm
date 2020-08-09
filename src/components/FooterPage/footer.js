@@ -9,8 +9,8 @@ export default class FooterPage extends React.Component {
 
   render(){
     return (
-      <Container fluid>
-        <Row className="bg-info text-white">
+      <Container fluid className="pt-3 bg-info text-white">
+        <Row>
           <Col xl lg md="6" sm="12">
             <img
               src={this.props.page.heade_footer.logo}

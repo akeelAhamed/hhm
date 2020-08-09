@@ -70,7 +70,8 @@ class App extends React.Component{
           <Route path="/loginpage" component={(props) => this.component(props, LoginPage) } />
 
           {/* Form */}
-          <Route path="/login" component={(props) => this.component(props, Login) } />
+          <Route path="/login" exact component={(props) => this.component(props, Login) } />
+          <Route path="/login/:after" component={(props) => this.component(props, Login) } />
           <Route path="/register" component={(props) => this.component(props, Register) } />
 
           {/* Auth routes */}

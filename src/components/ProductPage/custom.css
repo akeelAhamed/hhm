@@ -41,20 +41,16 @@
     width: 92%;
  }
 
-.home_bg-4{
-    background: url('../HomePage/Img/fwdhhmhomepagedummypics/Home\ 07.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: fit-content;
-}
-
 .home_bg-4  img{
     width: 30vh;
     padding: 8px;
 }
 
- .border-teal{
+.border-teal-top{
+    border-top: 5px solid teal;
+    padding-top: 4px;
+}
+.border-teal{
     border-left: 5px solid teal;
     padding-left: 4px;
 }

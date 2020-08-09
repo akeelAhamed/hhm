@@ -1,6 +1,7 @@
-import BaseComponent from '../../BaseComponent';
 import React from 'react';
 import './custom.css';
+import BaseComponent from '../../BaseComponent';
+import Success from '../OrderConfirm/orderconfirm';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -10,31 +11,67 @@ export default class CheckOut extends BaseComponent {
         super();
 
         this.cart = this.getCart();
-    
+        this.state.tinfo = 0;
+        this.state.profile = null;
+        this.state.chekout = null;
+        this.state.complete= false; // after amount payed request send status
+        
         if(this.cart !== ''){
             this.cart.ship = this.cart.ship === null?0:0
-            let options = {
-                "key": "rzp_test_xlJRG5Yh7YBbXa",
-                "amount": parseFloat((this.cart.ship + this.cart.price) * 1), // 100 paise = INR 1, amount in paisa
-                "name": "Merchant Name",
-                "description": "Purchase Description",
-                "handler": function (response){
-                    console.log(response);
-                },
-                "prefill": {
-                    "name": "user name",
-                    "email": "user@email.com",
-                    "contact": 123456789
-                },
-                "notes": {
-                "address": "my address"
-                },
-            };
-    
-            this.rzp = new window.Razorpay(options);
-            this.chekout = this.chekout.bind(this);
+            this.initRzp();
         }
-        console.log(this.cart, this.state);
+    }
+
+    componentDidMount(){
+        window._axios.get('/profile?token='+this.state.user.token)
+        .then((result) => {
+            if(result.data !== ''){
+              this.setState({
+                profile: result.data
+              })
+            }else{
+              this.logOut();
+            }
+        }).catch(function(error){
+          console.log(error.response);
+        });
+    }
+
+    /**
+     * Init razorpay
+     */
+    initRzp(){
+        let _this = this;
+        let options = {
+            "key": "rzp_test_xlJRG5Yh7YBbXa",
+            "amount": parseFloat(this.cart.ship + (this.cart.price * this.cart._qty)) * 10, // 100 paise = INR 1, amount in paisa
+            "name": this.cart.name,
+            "description": "Rs."+this.cart.price+" | Qty:"+this.cart._qty,
+            "handler": function (response){
+                console.log(response, 'txn_id ', 'product_id');
+                _this.emptyCart();
+                _this.setState({
+                    chekout: response
+                });
+                window._axios.get("/payreturn?token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&product_id="+_this.cart.id)
+                .then((result) => {
+                    _this.setState({
+                        complete: true
+                    })
+                }).catch(function(error){
+                  console.log(error.response);
+                });
+            },
+            "prefill": {
+                "email": this.state.user.email
+            },
+            "notes": {
+                "product": this.cart
+            },
+        };
+
+        this.rzp = new window.Razorpay(options);
+        this.chekout = this.chekout.bind(this);
     }
     
     /**
@@ -42,10 +79,13 @@ export default class CheckOut extends BaseComponent {
      * @param {object} e 
      */
     chekout(e){
-    this.rzp.open();
+        this.rzp.open();
     }
 
     content() {
+
+        console.log(this.state.profile);
+
         if(!this.state.isLoggedIn){
             return (
                 <div className="main-container">
@@ -89,22 +129,28 @@ export default class CheckOut extends BaseComponent {
                     <Row className="justify-content-center pt-3">
                         <Col sm={6} xl={4} md={6} lg={4}>
                             <h2>SHOPPING CART</h2>
-                            <p>Back to store</p>
+                            <Link className="text-dark" to="/products">Back to store</Link>
                             <section className="border border-left-0 border-right-0">
-
+                                <p>{this.cart.name}</p>
                                 <div className="d-flex">
-                                    <img className="img-fluid w-25 pt-1" alt='product' src={this.cart.thumbnail} />
+                                    <img className="img-fluid w-25 pt-1" src={this.cart.thumbnail} alt={'product'} />
                                     <div className="m-auto">
-                                        <p>1 item</p>
-                                        <select className="border-0 text-info">
-                                            <option>More info</option>
+                                        <p>{this.cart._qty} item</p>
+                                        <select className="border-0 text-info" name="tinfo" onChange={this.onChange} value={this.state.tinfo}>
+                                            <option value="1">More info</option>
+                                            <option value="0">Less info</option>
                                         </select>
+
+                                        <div style={{maxHeight: 200,overflow: 'auto'}}>
+                                            {this.state.tinfo === "1"?<><div dangerouslySetInnerHTML={{ __html: this.cart.details }} /></>:''}
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="p-2">
-                                    <p>Subtotal<span className="float-right"> ${this.cart.price}</span></p>
-                                    <p>Shipping<span className="float-right"> ${this.cart.ship}</span></p>
-                                    <h4>TOTAL <span className="float-right">${parseFloat(this.cart.ship + this.cart.price)}</span></h4>
+                                    <p>Subtotal<span className="float-right"> Rs.{this.cart.price}</span></p>
+                                    <p>Shipping<span className="float-right"> Rs.{this.cart.ship}</span></p>
+                                    <p>Quantity<span className="float-right"> :  {this.cart._qty}x</span> </p>
+                                    <h4>TOTAL <span className="float-right">Rs.{parseFloat(this.cart.ship + (this.cart.price * this.cart._qty))}</span></h4>
                                 </div>
                             </section>
                         </Col>
@@ -112,9 +158,9 @@ export default class CheckOut extends BaseComponent {
                         <Col sm={6} xl={4} md={6} lg={4}><h2>CHECKOUT</h2>
                             <section className="border border-left-0 border-right-0">
                                 <ul className="udetails">
-                                    <li>Email<br /><small>{this.state.user.email}</small></li>
-                                    <li>Contact<br /><small>johnjoe | +91 9880454789</small></li>
-                                    <li>Pickup Information <br /><small> Local Pickup</small></li>
+                                    <li>Email<br /><small>{this.state.profile.email}</small></li>
+                                    <li>Contact<br /><small>{this.state.profile.name} | {this.state.profile.phone}</small></li>
+                                    <li>Pickup Information <br /><small> {this.state.profile.address+', '+this.state.profile.city+', '+this.state.profile.country+', '+this.state.profile.zip}</small></li>
                                 </ul>
                             </section>
 
@@ -139,7 +185,11 @@ export default class CheckOut extends BaseComponent {
     }
 
     render(){
-        return (!this.state.pageLoaded)?this.prePage():this.content();
+        if(this.state.chekout !== null){
+            return(<Success complete={this.state.complete} cart={this.cart} payment_id={this.state.chekout.razorpay_payment_id}/>);
+        }
+        return this.state.profile === null?'loading....':this.content();
+
     }
 
 }
