@@ -1,6 +1,8 @@
-.pro{max-width: 480px;width: 100%;}
+.pro{width: 100%;}
+.pro.mw{max-width: 480px;}
 .pro.true{box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);}
 .header{padding: 0.5rem 2rem;cursor: pointer;margin-bottom: 0px;}
-.pro.true .header{background: #17a2b8;color: #FFF;font-size: 1.5rem;}
+.pro.true .header{background: #00a09b;color: #FFF;font-size: 1.5rem;}
 .c-body{padding: 0.5rem 2rem;border-top: 1px solid #cccccc;}
-.c-body .form-control{max-width: 360px;border: none;border-bottom: 1.5px solid #17a2b8;border-radius: 0;margin-bottom: 5px;}
+.c-body .form-control{max-width: 360px;border: none;border-bottom: 1.5px solid #00a09b;border-radius: 0;margin-bottom: 5px;}
+.c-body .c{max-width: 360px;width: 100%;}

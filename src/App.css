@@ -1,10 +1,20 @@
+@font-face {
+    font-family: Rossanova;
+    src: url(./fonts/rossanova/Eko\ Bimantara\ -\ Rossanova-Regular.otf);
+}
 *,html{
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
 }
 #appbody{min-height: 55vh;}
-body .center {
+body{
+    font-family: Rossanova, sans-serif;
+    color: #2a2b2b;
+}
+b, strong{color: #101010;}
+a{color: #758595;}
+.center {
     height: 90vh;
     padding: 0;
     margin: 0;
@@ -16,12 +26,11 @@ body .center {
     align-items: center;
     justify-content: center;
 }
-body .center > div{text-align: center;}
-a{color: #758595;}
+.center > div{text-align: center;}
 .btn-primary{background-color: #00a19c;border-color: #00a19c;}
 .btn-primary:hover{background-color: #099fb7;border-color:#099fb7;}
-.navbar-light .navbar-nav .nav-link.active{color: #00a19c;}
-.navbar-light .navbar-nav .nav-link{font-size: 14px;}
+.navbar-light .navbar-nav .nav-link.active{color: #00a19c;pointer-events: none;}
+.navbar-light .navbar-nav .nav-link{font-size: 14px;color: rgb(0, 0, 0, 0.7);}
 
 @media (min-width: 768px){
     .header-nav .navbar-collapse a:not(:last-child):after {
@@ -31,7 +40,7 @@ a{color: #758595;}
         height: 14px;
         background: #00a19c;
         z-index: 1080;
-        margin-top: 5px;
+        margin-top: 2px;
         margin-left: 5px;
     }
 }

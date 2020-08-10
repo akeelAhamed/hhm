@@ -7,7 +7,56 @@ export default class Header extends React.Component {
   constructor(props){
     super();
     this.state = {
-      headerFooter: null
+      headerFooter: {
+        "heade_footer": {
+            "logo": "http://www.hhmlife.org/assets/images/1596725014logo.png",
+            "footer": "Aushmath introduces to you the process PURE, viz., Panacea Ultimate for Rousing Energy to realize the complete WELLNESS of one’s mind and body. We adopted certain intelligent dimensions mentioned in Vedic scriptures to materialize the process equipment ‘PURE Pyramid’ (i.e., Inverted Copper Pyramid) employed for the process PURE. Aushmath’s PANACEA ULTIMATE is a perfect blend of natural elements developed for harnessing the best benefits from the widely recognized ‘Smoke Therapy’.",
+            "footer_logo": "1596980432HHM-Logo-White.png"
+        },
+        "heade_menu": [
+            {
+                "id": "1",
+                "title": "About Us",
+                "slug": "about"
+            },
+            {
+                "id": "2",
+                "title": "Privacy & Policy",
+                "slug": "privacy"
+            },
+            {
+                "id": "3",
+                "title": "Terms & Condition",
+                "slug": "terms"
+            }
+        ],
+        "footer_menu": [
+            {
+                "id": "2",
+                "title": "Privacy & Policy",
+                "slug": "privacy"
+            },
+            {
+                "id": "3",
+                "title": "Terms & Condition",
+                "slug": "terms"
+            }
+        ],
+        "sociallinks": [
+            {
+                "facebook": "https://www.facebook.com/sathyaventhan.vasu",
+                "gplus": "https://plus.google.com/",
+                "twitter": "https://twitter.com/",
+                "linkedin": "https://www.linkedin.com/"
+            }
+        ],
+        "pagesettings": {
+            "street": "3584 Hickory Heights Drive ,Hanover MD 21076, USA",
+            "phone": "00 000 000 000",
+            "fax": "00 000 000 000",
+            "email": "admin@geniusocean.com"
+        }
+    }
     }
 
     this.active = this.active.bind(this);
@@ -18,16 +67,16 @@ export default class Header extends React.Component {
   }
   
   componentDidMount(){
-    window._axios.get('headerfooter')
-      .then((result) => {
-        if(result.status === 200){
-          this.setState({
-            headerFooter : result.data
-          })
-        }
-      }).catch(function(error){
-        console.log(error);
-      });
+    // window._axios.get('headerfooter')
+    //   .then((result) => {
+    //     if(result.status === 200){
+    //       this.setState({
+    //         headerFooter : result.data
+    //       })
+    //     }
+    //   }).catch(function(error){
+    //     console.log(error);
+    //   });
   }
 
   render() {
@@ -41,7 +90,7 @@ export default class Header extends React.Component {
 
     return (
       <>
-        <Navbar className="header-nav" bg="light" expand="md">
+        <Navbar className="header-nav bg-white border-bottom" expand="md">
           <Navbar.Brand>
             <Nav.Link as={Link} to='/'>
             <img
@@ -55,6 +104,7 @@ export default class Header extends React.Component {
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          
           <Navbar.Collapse id="basic-navbar-nav ">
             <Nav className="ml-auto text-uppercase">
               <Nav.Link active={window.location.pathname === '/'} as={Link} to='/' onClick={this.active}>Home</Nav.Link>
@@ -74,8 +124,9 @@ export default class Header extends React.Component {
               }
             </Nav>
           </Navbar.Collapse>
-        
         </Navbar>
+
+        <div style={{height: 30, background: '#00a09b'}}></div>
 
         <div id="appbody">
           {this.props.children}

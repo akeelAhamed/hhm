@@ -20,7 +20,7 @@ export default class BaseComponent extends React.Component {
       isLoggedIn: loged !== '',
       disabled: false,
       errors  : [],
-      pageLoaded: false
+      pageLoaded: !false
     };
 
     window.scrollTo(0, 0);

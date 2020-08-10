@@ -1,7 +1,7 @@
 import React from "react";
 import BaseComponent from '../BaseComponent';
 import './custom.css';
-import { Button, Container, Card, Row, Col, Collapse, FormControl } from "react-bootstrap";
+import { Button, Container, Card, Row, Col, Collapse, FormControl, Spinner } from "react-bootstrap";
 import has from "lodash/has";
 
 export default class Index extends BaseComponent {
@@ -49,10 +49,7 @@ export default class Index extends BaseComponent {
       "date": null,
       "ban": "0"
     };
-    this.state._profile = true;
-    this.state._address = false;
-    this.state._order   = false;
-    this.state._track   = false;
+    this.state.tab = 0;
 
     this.toggle = this.toggle.bind(this);
 
@@ -65,9 +62,9 @@ export default class Index extends BaseComponent {
    * @param {object} e 
    */
   toggle(e){
-    if(has(this.state, e.target.dataset.key)){
+    if(has(e.target.dataset, 'key')){
       this.setState({
-        [e.target.dataset.key]: !this.state[e.target.dataset.key]
+        tab: parseInt(e.target.dataset.key)
       })
     }
   }
@@ -90,9 +87,10 @@ export default class Index extends BaseComponent {
   content() {
     return (
       <>
-        <Card className={"my-3 pro "+this.state._profile}>
-          <h5 className="header" data-key="_profile" onClick={this.toggle}>Profile</h5>
-          <Collapse in={this.state._profile}>
+
+        <Card className={"my-3 pro mw "+(this.state.tab === 0)}>
+          <h5 className="header" data-key={0} onClick={this.toggle}>Profile</h5>
+          <Collapse in={this.state.tab === 0}>
             <div id="_profile" className="c-body">
               <form data-action="profile" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
                 <FormControl placeholder="Name" id="name" name="profile.name" value={this.state.profile.name} onChange={this.onChange} />
@@ -106,9 +104,9 @@ export default class Index extends BaseComponent {
           </Collapse>
         </Card>
 
-        <Card className={"my-3 pro "+this.state._address}>
-          <h5 className="header" data-key="_address" onClick={this.toggle}>Address</h5>
-          <Collapse in={this.state._address}>
+        <Card className={"my-3 pro mw "+(this.state.tab === 1)}>
+          <h5 className="header" data-key={1} onClick={this.toggle}>Address</h5>
+          <Collapse in={this.state.tab === 1}>
             <div id="_address" className="c-body">
               <form data-action="address" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
                 <FormControl placeholder="Name" id="aname" name="profile.name" value={this.state.profile.name} onChange={this.onChange} />
@@ -132,23 +130,24 @@ export default class Index extends BaseComponent {
           </Collapse>
         </Card>
 
-        <Card className={"my-3 pro "+this.state._order}>
-          <h5 className="header" data-key="_order" onClick={this.toggle}>My orders</h5>
-          <Collapse in={this.state._order}>
+        <Card className={"my-3 pro mw "+(this.state.tab === 2)}>
+          <h5 className="header" data-key={2} onClick={this.toggle}>My orders</h5>
+          <Collapse in={this.state.tab === 2}>
             <div id="_order" className="c-body">
               No orders placed  
             </div>
           </Collapse>
         </Card>
 
-        <Card className={"my-3 pro "+this.state._track}>
-          <h5 className="header" data-key="_track" onClick={this.toggle}>Track my order</h5>
-          <Collapse in={this.state._track}>
+        <Card className={"my-3 pro mw "+(this.state.tab === 3)}>
+          <h5 className="header" data-key={3} onClick={this.toggle}>Track my order</h5>
+          <Collapse in={this.state.tab === 3}>
             <div id="_track" className="c-body">
               No orders to track  
             </div>
           </Collapse>
         </Card>
+      
       </>
     );
   }
@@ -166,7 +165,7 @@ export default class Index extends BaseComponent {
                 </Card.Header>
               </Card>
               
-              {this.state.profile === null?'loading....':this.content()}
+              {this.state.profile === null?<div className="center"><Spinner animation="border" variant="info"/></div>:this.content()}
 
             </Col>
           </Row>

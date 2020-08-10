@@ -55,6 +55,33 @@
     padding-left: 4px;
 }
 
+.full-img{
+    height: 450px;
+    width : 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+#slideshow{
+    overflow: auto;
+    white-space: nowrap;
+    width: 100%;
+    padding: 0.5em;
+}
+
+#slideshow img{
+    margin: auto 0.5em;
+    width:100px;
+    height:100px;
+    cursor: pointer;
+}
+
+#slideshow img.true{
+    border: 2px solid #00a19c;
+    pointer-events: none;
+}
+
 @media (min-width:768px){
     .player > div{
         width: 50%!important;
