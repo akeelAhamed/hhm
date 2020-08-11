@@ -18,7 +18,7 @@ export default class CheckOut extends BaseComponent {
 
         this.state.profile = null;
 
-        this.state.chekout = {razorpay_payment_id: null};
+        this.state.chekout = null;
         this.state.complete= false; // after amount payed request send status
         this.state.same = false;
         this.state.baddress= {
@@ -46,32 +46,38 @@ export default class CheckOut extends BaseComponent {
         this.toggle = this.toggle.bind(this);
         this.onChangeSelf = this.onChangeSelf.bind(this);
         this.onSubmitSelf = this.onSubmitSelf.bind(this);
-        
-        console.log(this.state.profile);
     }
 
     componentDidMount(){
-        window._axios.get('/profile?token='+this.state.user.token)
-        .then((result) => {
-            if(result.data !== ''){
-                const baddress = {
-                    name: this.state.profile.name,
-                    phone: this.state.profile.phone,
-                    address: this.state.profile.address,
-                    city: this.state.profile.city,
-                    country: this.state.profile.country,
-                    zip: this.state.profile.zip
-                };
-              this.setState({
-                profile: result.data,
-                baddress: baddress
-              })
-            }else{
-              this.logOut();
-            }
-        }).catch(function(error){
-          console.log(error.response);
-        });
+        if(this.cart !== ''){
+            window._axios.get('/profile?token='+this.state.user.token)
+            .then((result) => {
+                if(result.data !== ''){
+                    const baddress = {
+                        name: result.data.name,
+                        phone: result.data.phone,
+                        address: result.data.address,
+                        city: result.data.city,
+                        country: result.data.country,
+                        zip: result.data.zip
+                    };
+                  this.setState({
+                    profile: result.data,
+                    baddress: baddress
+                  });
+                  console.log(this.state, result, result.data);
+                }else{
+                  this.logOut();
+                }
+            })
+            .catch(function(error){
+              console.log(error.response);
+            });
+        }else{
+            this.setState({
+                profile: {}
+            });
+        }
     }
 
     /**
@@ -85,7 +91,6 @@ export default class CheckOut extends BaseComponent {
             "name": this.cart.name,
             "description": "Rs."+this.cart.price+" | Qty:"+this.cart._qty,
             "handler": function (response){
-                console.log(response, 'txn_id ', 'product_id');
                 _this.emptyCart();
                 _this.setState({
                     chekout: response
@@ -263,7 +268,7 @@ export default class CheckOut extends BaseComponent {
                                             <div>
                                                 <p>Total weight: {this.cart.size_qty + this.cart.size}</p>
                                                 <small>One year pack</small><br/>
-                                                <p>Qty: 1</p>
+                                                <p>Qty: {this.cart._qty}</p>
                                                 <h5 className="border py-2"><b>ORDER TOTAL : Rs.{parseFloat(this.cart.ship + (this.cart.price * this.cart._qty) - this.state.discount)}</b> <small>(Inclusive of all tax)</small></h5>
                                             </div>
                                             <Button type="button" variant="dark" className="c" data-key={3} onClick={this.toggle}>Continue</Button>

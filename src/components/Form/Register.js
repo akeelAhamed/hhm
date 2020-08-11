@@ -41,15 +41,15 @@ class Login extends BaseComponent {
 
               <Form data-action="register" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
                   <Form.Group controlId="formname">
-                      <Form.Control type="text" name="name" onChange={this.onChange} value={this.state.name} placeholder="Name" required autoFocus/>
-                  </Form.Group>
-
-                  <Form.Group controlId="formphone">
-                      <Form.Control type="number" name="phone" onChange={this.onChange} value={this.state.phone} placeholder="Phone number" required/>
+                      <Form.Control type="text" name="name" onChange={this.onChange} value={this.state.name} placeholder="Full Name" required autoFocus/>
                   </Form.Group>
 
                   <Form.Group controlId="formemail">
                       <Form.Control type="email" name="email" onChange={this.onChange} value={this.state.email} placeholder="Email id" required/>
+                  </Form.Group>
+
+                  <Form.Group controlId="formphone">
+                      <Form.Control type="number" name="phone" onChange={this.onChange} value={this.state.phone} placeholder="Phone number" required/>
                   </Form.Group>
 
                   <Form.Group controlId="formPassword">
@@ -69,7 +69,7 @@ class Login extends BaseComponent {
               
               <div className="p-2 d-block w-100">
                 <Link className="btn btn-link text-dark float-right" to='/login'>LOGIN</Link>
-                <span className="mt-2 d-block">Dont have an account?</span>
+                <span className="mt-2 d-block">Already have an account?</span>
               </div>
 
             </Col>

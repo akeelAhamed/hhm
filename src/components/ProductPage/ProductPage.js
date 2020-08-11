@@ -109,7 +109,7 @@ class ProductPage extends BaseComponent {
 
                 <div>
                   <small>One year pack</small><br/>
-                  <p>Qty:-|1|+</p>
+                  <p>Qty:<span data-qty="0" onClick={this.qtyClick} className="btn">-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className="btn">+</span></p>
                   <b>Total amount: RS.{this.pageContent.price}</b> /- <cite>(Inclusive of all tax)</cite><br/>
                   <small>Free shipping inside india</small>
                 </div>
