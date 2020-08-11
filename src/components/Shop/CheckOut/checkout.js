@@ -11,51 +11,14 @@ export default class CheckOut extends BaseComponent {
         super();
 
         this.cart = this.getCart();
+        this.state.promo = '';
+        this.state.discount = 0;
         this.state.tinfo = 0;
         this.state.tab = 0;
-        this.state.profile = {
-            "id": 36,
-            "name": "Akeel",
-            "photo": null,
-            "zip": null,
-            "city": null,
-            "country": null,
-            "address": null,
-            "phone": null,
-            "fax": null,
-            "email": "Akeel@gmail.com",
-            "created_at": "2020-08-03 07:56:59",
-            "updated_at": "2020-08-03 07:56:59",
-            "is_provider": "0",
-            "status": "0",
-            "verification_link": "85703cc672749036372b9d04a6342086",
-            "email_verified": "Yes",
-            "affilate_code": "3578fde5d3edff1fde5cd46cc3b785f3",
-            "affilate_income": "0",
-            "shop_name": null,
-            "owner_name": null,
-            "shop_number": null,
-            "shop_address": null,
-            "reg_number": null,
-            "shop_message": null,
-            "shop_details": null,
-            "shop_image": null,
-            "f_url": null,
-            "g_url": null,
-            "t_url": null,
-            "l_url": null,
-            "is_vendor": "0",
-            "f_check": "0",
-            "g_check": "0",
-            "t_check": "0",
-            "l_check": "0",
-            "mail_sent": "0",
-            "shipping_cost": "0",
-            "current_balance": "0",
-            "date": null,
-            "ban": "0"
-        };
-        this.state.chekout = null;
+
+        this.state.profile = null;
+
+        this.state.chekout = {razorpay_payment_id: null};
         this.state.complete= false; // after amount payed request send status
         this.state.same = false;
         this.state.baddress= {
@@ -82,24 +45,33 @@ export default class CheckOut extends BaseComponent {
         
         this.toggle = this.toggle.bind(this);
         this.onChangeSelf = this.onChangeSelf.bind(this);
-
+        this.onSubmitSelf = this.onSubmitSelf.bind(this);
         
         console.log(this.state.profile);
     }
 
     componentDidMount(){
-        // window._axios.get('/profile?token='+this.state.user.token)
-        // .then((result) => {
-        //     if(result.data !== ''){
-        //       this.setState({
-        //         profile: result.data
-        //       })
-        //     }else{
-        //       this.logOut();
-        //     }
-        // }).catch(function(error){
-        //   console.log(error.response);
-        // });
+        window._axios.get('/profile?token='+this.state.user.token)
+        .then((result) => {
+            if(result.data !== ''){
+                const baddress = {
+                    name: this.state.profile.name,
+                    phone: this.state.profile.phone,
+                    address: this.state.profile.address,
+                    city: this.state.profile.city,
+                    country: this.state.profile.country,
+                    zip: this.state.profile.zip
+                };
+              this.setState({
+                profile: result.data,
+                baddress: baddress
+              })
+            }else{
+              this.logOut();
+            }
+        }).catch(function(error){
+          console.log(error.response);
+        });
     }
 
     /**
@@ -118,7 +90,14 @@ export default class CheckOut extends BaseComponent {
                 _this.setState({
                     chekout: response
                 });
-                window._axios.get("/payreturn?token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&product_id="+_this.cart.id)
+                let query = '';
+                for (const key in _this.state.baddress) {
+                    query += "&customer_"+key+"="+_this.state.baddress[key];
+                }
+                for (const key in _this.state.daddress) {
+                    query += "&customer_"+key+"="+_this.state.daddress[key];
+                }
+                window._axios.get("/payreturn?token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&product_id="+_this.cart.id+query)
                 .then((result) => {
                     _this.setState({
                         complete: true
@@ -162,20 +141,30 @@ export default class CheckOut extends BaseComponent {
 
     onChangeSelf(e){
         const {name, value} = e.target;
-        const obj = {
-            target: {
-                name : name,
-                value: value
+        if(name === 'same'){
+            return this.setState({
+                same: !this.state.same
+            })
+        }else if(!this.state.same){
+            const obj = {
+                target: {
+                    name : name,
+                    value: value
+                }
             }
+            return this.onChange(obj);
         }
-        return this.onChange(obj);
+    }
+
+    onSubmitSelf(e){
+        e.preventDefault();
+        return this.toggle(e);
     }
 
     content() {
         if(!this.state.isLoggedIn){
             return (
                 <div className="main-container">
-                    <h1 className="bg-info p-2 text-info">1</h1>
                     <Container fluid>
                         <Row className="center">
                             <Col sm={6} className="m-auto text-center">
@@ -192,7 +181,6 @@ export default class CheckOut extends BaseComponent {
         }else if(this.cart === ''){
             return (
                 <div className="main-container">
-                    <h1 className="bg-info p-2 text-info">1</h1>
                     <Container fluid>
                         <Row className="justify-content-center pt-3" style={{height: '70vh'}}>
                             <Col sm={6} className="m-auto text-center">
@@ -208,8 +196,6 @@ export default class CheckOut extends BaseComponent {
             );
         }
 
-        console.log(this.state.same);
-
         return (
             <div className="main-container">
                 <Container fluid>
@@ -219,20 +205,20 @@ export default class CheckOut extends BaseComponent {
                                 <h5 className="header" data-key={0} onClick={this.toggle}>Billing address</h5>
                                 <Collapse in={this.state.tab === 0}>
                                     <div id="_profile" className="c-body">
-                                    <form data-action="address" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
-                                            <FormControl placeholder="Full Name" name="baddress.name" value={this.state.baddress.name} onChange={this.onChangeSelf} />
+                                        <form data-key={1} onSubmit={this.onSubmitSelf}>
+                                            <FormControl placeholder="Full Name" name="baddress.name" value={this.state.baddress.name} onChange={this.onChange} />
 
-                                            <FormControl type="number" placeholder="Mobile number" name="baddress.phone" value={this.state.baddress.phone} onChange={this.onChangeSelf} />
+                                            <FormControl type="number" placeholder="Mobile number" name="baddress.phone" value={this.state.baddress.phone} onChange={this.onChange} />
 
-                                            <FormControl placeholder="Address" name="baddress.address" value={this.state.baddress.address} onChange={this.onChangeSelf} />
+                                            <FormControl placeholder="Address" name="baddress.address" value={this.state.baddress.address} onChange={this.onChange} />
 
-                                            <FormControl placeholder="City" name="baddress.city" value={this.state.baddress.city} onChange={this.onChangeSelf} />
+                                            <FormControl placeholder="City" name="baddress.city" value={this.state.baddress.city} onChange={this.onChange} />
 
-                                            <FormControl placeholder="Country" name="baddress.country" value={this.state.baddress.country} onChange={this.onChangeSelf} />
+                                            <FormControl placeholder="Country" name="baddress.country" value={this.state.baddress.country} onChange={this.onChange} />
 
-                                            <FormControl type="number" placeholder="Pincode" name="baddress.zip" value={this.state.baddress.zip} onChange={this.onChangeSelf} />
+                                            <FormControl type="number" placeholder="Pincode" name="baddress.zip" value={this.state.baddress.zip} onChange={this.onChange} />
 
-                                            <Button type="button" variant="dark" className="c" data-key={1} onClick={this.toggle}>Continue</Button>
+                                            <Button type="submit" variant="dark" className="c" data-key={1} onClick={this.toggle}>Continue</Button>
 
                                         </form>
                                     
@@ -244,22 +230,22 @@ export default class CheckOut extends BaseComponent {
                                 <h5 className="header" data-key={1} onClick={this.toggle}>Delivery address</h5>
                                 <Collapse in={this.state.tab === 1}>
                                     <div id="_address" className="c-body">
-                                        <form data-action="address" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
-                                            <FormControl placeholder="Full Name" name="daddress.name" value={this.state.daddress.name} onChange={this.onChangeSelf} />
+                                        <form data-key={2} onSubmit={this.onSubmitSelf}>
+                                            <FormControl placeholder="Full Name" name="daddress.name" value={(this.state.same)?this.state.baddress.name:this.state.daddress.name} onChange={this.onChangeSelf} />
 
-                                            <FormControl type="number" placeholder="Mobile number" name="daddress.phone" value={this.state.daddress.phone} onChange={this.onChangeSelf} />
+                                            <FormControl type="number" placeholder="Mobile number" name="daddress.phone" value={(this.state.same)?this.state.baddress.phone:this.state.daddress.phone} onChange={this.onChangeSelf} />
 
-                                            <FormControl placeholder="Address" name="daddress.address" value={this.state.daddress.address} onChange={this.onChangeSelf} />
+                                            <FormControl placeholder="Address" name="daddress.address" value={(this.state.same)?this.state.baddress.address:this.state.daddress.address} onChange={this.onChangeSelf} />
 
-                                            <FormControl placeholder="City" name="daddress.city" value={this.state.daddress.city} onChange={this.onChangeSelf} />
+                                            <FormControl placeholder="City" name="daddress.city" value={(this.state.same)?this.state.baddress.city:this.state.daddress.city} onChange={this.onChangeSelf} />
 
-                                            <FormControl placeholder="Country" name="daddress.country" value={this.state.daddress.country} onChange={this.onChangeSelf} />
+                                            <FormControl placeholder="Country" name="daddress.country" value={(this.state.same)?this.state.baddress.country:this.state.daddress.country} onChange={this.onChangeSelf} />
 
-                                            <FormControl type="number" placeholder="Pincode" name="daddress.zip" value={this.state.daddress.zip} onChange={this.onChangeSelf} />
+                                            <FormControl type="number" placeholder="Pincode" name="daddress.zip" value={(this.state.same)?this.state.baddress.zip:this.state.daddress.zip} onChange={this.onChangeSelf} />
 
-                                            <Form.Check id="sameas" type="checkbox" label="Same as billing address" name="same" value={!this.state.same} onChange={this.onChange} />
+                                            <Form.Check id="sameas" type="checkbox" label="Same as billing address" name="same" value={this.state.same} onChange={this.onChangeSelf} />
 
-                                            <Button type="button" variant="dark" className="c" data-key={2} onClick={this.toggle}>Continue</Button>
+                                            <Button type="submit" variant="dark" className="c" data-key={2} onClick={this.toggle}>Continue</Button>
 
                                         </form>
                                     </div>
@@ -270,29 +256,17 @@ export default class CheckOut extends BaseComponent {
                                 <h5 className="header" data-key={2} onClick={this.toggle}>Order summary</h5>
                                 <Collapse in={this.state.tab === 2}>
                                     <div id="_order" className="c-body">
-                                        <Link className="text-dark" to="/products">Back to store</Link>
-                                        <section className="border border-left-0 border-right-0">
-                                            <p>{this.cart.name}</p>
-                                            <div className="d-flex pt-1">
-                                                <img className="img-fluid w-50" src={this.cart.thumbnail} alt={'product'} />
-                                                <div className="w-50">
-                                                    <p>{this.cart._qty} item</p>
-                                                    <select className="border-0 text-info" name="tinfo" onChange={this.onChangeSelf} value={this.state.tinfo}>
-                                                        <option value="1">More info</option>
-                                                        <option value="0">Less info</option>
-                                                    </select>
-
-                                                    <div style={{maxHeight: 200,overflow: 'auto'}}>
-                                                        {this.state.tinfo === "1"?<><div dangerouslySetInnerHTML={{ __html: this.cart.details }} /></>:''}
-                                                    </div>
-                                                </div>
+                                        {/* <Link className="text-dark" to="/products">Back to store</Link> */}
+                                        <section className="c">
+                                            <h5>{this.cart.name}</h5>
+                
+                                            <div>
+                                                <p>Total weight: {this.cart.size_qty + this.cart.size}</p>
+                                                <small>One year pack</small><br/>
+                                                <p>Qty: 1</p>
+                                                <h5 className="border py-2"><b>ORDER TOTAL : Rs.{parseFloat(this.cart.ship + (this.cart.price * this.cart._qty) - this.state.discount)}</b> <small>(Inclusive of all tax)</small></h5>
                                             </div>
-                                            <div className="p-2">
-                                                <p>Subtotal<span className="float-right"> Rs.{this.cart.price}</span></p>
-                                                <p>Shipping<span className="float-right"> Rs.{this.cart.ship}</span></p>
-                                                <p>Quantity<span className="float-right"> :  {this.cart._qty}x</span> </p>
-                                                <h4>TOTAL <span className="float-right">Rs.{parseFloat(this.cart.ship + (this.cart.price * this.cart._qty))}</span></h4>
-                                            </div>
+                                            <Button type="button" variant="dark" className="c" data-key={3} onClick={this.toggle}>Continue</Button>
                                         </section>
                                     </div>
                                 </Collapse>
@@ -302,8 +276,8 @@ export default class CheckOut extends BaseComponent {
                                 <h5 className="header" data-key={3} onClick={this.toggle}>Payment option</h5>
                                 <Collapse in={this.state.tab === 3}>
                                     <div id="_track" className="c-body">
-                                        <section className="p-1">
-                                            <strong>Payment Information</strong>
+                                        <section className="p-1 c">
+                                            {/* <FormControl className="text-center" aria-label="Promo code" placeholder='Have a promo code...' value={this.state.promo} name="promo" onChange={this.onChange} /> */}
                                             <p>Choose a way to pay for your order:</p>
 
                                             <div className="border p-2">

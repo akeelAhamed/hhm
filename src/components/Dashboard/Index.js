@@ -7,53 +7,10 @@ import has from "lodash/has";
 export default class Index extends BaseComponent {
   constructor(props) {
     super();
-    this.state.profile  = {
-      "id": 36,
-      "name": "Akeel",
-      "photo": null,
-      "zip": null,
-      "city": null,
-      "country": null,
-      "address": null,
-      "phone": null,
-      "fax": null,
-      "email": "Akeel@gmail.com",
-      "created_at": "2020-08-03 07:56:59",
-      "updated_at": "2020-08-03 07:56:59",
-      "is_provider": "0",
-      "status": "0",
-      "verification_link": "85703cc672749036372b9d04a6342086",
-      "email_verified": "Yes",
-      "affilate_code": "3578fde5d3edff1fde5cd46cc3b785f3",
-      "affilate_income": "0",
-      "shop_name": null,
-      "owner_name": null,
-      "shop_number": null,
-      "shop_address": null,
-      "reg_number": null,
-      "shop_message": null,
-      "shop_details": null,
-      "shop_image": null,
-      "f_url": null,
-      "g_url": null,
-      "t_url": null,
-      "l_url": null,
-      "is_vendor": "0",
-      "f_check": "0",
-      "g_check": "0",
-      "t_check": "0",
-      "l_check": "0",
-      "mail_sent": "0",
-      "shipping_cost": "0",
-      "current_balance": "0",
-      "date": null,
-      "ban": "0"
-    };
+    this.state.profile  = null;
     this.state.tab = 0;
 
     this.toggle = this.toggle.bind(this);
-
-    console.log(this.state.profile);
   }
 
   /**
@@ -70,18 +27,18 @@ export default class Index extends BaseComponent {
   }
 
   componentDidMount(){
-    // window._axios.get('/profile?token='+this.state.user.token)
-    // .then((result) => {
-    //     if(result.data !== ''){
-    //       this.setState({
-    //         profile: result.data
-    //       })
-    //     }else{
-    //       this.logOut();
-    //     }
-    // }).catch(function(error){
-    //   console.log(error.response);
-    // });
+    window._axios.get('/profile?token='+this.state.user.token)
+    .then((result) => {
+        if(result.data !== ''){
+          this.setState({
+            profile: result.data
+          })
+        }else{
+          this.logOut();
+        }
+    }).catch(function(error){
+      console.log(error.response);
+    });
   }
 
   content() {
@@ -158,12 +115,7 @@ export default class Index extends BaseComponent {
         <Container fluid>
           <Row>
             <Col md={12} className="border-primary m-auto">
-              <Card className="my-3">
-                <Card.Header>
-                  <Button size="sm" variant="outline-danger" className="float-right" onClick={this.logOut}>Logout</Button>
-                  <h5 className="w-75">Welcome {this.state.user.email}</h5>
-                </Card.Header>
-              </Card>
+              <Button size="sm" variant="danger" className="logout" onClick={this.logOut}>Logout</Button>
               
               {this.state.profile === null?<div className="center"><Spinner animation="border" variant="info"/></div>:this.content()}
 

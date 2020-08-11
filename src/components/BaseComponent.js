@@ -3,7 +3,7 @@ import includes from "lodash/includes";
 import has from "lodash/has";
 import each from "lodash/each";
 import Spinner from "react-bootstrap/Spinner";
-import Toast from "react-bootstrap/Toast";
+import Alert from "react-bootstrap/Alert";
 import NotFound from "../components/Error/NotFound";
 
 /**
@@ -20,7 +20,7 @@ export default class BaseComponent extends React.Component {
       isLoggedIn: loged !== '',
       disabled: false,
       errors  : [],
-      pageLoaded: !false
+      pageLoaded: false
     };
 
     window.scrollTo(0, 0);
@@ -228,7 +228,6 @@ export default class BaseComponent extends React.Component {
   setError(errors){
     let error = [];
     each(errors, (val, i) => {
-      console.log(i, val);
       error.push(<li key={i}>{val}</li>);
     })
     this.setState({
@@ -239,17 +238,19 @@ export default class BaseComponent extends React.Component {
   /**
    * Get error message
    */
-  getError(){
-    return(
-      <Toast show={this.state.errors.length !== 0}  className="m-auto">
-        <Toast.Header closeButton={false}>
-          <strong className="mr-auto">Some error occurs</strong>
-          <small>{Math.floor(Math.random() * 10)} seconds ago</small>
-        </Toast.Header>
-        <Toast.Body className="text-danger">
-          <ul>{this.state.errors}</ul>
-        </Toast.Body>
-      </Toast>)
+  getError(variant="danger"){
+    if(this.state.errors.length !== 0){
+      return(
+        <Alert className="mt-2" variant={variant}>
+          <Alert.Heading as={"h5"}>
+            {(variant === "danger")?"Some error occurs":"New notification"}
+          </Alert.Heading>
+          <div className={"border-top pl-3"}>
+            <ul>{this.state.errors}</ul>
+          </div>
+        </Alert>
+      )
+    }
   }
 
   

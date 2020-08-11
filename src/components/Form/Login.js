@@ -1,14 +1,14 @@
 import React from "react";
 import BaseComponent from '../BaseComponent';
-import { Form, Button, Container, Card, Row, Col } from "react-bootstrap";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import has from "lodash/has";
 import { Link } from "react-router-dom";
 
 class Login extends BaseComponent {
   constructor(props) {
     super();
-    this.state.email = 'akeel@gmail.com';
-    this.state.password = '123456';
+    this.state.email = '';
+    this.state.password = '';
 
     if(this.state.isLoggedIn){
       window.location.href = 'dashboard';
@@ -32,39 +32,36 @@ class Login extends BaseComponent {
     }
     return (
       <div className="main-container">
-        <Container fluid className="gray">
-          <Row>
-            <Col md={8} className="border-primary m-auto">
-              <h6 className="bg-info p-3 text-white">LOGIN</h6>
+        <Container fluid>
+          <Row className="form pt-5">
+            <Col md={{ span: 2, offset: 2 }}>
+              <h3 className="form-title">Login</h3>
+            </Col>
 
-              <Card>
-                <Card.Body>
-                    <Form data-action="login" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
-                        <h3>Login</h3>
-                        <Form.Group controlId="formemail">
-                            <Form.Label>Email id</Form.Label>
-                            <Form.Control type="email" name="email" onChange={this.onChange} value={this.state.email} placeholder="Email id" required autoFocus/>
-                        </Form.Group>
+            <Col md={5} xl={4}>
+                <Form data-action="login" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
+                  <Form.Group controlId="formemail">
+                      <Form.Control type="email" name="email" onChange={this.onChange} value={this.state.email} placeholder="Email id" required autoFocus/>
+                  </Form.Group>
 
-                        <Form.Group controlId="formPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password" required/>
-                        </Form.Group>
-                        
-                        <Button variant="primary" type="submit" disabled ={this.state.disabled}>
-                            Login
-                        </Button>
-                    </Form>
-                </Card.Body>
-              </Card>
+                  <Form.Group controlId="formPassword">
+                      <Form.Control type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password" required/>
+                  </Form.Group>
 
-              <section className="d-sm-flex justify-content-around my-auto bg-light">
-                <div className="m-3 p-2">
-                  <p>Dont have an account?</p>
-                  <Link className="btn btn-secondary" to='/register'>Register</Link>
+                  <Link className="d-block py-2 btn-link text-dark" to='/#'>Forget password?</Link>
+                  
+                  <Button variant="primary" type="submit" disabled={this.state.disabled} block>
+                    {this.state.disabled?'Loading...':'Login'}
+                  </Button>
+                </Form>
+
+                {this.getError()}
+                
+                <div className="p-2 d-block w-100">
+                  <Link className="btn btn-link text-dark float-right" to='/register'>REGISTER</Link>
+                  <span className="mt-2 d-block">Dont have an account?</span>
                 </div>
 
-              </section>
             </Col>
           </Row>
         </Container>

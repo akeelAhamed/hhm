@@ -14,7 +14,6 @@ import ContactUs from './components/ContactUs/contactus';
 import ProductPage from './components/ProductPage/ProductPage';
 import Products from './components/Products/Producs';
 import CartPage from './components/Shop/CartPage/CartPage';
-import LoginPage from './components/Shop/LoginPage/LoginPage';
 import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
 import OrderConfirm from "./components/Shop/OrderConfirm/orderconfirm";
 import CheckOut from './components/Shop/CheckOut/checkout';
@@ -67,7 +66,6 @@ class App extends React.Component{
           <Route path="/item/:name" component={(props) => this.component(props, ProductPage) } />
           <Route path="/vision" component={(props) => this.component(props, Vision) } />
           <Route path="/contactus" component={(props) => this.component(props, ContactUs) } />
-          <Route path="/loginpage" component={(props) => this.component(props, LoginPage) } />
 
           {/* Form */}
           <Route path="/login" exact component={(props) => this.component(props, Login) } />

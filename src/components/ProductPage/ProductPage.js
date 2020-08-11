@@ -84,25 +84,6 @@ class ProductPage extends BaseComponent {
   }
 
   content() {
-    this.pageContent = {
-      "id": 187,
-      "name": "Aushmath’s PURE (Panacea Ultimate for Rousing Energy)",
-      "details": "Aushmath introduces to you the process PURE, viz., Panacea Ultimate for Rousing Energy to realize the complete WELLNESS of one’s mind and body. We adopted certain intelligent dimensions mentioned in Vedic scriptures to materialize the process equipment ‘PURE Pyramid’ (i.e., Inverted Copper Pyramid) employed for the process PURE. Aushmath’s PANACEA ULTIMATE is a perfect blend of natural elements developed for harnessing the best benefits from the widely recognized ‘Smoke Therapy’.<br>",
-      "photo": "http://www.hhmlife.org/assets/images/products/1596972651sHSHUA4p.png",
-      "price": "100",
-      "size": [
-          "KG"
-      ],
-      "size_qty": [
-          "1"
-      ],
-      "policy": "inspired from Ancient",
-      "youtube": "Covid message",
-      "views": 1,
-      "updated_at": "2020-08-10 13:18:49",
-      "gallery": "http://www.hhmlife.org/assets/images/galleries/15969479350Cbk91G1.jpg,http://www.hhmlife.org/assets/images/galleries/1596972660ZgzsB5Wu.jpg,http://www.hhmlife.org/assets/images/galleries/1597035090mc1G0yHq.jpg"
-    }
-
     console.log(this.pageContent);
     return(
       <div className="main-container py-4">

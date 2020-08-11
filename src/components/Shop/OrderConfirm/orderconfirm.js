@@ -5,8 +5,21 @@ import { Spinner } from "react-bootstrap";
 class OrderConfirm extends React.Component {
   constructor(props) {
     super();
+    if(props.complete){
+      setTimeout(() => {
+        window.location.href = '/dashboard';
+      }, 5000);
+    }
   }
   render() {
+
+    if(!this.props.complete){
+      return (
+        <div className='center'>
+          <Spinner animation="border" variant="info" /><span className="pl-2">Validating order, don't close or navigate browser...</span>
+        </div>
+      )
+    }
     return (
       <div className="main">
         <div className="main-content py-5 mt-5" style={{maxWidth:360, margin: 'auto'}}>
@@ -14,14 +27,6 @@ class OrderConfirm extends React.Component {
           <p className="b-left border-teal">
             Your order has placed successfully.<br/>Your transaction id is: <b className="bg-grey">{this.props.payment_id}</b>. <br /> Go to <Link className="text-dark" to="/dashboard">Dashboard</Link>
           </p>
-          
-          <div style={{display: 'flex', alignContent: 'center'}}>
-          {
-            (this.props.complete)
-            ?'Order confirmend..'
-            :<><Spinner animation="border" variant="dark" /><span className="pl-2">Validating order...</span></>
-          }
-          </div>
         </div>
       </div>
     );

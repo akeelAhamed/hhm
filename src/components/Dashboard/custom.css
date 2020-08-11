@@ -1,5 +1,6 @@
+.logout{position: absolute;right: 15px;margin-top: -31px;}
 .pro{width: 100%;}
-.pro.mw{max-width: 480px;}
+.mw{max-width: 480px;}
 .pro.true{box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);}
 .header{padding: 0.5rem 2rem;cursor: pointer;margin-bottom: 0px;}
 .pro.true .header{background: #00a09b;color: #FFF;font-size: 1.5rem;}
