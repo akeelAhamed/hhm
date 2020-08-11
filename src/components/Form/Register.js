@@ -33,11 +33,11 @@ class Login extends BaseComponent {
         <Container fluid>
 
         <Row className="form pt-5">
-            <Col md={{ span: 3, offset: 2 }}>
+            <Col md={{ span: 3, offset: 2 }} lg={{ span: 2, offset: 3 }} className="overflow-hidden">
               <h3 className="form-title">Register</h3>
             </Col>
 
-            <Col md={5} xl={4}>
+            <Col md={4} xl={3}>
 
               <Form data-action="register" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
                   <Form.Group controlId="formname">

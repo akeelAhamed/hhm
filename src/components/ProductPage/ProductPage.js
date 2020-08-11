@@ -63,13 +63,6 @@ class ProductPage extends BaseComponent {
 
       return(
           <InputGroup className="buy">
-            {/* <InputGroup.Prepend onClick={this.qtyClick}>
-              <InputGroup.Text data-qty="0" className="btn">-</InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl className="text-center" aria-label="Quantity" value={this.state.qty} readOnly />
-            <InputGroup.Append onClick={this.qtyClick}>
-              <InputGroup.Text data-qty="1" className="btn">+</InputGroup.Text>
-            </InputGroup.Append> */}
             <InputGroup.Append>
             <Button className="btn btn-primary rounded" onClick={this.buy}>Buy now</Button>
             </InputGroup.Append>
@@ -93,7 +86,9 @@ class ProductPage extends BaseComponent {
           <Row className="no-gutters">
             <Col md="6" sm="auto" className="">
               <strong className="text-uppercase">Gallery</strong>
-              <Gallery img={this.pageContent.photo} gallery={this.pageContent.gallery.split(',')} />
+              <div className="border-teal-top px-2">
+                <Gallery img={this.pageContent.photo} gallery={this.pageContent.gallery.split(',')} />
+              </div>
             </Col>
 
             <Col md="1"></Col>
@@ -102,7 +97,8 @@ class ProductPage extends BaseComponent {
               <strong className="text-uppercase">Product summary</strong>
               <div className="border-teal-top px-2">
                 <b className="text-uppercase border-teal"> {this.pageContent.name} </b>
-          
+                <p>Seller      : {this.pageContent.seller_information}</p>
+                <p>Pack contain: </p>
                 <p>Total weight: {this.pageContent.size_qty + this.pageContent.size}</p>
                 
                 <hr />
@@ -118,13 +114,11 @@ class ProductPage extends BaseComponent {
 
                 {this.buyButtom()}
 
-                <hr/>
-
                 <div>
                   {this.pageContent.stock > 0?<span className="text-success">In stock</span>:<span className="text-danger">Out of stock</span>}
-                  <br/>
-                  <small>{this.pageContent.youtube}</small>
-                  <br/>
+                  {/* <br/>
+                  <small>{this.pageContent.youtube}</small> */}
+                  <hr/>
                   <small>{this.pageContent.policy}</small>
                   <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} />
                 </div>

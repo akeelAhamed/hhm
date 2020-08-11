@@ -99,8 +99,9 @@ export default class CheckOut extends BaseComponent {
                 for (const key in _this.state.baddress) {
                     query += "&customer_"+key+"="+_this.state.baddress[key];
                 }
-                for (const key in _this.state.daddress) {
-                    query += "&customer_"+key+"="+_this.state.daddress[key];
+                let same = _this.state.same?_this.state.baddress:_this.state.daddress
+                for (const key in same) {
+                    query += "&shipping_"+key+"="+same[key];
                 }
                 window._axios.get("/payreturn?token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&product_id="+_this.cart.id+query)
                 .then((result) => {
@@ -205,8 +206,8 @@ export default class CheckOut extends BaseComponent {
             <div className="main-container">
                 <Container fluid>
                     <Row>
-                        <Col sm={8}>
-                            <Card className={"my-3 pro "+(this.state.tab === 0)}>
+                        <Col className="bg-light" sm={{ span: 7, offset:1 }}>
+                            <Card className={"my-3 pro c "+(this.state.tab === 0)}>
                                 <h5 className="header" data-key={0} onClick={this.toggle}>Billing address</h5>
                                 <Collapse in={this.state.tab === 0}>
                                     <div id="_profile" className="c-body">
@@ -264,7 +265,9 @@ export default class CheckOut extends BaseComponent {
                                         {/* <Link className="text-dark" to="/products">Back to store</Link> */}
                                         <section className="c">
                                             <h5>{this.cart.name}</h5>
-                
+                                            <p>Seller      : {this.cart.seller_information}</p>
+                                            <p>Pack contain: </p>
+
                                             <div>
                                                 <p>Total weight: {this.cart.size_qty + this.cart.size}</p>
                                                 <small>One year pack</small><br/>
@@ -285,13 +288,12 @@ export default class CheckOut extends BaseComponent {
                                             {/* <FormControl className="text-center" aria-label="Promo code" placeholder='Have a promo code...' value={this.state.promo} name="promo" onChange={this.onChange} /> */}
                                             <p>Choose a way to pay for your order:</p>
 
-                                            <div className="border p-2">
+                                            <div className="border text-center p-2">
+                                                <img src={require('../img/razorpay.png')} className="img-fluid" alt="rpay" />
                                                 <input type="radio" id="razor" name="razor" value="razor" checked readOnly/>
-                                                <label className="pl-2" htmlFor="razor">Pay with razorpay</label><br />
+                                                <label className="" htmlFor="razor">Pay with razorpay</label>
                                             </div>
 
-                                            <h6 className="pt-2">Policy</h6>
-                                            <small dangerouslySetInnerHTML={{ __html: this.cart.policy }}/>
                                             <Button className="mb-4 mt-2" variant="info" block onClick={this.chekout}>Place Order</Button>
                                         </section>
                                     </div>
@@ -299,9 +301,9 @@ export default class CheckOut extends BaseComponent {
                             </Card>
                         </Col>
 
-                        <Col sm={4}>
+                        <Col className="bg-light" sm={3}>
                             <img src={require('../img/shield.png')} style={{width:75}} alt="secure" className="img-fluid float-left mt-1" />
-                            <span className="d-block mt-3">Safe and secure payment. Easy return. 100% Authentic product.</span>
+                            <span className="d-block mt-3">Safe and secure payment. 100% Authentic product.</span>
                         </Col>
                     </Row>
                 </Container>

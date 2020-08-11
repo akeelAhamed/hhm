@@ -66,8 +66,10 @@
 #slideshow{
     overflow: auto;
     white-space: nowrap;
+    margin: auto;
+    max-width: 465px;
     width: 100%;
-    padding: 0.5em;
+    padding: 0.5em 0em;
 }
 
 #slideshow img{
