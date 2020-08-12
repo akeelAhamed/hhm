@@ -161,6 +161,7 @@ export default class BaseComponent extends React.Component {
     if(has(event.target.dataset, 'action') && has(event.target.dataset, 'method')){
       this.toggleDisable();
       const data = event.target.dataset;
+      this.setError([]);
       window._axios({
         method: data.method,
         url: data.action,
@@ -225,7 +226,7 @@ export default class BaseComponent extends React.Component {
    * 
    * @param {array|object} errors 
    */
-  setError(errors){
+  setError(errors=[]){
     let error = [];
     each(errors, (val, i) => {
       error.push(<li key={i}>{val}</li>);

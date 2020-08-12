@@ -1,6 +1,5 @@
 import React from "react";
 import { Button, Container, Row, Col, InputGroup } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import has from "lodash/has";
 import BaseComponent from '../BaseComponent';
 import Gallery from './Gallery';
@@ -13,6 +12,7 @@ class ProductPage extends BaseComponent {
     this.state.qty = 1;
     this.state.availability = '';
     this.buy = this.buy.bind(this);
+    this.loginBuy = this.loginBuy.bind(this);
     this.toCart = this.toCart.bind(this);
     this.qtyClick = this.qtyClick.bind(this);
   }
@@ -25,6 +25,16 @@ class ProductPage extends BaseComponent {
   buy(e){
     this.addCart(this.pageContent, this.state.qty);
     return this.redirect('checkout');
+  }
+
+  /**
+   * Cart added and redirect to
+   * 
+   * @param {object} e 
+   */
+  loginBuy(e){
+    this.addCart(this.pageContent, this.state.qty);
+    return this.redirect(e.target.dataset.to);
   }
 
   /**
@@ -73,7 +83,7 @@ class ProductPage extends BaseComponent {
           </InputGroup>
       );
     }
-    return(<Link className="mt-3 btn btn-primary" to={"/login?item/"+this.pageContent.slug}>Login & buy</Link>);
+    return(<Button className="mt-3 btn btn-primary" onClick={this.loginBuy} data-to={"login?checkout"}>Login & buy</Button>);
   }
 
   content() {

@@ -14,7 +14,7 @@
 }
 
 .home-bg-2{
-    height: auto;
+    height: 400px;
     background-position: top right;
     background-repeat: no-repeat;
     background-size: cover;
@@ -39,7 +39,6 @@
 .bg-gray{
     background-color: #ccc;
 }
-
 
 .home-bg-3{
     height: fit-content;

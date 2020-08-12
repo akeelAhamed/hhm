@@ -10,11 +10,11 @@ import HomePage from "./components/HomePage/homepage";
 import AboutUs from "./components/AboutUs/aboutus";
 import Vision from "./components/VisionPage/vision";
 // import BlogPage from './components/BlogPage/blogpage';
+// import CartPage from './components/Shop/CartPage/CartPage';
+// import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
 import ContactUs from './components/ContactUs/contactus';
 import ProductPage from './components/ProductPage/ProductPage';
 import Products from './components/Products/Producs';
-import CartPage from './components/Shop/CartPage/CartPage';
-import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
 import OrderConfirm from "./components/Shop/OrderConfirm/orderconfirm";
 import CheckOut from './components/Shop/CheckOut/checkout';
 

@@ -10,14 +10,13 @@ export default class CheckOut extends BaseComponent {
     constructor(props) {
         super();
 
-        this.cart = this.getCart();
+        this.error = true;
+        this.cart  = this.getCart();
         this.state.promo = '';
         this.state.discount = 0;
         this.state.tinfo = 0;
         this.state.tab = 0;
-
         this.state.profile = null;
-
         this.state.chekout = null;
         this.state.complete= false; // after amount payed request send status
         this.state.same = false;
@@ -65,7 +64,6 @@ export default class CheckOut extends BaseComponent {
                     profile: result.data,
                     baddress: baddress
                   });
-                  console.log(this.state, result, result.data);
                 }else{
                   this.logOut();
                 }
@@ -113,7 +111,8 @@ export default class CheckOut extends BaseComponent {
                 });
             },
             "prefill": {
-                "email": this.state.user.email
+                "email": this.state.user.email,
+                "contact": this.state.same?this.state.baddress.phone:this.state.daddress.phone
             },
             "notes": {
                 "product": this.cart
@@ -138,16 +137,39 @@ export default class CheckOut extends BaseComponent {
      * @param {object} e 
      */
     toggle(e){
-        if(has(e.target.dataset, 'key')){
-        this.setState({
-            tab: parseInt(e.target.dataset.key)
-        })
+        if(has(e.target.dataset, 'form')){
+            let form = (this.state.same)?'baddress':e.target.dataset.form;
+            let state = this.state[form];
+            let stateInfo = {
+                len: Object.keys(state).length,
+                i  : 0
+            }
+            for (const key in state) {
+                stateInfo.i++;
+                if(state[key] === '' || state[key] === null){
+                    this.error = true;
+                    break;
+                }
+            }
+            this.error = !(stateInfo.i === stateInfo.len);
+        }
+        
+        if(!this.error){
+            this.setError();
+            if(has(e.target.dataset, 'key')){
+                this.setState({
+                    tab: parseInt(e.target.dataset.key)
+                })
+            }
+        }else{
+            this.setError(['All fields are required']);
         }
     }
 
     onChangeSelf(e){
         const {name, value} = e.target;
         if(name === 'same'){
+            this.error = !this.state.same||true;
             return this.setState({
                 same: !this.state.same
             })
@@ -211,20 +233,22 @@ export default class CheckOut extends BaseComponent {
                                 <h5 className="header" data-key={0} onClick={this.toggle}>Billing address</h5>
                                 <Collapse in={this.state.tab === 0}>
                                     <div id="_profile" className="c-body">
-                                        <form data-key={1} onSubmit={this.onSubmitSelf}>
-                                            <FormControl placeholder="Full Name" name="baddress.name" value={this.state.baddress.name} onChange={this.onChange} />
+                                        <form data-key={1} data-form="baddress" onSubmit={this.onSubmitSelf}>
+                                            <FormControl placeholder="Full Name" name="baddress.name" value={this.state.baddress.name} onChange={this.onChange}/>
 
-                                            <FormControl type="number" placeholder="Mobile number" name="baddress.phone" value={this.state.baddress.phone} onChange={this.onChange} />
+                                            <FormControl type="number" placeholder="Mobile number" name="baddress.phone" value={this.state.baddress.phone} onChange={this.onChange}/>
 
-                                            <FormControl placeholder="Address" name="baddress.address" value={this.state.baddress.address} onChange={this.onChange} />
+                                            <FormControl placeholder="Address" name="baddress.address" value={this.state.baddress.address} onChange={this.onChange}/>
 
-                                            <FormControl placeholder="City" name="baddress.city" value={this.state.baddress.city} onChange={this.onChange} />
+                                            <FormControl placeholder="City" name="baddress.city" value={this.state.baddress.city} onChange={this.onChange}/>
 
-                                            <FormControl placeholder="Country" name="baddress.country" value={this.state.baddress.country} onChange={this.onChange} />
+                                            <FormControl placeholder="Country" name="baddress.country" value={this.state.baddress.country} onChange={this.onChange}/>
 
-                                            <FormControl type="number" placeholder="Pincode" name="baddress.zip" value={this.state.baddress.zip} onChange={this.onChange} />
+                                            <FormControl type="number" placeholder="Pincode" name="baddress.zip" value={this.state.baddress.zip} onChange={this.onChange}/>
 
-                                            <Button type="submit" variant="dark" className="c" data-key={1} onClick={this.toggle}>Continue</Button>
+                                            {this.getError()}
+
+                                            <Button type="submit" variant="dark" className="c" data-key={1} data-form="baddress" onClick={this.toggle}>Continue</Button>
 
                                         </form>
                                     
@@ -233,10 +257,10 @@ export default class CheckOut extends BaseComponent {
                             </Card>
 
                             <Card className={"my-3 pro "+(this.state.tab === 1)}>
-                                <h5 className="header" data-key={1} onClick={this.toggle}>Delivery address</h5>
+                                <h5 className="header" data-key={1} data-form="daddress" onClick={this.toggle}>Delivery address</h5>
                                 <Collapse in={this.state.tab === 1}>
                                     <div id="_address" className="c-body">
-                                        <form data-key={2} onSubmit={this.onSubmitSelf}>
+                                        <form data-key={2} data-form="daddress" onSubmit={this.onSubmitSelf}>
                                             <FormControl placeholder="Full Name" name="daddress.name" value={(this.state.same)?this.state.baddress.name:this.state.daddress.name} onChange={this.onChangeSelf} />
 
                                             <FormControl type="number" placeholder="Mobile number" name="daddress.phone" value={(this.state.same)?this.state.baddress.phone:this.state.daddress.phone} onChange={this.onChangeSelf} />
@@ -251,7 +275,9 @@ export default class CheckOut extends BaseComponent {
 
                                             <Form.Check id="sameas" type="checkbox" label="Same as billing address" name="same" value={this.state.same} onChange={this.onChangeSelf} />
 
-                                            <Button type="submit" variant="dark" className="c" data-key={2} onClick={this.toggle}>Continue</Button>
+                                            {this.getError()}
+
+                                            <Button type="submit" variant="dark" className="c" data-key={2} data-form="daddress" onClick={this.toggle}>Continue</Button>
 
                                         </form>
                                     </div>
@@ -274,7 +300,7 @@ export default class CheckOut extends BaseComponent {
                                                 <p>Qty: {this.cart._qty}</p>
                                                 <h5 className="border py-2"><b>ORDER TOTAL : Rs.{parseFloat(this.cart.ship + (this.cart.price * this.cart._qty) - this.state.discount)}</b> <small>(Inclusive of all tax)</small></h5>
                                             </div>
-                                            <Button type="button" variant="dark" className="c" data-key={3} onClick={this.toggle}>Continue</Button>
+                                            <Button type="button" variant="dark" className="c" data-key={3} onClick={this.toggle} disabled={this.error}>Continue</Button>
                                         </section>
                                     </div>
                                 </Collapse>
@@ -285,7 +311,7 @@ export default class CheckOut extends BaseComponent {
                                 <Collapse in={this.state.tab === 3}>
                                     <div id="_track" className="c-body">
                                         <section className="p-1 c">
-                                            {/* <FormControl className="text-center" aria-label="Promo code" placeholder='Have a promo code...' value={this.state.promo} name="promo" onChange={this.onChange} /> */}
+                                            {/* <FormControl className="text-center" aria-label="Promo code" placeholder='Have a promo code...' value={this.state.promo} name="promo" onChange={this.onChange}/> */}
                                             <p>Choose a way to pay for your order:</p>
 
                                             <div className="border text-center p-2">
@@ -294,7 +320,7 @@ export default class CheckOut extends BaseComponent {
                                                 <label className="" htmlFor="razor">Pay with razorpay</label>
                                             </div>
 
-                                            <Button className="mb-4 mt-2" variant="info" block onClick={this.chekout}>Place Order</Button>
+                                            <Button className="mb-4 mt-2" variant="info" block onClick={this.chekout} disabled={this.error}>Place Order</Button>
                                         </section>
                                     </div>
                                 </Collapse>

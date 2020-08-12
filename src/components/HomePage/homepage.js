@@ -31,8 +31,6 @@ export default class HomePage extends BaseComponent {
           </Row>
         </Container>
 
-
-
         <div className="home-bg-2" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
           <div className="home-bg-2_text">
             <h5 className="text-uppercase border-teal"> {this.pageContent.feature_products[0].name} </h5>

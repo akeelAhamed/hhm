@@ -1,43 +1,81 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+import has from "lodash/has";
+import includes from "lodash/includes";
 import BaseComponent from '../BaseComponent';
 import "./custom.css";
-import { Link } from 'react-router-dom';
 
 export default class Products extends BaseComponent {
   constructor(props) {
     super();
+    this.imageType = ['back_ground', 'product', 'another', 'top'];
+  }
+
+  /**
+   * Get background imagee
+   * 
+   * @param object images 
+   */
+  getImage(images, type){
+    let image = images[0].photo;
+    for (let i = 0; i < images.length; i++) {
+      if(has(images[i], 'image_type') && (includes(this.imageType, images[i].image_type.toLowerCase()))){
+        if(images[i].image_type.toLowerCase() === type){
+          image = images[i].photo;
+          break;
+        }
+      }
+    }
+
+    return image;
+  }
+
+  productDetail(product){
+    return (
+      <div className="main-container">
+        <div className="home-bg-1 text-uppercase" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'top')+')'}}>
+          <p>Our Product</p>
+        </div>
+
+        <div className="home-bg-2" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'back_ground')+')'}}>
+          <div className="home-bg-2_text">
+            <h5 className="text-uppercase border-teal"> {product.name} </h5>
+            <br />
+            <div dangerouslySetInnerHTML={{ __html: product.details }} /><br />
+            <Link className="mt-3 btn btn-primary" to={"/item/"+product.slug}>Buy now</Link>
+          </div>
+        </div>
+
+
+        <div className="home-bg-2" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'product')+')'}}>
+          
+        </div>
+
+        <div className="home-bg-1" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'another')+')'}}>
+          <div className="home-bg-2_text">
+            <div dangerouslySetInnerHTML={{ __html: product.details }} /><br />
+            <Link className="mt-3 btn btn-primary" to={"/item/"+product.slug}>Buy now</Link>
+          </div>
+        </div>
+
+        
+      </div>
+    );
   }
 
   content() {
-    return (
-      <div className="main-container">
-        <div className="home_bg-1 text-uppercase" style={{backgroundImage: 'url('+require('../HomePage/Img/fwdhhmhomepagedummypics/Home-10.jpg')+')'}}>
-          <h3>Our Product</h3>
-        </div>
 
+    return(
+      <>
         {
           this.pageContent.prods.data.map((product, key) =>
-            <div className="product" style={{flexDirection: (key % 2)?'row-reverse':'row'}} key={key}>
-              <div className="img-container">
-                <img src={product.photo} alt={product.name} />
-              </div>
-              <div className="product-info">
-                <div className="product-content">
-                  <h1>{product.name}</h1>
-                  <p className="product-desc" dangerouslySetInnerHTML={{ __html: product.details }}/>
-                  <div className="buttons">
-                    <Link className="button view" to={"/item/"+product.slug}>Buy now</Link>
-                    <a className="button add" href="#!">Add to Cart</a>
-                    <span className="button price">${product.price}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            (<div key={key}>
+              {this.productDetail(product)}
+            </div>)
           )
         }
-
-      </div>
-    );
+      </>
+    )
   }
 
   render(){

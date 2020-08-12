@@ -115,7 +115,7 @@ export default class Index extends BaseComponent {
         <Container fluid>
           <Row>
             <Col md={12} className="border-primary m-auto">
-              <Button size="sm" variant="danger" className="logout" onClick={this.logOut}>Logout</Button>
+              <Button size="sm" variant="link" className="logout text-light" onClick={this.logOut}>Logout</Button>
               
               {this.state.profile === null?<div className="center"><Spinner animation="border" variant="info"/></div>:this.content()}
 
