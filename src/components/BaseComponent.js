@@ -23,9 +23,13 @@ export default class BaseComponent extends React.Component {
       pageLoaded: false
     };
 
+    if(this.state.isLoggedIn){
+      window._axios.defaults.headers.common['token'] = this.state.user.token;
+    }
+
     window.scrollTo(0, 0);
 
-    const exceptApi = ['/register', '/login', '/register', '/dashboard', '/cartpage', '/checkout'];
+    const exceptApi = ['/register', '/login', '/dashboard', '/cart', '/checkout'];
 
     this.pageContent = null;
     this.page = window.location.pathname;

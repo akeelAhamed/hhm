@@ -18,32 +18,32 @@ class ProductPage extends BaseComponent {
   }
 
   /**
+   * Cart added
+   * @param {object} e 
+   */
+  toCart(e){
+    return this.addCart(this.pageContent, this.state.qty);
+  }
+
+  
+  /**
    * Cart added and checkout
    * 
    * @param {object} e 
    */
   buy(e){
-    this.addCart(this.pageContent, this.state.qty);
+    this.toCart(e);
     return this.redirect('checkout');
   }
-
+  
   /**
    * Cart added and redirect to
    * 
    * @param {object} e 
    */
   loginBuy(e){
-    this.addCart(this.pageContent, this.state.qty);
+    this.toCart(e);
     return this.redirect(e.target.dataset.to);
-  }
-
-  /**
-   * Cart added and checkout
-   * 
-   * @param {object} e 
-   */
-  toCart(e){
-    console.log(e);
   }
   
   /**
@@ -73,12 +73,17 @@ class ProductPage extends BaseComponent {
 
       return(
           <InputGroup className="buy">
-            <InputGroup.Append>
+            <InputGroup.Append className="d-block">
             <Button className="btn btn-primary rounded" onClick={this.buy}>Buy now</Button>
+            <Button className="btn btn-primary rounded ml-1" onClick={this.toCart}>Add to cart</Button>
             </InputGroup.Append>
-            <small className="d-block w-100 my-2">Secure transaction</small>
 
-            <input type="number" className="border pl-2 d-block w-100" name="availability" placeholder="Enter pincode"/>
+            <div className="d-block w-100 my-2">
+              <small>Secure transaction</small>
+              <small className="ml-2">EMI</small>
+            </div>
+
+            {/* <input type="number" className="border pl-2 d-block w-100" name="availability" placeholder="Enter pincode"/> */}
             <span>{this.state.availability}</span>
           </InputGroup>
       );
@@ -129,7 +134,6 @@ class ProductPage extends BaseComponent {
                   {/* <br/>
                   <small>{this.pageContent.youtube}</small> */}
                   <hr/>
-                  <small>{this.pageContent.policy}</small>
                   <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} />
                 </div>
               </div>

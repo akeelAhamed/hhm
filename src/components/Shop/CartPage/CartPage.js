@@ -17,7 +17,6 @@ export default class CartPage extends BaseComponent {
     if(this.cart === ''){
       return (
           <div className="main-container">
-              <h1 className="bg-info p-2 text-info">1</h1>
               <Container fluid>
                   <Row className="justify-content-center pt-3" style={{height: '70vh'}}>
                       <Col sm={6} className="m-auto text-center">
@@ -68,7 +67,11 @@ export default class CartPage extends BaseComponent {
               <p>Estimated shipping: <span className="float-right"> Rs.{this.cart.ship}</span></p>
               <h4 className="border-top pt-3">ORDER TOTAL<span className="float-right">Rs.{parseFloat(this.cart.ship + (this.cart.price * this.cart._qty) - this.state.discount)}</span></h4>
 
-              <Link className="mt-1 btn btn-primary" to="/checkout">PROCEED TO CHECKOUT</Link>
+              {
+                (!this.state.isLoggedIn)
+                ?<Link className="mt-1 btn btn-primary" to="/login?checkout">Login & Buy</Link>
+                :<Link className="mt-1 btn btn-primary" to="/checkout">PROCEED TO CHECKOUT</Link>
+              }
             </Col>
           </Row>
         </Container>

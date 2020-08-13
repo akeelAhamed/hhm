@@ -33,8 +33,10 @@ export default class Products extends BaseComponent {
   productDetail(product){
     return (
       <div className="main-container">
-        <div className="home-bg-1 text-uppercase" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'top')+')'}}>
-          <p>Our Product</p>
+
+        <div className="text-uppercase ptop">
+          <h3>Higher Living</h3>
+          <img src={this.getImage(product.allimages, 'top')} className="img-fluid" alt="..." />
         </div>
 
         <div className="home-bg-2" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'back_ground')+')'}}>
@@ -46,9 +48,8 @@ export default class Products extends BaseComponent {
           </div>
         </div>
 
-
-        <div className="home-bg-2" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'product')+')'}}>
-          
+        <div className="pproduct">
+          <img src={this.getImage(product.allimages, 'product')} className="img-fluid w-100" alt="..." />
         </div>
 
         <div className="home-bg-1" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'another')+')'}}>
@@ -64,7 +65,6 @@ export default class Products extends BaseComponent {
   }
 
   content() {
-
     return(
       <>
         {

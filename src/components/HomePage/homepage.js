@@ -20,11 +20,11 @@ export default class HomePage extends BaseComponent {
 
         <Container fluid>
           <Row className="no-gutters">
-            <Col xl md lg="6" sm="auto" >
-              <img className="img-fluid" alt="" src={this.pageContent.about_home.photo} />
+            <Col md="5" >
+              <img className="img-fluid w-100" alt="" src={this.pageContent.about_home.photo} />
             </Col>
 
-            <Col xl md lg="6" sm="auto" className="my-auto p-3">
+            <Col md="7" className="p-4">
               <h5 className="border-teal text-uppercase">{this.pageContent.about_home.title}  </h5>
               <small>{this.pageContent.about_home.link} </small>
             </Col>

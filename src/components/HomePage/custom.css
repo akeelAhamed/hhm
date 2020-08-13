@@ -9,7 +9,7 @@
 .home-bg-1 > p {
     padding: 8%;
     font-weight: bolder;
-    font-size: 45px;
+    font-size: 400%;
     color: #00a09b;
 }
 
@@ -59,4 +59,10 @@
 .border-teal{
     border-left: 5px solid #00a09b;
     padding-left: 4px;
+}
+
+@media (max-width:768px){
+    .home-bg-1 > p {
+        font-size: 300%;
+    }
 }

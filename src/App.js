@@ -10,8 +10,8 @@ import HomePage from "./components/HomePage/homepage";
 import AboutUs from "./components/AboutUs/aboutus";
 import Vision from "./components/VisionPage/vision";
 // import BlogPage from './components/BlogPage/blogpage';
-// import CartPage from './components/Shop/CartPage/CartPage';
 // import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
+import CartPage from './components/Shop/CartPage/CartPage';
 import ContactUs from './components/ContactUs/contactus';
 import ProductPage from './components/ProductPage/ProductPage';
 import Products from './components/Products/Producs';
@@ -64,6 +64,7 @@ class App extends React.Component{
           <Route path="/about" component={(props) => this.component(props, AboutUs)} />
           <Route path="/products" exact component={(props) => this.component(props, Products) } />
           <Route path="/item/:name" component={(props) => this.component(props, ProductPage) } />
+          <Route path="/cart" component={(props) => this.component(props, CartPage) } />
           <Route path="/vision" component={(props) => this.component(props, Vision) } />
           <Route path="/contactus" component={(props) => this.component(props, ContactUs) } />
 

@@ -124,7 +124,7 @@ export default class CheckOut extends BaseComponent {
     }
     
     /**
-     * Checkout
+     * Checkout and trigger razorpay
      * @param {object} e 
      */
     chekout(e){

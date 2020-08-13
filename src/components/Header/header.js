@@ -1,20 +1,27 @@
 import React from 'react';
 import { Navbar, Nav, Spinner } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { FaShoppingCart } from "react-icons/fa";
+import includes from 'lodash/includes';
 import FooterPage from "../FooterPage/footer";
 
-export default class Header extends React.Component {
+class Header extends React.Component {
+  
   constructor(props){
     super();
     this.state = {
       headerFooter: null
     }
 
-    this.active = this.active.bind(this);
+    this.exceptBorder = ['', 'products', 'item'];
   }
 
-  active(e){
-    this.setState({headerFooter: this.state.headerFooter});
+  /**
+   * Has border
+   */
+  hasBorder(){
+    let path = this.props.location.pathname.split('/');
+    return !includes(this.exceptBorder, path[1]);
   }
   
   componentDidMount(){
@@ -46,8 +53,7 @@ export default class Header extends React.Component {
             <Nav.Link as={Link} to='/'>
             <img
               src={this.state.headerFooter.heade_footer.logo}
-              width="70"
-              height="40"
+              height="50"
               className="d-inline-block align-top"
               alt="logo"
             />
@@ -58,11 +64,11 @@ export default class Header extends React.Component {
           
           <Navbar.Collapse id="basic-navbar-nav ">
             <Nav className="ml-auto text-uppercase">
-              <Nav.Link active={window.location.pathname === '/'} as={Link} to='/' onClick={this.active}>Home</Nav.Link>
-              <Nav.Link active={window.location.pathname === '/products'} as={Link} to='/products' onClick={this.active}>Products</Nav.Link>
+              <Nav.Link active={window.location.pathname === '/'} as={Link} to='/'>Home</Nav.Link>
+              <Nav.Link active={window.location.pathname === '/products'} as={Link} to='/products'>Products</Nav.Link>
               {
                 this.state.headerFooter.heade_menu.map(el => {
-                  return(<Nav.Link key={el.id} active={window.location.pathname === '/' + el.slug} as={Link} to={'/' + el.slug} onClick={this.active}>{el.title}</Nav.Link>);
+                  return(<Nav.Link key={el.id} active={window.location.pathname === '/' + el.slug} as={Link} to={'/' + el.slug}>{el.title}</Nav.Link>);
 
                   //return(<Nav.Link key={el.id} active={window.location.pathname === '/' + el.slug} href={'/' + el.slug} >{el.title}</Nav.Link>)
                 })
@@ -70,14 +76,18 @@ export default class Header extends React.Component {
 
               {
                 (this.props.isLoggedIn)
-                ?<Nav.Link active={window.location.pathname === '/dashboard'} as={Link} to='/dashboard' onClick={this.active}>Dashboard</Nav.Link>
-                :<Nav.Link active={window.location.pathname === '/login'} as={Link} to='/login' onClick={this.active}>Login</Nav.Link>
+                ?<Nav.Link active={window.location.pathname === '/dashboard'} as={Link} to='/dashboard'>Dashboard</Nav.Link>
+                :<Nav.Link active={window.location.pathname === '/login'} as={Link} to='/login'>Login</Nav.Link>
               }
+              
+              <Nav.Link active={window.location.pathname === '/cart'} as={Link} to='/cart'><FaShoppingCart /></Nav.Link>
+
             </Nav>
+
           </Navbar.Collapse>
         </Navbar>
 
-        <div style={{height: 30, background: '#00a09b'}}></div>
+        {this.hasBorder()?<div style={{height: 30, background: '#00a09b'}}></div>:''}
 
         <div id="appbody">
           {this.props.children}
@@ -88,3 +98,5 @@ export default class Header extends React.Component {
     )
   }
 }
+
+export default withRouter(props => <Header {...props}/>)
