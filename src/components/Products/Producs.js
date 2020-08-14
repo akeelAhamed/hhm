@@ -19,11 +19,11 @@ function Modal3D(props) {
       keyboard={false}
     >
       <Modal.Body className="p-0">
-        <div style={{maxWidth: '800px', maxHeight: '800px'}}>
+        <div style={{maxHeight: '600px'}}>
           <button className="btn-link close" style={{position: 'absolute',zIndex: 9,right: '5px',margin: '5px',color: '#FFF'}} onClick={props.onHide}>
             Close
           </button>
-          <div style={{left: "0px", width: "100%", height: "0px", position: "relative", paddingBottom: "100%", overflow: "hidden",}}>
+          <div style={{left: "0px", width: "100%", height: "0px", position: "relative", paddingBottom: "75%", overflow: "hidden",}}>
               <iframe src="./3d/02/index.html"
                   title="3d product"
                   style={{ position: "absolute", top: "0px", left: "0px", height: "100%", minWidth: "100%", width: "100%", }}
@@ -88,12 +88,13 @@ export default class Products extends BaseComponent {
       <div className="main-container">
 
         <div className="text-uppercase ptop">
-          <h3>Higher Living</h3>
+          <h3 className="absolute">Higher Living</h3>
           <img src={this.getImage(product.allimages, 'top')} className="img-fluid" alt="..." />
         </div>
 
         <div className="home-bg-2" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'back_ground')+')'}}>
-          <div className="home-bg-2_text">
+
+          <div className="home-bg-2_text absolute">
             <h5 className="text-uppercase border-teal"> {product.name} </h5>
             <br />
             <div dangerouslySetInnerHTML={{ __html: product.details }} /><br />

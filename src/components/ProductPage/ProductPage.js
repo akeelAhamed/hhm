@@ -102,7 +102,6 @@ class ProductPage extends BaseComponent {
   }
 
   content() {
-    console.log(this.pageContent);
     return(
       <div className="main-container py-4">
 
@@ -122,9 +121,20 @@ class ProductPage extends BaseComponent {
               <strong className="text-uppercase">Product summary</strong>
               <div className="border-teal-top px-2">
                 <b className="text-uppercase border-teal"> {this.pageContent.name} </b>
-                <p>Seller      : {this.pageContent.seller_information}</p>
-                <p>Pack contain: </p>
-                <p>Total weight: {this.pageContent.size_qty + this.pageContent.size}</p>
+                <p>
+                  <span>Seller</span>      : {this.pageContent.seller_information}
+                </p>
+                <p className="d-flex">
+                  <span>Pack contain</span> : 
+                  <ul className="ml-1" style={{listStyle: "none"}}>
+                    {
+                      this.pageContent.size.map((p, i) => (
+                        <li key={i}>{p}</li>
+                      ))
+                    }
+                  </ul>
+                </p>
+                <p>Total weight: {this.pageContent.views}</p>
                 
                 <hr />
 

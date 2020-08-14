@@ -61,7 +61,7 @@ export default class FooterPage extends React.Component {
                     <ul key={index} className="list-unstyled text-uppercase">
                       <li>
                         {" "}
-                        <a key={el.id} href={el.facebook}>
+                        <a key={el.id} href={el.facebook} target="_blank" rel="noopener noreferrer">
                           facebook{" "}
                         </a>{" "}
                       </li>

@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 
 window.window._axios = Axios;
 //window._axios.defaults.baseURL = 'http://cors-anywhere.herokuapp.com/https://hhm.world/api/';
-window._axios.defaults.baseURL = 'http://cors-anywhere.herokuapp.com/http://hhmlife.org/api/';
+window._axios.defaults.baseURL = 'http://cors-anywhere.herokuapp.com/https://admin.hhm.world/api/';
 //window._axios.defaults.baseURL = 'http://www.hhmlife.org/api/';
 window._axios.defaults.headers.common['APP_KEY'] = 'Test@123';
 // window._axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';

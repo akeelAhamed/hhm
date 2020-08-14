@@ -292,10 +292,18 @@ export default class CheckOut extends BaseComponent {
                                         <section className="c">
                                             <h5>{this.cart.name}</h5>
                                             <p>Seller      : {this.cart.seller_information}</p>
-                                            <p>Pack contain: </p>
-
+                                            <p className="d-flex">
+                                                <span>Pack contain</span> : 
+                                                <ul className="ml-1" style={{listStyle: "none"}}>
+                                                    {
+                                                    this.cart.size.map((p, i) => (
+                                                        <li key={i}>{p}</li>
+                                                    ))
+                                                    }
+                                                </ul>
+                                            </p>
                                             <div>
-                                                <p>Total weight: {this.cart.size_qty + this.cart.size}</p>
+                                                <p>Total weight: {this.cart.views}</p>
                                                 <small>One year pack</small><br/>
                                                 <p>Qty: {this.cart._qty}</p>
                                                 <h5 className="border py-2"><b>ORDER TOTAL : Rs.{parseFloat(this.cart.ship + (this.cart.price * this.cart._qty) - this.state.discount)}</b> <small>(Inclusive of all tax)</small></h5>

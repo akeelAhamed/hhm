@@ -29,11 +29,11 @@ export default class BaseComponent extends React.Component {
 
     window.scrollTo(0, 0);
 
-    const exceptApi = ['/register', '/login', '/dashboard', '/cart', '/checkout'];
+    const exceptApi = ['/register', '/login', '/dashboard', '/cart', '/checkout', '/about', '/benifits', '/hypothesis', '/science', '/contact'];
 
     this.pageContent = null;
     this.page = window.location.pathname;
-    this.api = !includes(exceptApi, this.page); // Load api
+    this.api = !includes(exceptApi, this.page.toLowerCase()); // Load api
 
     setTimeout(() => {
       (!init)||this.init();

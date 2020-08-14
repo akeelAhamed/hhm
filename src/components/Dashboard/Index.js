@@ -8,22 +8,12 @@ export default class Index extends BaseComponent {
   constructor(props) {
     super();
     this.state.profile  = null;
+    this.state.orders   = [];
+    this.state.ordersL  = false;
+    this.state.orderid    = '';
     this.state.tab = 0;
 
     this.toggle = this.toggle.bind(this);
-  }
-
-  /**
-   * Handle toggle event
-   * 
-   * @param {object} e 
-   */
-  toggle(e){
-    if(has(e.target.dataset, 'key')){
-      this.setState({
-        tab: parseInt(e.target.dataset.key)
-      })
-    }
   }
 
   componentDidMount(){
@@ -40,6 +30,42 @@ export default class Index extends BaseComponent {
     }).catch(function(error){
       console.log(error.response);
     });
+  }
+
+  /**
+   * Load orders
+   */
+  loadOrders(){
+    window._axios.get('/orders?token='+this.state.user.token)
+    .then((result) => {
+      console.log(result);
+        if(result.data !== ''){
+          this.setState({
+            ordersL: true,
+            orders : result.data
+          })
+        }else{
+          this.logOut();
+        }
+    }).catch(function(error){
+      console.log(error.response);
+    });
+  }
+
+  /**
+   * Handle toggle event
+   * 
+   * @param {object} e 
+   */
+  toggle(e){
+    if(has(e.target.dataset, 'key')){
+      if(!this.state.ordersL && has(e.target.dataset, 'order')){
+        this.loadOrders();
+      }
+      this.setState({
+        tab: parseInt(e.target.dataset.key)
+      })
+    }
   }
 
   content() {
@@ -89,10 +115,14 @@ export default class Index extends BaseComponent {
         </Card>
 
         <Card className={"my-3 pro mw "+(this.state.tab === 2)}>
-          <h5 className="header" data-key={2} onClick={this.toggle}>My orders</h5>
+          <h5 className="header" data-key={2} data-order="true" onClick={this.toggle}>My orders</h5>
           <Collapse in={this.state.tab === 2}>
             <div id="_order" className="c-body">
-              No orders placed  
+              {
+                this.state.orders.map((order, i) => (
+                  <strong className="d-block" key={i}>{order.order_number}</strong>
+                ))
+              }
             </div>
           </Collapse>
         </Card>
@@ -101,7 +131,12 @@ export default class Index extends BaseComponent {
           <h5 className="header" data-key={3} onClick={this.toggle}>Track my order</h5>
           <Collapse in={this.state.tab === 3}>
             <div id="_track" className="c-body">
-              No orders to track  
+            <form data-action="track" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
+                <FormControl placeholder="Order id" id="order" name="orderid" value={this.state.orderid} onChange={this.onChange} required/>
+
+                <Button type="submit" variant="light">Track</Button>
+
+              </form>
             </div>
           </Collapse>
         </Card>

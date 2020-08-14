@@ -1,10 +1,11 @@
-.ptop h3{
+.ptop .absolute{
     position: absolute;
     padding: 8%;
     font-weight: bolder;
     color: #00a09b;
     font-size: 200%;
 }
+
 ._3d-button{
     position: absolute;
     cursor: pointer;

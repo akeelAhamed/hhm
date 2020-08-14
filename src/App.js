@@ -8,6 +8,9 @@ import NotFound from "./components/Error/NotFound";
 
 import HomePage from "./components/HomePage/homepage";
 import AboutUs from "./components/AboutUs/aboutus";
+import Benifits from "./components/AboutUs/benifits";
+import Hypothesis from "./components/AboutUs/hypothesis";
+import Science from "./components/AboutUs/science";
 import Vision from "./components/VisionPage/vision";
 // import BlogPage from './components/BlogPage/blogpage';
 // import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
@@ -62,11 +65,14 @@ class App extends React.Component{
         <Switch>
           <Route path="/" exact component={(props) => this.component(props, HomePage)} />
           <Route path="/about" component={(props) => this.component(props, AboutUs)} />
+          <Route path="/benifits" component={(props) => this.component(props, Benifits)} />
+          <Route path="/hypothesis" component={(props) => this.component(props, Hypothesis)} />
+          <Route path="/science" component={(props) => this.component(props, Science)} />
           <Route path="/products" exact component={(props) => this.component(props, Products) } />
           <Route path="/item/:name" component={(props) => this.component(props, ProductPage) } />
           <Route path="/cart" component={(props) => this.component(props, CartPage) } />
           <Route path="/vision" component={(props) => this.component(props, Vision) } />
-          <Route path="/contactus" component={(props) => this.component(props, ContactUs) } />
+          <Route path="/contact" component={(props) => this.component(props, ContactUs) } />
 
           {/* Form */}
           <Route path="/login" exact component={(props) => this.component(props, Login) } />

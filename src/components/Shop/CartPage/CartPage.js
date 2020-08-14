@@ -11,6 +11,17 @@ export default class CartPage extends BaseComponent {
     this.state.promo = '';
     this.state.discount = 0;
     this.cart = this.getCart();
+
+    this.edit = this.edit.bind(this);
+  }
+
+  /**
+   * Go back to edit
+   * 
+   * @param {object} e 
+   */
+  edit(e){
+    return this.redirect('item/'+this.cart.slug);
   }
 
   content() {
@@ -51,7 +62,7 @@ export default class CartPage extends BaseComponent {
                   <h4>{this.cart.name}</h4>
                   <p>Qty: {this.cart._qty}</p>
                   <ButtonGroup>
-                    <Button variant="link" className="text-dark border-right" onClick={this.back}>Edit</Button>
+                    <Button variant="link" className="text-dark border-right" onClick={this.edit}>Edit</Button>
                     <Button variant="link" className="text-dark" onClick={this.emptyCart}>Remove</Button>
                   </ButtonGroup>
                 </div>

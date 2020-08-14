@@ -4,11 +4,17 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    margin: 10px;
+    margin: 0px 10px;
 }
 
 .bkg-text{
     padding: 8%;
-    font-family: 'Lato';
-    color: white;
+    font-weight: bolder;
+    font-size: 300%;
+    color: #00a09b;
+}
+
+.li{
+    width: 300px;
+    float: right;
 }
