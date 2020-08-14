@@ -4,6 +4,7 @@ import has from "lodash/has";
 import BaseComponent from '../BaseComponent';
 import Gallery from './Gallery';
 import "./custom.css";
+import { Link } from "react-router-dom";
 
 class ProductPage extends BaseComponent {
   constructor(props) {
@@ -22,6 +23,9 @@ class ProductPage extends BaseComponent {
    * @param {object} e 
    */
   toCart(e){
+    this.setState({
+      qty: this.state.qty
+    })
     return this.addCart(this.pageContent, this.state.qty);
   }
 
@@ -66,6 +70,8 @@ class ProductPage extends BaseComponent {
   }
 
   buyButtom(){
+    this.cart = this.getCart();
+
     if(this.state.isLoggedIn){
       if(this.pageContent.stock <= 0){
         return(<span className="text-danger">Out of stock</span>);
@@ -74,8 +80,12 @@ class ProductPage extends BaseComponent {
       return(
           <InputGroup className="buy">
             <InputGroup.Append className="d-block">
-            <Button className="btn btn-primary rounded" onClick={this.buy}>Buy now</Button>
-            <Button className="btn btn-primary rounded ml-1" onClick={this.toCart}>Add to cart</Button>
+              <Button className="btn btn-primary rounded" onClick={this.buy}>Buy now</Button>
+              {
+                (this.cart === '')
+                ?<Button className="btn btn-primary rounded ml-1" onClick={this.toCart}>Add to cart</Button>
+                :<Link className="btn btn-primary rounded ml-1" to="/cart">Cart</Link>
+              }
             </InputGroup.Append>
 
             <div className="d-block w-100 my-2">

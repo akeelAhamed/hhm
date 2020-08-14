@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, Spinner } from 'react-bootstrap';
 import { Link, withRouter } from 'react-router-dom';
-import { FaShoppingCart } from "react-icons/fa";
+import { GiShoppingCart } from "react-icons/gi";
 import includes from 'lodash/includes';
 import FooterPage from "../FooterPage/footer";
 
@@ -80,7 +80,7 @@ class Header extends React.Component {
                 :<Nav.Link active={window.location.pathname === '/login'} as={Link} to='/login'>Login</Nav.Link>
               }
               
-              <Nav.Link active={window.location.pathname === '/cart'} as={Link} to='/cart'><FaShoppingCart /></Nav.Link>
+              <Nav.Link active={window.location.pathname === '/cart'} as={Link} to='/cart'><GiShoppingCart /></Nav.Link>
 
             </Nav>
 

@@ -35,11 +35,11 @@ export default class CartPage extends BaseComponent {
     this.cart.ship = this.cart.ship === null?0:0
 
     return (
-      <div className="main-container py-5">
+      <div className="main-container p-5">
         <Container fluid className="contr-width">
           <h2 className="border_teal-left" >Shopping Bag</h2>
           <Row className="">
-            <Col xl lg md="6" sm="12">
+            <Col md="6" sm="12">
               <h5 className="border_teal-bottom">{this.cart._qty} items</h5>
               <section className="d-flex flex-lg-row flex-xl-row flex-md-row flex-sm  p-2">
                 <img
@@ -51,14 +51,16 @@ export default class CartPage extends BaseComponent {
                   <h4>{this.cart.name}</h4>
                   <p>Qty: {this.cart._qty}</p>
                   <ButtonGroup>
-                    <Button variant="outline-secondary" onClick={this.back}>Edit</Button>
-                    <Button variant="outline-secondary" onClick={this.emptyCart}>Remove</Button>
+                    <Button variant="link" className="text-dark border-right" onClick={this.back}>Edit</Button>
+                    <Button variant="link" className="text-dark" onClick={this.emptyCart}>Remove</Button>
                   </ButtonGroup>
                 </div>
               </section>
             </Col>
 
-            <Col xl lg md="6" sm="12">
+            <Col md="1"></Col>
+
+            <Col md="5" sm="12">
               <h4 className="border_teal-bottom">Order summary</h4>
               <FormControl className="text-center" aria-label="Promo code" placeholder='Have a promo code...' value={this.state.qty} name="promo" onChange={this.onChange} />
 

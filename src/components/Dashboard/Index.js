@@ -27,7 +27,6 @@ export default class Index extends BaseComponent {
   }
 
   componentDidMount(){
-    
     window._axios.get('/profile?token='+this.state.user.token)
     .then((result) => {
       console.log(result);

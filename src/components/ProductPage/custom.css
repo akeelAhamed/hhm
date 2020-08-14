@@ -56,20 +56,21 @@
 }
 
 .full-img{
-    height: 450px;
-    width : 450px;
+    height: 360px;
+    width : 100%;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
+    padding-top: 1em;
 }
 
 #slideshow{
     overflow: auto;
     white-space: nowrap;
     margin: auto;
-    max-width: 465px;
+    max-width: 365px;
     width: 100%;
-    padding: 0.5em 0em;
+    padding: 1em 0em;
 }
 
 #slideshow img{
@@ -78,6 +79,19 @@
     height:100px;
     cursor: pointer;
 }
+
+#slideshow span{
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 5px;
+    margin: auto 0.3em;
+    background: #00a19c;
+    width: 10px;
+    height: 10px;
+    border: 1px solid #00a19c;
+}
+
+#slideshow span.true{pointer-events: none;padding: 5px;border-color: #052524}
 
 #slideshow img.true{
     border: 2px solid #00a19c;
@@ -90,4 +104,12 @@
         height: 25vh;
     }
     .buy{width:50%;}
+    .full-img{
+        height: 450px;
+        width : 450px; 
+    }
+    
+    #slideshow{
+        max-width: 465px;
+    }
 }

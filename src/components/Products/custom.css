@@ -5,3 +5,16 @@
     color: #00a09b;
     font-size: 200%;
 }
+._3d-button{
+    position: absolute;
+    cursor: pointer;
+    width: 30px;
+    right: 0;
+    margin-top: 1em;
+}
+._3d #slideshow{padding: 0em;width:50%; margin: auto;}
+
+@media(min-width:768px){
+    ._3d .full-img{padding-top: 0;height: 400px;width: 400px;}
+    ._3d .home-bg-2_text{padding-left: 40%;}
+}

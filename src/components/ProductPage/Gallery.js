@@ -7,7 +7,8 @@ export default class Gallery extends React.Component{
         super();
         this.state = {
             default: props.img,
-            current: props.img
+            current: props.img,
+            is3d   : props._3d !== undefined
         }
         this.changeImg = this.changeImg.bind(this);
     }
@@ -34,11 +35,19 @@ export default class Gallery extends React.Component{
                 </div>
                 
                 <div id="slideshow">
-                    <img alt='gallery' className={"img-fluid "+ (this.props.img === this.state.current)} src={this.props.img} data-key={-1} onClick={this.changeImg} />
                     {
-                        this.props.gallery.map((img, i) => (
-                            <img key={i} data-key={i} alt='gallery' className={"img-fluid "+ (img === this.state.current)} src={img} onClick={this.changeImg}/>
-                        ))
+                        (this.state.is3d)
+                        ?''
+                        :<img alt='gallery' className={"img-fluid "+ (this.props.img === this.state.current)} src={this.props.img} data-key={-1} onClick={this.changeImg} />
+                    }
+                    
+                    {
+                        this.props.gallery.map((img, i) => {
+                            if(this.state.is3d){
+                                return(<span key={i} data-key={i} className={"dots "+ (img === this.state.current)} onClick={this.changeImg}/>)
+                            }
+                            return(<img key={i} data-key={i} alt='gallery' className={"img-fluid "+ (img === this.state.current)} src={img} onClick={this.changeImg}/>)
+                        })
                     }
                 </div>
             </>
