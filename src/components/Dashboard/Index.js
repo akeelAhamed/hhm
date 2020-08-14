@@ -17,7 +17,7 @@ export default class Index extends BaseComponent {
   }
 
   componentDidMount(){
-    window._axios.get('/profile?token='+this.state.user.token)
+    window._axios.get('/profile?param=true&token='+this.state.user.token)
     .then((result) => {
       console.log(result);
         if(result.data !== ''){
@@ -36,7 +36,7 @@ export default class Index extends BaseComponent {
    * Load orders
    */
   loadOrders(){
-    window._axios.get('/orders?token='+this.state.user.token)
+    window._axios.get('/orders?param=true&token='+this.state.user.token)
     .then((result) => {
       console.log(result);
         if(result.data !== ''){

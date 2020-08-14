@@ -1,9 +1,21 @@
 .footer{
     background-image: url('../HomePage/Img/footer.png');
     background-size: cover;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    color:rgba(255, 255, 255, 0.8);    
 }
 
 .footer a{
-    color: #EFEFEF;
+    color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
+}
+
+.bg-info{
+    background-color:#00a19c;
+}
+
+.footer-content-1{
+    padding-right: 200px;
+    font-size: 13px;
 }

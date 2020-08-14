@@ -9,16 +9,19 @@ export default class FooterPage extends React.Component {
 
   render(){
     return (
-      <Container fluid className="pt-3 footer text-white">
+      <Container fluid className="footer text-white">
+        <Container>
         <Row>
-          <Col md="6" sm="12" className="px-5">
-            <img
-              src={this.props.page.heade_footer.logo}
+          <Col md="6" sm="12" className="footer-content-1">
+
+          <img
+              src='https://hhm.world/assets/images/1596980432HHM-Logo-White.png'
               width="70"
               height="40"
               className="d-inline-block align-top"
               alt="logo"
             />
+           
             <p>{this.props.page.heade_footer.footer}</p>
           </Col>
   
@@ -67,19 +70,19 @@ export default class FooterPage extends React.Component {
                       </li>
                       <li>
                         {" "}
-                        <a key={el.id} href={el.gplus}>
+                        <a key={el.id} href={el.gplus} target="_blank" rel="noopener noreferrer">
                           gplus{" "}
                         </a>{" "}
                       </li>
                       <li>
                         {" "}
-                        <a key={el.id} href={el.twitter}>
+                        <a key={el.id} href={el.twitter} target="_blank" rel="noopener noreferrer">
                           twitter{" "}
                         </a>{" "}
                       </li>
                       <li>
                         {" "}
-                        <a key={el.id} href={el.linkedin}>
+                        <a key={el.id} href={el.linkedin} target="_blank" rel="noopener noreferrer">
                           linkedin{" "}
                         </a>{" "}
                       </li>
@@ -89,6 +92,7 @@ export default class FooterPage extends React.Component {
             </section>
           </Col>
         </Row>
+        </Container>
       </Container>
     );
   }

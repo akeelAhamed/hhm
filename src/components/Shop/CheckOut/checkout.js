@@ -49,7 +49,7 @@ export default class CheckOut extends BaseComponent {
 
     componentDidMount(){
         if(this.cart !== ''){
-            window._axios.get('/profile?token='+this.state.user.token)
+            window._axios.get('/profile?param=true&token='+this.state.user.token)
             .then((result) => {
                 if(result.data !== ''){
                     const baddress = {
