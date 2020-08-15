@@ -1,5 +1,5 @@
 .home-bg-1{
-    height: 400px;
+    min-height: 400px;
     background-image: url('../HomePage/Img/fwdhhmhomepagedummypics/Home\ 01.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -14,7 +14,7 @@
 }
 
 .home-bg-2{
-    height: 450px;
+    min-height: 450px;
     background-position: top right;
     background-repeat: no-repeat;
     background-size: cover;

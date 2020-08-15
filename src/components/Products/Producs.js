@@ -84,6 +84,7 @@ export default class Products extends BaseComponent {
   }
 
   productDetail(product){
+    console.log(JSON.parse(product.attributes));
     return (
       <div className="main-container">
 
@@ -106,7 +107,7 @@ export default class Products extends BaseComponent {
           <img src={this.getImage(product.allimages, 'product')} className="img-fluid w-100" alt="..." />
         </div>
 
-        <div className="home-bg-1-" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'another')+')'}}>
+        <div className="home-bg-1" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'another')+')'}}>
           <Container>
             <Row className="_3d">
               <Col md="5">

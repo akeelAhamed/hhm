@@ -124,7 +124,7 @@ class ProductPage extends BaseComponent {
                 <p>
                   <span>Seller</span>      : {this.pageContent.seller_information}
                 </p>
-                <p className="d-flex">
+                <div className="d-flex">
                   <span>Pack contain</span> : 
                   <ul className="ml-1" style={{listStyle: "none"}}>
                     {
@@ -133,7 +133,7 @@ class ProductPage extends BaseComponent {
                       ))
                     }
                   </ul>
-                </p>
+                </div>
                 <p>Total weight: {this.pageContent.views}</p>
                 
                 <hr />
@@ -154,7 +154,24 @@ class ProductPage extends BaseComponent {
                   {/* <br/>
                   <small>{this.pageContent.youtube}</small> */}
                   <hr/>
-                  <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} />
+                  {/* <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} /> */}
+                  <div className="pl-3">
+                    <ul>
+                      <li>
+                        Inspired from ancient traditions developed by great thinkers of the past,H.H.M brings you Panacea Ultimate for Rousing Energy (P.U.R.E),a smoke therapy which will make you feel alive from within.
+                      </li>
+                      <li>
+                        Cosmic energy strikes the earth from all directions. The process of P.U.R.E helps to attract, absorb, and direct cosmic energy to travel towards the brain and energize the seven major energy centres (chakras) in the human body.
+                      </li>
+                      <li>
+                        P.U.R.E package contains the PANACEA ULTIMATE powder which is a mixture of 43 different herbs with tremendous health benefits.
+                      </li>
+                      <li>
+                        Inhaling the medicinal fumes leaves you fresh, calm, and revived.Elevate your life in a holistic way filled with joy and peace.
+                      </li>
+                    </ul>
+                  </div>
+
                 </div>
               </div>
             </Col>

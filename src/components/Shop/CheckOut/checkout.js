@@ -10,6 +10,8 @@ export default class CheckOut extends BaseComponent {
     constructor(props) {
         super();
 
+        this.order_info = null;
+        this.rzp        = null;
         this.error = true;
         this.cart  = this.getCart();
         this.state.promo = '';
@@ -64,6 +66,7 @@ export default class CheckOut extends BaseComponent {
                     profile: result.data,
                     baddress: baddress
                   });
+                  this.getOrderId();
                 }else{
                   this.logOut();
                 }
@@ -79,48 +82,72 @@ export default class CheckOut extends BaseComponent {
     }
 
     /**
+     * Get order id from backend
+     */
+    getOrderId(){
+        window._axios.get('https://admin.hhm.world/demo1.php?test=hhpure&amount='+parseInt(this.cart.ship + (this.cart.price * this.cart._qty) * 100))
+        .then((result) => {
+            if(result.data !== ''){
+              this.order_info = result.data;
+            }else{
+              this.logOut();
+            }
+        })
+        .catch(function(error){
+          console.log(error.response);
+        });
+    }
+
+    /**
      * Init razorpay
      */
     initRzp(){
-        let _this = this;
-        let options = {
-            "key": "rzp_test_xlJRG5Yh7YBbXa",
-            "amount": parseFloat(this.cart.ship + (this.cart.price * this.cart._qty)) * 100, // 100 paise = INR 1, amount in paisa
-            "name": this.cart.name,
-            "description": "Rs."+this.cart.price+" | Qty:"+this.cart._qty,
-            "handler": function (response){
-                _this.emptyCart();
-                _this.setState({
-                    chekout: response
-                });
-                let query = '';
-                for (const key in _this.state.baddress) {
-                    query += "&customer_"+key+"="+_this.state.baddress[key];
-                }
-                let same = _this.state.same?_this.state.baddress:_this.state.daddress
-                for (const key in same) {
-                    query += "&shipping_"+key+"="+same[key];
-                }
-                window._axios.get("/payreturn?token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&product_id="+_this.cart.id+query)
-                .then((result) => {
-                    _this.setState({
-                        complete: true
-                    })
-                }).catch(function(error){
-                  console.log(error.response);
-                });
-            },
-            "prefill": {
-                "email": this.state.user.email,
-                "contact": this.state.same?this.state.baddress.phone:this.state.daddress.phone
-            },
-            "notes": {
-                "product": this.cart
-            },
-        };
-
-        this.rzp = new window.Razorpay(options);
-        this.rzp.open();
+        if(this.order_info !== null){
+            
+            if(this.rzp === null){
+                let _this = this;
+                let options = {
+                    "key": "rzp_live_SNlNlPuzZfSpD1",
+                    "amount": this.order_info.amount * 100, // 100 paise = INR 1, amount in paisa
+                    "name": this.cart.name,
+                    "description": "Rs."+this.cart.price+" | Qty:"+this.cart._qty,
+                    "order_id": this.order_info.id,
+                    "handler": function (response){
+                        _this.emptyCart();
+                        _this.setState({
+                            chekout: response
+                        });
+                        let query = '';
+                        for (const key in _this.state.baddress) {
+                            query += "&customer_"+key+"="+_this.state.baddress[key];
+                        }
+                        let same = _this.state.same?_this.state.baddress:_this.state.daddress
+                        for (const key in same) {
+                            query += "&shipping_"+key+"="+same[key];
+                        }
+                        window._axios.get("/payreturn?token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&product_id="+_this.cart.id+query)
+                        .then((result) => {
+                            _this.setState({
+                                complete: true
+                            })
+                        }).catch(function(error){
+                          console.log(error.response);
+                        });
+                    },
+                    "prefill": {
+                        "email": this.state.user.email,
+                        "contact": this.state.same?this.state.baddress.phone:this.state.daddress.phone
+                    },
+                    "notes": {
+                        "product": this.cart
+                    },
+                };
+                this.rzp = new window.Razorpay(options);
+            }
+            
+            return this.rzp.open();
+        }
+        console.log('order id was not created');
     }
     
     /**
@@ -292,7 +319,7 @@ export default class CheckOut extends BaseComponent {
                                         <section className="c">
                                             <h5>{this.cart.name}</h5>
                                             <p>Seller      : {this.cart.seller_information}</p>
-                                            <p className="d-flex">
+                                            <div className="d-flex">
                                                 <span>Pack contain</span> : 
                                                 <ul className="ml-1" style={{listStyle: "none"}}>
                                                     {
@@ -301,7 +328,7 @@ export default class CheckOut extends BaseComponent {
                                                     ))
                                                     }
                                                 </ul>
-                                            </p>
+                                            </div>
                                             <div>
                                                 <p>Total weight: {this.cart.views}</p>
                                                 <small>One year pack</small><br/>

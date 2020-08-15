@@ -74,23 +74,6 @@ class ContactUs extends BaseComponent {
             </Col>
           </Row>
 
-          <Row className="mt-5 mb-5">
-            <Col lg xl md sm="auto" className="my-auto">
-              <h3 className="text-uppercase">Malaysia Office</h3>
-              <ul className="list-unstyled  mt-3">
-                <li>AUSHMATH Life Products Pvt Ltd</li>
-                <li>Door No, 2/1, First Floor</li>
-                <li>Devaraj Corner</li>
-                <li>Marudhamalai main Road</li>
-                <li>Vadavalli Coimbatore District</li>
-                <li>Tamil Nadu. 641041</li>
-              </ul>
-            </Col>
-            <Col lg xl md sm="auto" className="">
-              <img className="img-fluid " src={require('../VisionPage/img/lens.jpg')} alt="" />
-            </Col>
-          </Row>
-
         </section>
       </div>
     );

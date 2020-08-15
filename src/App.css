@@ -33,6 +33,7 @@ a{color: #758595;}
 .btn-primary.disabled, .btn-primary:disabled{background-color: #00a19c;border-color: #00a19c;}
 .navbar-light .navbar-nav .nav-link.active{color: #00a19c;pointer-events: none;}
 .navbar-light .navbar-nav .nav-link{font-size: 14px;color: rgb(0, 0, 0, 0.7);padding: .5rem 1rem;}
+.form .col-md-2{overflow: hidden;}
 .form-title{text-transform: uppercase;width: fit-content;color: #00a09b;padding:0em 0.3em;padding-top: 0.2em;border-right: 47px solid #00a19c;border-left: 5px solid #00a19c;}
 .form .form-control{border: 1.5px solid #00a09b;border-radius: 0;}
 @media (min-width: 768px){

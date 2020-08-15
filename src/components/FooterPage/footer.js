@@ -15,14 +15,14 @@ export default class FooterPage extends React.Component {
           <Col md="6" sm="12" className="footer-content-1">
 
           <img
-              src='https://hhm.world/assets/images/1596980432HHM-Logo-White.png'
+              src={this.props.page.heade_footer.logo}
               width="70"
               height="40"
               className="d-inline-block align-top"
               alt="logo"
             />
            
-            <p>{this.props.page.heade_footer.footer}</p>
+            <p dangerouslySetInnerHTML={{ __html: this.props.page.heade_footer.footer }}/>
           </Col>
   
           <Col md="3" xs="6">
