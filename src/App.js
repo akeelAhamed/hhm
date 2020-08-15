@@ -9,6 +9,8 @@ import NotFound from "./components/Error/NotFound";
 import HomePage from "./components/HomePage/homepage";
 import AboutUs from "./components/AboutUs/aboutus";
 import Benifits from "./components/AboutUs/benifits";
+import Privacy from "./components/AboutUs/privacy";
+import Terms from "./components/AboutUs/terms";
 import Hypothesis from "./components/AboutUs/hypothesis";
 import Science from "./components/AboutUs/science";
 import Vision from "./components/VisionPage/vision";
@@ -66,6 +68,8 @@ class App extends React.Component{
           <Route path="/" exact component={(props) => this.component(props, HomePage)} />
           <Route path="/about" component={(props) => this.component(props, AboutUs)} />
           <Route path="/benifits" component={(props) => this.component(props, Benifits)} />
+          <Route path="/privacy" component={(props) => this.component(props, Privacy)} />
+          <Route path="/terms" component={(props) => this.component(props, Terms)} />
           <Route path="/hypothesis" component={(props) => this.component(props, Hypothesis)} />
           <Route path="/science" component={(props) => this.component(props, Science)} />
           <Route path="/products" exact component={(props) => this.component(props, Products) } />

@@ -11,7 +11,7 @@ class ContactUs extends BaseComponent {
   render() {
     return (
       <div className="main-container ">
-        <div className="bkg text-uppercase">
+        <div className="bkgcontact text-uppercase">
           <h3 className="bkg-text">Higher living</h3>
         </div>
 

@@ -151,26 +151,11 @@ class ProductPage extends BaseComponent {
 
                 <div>
                   {this.pageContent.stock > 0?<span className="text-success">In stock</span>:<span className="text-danger">Out of stock</span>}
-                  {/* <br/>
-                  <small>{this.pageContent.youtube}</small> */}
+                  <br/>
+                  <small>{this.pageContent.youtube}</small>
                   <hr/>
                   {/* <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} /> */}
-                  <div className="pl-3">
-                    <ul>
-                      <li>
-                        Inspired from ancient traditions developed by great thinkers of the past,H.H.M brings you Panacea Ultimate for Rousing Energy (P.U.R.E),a smoke therapy which will make you feel alive from within.
-                      </li>
-                      <li>
-                        Cosmic energy strikes the earth from all directions. The process of P.U.R.E helps to attract, absorb, and direct cosmic energy to travel towards the brain and energize the seven major energy centres (chakras) in the human body.
-                      </li>
-                      <li>
-                        P.U.R.E package contains the PANACEA ULTIMATE powder which is a mixture of 43 different herbs with tremendous health benefits.
-                      </li>
-                      <li>
-                        Inhaling the medicinal fumes leaves you fresh, calm, and revived.Elevate your life in a holistic way filled with joy and peace.
-                      </li>
-                    </ul>
-                  </div>
+                  <div className="pl-3" dangerouslySetInnerHTML={{ __html: this.pageContent.policy }}/>
 
                 </div>
               </div>

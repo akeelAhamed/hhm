@@ -6,7 +6,14 @@
     background-position: center;
     margin: 0px 10px;
 }
-
+.bkgcontact{
+    background-image: url('https://admin.hhm.world/assets/images/sliders/1597144361imageheader.png');
+    height: 33em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0px 10px;
+}
 .bkg-text{
     padding: 8%;
     font-weight: bolder;

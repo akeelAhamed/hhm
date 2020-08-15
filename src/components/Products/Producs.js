@@ -52,16 +52,9 @@ export default class Products extends BaseComponent {
         img : require('./img/Product-Page-03b-Lamp.png'),
         file: '02'
       },
-      {
-        img : require('./img/Product-Page-03c-Sachets.png'),
-        file: '02'
-      },
-      {
-        img : require('./img/Product-Page-03d-Spatula.png'),
-        file: '02'
-      },
+    
     ];
-    this.imageType = ['back_ground', 'product', 'another', 'top'];
+    this.imageType = ['back_ground', 'product', 'another', 'top','followup'];
   }
 
   /**
@@ -84,27 +77,25 @@ export default class Products extends BaseComponent {
   }
 
   productDetail(product){
-    console.log(JSON.parse(product.attributes));
     return (
       <div className="main-container">
 
-        <div className="text-uppercase ptop">
-          <h3 className="absolute">Higher Living</h3>
-          <img src={this.getImage(product.allimages, 'top')} className="img-fluid" alt="..." />
+        <div className="home-bg-1 ml-3 mr-3" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'top')+')'}}>
+          <p>HIGHER LIVING</p>
         </div>
-
-        <div className="home-bg-2" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'back_ground')+')'}}>
-
-          <div className="home-bg-2_text absolute">
-            <h5 className="text-uppercase border-teal"> {product.name} </h5>
+        
+        <div className="home-bg-prod" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'back_ground')+')'}}>
+          <div className="home-bg-2_text">
+            <h5 className="text-uppercase border-teal"> {product.name}</h5>
             <br />
-            <div dangerouslySetInnerHTML={{ __html: product.details }} /><br />
-            <Link className="mt-3 btn btn-primary" to={"/item/"+product.slug}>Buy now</Link>
+            <small dangerouslySetInnerHTML={{ __html: 'Inspired from ancient traditions developed by great scholars of the past, H.H.M brings you Panacea Ultimate for Rousing Energy (P.U.R.E), a smoke therapy that will make you feel alive from within. Cosmic energy strikes the earth from all directions. The process of P.U.R.E helps to attract, absorb, and direct cosmic energy to travel towards the brain and energize the seven chakras in the body. P.U.R.E package contains the PANACEA ULTIMATE powder which is a mixture of 43 different herbs with tremendous health benefits. This smoke therapy has created many people to live their life with utmost potential and the well being of a holistic lifestyle. The theories that are set out to a benefit that humans could gain are set out by HHM so that people can live the complete while they achieve a perfect goal-oriented life to make a difference in the nature and in the lifestyle.  It can be smoked at any time in your living room/any part of your house regardless of religion anyone can use the P.U.R.E to elevate their life.'}} /><br />
+            <Link className="mt-3 btn btn-primaryhome" to={"/item/"+product.slug}>Buy now</Link>
           </div>
         </div>
 
+
         <div className="pproduct">
-          <img src={this.getImage(product.allimages, 'product')} className="img-fluid w-100" alt="..." />
+          <img src={this.getImage(product.allimages, 'followup')} className="img-fluid w-100" alt="..." />
         </div>
 
         <div className="home-bg-1" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'another')+')'}}>
@@ -124,7 +115,7 @@ export default class Products extends BaseComponent {
               
               <Col md="7">
                 <div className="home-bg-2_text">
-                  <div dangerouslySetInnerHTML={{ __html: product.details }} /><br />
+                  <div dangerouslySetInnerHTML={{ __html:'<b>BENEFITS OF P.U.R.E SMOKE THERAPY</b><br/>Breaks addictions<br/>Energizes the chakras<br/>Improves focus<br/>Enhances memory<br/>Purifies air<br/>Heals respiratory disorders<br/>Eliminates free radicals<br/>Has anti-inflammatory and antioxidant effects<br/>Absorbs cosmic energy' }} /><br />
                   <Link className="mt-3 btn btn-primary" to={"/item/"+product.slug}>Buy now</Link>
                 </div>
               </Col>

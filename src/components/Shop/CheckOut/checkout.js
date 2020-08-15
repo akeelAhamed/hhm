@@ -125,7 +125,7 @@ export default class CheckOut extends BaseComponent {
                         for (const key in same) {
                             query += "&shipping_"+key+"="+same[key];
                         }
-                        window._axios.get("/payreturn?token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&product_id="+_this.cart.id+query)
+                        window._axios.get("/payreturn?text=3&token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&product_id="+_this.cart.id+query)
                         .then((result) => {
                             _this.setState({
                                 complete: true

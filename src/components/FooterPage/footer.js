@@ -15,7 +15,7 @@ export default class FooterPage extends React.Component {
           <Col md="6" sm="12" className="footer-content-1">
 
           <img
-              src={this.props.page.heade_footer.logo}
+              src='https://admin.hhm.world/assets/images/1596980432HHM-Logo-White.png'
               width="70"
               height="40"
               className="d-inline-block align-top"
@@ -34,23 +34,31 @@ export default class FooterPage extends React.Component {
                     <a href="#!">Home</a>
                   </li>
                   <li className="list-unstyled">
-                    <a href="#!">About Us</a>
+                    <a href="/products">Product</a>
                   </li>
                   <li className="list-unstyled">
-                    <a href="#!">Product</a>
+                    <a href="/about">About Us</a>
                   </li>
                   <li className="list-unstyled">
-                    <a href="#!">Gallery</a>
+                    <a href="/benefit">Benefits</a>
                   </li>
                   <li className="list-unstyled">
-                    <a href="#!">R {"&"} D</a>
+                    <a href="/science">Science</a>
                   </li>
                   <li className="list-unstyled">
-                    <a href="#!">Contact us</a>
+                    <a href="/hypothesis">Hypothesis</a>
                   </li>
                   <li className="list-unstyled">
-                    <a href="#!">track order</a>
+                    <a href="/privacy"> Privacy Policy</a>
                   </li>
+                  <li className="list-unstyled">
+                    <a href="/terms">Terms & Conditions</a>
+                  </li>
+                 
+                  <li className="list-unstyled">
+                    <a href="/contact">Contact us</a>
+                  </li>
+                 
                 </ul>
               </div>
             </section>

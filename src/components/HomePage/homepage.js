@@ -30,12 +30,12 @@ export default class HomePage extends BaseComponent {
           </Row>
         </Container>
 
-        <div className="home-bg-2" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
+        <div className="home-bg-prod" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
           <div className="home-bg-2_text">
             <h5 className="text-uppercase border-teal"> {this.pageContent.feature_products[0].name} </h5>
             <br />
-            <div dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} /><br />
-            <Link className="mt-3 btn btn-primary" to={"/item/"+this.pageContent.feature_products[0].slug}>Buy now</Link>
+            <small dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} /><br />
+            <Link className="mt-3 btn btn-primaryhome" to={"/item/"+this.pageContent.feature_products[0].slug}>Buy now</Link>
           </div>
         </div>
 
