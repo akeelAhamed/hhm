@@ -3,6 +3,7 @@ import BaseComponent from '../BaseComponent';
 import './custom.css';
 import { Button, Container, Card, Row, Col, Collapse, FormControl, Spinner } from "react-bootstrap";
 import has from "lodash/has";
+import map from "lodash/map";
 
 export default class Index extends BaseComponent {
   constructor(props) {
@@ -19,7 +20,6 @@ export default class Index extends BaseComponent {
   componentDidMount(){
     window._axios.get('/profile?param=true&token='+this.state.user.token)
     .then((result) => {
-      console.log(result);
         if(result.data !== ''){
           this.setState({
             profile: result.data
@@ -66,6 +66,39 @@ export default class Index extends BaseComponent {
         tab: parseInt(e.target.dataset.key)
       })
     }
+  }
+
+  /**
+   * Order details
+   */
+  orderDetails(order){
+    const info = map(JSON.parse(order.orders_items))[0];
+    
+    console.log(order, info);
+    return(
+      <section className="c">
+        <p>Order id&nbsp;: {order.order_number}</p>
+        <p>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </p>
+        <h5>{info.item.name}</h5>
+        {/* <p>Seller      : {order.seller_information}</p> */}
+        {/* <div className="d-flex">
+            <span>Pack contain</span> : 
+            <ul className="ml-1" style={{listStyle: "none"}}>
+                {
+                order.size.map((p, i) => (
+                    <li key={i}>{p}</li>
+                ))
+                }
+            </ul>
+        </div> */}
+        <div>
+            <p>Total weight: {order.views}</p>
+            <small>One year pack</small><br/>
+            <p>Qty: {info.qty}</p>
+            <h5 className="border py-2"><b>ORDER TOTAL : Rs.{info.item.price}</b> <small>(Inclusive of all tax)</small></h5>
+        </div>
+      </section>
+    );
   }
 
   content() {
@@ -117,10 +150,15 @@ export default class Index extends BaseComponent {
         <Card className={"my-3 pro mw "+(this.state.tab === 2)}>
           <h5 className="header" data-key={2} data-order="true" onClick={this.toggle}>My orders</h5>
           <Collapse in={this.state.tab === 2}>
-            <div id="_order" className="c-body">
+            <div id="_order" className="c-body mx hs">
+              {
+                this.state.ordersL
+                ||
+                <div className="text-center"><Spinner animation="border" variant="info"/></div>
+              }
               {
                 this.state.orders.map((order, i) => (
-                  <strong className="d-block" key={i}>{order.order_number}</strong>
+                  <div key={i} className="order-list">{this.orderDetails(order)}</div>
                 ))
               }
             </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./custom.css";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default class FooterPage extends React.Component {
   constructor(props){
@@ -29,34 +30,35 @@ export default class FooterPage extends React.Component {
             <section className="">
               <div className="flex-md-column">
                 <h5 className="title border-1">Useful links</h5>
+                
                 <ul className="text-uppercase font-small">
                   <li className="list-unstyled">
-                    <a href="#!">Home</a>
+                    <Link to="/">Home</Link>
                   </li>
                   <li className="list-unstyled">
-                    <a href="/products">Product</a>
+                    <Link to="/products">Product</Link>
                   </li>
                   <li className="list-unstyled">
-                    <a href="/about">About Us</a>
+                    <Link to="/about">About Us</Link>
                   </li>
                   <li className="list-unstyled">
-                    <a href="/benefit">Benefits</a>
+                    <Link to="/benefit">Benefits</Link>
                   </li>
                   <li className="list-unstyled">
-                    <a href="/science">Science</a>
+                    <Link to="/science">Science</Link>
                   </li>
                   <li className="list-unstyled">
-                    <a href="/hypothesis">Hypothesis</a>
+                    <Link to="/hypothesis">Hypothesis</Link>
                   </li>
                   <li className="list-unstyled">
-                    <a href="/privacy"> Privacy Policy</a>
+                    <Link to="/privacy">Privacy Policy</Link>
                   </li>
                   <li className="list-unstyled">
-                    <a href="/terms">Terms & Conditions</a>
+                    <Link to="/terms">Terms & Conditions</Link>
                   </li>
                  
                   <li className="list-unstyled">
-                    <a href="/contact">Contact us</a>
+                    <Link to="/contact">Contact us</Link>
                   </li>
                  
                 </ul>

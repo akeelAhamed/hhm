@@ -15,7 +15,6 @@ import Hypothesis from "./components/AboutUs/hypothesis";
 import Science from "./components/AboutUs/science";
 import Vision from "./components/VisionPage/vision";
 // import BlogPage from './components/BlogPage/blogpage';
-// import FinalCheckOut from './components/Shop/FinalCheckOut/finalcheckout';
 import CartPage from './components/Shop/CartPage/CartPage';
 import ContactUs from './components/ContactUs/contactus';
 import ProductPage from './components/ProductPage/ProductPage';
@@ -26,6 +25,8 @@ import CheckOut from './components/Shop/CheckOut/checkout';
 // FORM
 import Login from "./components/Form/Login";
 import Register from "./components/Form/Register";
+import Forget from "./components/Form/Forget";
+import Reset from "./components/Form/Reset";
 
 // Dashboard
 import Dashboard from "./components/Dashboard/Index";
@@ -82,6 +83,8 @@ class App extends React.Component{
           <Route path="/login" exact component={(props) => this.component(props, Login) } />
           <Route path="/login/:after" component={(props) => this.component(props, Login) } />
           <Route path="/register" component={(props) => this.component(props, Register) } />
+          <Route path="/forget" component={(props) => this.component(props, Forget) } />
+          <Route path="/reset" component={(props) => this.component(props, Reset) } />
 
           {/* Auth routes */}
           <PrivateRoute authed={this.state.isLoggedIn} path='/dashboard' component={(props) => this.component(props, Dashboard)}/>

@@ -106,7 +106,7 @@ class ProductPage extends BaseComponent {
       <div className="main-container py-4">
 
         <Container fluid>
-          <h5 className="text-uppercase border-teal"> {this.pageContent.name} </h5>
+          <h5 className="border-teal text-uppercase pl-2" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
           <Row className="no-gutters">
             <Col md="6" sm="auto" className="">
               <strong className="text-uppercase">Gallery</strong>
@@ -120,7 +120,7 @@ class ProductPage extends BaseComponent {
             <Col md="5" sm="auto">
               <strong className="text-uppercase">Product summary</strong>
               <div className="border-teal-top px-2">
-                <b className="text-uppercase border-teal"> {this.pageContent.name} </b>
+                <b className="text-uppercase border-teal" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
                 <p>
                   <span>Seller</span>      : {this.pageContent.seller_information}
                 </p>
@@ -142,7 +142,8 @@ class ProductPage extends BaseComponent {
                   <small>One year pack</small><br/>
                   <p>Qty:<span data-qty="0" onClick={this.qtyClick} className="btn">-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className="btn">+</span></p>
                   <b>Total amount: RS.{this.pageContent.price}</b> /- <cite>(Inclusive of all tax)</cite><br/>
-                  <small>Free shipping inside india</small>
+                  <small className="d-block">Free shipping inside india</small>
+                  <small className="d-block">Expected arrival date: {this.pageContent.views}</small>
                 </div>
                 
                 <hr/>

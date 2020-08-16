@@ -69,8 +69,8 @@ class ContactUs extends BaseComponent {
                 <li>Kerala, 679122</li>
               </ul>
             </Col>
-            <Col lg xl md sm="auto" className="text-center">
-              <img className="img-fluid " src={require('../VisionPage/img/lens.jpg')} alt="" />
+            <Col sm="auto" className="pb-3">
+              <img className="img-fluid w-75" src={require('../VisionPage/img/map.png')} alt="map" />
             </Col>
           </Row>
 

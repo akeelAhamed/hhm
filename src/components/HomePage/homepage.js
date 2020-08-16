@@ -24,8 +24,8 @@ export default class HomePage extends BaseComponent {
             </Col>
 
             <Col md="7" className="p-4">
-              <h5 className="border-teal text-uppercase" dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.title }} />
-              <small dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.link }} />
+              <h5 className="border-teal text-uppercase pl-2" dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.title }} />
+              <p className="pl-3"><small dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.link }} /></p>
             </Col>
           </Row>
         </Container>

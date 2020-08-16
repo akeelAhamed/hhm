@@ -7,3 +7,6 @@
 .c-body{padding: 0.5rem 2rem;border-top: 1px solid #cccccc;}
 .c-body .form-control{max-width: 360px;border: none;border-bottom: 1.5px solid #00a09b;border-radius: 0;margin-bottom: 5px;}
 .c-body .c{max-width: 360px;width: 100%;}
+.mx{max-height: 350px; overflow: auto;}
+.hs{white-space: nowrap;}
+.order-list{display: inline-block;padding: 5px;border-right: 1px solid #EEE;margin-right: 1em;white-space: normal;}
