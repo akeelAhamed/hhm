@@ -38,7 +38,6 @@ export default class Index extends BaseComponent {
   loadOrders(){
     window._axios.get('/orders?param=true&token='+this.state.user.token)
     .then((result) => {
-      console.log(result);
         if(result.data !== ''){
           this.setState({
             ordersL: true,
@@ -72,33 +71,50 @@ export default class Index extends BaseComponent {
    * Order details
    */
   orderDetails(order){
-    const info = map(JSON.parse(order.orders_items))[0];
-    
-    console.log(order, info);
-    return(
-      <section className="c">
-        <p>Order id&nbsp;: {order.order_number}</p>
-        <p>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </p>
-        <h5>{info.item.name}</h5>
-        {/* <p>Seller      : {order.seller_information}</p> */}
-        {/* <div className="d-flex">
-            <span>Pack contain</span> : 
-            <ul className="ml-1" style={{listStyle: "none"}}>
-                {
-                order.size.map((p, i) => (
-                    <li key={i}>{p}</li>
-                ))
-                }
-            </ul>
-        </div> */}
-        <div>
-            <p>Total weight: {order.views}</p>
-            <small>One year pack</small><br/>
-            <p>Qty: {info.qty}</p>
-            <h5 className="border py-2"><b>ORDER TOTAL : Rs.{info.item.price}</b> <small>(Inclusive of all tax)</small></h5>
-        </div>
-      </section>
-    );
+    if(has(order, 'orders_items')){
+      const info = map(JSON.parse(order.orders_items))[0];
+      console.log(info);
+      return(
+        <section className="c">
+          <p>Order id&nbsp;: {order.order_number}</p>
+          <p>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </p>
+          <h5>{info.item.name}</h5>
+          {/* <p>Seller      : {order.seller_information}</p> */}
+          <div className="d-flex">
+              <span>Pack contain</span> : 
+              <ul className="ml-1" style={{listStyle: "none"}}>
+                  {
+                  (
+                    info.item.size === ""
+                    ?[]
+                    :info.item.size
+                  ).map((p, i) => (
+                      <li key={i}>{p}</li>
+                  ))
+                  }
+              </ul>
+          </div>
+          <div>
+              <p>Total weight: {order.views}</p>
+              <small>One year pack</small><br/>
+              <p>Qty: {info.qty}</p>
+              <h5 className="border py-2"><b>ORDER TOTAL : Rs.{info.item.price}</b> <small>(Inclusive of all tax)</small></h5>
+          </div>
+        </section>
+      );
+    }
+  }
+
+  /**
+   * Track ordeder response
+   * 
+   * @param {object} response 
+   */
+  afterTrack(response){
+    console.log(response);
+    if(has(response, 'Staus')){
+      console.log(response.Staus);
+    }
   }
 
   content() {
@@ -150,7 +166,7 @@ export default class Index extends BaseComponent {
         <Card className={"my-3 pro mw "+(this.state.tab === 2)}>
           <h5 className="header" data-key={2} data-order="true" onClick={this.toggle}>My orders</h5>
           <Collapse in={this.state.tab === 2}>
-            <div id="_order" className="c-body mx hs">
+            <div id="_order" className="c-body hs">
               {
                 this.state.ordersL
                 ||
@@ -169,7 +185,10 @@ export default class Index extends BaseComponent {
           <h5 className="header" data-key={3} onClick={this.toggle}>Track my order</h5>
           <Collapse in={this.state.tab === 3}>
             <div id="_track" className="c-body">
-            <form data-action="track" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
+              <form data-action="trackcode" data-method="get" data-callback="afterTrack" onSubmit={this.onSubmit}>
+
+                <FormControl type="hidden" name="type" value="track" readOnly required/>
+
                 <FormControl placeholder="Order id" id="order" name="orderid" value={this.state.orderid} onChange={this.onChange} required/>
 
                 <Button type="submit" variant="light">Track</Button>

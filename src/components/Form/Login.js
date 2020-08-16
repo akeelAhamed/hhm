@@ -30,6 +30,7 @@ class Login extends BaseComponent {
     if(this.state.isLoggedIn){
       return(<div className="main-container"></div>)
     }
+    
     return (
       <div className="main-container">
         <Container fluid>
