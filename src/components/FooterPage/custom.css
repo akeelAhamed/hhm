@@ -16,6 +16,11 @@
 }
 
 .footer-content-1{
-    padding-right: 200px;
     font-size: 13px;
+}
+
+@media (min-width:900px){
+    .footer-content-1{
+        padding-right: 200px;
+    }
 }

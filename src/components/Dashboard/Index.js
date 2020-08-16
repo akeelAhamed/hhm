@@ -9,12 +9,18 @@ export default class Index extends BaseComponent {
   constructor(props) {
     super();
     this.state.profile  = null;
+    this.state.password = {
+      old_password: '',
+      password: '',
+      password_confirmation: '',
+    };
     this.state.orders   = [];
     this.state.ordersL  = false;
     this.state.orderid    = '';
     this.state.tab = 0;
 
     this.toggle = this.toggle.bind(this);
+    this.onSubmitSelf = this.onSubmitSelf.bind(this);
   }
 
   componentDidMount(){
@@ -30,6 +36,42 @@ export default class Index extends BaseComponent {
     }).catch(function(error){
       console.log(error.response);
     });
+  }
+
+  /**
+   * Handle on submit form event
+   * 
+   * @param object event 
+   */
+  onSubmitSelf(event){
+    event.preventDefault();
+
+    if(has(event.target.dataset, 'action') && has(event.target.dataset, 'method') && has(event.target.dataset, 'state')){
+      this.toggleDisable();
+      const data = event.target.dataset;
+      this.setError([]);
+      window._axios({
+        method: data.method,
+        url: data.action,
+        data: this.state[data.state]
+      }).then((response) => {
+        this.toggleDisable();
+        if(has(data, 'callback')){
+          if(typeof this[data.callback] === "function"){
+            return this[data.callback](response.data);
+          }
+        }
+        console.log(response);
+      }, (error) => {
+        this.toggleDisable();
+        if(has(data, 'callback')){
+          if(typeof this[data.callback] === "function"){
+            return this[data.callback](error.response.data);
+          }
+        }
+        console.log(error.response);
+      });
+    }
   }
 
   /**
@@ -58,11 +100,18 @@ export default class Index extends BaseComponent {
    */
   toggle(e){
     if(has(e.target.dataset, 'key')){
+      let state = {
+        tab: parseInt(e.target.dataset.key)
+      };
+
       if(!this.state.ordersL && has(e.target.dataset, 'order')){
         this.loadOrders();
+      }else if(has(e.target.dataset, 'track')){
+        state.orderid = e.target.dataset.track
       }
+
       this.setState({
-        tab: parseInt(e.target.dataset.key)
+        ...state
       })
     }
   }
@@ -75,7 +124,7 @@ export default class Index extends BaseComponent {
       const info = map(JSON.parse(order.orders_items))[0];
       return(
         <section className="c">
-          <p>Order id&nbsp;: {order.order_number}</p>
+          <p>Order id&nbsp;: <Button variant="link" data-key={3} data-track={order.order_number} onClick={this.toggle}>{order.order_number}</Button></p>
           <p>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </p>
           <h5>{info.item.name}</h5>
           {/* <p>Seller      : {order.seller_information}</p> */}
@@ -110,21 +159,19 @@ export default class Index extends BaseComponent {
    * @param {object} response 
    */
   afterTrack(response){
-    console.log(response);
     if(has(response, 'Staus')){
-      return this.redirect('track?'+this.state.orderid+'-'+response.Staus);
+      return this.redirect('track?'+this.state.orderid+'='+response.Staus);
     }
   }
 
   content() {
     return (
       <>
-
         <Card className={"my-3 pro mw "+(this.state.tab === 0)}>
           <h5 className="header" data-key={0} onClick={this.toggle}>Profile</h5>
           <Collapse in={this.state.tab === 0}>
             <div id="_profile" className="c-body">
-              <form data-action="profile" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
+              <form data-action="profile" data-state="profile" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmitSelf}>
                 <FormControl placeholder="Name" id="name" name="profile.name" value={this.state.profile.name} onChange={this.onChange} />
 
                 <FormControl placeholder="Email" type="email" id="email" name="profile.email" value={this.state.profile.email} onChange={this.onChange} />
@@ -140,7 +187,7 @@ export default class Index extends BaseComponent {
           <h5 className="header" data-key={1} onClick={this.toggle}>Address</h5>
           <Collapse in={this.state.tab === 1}>
             <div id="_address" className="c-body">
-              <form data-action="address" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
+              <form data-action="address" data-state="profile" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmitSelf}>
                 <FormControl placeholder="Name" id="aname" name="profile.name" value={this.state.profile.name} onChange={this.onChange} />
 
                 <FormControl placeholder="Contact #" id="phone" name="profile.phone" value={this.state.profile.phone} onChange={this.onChange} />
@@ -157,6 +204,24 @@ export default class Index extends BaseComponent {
 
                 <Button type="button" variant="light">Add</Button>
 
+              </form>
+            </div>
+          </Collapse>
+        </Card>
+
+        <Card className={"my-3 pro mw "+(this.state.tab === 4)}>
+          <h5 className="header" data-key={4} onClick={this.toggle}>Change password</h5>
+          <Collapse in={this.state.tab === 4}>
+            <div id="_password" className="c-body">
+              <form data-action="password" data-state="password" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmitSelf}>
+
+                <FormControl type="password" placeholder="Old password" id="old_password" name="password.old_password" value={this.state.password.old_password} onChange={this.onChange} />
+
+                <FormControl type="password" placeholder="New password" id="password" name="password.password" value={this.state.password.password} onChange={this.onChange} />
+
+                <FormControl type="password" placeholder="Confirm Password" id="password_confirmation" name="password.password_confirmation" value={this.state.password.password_confirmation} onChange={this.onChange} />
+
+                <Button type="submit" variant="light">Update</Button>
               </form>
             </div>
           </Collapse>
@@ -205,9 +270,10 @@ export default class Index extends BaseComponent {
     return (
       <div className="main-container">
         <Container fluid>
+          <Button size="sm" variant="link" className="logout text-light" onClick={this.logOut}>Logout</Button>
+          
           <Row>
-            <Col md={12} className="border-primary m-auto">
-              <Button size="sm" variant="link" className="logout text-light" onClick={this.logOut}>Logout</Button>
+            <Col sm={{ span: 9, offset:1 }} className="border-primary m-auto">
               
               {this.state.profile === null?<div className="center"><Spinner animation="border" variant="info"/></div>:this.content()}
 

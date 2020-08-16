@@ -35,7 +35,7 @@ export default class AboutUs extends BaseComponent {
               </div>
             </Col>
           
-            <Col md={12} className="px-5">
+            <Col md={12} className="px-md-5">
               <VisionPage />
             </Col>
           

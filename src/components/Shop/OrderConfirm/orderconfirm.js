@@ -12,7 +12,7 @@ class OrderConfirm extends React.Component {
    */
   autoRedirect(){
     setTimeout(() => {
-      window.location.href = '/dashboard';
+      //window.location.href = '/dashboard';
     }, 3000);
   }
 
@@ -20,17 +20,17 @@ class OrderConfirm extends React.Component {
     if(!this.props.complete){
       return (
         <div className='center'>
-          <Spinner animation="border" variant="info" /><span className="pl-2">Validating order, don't close or navigate browser...</span>
+          <Spinner animation="border" variant="info" /><span className="pl-md-2">Validating order, don't close or navigate browser...</span>
         </div>
       )
     }
 
     return (
       <div className="main">
-        <div className="main-content py-5 mt-5" style={{maxWidth:360, margin: 'auto'}}>
-          <img src={require('../img/tick.png')} alt="tick" style={{width:55}} className="img-fluid" /><h1 className="w-100" style={{color: '#7ac043'}}>THANK YOU</h1>
+        <div className="main-content py-5 mt-5 px-2" style={{maxWidth:360, margin: 'auto'}}>
+          <img src={require('../img/tick.png')} alt="tick" style={{width:35}} className="img-fluid" /><h1 className="w-100" style={{color: '#7ac043'}}>THANK YOU</h1>
           <p className="b-left border-teal">
-            Your order has placed successfully.<br/>Your transaction id is: <b className="bg-grey">{this.props.payment_id}</b>. <br /> Go to <Link className="text-dark" to="/dashboard">Dashboard</Link>
+            Your order has placed successfully.<br/>Your transaction id is: <b className="bg-grey">{this.props.payment_id}</b>. <br /> Go to <Link className="text-dark border-bottom" to="/dashboard">Dashboard</Link>
             {this.autoRedirect()}
           </p>
         </div>

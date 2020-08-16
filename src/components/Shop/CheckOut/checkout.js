@@ -85,7 +85,7 @@ export default class CheckOut extends BaseComponent {
      * Get order id from backend
      */
     getOrderId(){
-        window._axios.get('https://admin.hhm.world/demo1.php?test=hhpure&amount='+parseInt(this.cart.ship + (this.cart.price * this.cart._qty) * 100))
+        window._axios.get('https://admin.hhmworld.com/demo1.php?test=hhpure&amount='+parseInt(this.cart.ship + (this.cart.price * this.cart._qty) * 100))
         .then((result) => {
             if(result.data !== ''){
               this.order_info = result.data;
@@ -108,9 +108,10 @@ export default class CheckOut extends BaseComponent {
                 let _this = this;
                 let options = {
                     "key": "rzp_live_SNlNlPuzZfSpD1",
+                    "image": this.cart.photo,
                     "amount": this.order_info.amount * 100, // 100 paise = INR 1, amount in paisa
                     "name": this.cart.name,
-                    "description": "Rs."+this.cart.price+" | Qty:"+this.cart._qty,
+                    "description": "Rs."+this.cart.price+" x "+this.cart._qty+" = "+this.order_info.amount * 100,
                     "order_id": this.order_info.id,
                     "handler": function (response){
                         _this.emptyCart();

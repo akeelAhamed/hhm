@@ -12,6 +12,9 @@ class ProductPage extends BaseComponent {
 
     this.state.qty = 1;
     this.state.availability = '';
+    this.days  = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
+];
     this.buy = this.buy.bind(this);
     this.loginBuy = this.loginBuy.bind(this);
     this.toCart = this.toCart.bind(this);
@@ -102,6 +105,8 @@ class ProductPage extends BaseComponent {
   }
 
   content() {
+    let d = new Date();
+    d.setDate(d.getDate() + parseInt(this.pageContent.ship));
     return(
       <div className="main-container py-4">
 
@@ -111,7 +116,7 @@ class ProductPage extends BaseComponent {
             <Col md="6" sm="auto" className="">
               <strong className="text-uppercase">Gallery</strong>
               <div className="border-teal-top px-2">
-                <Gallery img={this.pageContent.photo} gallery={this.pageContent.gallery.split(',')} />
+                <Gallery img={this.pageContent.photo} _3dFor="2" gallery={this.pageContent.gallery.split(',')} />
               </div>
             </Col>
 
@@ -143,7 +148,7 @@ class ProductPage extends BaseComponent {
                   <p>Qty:<span data-qty="0" onClick={this.qtyClick} className="btn">-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className="btn">+</span></p>
                   <b>Total amount: RS.{this.pageContent.price}</b> /- <cite>(Inclusive of all tax)</cite><br/>
                   <small className="d-block">Free shipping inside india</small>
-                  <small className="d-block">Expected arrival date: {this.pageContent.views}</small>
+                  <small className="d-block">Expected arrival date: {this.days[d.getDay()]+', '+d.getDate()+','+this.months[d.getMonth()]+' - '+d.getFullYear()}</small>
                 </div>
                 
                 <hr/>

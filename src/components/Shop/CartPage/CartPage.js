@@ -46,7 +46,7 @@ export default class CartPage extends BaseComponent {
     this.cart.ship = this.cart.ship === null?0:0
 
     return (
-      <div className="main-container p-5">
+      <div className="main-container py-5 px-md-5">
         <Container fluid className="contr-width">
           <h2 className="border_teal-left" >Shopping Bag</h2>
           <Row className="">

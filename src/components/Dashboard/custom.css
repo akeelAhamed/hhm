@@ -23,7 +23,6 @@
 
 #progressbar li {
     list-style-type: none;
-    font-size: 13px;
     width: 25%;
     float: left;
     position: relative;
@@ -36,21 +35,21 @@
 }
 
 #progressbar li:before {
-    width: 30px;
-    height: 30px;
-    line-height: 42px;
+    width: 25px;
+    height: 25px;
+    line-height: 38px;
     display: block;
-    font-size: 60px;
+    font-size: 55px;
     background: #EFEFEF;
     border-radius: 50%;
     margin: auto;
-    padding: 0px
+    padding: 0px;
 }
 
 #progressbar li:after {
     content: '';
     width: 100%;
-    height: 12px;
+    height: 7px;
     background: #EFEFEF;
     position: absolute;
     left: 0;
@@ -62,11 +61,6 @@
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     position: absolute;
-    left: -50%
-}
-
-#progressbar li:nth-child(2):after,
-#progressbar li:nth-child(3):after {
     left: -50%
 }
 

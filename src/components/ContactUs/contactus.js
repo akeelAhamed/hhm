@@ -15,9 +15,9 @@ class ContactUs extends BaseComponent {
           <h3 className="bkg-text">Higher living</h3>
         </div>
 
-        <section className="m-auto px-5 w-75">
+        <section className="m-auto px-md-5 w-75">
           <h2 className="mt-5 border-teal">Contact Us</h2>
-          <form className="pt-5 pform bg-light mx-3" onSubmit={this.onSubmit}>
+          <form className="pt-5 pform bg-light mx-md-3" onSubmit={this.onSubmit}>
             <Form.Row className="m-2">
               <Form.Group as={Col} controlId="formGridName">
                 <Form.Control

@@ -17,9 +17,9 @@ export default class Science extends BaseComponent {
         <Container fluid>
           <Row>
             <Col md={12} className="p-5">
-              <h3 className="text-uppercase border-teal ml-5">Science behind HHM</h3>
-              <div className="pl-5">
-                <div className="px-3">
+              <h3 className="text-uppercase border-teal ml-md-5">Science behind HHM</h3>
+              <div className="pl-md-5">
+                <div className="px-md-3">
                     <img className="img-fluid li" alt="..." src={require('./img/science-01.png')}/>
                     <p>
                       Holistic Human Metaphysics (H.H.M) is envisaged as science of life. It states that happiness is not outside us but within, created by us. HHM focuses on channelizing and aligning planetary energies with human lives, so that their chakras or energy centers are activated, resulting in an enhanced quality of life. Creating a positive aura for a better holistic lifestyle. HHM creates a way of living a better lifestyle which will help you in creating a pure path to a holistic well-being lifestyle. The balance of the chakras of the human body is considered to be the main. The well being of the body and soul is compulsory for the human to attain his or her complete potential. The science behind HHM is Dr. Jayakrishnan the man with a precise mission. 

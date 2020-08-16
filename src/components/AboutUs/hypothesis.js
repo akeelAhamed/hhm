@@ -17,9 +17,9 @@ export default class Hypothesis extends BaseComponent {
         <Container fluid>
           <Row>
             <Col md={12} className="p-5">
-              <h3 className="text-uppercase border-teal ml-5">Hypothesis of HHM</h3>
-              <div className="pl-5">
-                <div className="px-3">
+              <h3 className="text-uppercase border-teal ml-md-5">Hypothesis of HHM</h3>
+              <div className="pl-md-5">
+                <div className="px-md-3">
                     <img className="img-fluid li" alt="..." src={require('./img/science-01.png')}/>
                     <p>
                       The applications of holistic human metaphysics are based on the three hypotheses which are formulated by combining the various founding principles of Energy medicine, Theory of dissipative adaptation, Theory of everything, Geo-magnetic field, Colour medicine, Vibrational medicine and Subtle energy systems in human body.

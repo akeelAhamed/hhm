@@ -5,6 +5,7 @@ export default class Gallery extends React.Component{
 
     constructor(props){
         super();
+        this.ckey = 0;
         this.state = {
             default: props.img,
             current: props.img,
@@ -43,6 +44,7 @@ export default class Gallery extends React.Component{
                     
                     {
                         this.props.gallery.map((img, i) => {
+                            this.ckey = i;
                             if(this.state.is3d){
                                 return(<span key={i} data-key={i} className={"dots "+ (img === this.state.current)} onClick={this.changeImg}/>)
                             }

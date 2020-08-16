@@ -6,9 +6,10 @@ import { Button, Container, Row, Col, Spinner } from "react-bootstrap";
 export default class Track extends BaseComponent {
   constructor(props) {
     super();
-    this.state.track  = (props.location.search !== '')?props.location.search.replace('?', '').split('-'):['', ''];
+    this.state.track = (props.location.search !== '')?props.location.search.replace('?', '').split('='):['', ''];
+    this.state.now   = 2;
+    this.state.stage = ['In warehouse', 'In transit', 'Ready for delivery', 'Shipped'];
   }
-
 
   content() {
     return (
@@ -18,10 +19,11 @@ export default class Track extends BaseComponent {
             <div className="card-track">
                 <div className="">
                     <ul id="progressbar" className="text-center">
-                        <li className="active step">In warehouse</li>
-                        <li className="active step">In transit</li>
-                        <li className="step">Redy for delivery</li>
-                        <li className="step">Shipped</li>
+                        {
+                            this.state.stage.map((stage, i) => (
+                                <li key={i} className={i <= this.state.now?"active step":"step"}>{stage}</li>
+                            ))
+                        }
                     </ul>
                 </div>
             </div>
