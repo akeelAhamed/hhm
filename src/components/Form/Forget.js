@@ -39,7 +39,7 @@ class Forget extends BaseComponent {
 
             <Col md={4} xl={3}>
 
-              <Form data-action="forget" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
+              <Form data-action="forgot" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
 
                 <Form.Group controlId="formemail">
                     <Form.Control name="email" type="email" onChange={this.onChange} value={this.state.email} placeholder="Email id" required/>

@@ -73,7 +73,6 @@ export default class Index extends BaseComponent {
   orderDetails(order){
     if(has(order, 'orders_items')){
       const info = map(JSON.parse(order.orders_items))[0];
-      console.log(info);
       return(
         <section className="c">
           <p>Order id&nbsp;: {order.order_number}</p>
@@ -113,7 +112,7 @@ export default class Index extends BaseComponent {
   afterTrack(response){
     console.log(response);
     if(has(response, 'Staus')){
-      console.log(response.Staus);
+      return this.redirect('track?'+this.state.orderid+'-'+response.Staus);
     }
   }
 

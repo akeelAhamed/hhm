@@ -30,6 +30,7 @@ import Reset from "./components/Form/Reset";
 
 // Dashboard
 import Dashboard from "./components/Dashboard/Index";
+import Track from "./components/Dashboard/Track";
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
   return (
@@ -83,11 +84,12 @@ class App extends React.Component{
           <Route path="/login" exact component={(props) => this.component(props, Login) } />
           <Route path="/login/:after" component={(props) => this.component(props, Login) } />
           <Route path="/register" component={(props) => this.component(props, Register) } />
-          <Route path="/forget" component={(props) => this.component(props, Forget) } />
+          <Route path="/forgot" component={(props) => this.component(props, Forget) } />
           <Route path="/reset" component={(props) => this.component(props, Reset) } />
 
           {/* Auth routes */}
           <PrivateRoute authed={this.state.isLoggedIn} path='/dashboard' component={(props) => this.component(props, Dashboard)}/>
+          <PrivateRoute authed={this.state.isLoggedIn} path='/track' component={(props) => this.component(props, Track)}/>
           <PrivateRoute authed={this.state.isLoggedIn} path="/checkout" component={(props) => this.component(props, CheckOut) } />
           <PrivateRoute authed={this.state.isLoggedIn} path="/orderconfirm" component={(props) => this.component(props, OrderConfirm) } />
 

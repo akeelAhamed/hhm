@@ -49,7 +49,7 @@ class Login extends BaseComponent {
                       <Form.Control type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password" required/>
                   </Form.Group>
 
-                  <Link className="d-block py-2 btn-link text-dark" to='/forget'>Forget password?</Link>
+                  <Link className="d-block py-2 btn-link text-dark" to='/forgot'>Forget password?</Link>
                   
                   <Button variant="primary" type="submit" disabled={this.state.disabled} block>
                     {this.state.disabled?'Loading...':'Login'}
