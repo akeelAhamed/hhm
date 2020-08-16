@@ -30,11 +30,11 @@ export default class CartPage extends BaseComponent {
           <div className="main-container">
               <Container fluid>
                   <Row className="justify-content-center pt-3" style={{height: '70vh'}}>
-                      <Col sm={6} className="m-auto text-center">
+                      <Col sm={5} className="m-auto text-center">
                           <section className="p-1">
-                              <img className="img-fluid d-block" src={require("../img/emptycart.png")} alt="cart is empty" />
+                              <img className="img-fluid d-block m-auto" src={require("../img/emptycart.png")} alt="cart is empty" />
                               <strong>Your cart is empty</strong>
-                              <Link to="/products" className="btn btn-info d-block">Shop now</Link>
+                              <Link to="/products" className="btn btn-info d-block m-auto w-75">Shop now</Link>
                           </section>
                       </Col>
                   </Row>

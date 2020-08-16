@@ -58,6 +58,7 @@
     background-color: #00a19c;
     border-color: #00a19c;
     margin-top: 60px;
+    margin-left: 40%;
 }
 .border-teal{
     border-left: 5px solid #00a09b;
@@ -65,7 +66,11 @@
 }
 
 @media (max-width:768px){
+    .home-bg-2_text{
+        padding-left: 1%;
+    }
     .home-bg-1 > p {
         font-size: 300%;
     }
+    .btn-primaryhome{margin-left: 0px;}
 }
