@@ -1,3 +1,7 @@
+.img-fluid._3d{
+    cursor: pointer;
+    border: 2px ridge gold;
+}
 .home_bg-1 {
     background-position: center;
     background-repeat: no-repeat;

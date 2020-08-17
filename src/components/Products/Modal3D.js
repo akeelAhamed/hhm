@@ -17,7 +17,7 @@ function Modal3D(props) {
             Close
           </button>
           <div style={{left: "0px", width: "100%", height: "0px", position: "relative", paddingBottom: "75%", overflow: "hidden",}}>
-              <iframe src="./3d/02/index.html"
+              <iframe src="/3d/02/index.html"
                   title="3d product"
                   style={{ position: "absolute", top: "0px", left: "0px", height: "100%", minWidth: "100%", width: "100%", }}
                   allowFullScreen

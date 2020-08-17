@@ -6,13 +6,11 @@ import map from "lodash/map";
 import includes from "lodash/includes";
 import BaseComponent from '../BaseComponent';
 import Gallery from "../ProductPage/Gallery";
-import Modal3D from "./Modal3D";
 import "./custom.css";
 
 export default class Products extends BaseComponent {
   constructor(props) {
     super();
-    this.state.modal = false;
     this.state.current = '';
     this.state._3d = [
       {
@@ -73,15 +71,7 @@ export default class Products extends BaseComponent {
           <Container>
             <Row className="_3d">
               <Col md="5">
-              <img src={require('./img/3D-button.png')} alt="3d" title="3D VIEW" className="img-fluid _3d-button" onClick={() => this.setState({modal: true})}/>
-
-              <Gallery img={this.state._3d[0].img} gallery={map(this.state._3d, 'img')} _3d={this.state._3d}/>
-
-              <Modal3D
-                show={this.state.modal}
-                onHide={() => this.setState({modal: false})}
-                current={this.state.current}
-              />
+                <Gallery img={this.state._3d[0].img} gallery={map(this.state._3d, 'img')} _3d={this.state._3d}/>
               </Col>
               
               <Col md="7">

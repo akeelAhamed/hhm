@@ -105,8 +105,9 @@ class ProductPage extends BaseComponent {
   }
 
   content() {
-    let d = new Date();
-    d.setDate(d.getDate() + parseInt(this.pageContent.ship));
+    // let d = new Date();
+    // d.setDate(d.getDate() + parseInt(this.pageContent.ship));
+    // this.days[d.getDay()]+', '+d.getDate()+','+this.months[d.getMonth()]+' - '+d.getFullYear()
     return(
       <div className="main-container py-4">
 
@@ -116,7 +117,7 @@ class ProductPage extends BaseComponent {
             <Col md="6" sm="auto" className="">
               <strong className="text-uppercase">Gallery</strong>
               <div className="border-teal-top px-2">
-                <Gallery img={this.pageContent.photo} _3dFor="2" gallery={this.pageContent.gallery.split(',')} />
+                <Gallery img={this.pageContent.photo} _3dFor="1" gallery={this.pageContent.gallery.split(',')} />
               </div>
             </Col>
 
@@ -148,7 +149,7 @@ class ProductPage extends BaseComponent {
                   <p>Qty:<span data-qty="0" onClick={this.qtyClick} className="btn">-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className="btn">+</span></p>
                   <b>Total amount: RS.{this.pageContent.price}</b> /- <cite>(Inclusive of all tax)</cite><br/>
                   <small className="d-block">Free shipping inside india</small>
-                  <small className="d-block">Expected arrival date: {this.days[d.getDay()]+', '+d.getDate()+','+this.months[d.getMonth()]+' - '+d.getFullYear()}</small>
+                  <small className="d-block">Expected arrival date: {this.pageContent.ship}</small>
                 </div>
                 
                 <hr/>

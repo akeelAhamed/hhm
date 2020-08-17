@@ -1,108 +1,108 @@
 import React from "react";
 import "./custom.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { FaFacebook, FaGooglePlus, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 export default class FooterPage extends React.Component {
   constructor(props){
     super();
+    this.social = {
+        "facebook": {
+          name: 'Facebook',
+          icon: <FaFacebook />
+        },
+        "gplus": {
+          name: 'Google +',
+          icon: <FaGooglePlus />
+        },
+        "twitter": {
+          name: 'Twitter',
+          icon: <FaTwitter />
+        },
+        "linkedin": {
+          name: 'LinkedIn',
+          icon: <FaLinkedin />
+        }
+    }
   }
 
   render(){
+    
     return (
       <Container fluid className="footer text-white">
-        <Container>
+        
         <Row>
-          <Col md="6" sm="12" className="footer-content-1">
-
-          <img
-              src='https://admin.hhm.world/assets/images/1596980432HHM-Logo-White.png'
-              width="70"
-              height="40"
-              className="d-inline-block align-top"
-              alt="logo"
-            />
+          <Col md="4" className="footer-content-1">
+            <div className="d-flex align-items-baseline">
+              <img
+                src='https://admin.hhmworld.com/assets/images/1596980432HHM-Logo-White.png'
+                width="70"
+                height="40"
+                className="d-inline-block align-top"
+                alt="logo"
+              />
            
+              <ul className="list-unstyled social">
+                {
+                  this.props.page.sociallinks.map((links, index) => {
+                    let social = [];
+                    for (const key in links) {
+                      social.push(
+                        <li key={key}>
+                          <a href={links[key]} target="_blank" rel="noopener noreferrer">
+                            {this.social[key].icon}
+                          </a>
+                        </li>
+                      ) 
+                    }
+
+                    return social;
+                  })
+                }
+              </ul>
+            </div>
+            
             <p dangerouslySetInnerHTML={{ __html: this.props.page.heade_footer.footer }}/>
           </Col>
   
-          <Col md="3" xs="6">
-            <section className="">
-              <div className="flex-md-column">
-                <h5 className="title border-1">Useful links</h5>
+          <Col md="8" className="d-flex align-items-center">
+            <section>
+              <Nav>
+                <Nav.Item>
+                  <Nav.Link as={Link} to="/">Home</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link as={Link} to="/products">Product</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link as={Link} to="/about">About Us</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link as={Link} to="/benefit">Benefits</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link as={Link} to="/science">Science</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link as={Link} to="/hypothesis">Hypothesis</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link as={Link} to="/privacy">Privacy Policy</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link as={Link} to="/terms">Terms & Conditions</Nav.Link>
+                </Nav.Item>
                 
-                <ul className="text-uppercase font-small">
-                  <li className="list-unstyled">
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li className="list-unstyled">
-                    <Link to="/products">Product</Link>
-                  </li>
-                  <li className="list-unstyled">
-                    <Link to="/about">About Us</Link>
-                  </li>
-                  <li className="list-unstyled">
-                    <Link to="/benefit">Benefits</Link>
-                  </li>
-                  <li className="list-unstyled">
-                    <Link to="/science">Science</Link>
-                  </li>
-                  <li className="list-unstyled">
-                    <Link to="/hypothesis">Hypothesis</Link>
-                  </li>
-                  <li className="list-unstyled">
-                    <Link to="/privacy">Privacy Policy</Link>
-                  </li>
-                  <li className="list-unstyled">
-                    <Link to="/terms">Terms & Conditions</Link>
-                  </li>
-                 
-                  <li className="list-unstyled">
-                    <Link to="/contact">Contact us</Link>
-                  </li>
-                 
-                </ul>
-              </div>
+                <Nav.Item>
+                  <Nav.Link as={Link} to="/contact">Contact us</Nav.Link>
+                </Nav.Item>
+              </Nav>
             </section>
           </Col>
 
-          <Col md="3" xs="6">
-            <section className="">
-              <div className="flex-md-column">
-                <h5 className="title">Social media</h5>
-                {this.props.page.sociallinks.map((el, index) => (
-                    <ul key={index} className="list-unstyled text-uppercase">
-                      <li>
-                        {" "}
-                        <a key={el.id} href={el.facebook} target="_blank" rel="noopener noreferrer">
-                          facebook{" "}
-                        </a>{" "}
-                      </li>
-                      <li>
-                        {" "}
-                        <a key={el.id} href={el.gplus} target="_blank" rel="noopener noreferrer">
-                          gplus{" "}
-                        </a>{" "}
-                      </li>
-                      <li>
-                        {" "}
-                        <a key={el.id} href={el.twitter} target="_blank" rel="noopener noreferrer">
-                          twitter{" "}
-                        </a>{" "}
-                      </li>
-                      <li>
-                        {" "}
-                        <a key={el.id} href={el.linkedin} target="_blank" rel="noopener noreferrer">
-                          linkedin{" "}
-                        </a>{" "}
-                      </li>
-                    </ul>
-                ))}
-              </div>
-            </section>
-          </Col>
         </Row>
-        </Container>
+        
       </Container>
     );
   }

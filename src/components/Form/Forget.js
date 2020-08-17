@@ -29,9 +29,9 @@ class Forget extends BaseComponent {
 
         <Row className="form pt-5">
 
-            <Col md={{ span: 4, offset: 5 }} className="overflow-hidden color-primary">
+            {/* <Col md={{ span: 4, offset: 5 }} className="overflow-hidden color-primary">
               Please enter your registered Email id to reset password.
-            </Col>
+            </Col> */}
 
             <Col md={{ span: 3, offset: 2 }} lg={{ span: 2, offset: 3 }} className="overflow-hidden">
               <h6 className="form-title">Forget Password</h6>
@@ -42,7 +42,7 @@ class Forget extends BaseComponent {
               <Form data-action="forgot" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
 
                 <Form.Group controlId="formemail">
-                    <Form.Control name="email" type="email" onChange={this.onChange} value={this.state.email} placeholder="Email id" required/>
+                    <Form.Control name="email" type="email" onChange={this.onChange} value={this.state.email} placeholder="Please enter your registered Email id" required/>
                 </Form.Group>
 
                 <Button variant="primary" type="submit" disabled={this.state.disabled} block>
