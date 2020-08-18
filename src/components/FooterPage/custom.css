@@ -22,6 +22,7 @@
 .social{padding-left: 1em;}
 .social li{display:inline;padding-left: 1em;}
 .social li a{color:#FFF;font-size: 1.5em;}
+.footer .nav a{padding:0.5rem;}
 
 @media (min-width:900px){
     .footer-content-1{

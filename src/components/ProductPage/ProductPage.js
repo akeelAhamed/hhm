@@ -10,7 +10,8 @@ class ProductPage extends BaseComponent {
   constructor(props) {
     super();
 
-    this.state.qty = 1;
+    this.cart = this.getCart();
+    this.state.qty = (this.cart !== '')?this.cart._qty:1;
     this.state.availability = '';
     this.days  = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"

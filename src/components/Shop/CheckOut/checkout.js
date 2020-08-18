@@ -12,12 +12,12 @@ export default class CheckOut extends BaseComponent {
 
         this.order_info = null;
         this.rzp        = null;
-        this.error = true;
         this.cart  = this.getCart();
+        this.error = true;
+        this.state.tab = 0;
         this.state.promo = '';
         this.state.discount = 0;
         this.state.tinfo = 0;
-        this.state.tab = 0;
         this.state.profile = null;
         this.state.chekout = null;
         this.state.complete= false; // after amount payed request send status
@@ -103,7 +103,6 @@ export default class CheckOut extends BaseComponent {
      */
     initRzp(){
         if(this.order_info !== null){
-            
             if(this.rzp === null){
                 let _this = this;
                 let options = {
@@ -111,7 +110,7 @@ export default class CheckOut extends BaseComponent {
                     "image": this.cart.photo,
                     "amount": this.order_info.amount * 100, // 100 paise = INR 1, amount in paisa
                     "name": this.cart.name,
-                    "description": "Rs."+this.cart.price+" x "+this.cart._qty+" = "+this.order_info.amount * 100,
+                    "description": this.cart.seller_information+" | Price: Rs."+this.cart.price+" | Qty :"+this.cart._qty,
                     "order_id": this.order_info.id,
                     "handler": function (response){
                         _this.emptyCart();

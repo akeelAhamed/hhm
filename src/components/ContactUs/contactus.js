@@ -7,6 +7,7 @@ import "./custom.css";
 class ContactUs extends BaseComponent {
   constructor(props) {
     super();
+    this.variant = 'danger';
     this.state.name = '';
     this.state.phone = '';
     this.state.email = '';
@@ -18,7 +19,11 @@ class ContactUs extends BaseComponent {
     if(has(response, 'error')){
       return this.setError(response.error);
     }
-    return this.setError([response.data]);
+    this.variant = 'success';
+    this.setError([response.Staus]);
+    setTimeout(() => {
+      window.location.href = '/';
+    }, 3000);
   }
   
   render() {
@@ -28,7 +33,7 @@ class ContactUs extends BaseComponent {
           <h3 className="bkg-text">Higher living</h3>
         </div>
 
-        <section className="m-auto px-md-5 w-75">
+        <section className="m-auto px-lg-5 w-75">
           <h2 className="mt-5 border-teal">Contact Us</h2>
           <form data-action="contact" data-method="post" data-callback="afterSubmit" className="pt-5 pform bg-light mx-md-3" onSubmit={this.onSubmit}>
             <Form.Row className="m-2">
@@ -69,7 +74,7 @@ class ContactUs extends BaseComponent {
                     {this.state.disabled?'Loading...':'Send'}
                   </Button>
 
-                  {this.getError()}
+                  {this.getError(this.variant)}
               </Form.Group>
             </Form.Row>
 
