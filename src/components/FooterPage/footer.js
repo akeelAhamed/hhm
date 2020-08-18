@@ -33,7 +33,7 @@ export default class FooterPage extends React.Component {
       <Container fluid className="footer text-white">
         
         <Row>
-          <Col md="4" className="footer-content-1">
+          <Col lg="4" md="6" className="footer-content-1">
             <div className="d-flex align-items-baseline">
               <img
                 src='https://admin.hhmworld.com/assets/images/1596980432HHM-Logo-White.png'
@@ -65,7 +65,7 @@ export default class FooterPage extends React.Component {
             <p dangerouslySetInnerHTML={{ __html: this.props.page.heade_footer.footer }}/>
           </Col>
   
-          <Col md="8" className="d-flex align-items-center">
+          <Col lg="8" md="6" className="d-flex align-items-center">
             <section>
               <Nav>
                 <Nav.Item>
