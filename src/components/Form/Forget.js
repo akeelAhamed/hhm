@@ -16,7 +16,7 @@ class Forget extends BaseComponent {
     }
     this.variant = 'success';
     let _this = this;
-    this.setError(['Reset link send']);
+    this.setError(['New password sent to your email id']);
     setTimeout(() => {
       return _this.redirect('login');
     }, 3000);

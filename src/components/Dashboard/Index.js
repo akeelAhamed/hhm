@@ -4,20 +4,34 @@ import './custom.css';
 import { Button, Container, Card, Row, Col, Collapse, FormControl, Spinner } from "react-bootstrap";
 import has from "lodash/has";
 import map from "lodash/map";
+import pick from "lodash/pick";
+import keys from "lodash/keys";
 
 export default class Index extends BaseComponent {
   constructor(props) {
     super();
-    this.state.profile  = null;
+
+    this.variant = 'danger';
+    this.state.profileLoaded = null;
+    this.state.profile  = {
+      name: '',
+      phone: '',
+      email: '',
+      zip: '',
+      city: '',
+      country: '',
+      address: ''
+    };
     this.state.password = {
-      old_password: '',
-      password: '',
-      password_confirmation: '',
+      cpass: '',
+      newpass: '',
+      renewpass: '',
     };
     this.state.orders   = [];
     this.state.ordersL  = false;
     this.state.orderid    = '';
     this.state.tab = 0;
+
 
     this.toggle = this.toggle.bind(this);
     this.onSubmitSelf = this.onSubmitSelf.bind(this);
@@ -27,8 +41,10 @@ export default class Index extends BaseComponent {
     window._axios.get('/profile?param=true&token='+this.state.user.token)
     .then((result) => {
         if(result.data !== ''){
+          let profile = pick(result.data, keys(this.state.profile));
           this.setState({
-            profile: result.data
+            profileLoaded: result.data,
+            profile: profile
           })
         }else{
           this.logOut();
@@ -36,42 +52,6 @@ export default class Index extends BaseComponent {
     }).catch(function(error){
       console.log(error.response);
     });
-  }
-
-  /**
-   * Handle on submit form event
-   * 
-   * @param object event 
-   */
-  onSubmitSelf(event){
-    event.preventDefault();
-
-    if(has(event.target.dataset, 'action') && has(event.target.dataset, 'method') && has(event.target.dataset, 'state')){
-      this.toggleDisable();
-      const data = event.target.dataset;
-      this.setError([]);
-      window._axios({
-        method: data.method,
-        url: data.action,
-        data: this.state[data.state]
-      }).then((response) => {
-        this.toggleDisable();
-        if(has(data, 'callback')){
-          if(typeof this[data.callback] === "function"){
-            return this[data.callback](response.data);
-          }
-        }
-        console.log(response);
-      }, (error) => {
-        this.toggleDisable();
-        if(has(data, 'callback')){
-          if(typeof this[data.callback] === "function"){
-            return this[data.callback](error.response.data);
-          }
-        }
-        console.log(error.response);
-      });
-    }
   }
 
   /**
@@ -101,7 +81,8 @@ export default class Index extends BaseComponent {
   toggle(e){
     if(has(e.target.dataset, 'key')){
       let state = {
-        tab: parseInt(e.target.dataset.key)
+        tab: parseInt(e.target.dataset.key),
+        errors: []
       };
 
       if(!this.state.ordersL && has(e.target.dataset, 'order')){
@@ -154,6 +135,42 @@ export default class Index extends BaseComponent {
   }
 
   /**
+   * Handle on submit form event
+   * 
+   * @param object event 
+   */
+  onSubmitSelf(event){
+    event.preventDefault();
+
+    if(has(event.target.dataset, 'action') && has(event.target.dataset, 'method') && has(event.target.dataset, 'state')){
+      this.toggleDisable();
+      const data = event.target.dataset;
+      this.setError([]);
+      window._axios({
+        method: data.method,
+        url: data.action+'?param=true&token='+this.state.user.token,
+        data: this.state[data.state]
+      }).then((response) => {
+        this.toggleDisable();
+        if(has(data, 'callback')){
+          if(typeof this[data.callback] === "function"){
+            return this[data.callback](response.data);
+          }
+        }
+        console.log(response);
+      }, (error) => {
+        this.toggleDisable();
+        if(has(data, 'callback')){
+          if(typeof this[data.callback] === "function"){
+            return this[data.callback](error.response.data);
+          }
+        }
+        console.log(error.response);
+      });
+    }
+  }
+
+  /**
    * Track ordeder response
    * 
    * @param {object} response 
@@ -164,6 +181,41 @@ export default class Index extends BaseComponent {
     }
   }
 
+  /**
+   * After submit
+   * 
+   * @param {object} response 
+   */
+  afterSubmit(response){
+    if(has(response, 'errors')){
+      return this.setError(response.errors);
+    }
+    console.log(this.state);
+    switch (this.state.tab) {
+      case 0:
+        // Profile
+        let data = this.state.profile;
+        data.token = this.state.user.token;
+        this.login(data, null);
+        break;
+
+      case 4:
+        setTimeout(() => {
+          window.location.reload();
+        }, 5000);
+        break;
+    
+      default:
+        break;
+    }
+    this.variant = 'success';
+    let _this = this;
+    this.setError(['Updated successfully']);
+    setTimeout(() => {
+      _this.setError([]);
+    }, 3000);
+  }
+
   content() {
     return (
       <>
@@ -171,12 +223,18 @@ export default class Index extends BaseComponent {
           <h5 className="header" data-key={0} onClick={this.toggle}>Profile</h5>
           <Collapse in={this.state.tab === 0}>
             <div id="_profile" className="c-body">
-              <form data-action="profile" data-state="profile" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmitSelf}>
-                <FormControl placeholder="Name" id="name" name="profile.name" value={this.state.profile.name} onChange={this.onChange} />
+              <form data-action="profileupdate" data-state="profile" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmitSelf}>
+                <FormControl placeholder="Name" id="name" name="profile.name" value={this.state.profile.name} onChange={this.onChange} required />
 
-                <FormControl placeholder="Email" type="email" id="email" name="profile.email" value={this.state.profile.email} onChange={this.onChange} />
+                <FormControl placeholder="Mobile no" id="phone" name="profile.phone" value={this.state.profile.phone} onChange={this.onChange} required />
 
-                <Button type="submit" variant="light">Update</Button>
+                <FormControl placeholder="Email" type="email" id="email" name="profile.email" value={this.state.profile.email} onChange={this.onChange} required />
+
+                {this.getError(this.variant)}
+                
+                <Button variant="light" type="submit" disabled={this.state.disabled}>
+                  {this.state.disabled?'Loading...':'Update'}
+                </Button>
 
               </form>
             </div>
@@ -187,22 +245,26 @@ export default class Index extends BaseComponent {
           <h5 className="header" data-key={1} onClick={this.toggle}>Address</h5>
           <Collapse in={this.state.tab === 1}>
             <div id="_address" className="c-body">
-              <form data-action="address" data-state="profile" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmitSelf}>
-                <FormControl placeholder="Name" id="aname" name="profile.name" value={this.state.profile.name} onChange={this.onChange} />
+              <form data-action="profileupdate" data-state="profile" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmitSelf}>
+                {/* <FormControl placeholder="Name" id="aname" name="profile.name" value={this.state.profile.name} onChange={this.onChange} /> */}
 
-                <FormControl placeholder="Contact #" id="phone" name="profile.phone" value={this.state.profile.phone} onChange={this.onChange} />
+                {/* <FormControl placeholder="Contact #" id="phone" name="profile.phone" value={this.state.profile.phone} onChange={this.onChange} /> */}
 
-                <FormControl placeholder="Address" id="address" name="profile.address" value={this.state.profile.address} onChange={this.onChange} />
+                <FormControl placeholder="Address" id="address" name="profile.address" value={this.state.profile.address} onChange={this.onChange} required />
 
-                <FormControl placeholder="City" id="city" name="profile.city" value={this.state.profile.city} onChange={this.onChange} />
+                <FormControl placeholder="City" id="city" name="profile.city" value={this.state.profile.city} onChange={this.onChange} required />
 
-                <FormControl placeholder="Country" id="country" name="profile.country" value={this.state.profile.country} onChange={this.onChange} />
+                <FormControl placeholder="Country" id="country" name="profile.country" value={this.state.profile.country} onChange={this.onChange} required />
 
-                <FormControl placeholder="Pincode" id="zip" name="profile.zip" value={this.state.profile.zip} onChange={this.onChange} />
+                <FormControl placeholder="Pincode" id="zip" name="profile.zip" value={this.state.profile.zip} onChange={this.onChange} required/>
 
-                <Button type="submit" variant="light">Update</Button>
+                {this.getError(this.variant)}
+                
+                <Button variant="light" type="submit" disabled={this.state.disabled}>
+                  {this.state.disabled?'Loading...':'Update'}
+                </Button>
 
-                <Button type="button" variant="light">Add</Button>
+                {/* <Button type="button" variant="light">Add</Button> */}
 
               </form>
             </div>
@@ -213,15 +275,19 @@ export default class Index extends BaseComponent {
           <h5 className="header" data-key={4} onClick={this.toggle}>Change password</h5>
           <Collapse in={this.state.tab === 4}>
             <div id="_password" className="c-body">
-              <form data-action="password" data-state="password" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmitSelf}>
+              <form data-action="reset" data-state="password" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmitSelf}>
 
-                <FormControl type="password" placeholder="Old password" id="old_password" name="password.old_password" value={this.state.password.old_password} onChange={this.onChange} />
+                <FormControl type="password" placeholder="Old password" id="cpass" name="password.cpass" value={this.state.password.cpass} onChange={this.onChange} />
 
-                <FormControl type="password" placeholder="New password" id="password" name="password.password" value={this.state.password.password} onChange={this.onChange} />
+                <FormControl type="password" placeholder="New password" id="newpass" name="password.newpass" value={this.state.password.newpass} onChange={this.onChange} />
 
-                <FormControl type="password" placeholder="Confirm Password" id="password_confirmation" name="password.password_confirmation" value={this.state.password.password_confirmation} onChange={this.onChange} />
+                <FormControl type="password" placeholder="Confirm Password" id="renewpass" name="password.renewpass" value={this.state.password.renewpass} onChange={this.onChange} />
 
-                <Button type="submit" variant="light">Update</Button>
+                {this.getError(this.variant)}
+                
+                <Button variant="light" type="submit" disabled={this.state.disabled}>
+                  {this.state.disabled?'Loading...':'Update'}
+                </Button>
               </form>
             </div>
           </Collapse>
@@ -275,7 +341,7 @@ export default class Index extends BaseComponent {
           <Row>
             <Col sm={{ span: 9, offset:1 }} className="border-primary m-auto">
               
-              {this.state.profile === null?<div className="center"><Spinner animation="border" variant="info"/></div>:this.content()}
+              {this.state.profileLoaded === null?<div className="center"><Spinner animation="border" variant="info"/></div>:this.content()}
 
             </Col>
           </Row>

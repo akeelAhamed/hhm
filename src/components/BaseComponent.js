@@ -121,7 +121,7 @@ export default class BaseComponent extends React.Component {
   login(data, after=""){
     after = after===""?'dashboard':after;
     window.ls.set('_AUTHTOKEN', data);
-    return window.location.href = after;
+    return (after === null)||(window.location.href = after);
   }
 
   /**

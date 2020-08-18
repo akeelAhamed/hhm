@@ -56,7 +56,6 @@ export default class FooterPage extends React.Component {
                         </li>
                       ) 
                     }
-
                     return social;
                   })
                 }
