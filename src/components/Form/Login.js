@@ -13,7 +13,8 @@ class Login extends BaseComponent {
     if(this.state.isLoggedIn){
       window.location.href = 'dashboard';
     }
-
+    const { location: { search } } = props;
+    this.after = search;
     this.afterSubmit = this.afterSubmit.bind(this);
   }
 
@@ -22,8 +23,8 @@ class Login extends BaseComponent {
       return this.setError(response.error);
     }
     response.email = this.state.email;
-    const { location: { search } } = this.props;
-    return this.login(response, search.replace('?', ''));
+    
+    return this.login(response, this.after.replace('?', ''));
   }
 
   render() {
@@ -49,7 +50,7 @@ class Login extends BaseComponent {
                       <Form.Control type="password" name="password" onChange={this.onChange} value={this.state.password} placeholder="Password" required/>
                   </Form.Group>
 
-                  <Link className="d-block py-2 btn-link text-dark" to='/forgot'>Forget password?</Link>
+                  <Link className="d-block py-2 btn-link text-dark" to={'/forgot'+this.after}>Forget password?</Link>
                   
                   <Button variant="primary" type="submit" disabled={this.state.disabled} block>
                     {this.state.disabled?'Loading...':'Login'}
@@ -59,7 +60,7 @@ class Login extends BaseComponent {
                 {this.getError()}
                 
                 <div className="p-2 d-block w-100">
-                  <Link className="btn btn-link text-dark float-right" to='/register'>REGISTER</Link>
+                  <Link className="btn btn-link text-dark float-right" to={'/register'+this.after}>REGISTER</Link>
                   <span className="mt-2 d-block">Dont have an account?</span>
                 </div>
 

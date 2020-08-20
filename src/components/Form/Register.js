@@ -13,6 +13,9 @@ class Login extends BaseComponent {
     this.state.phone = '';
     this.state.password = '';
     this.state.password_confirmation = '';
+
+    const { location: { search } } = props;
+    this.after = search;
   }
 
   afterSubmit(response){
@@ -23,7 +26,7 @@ class Login extends BaseComponent {
     let _this = this;
     this.setError(['Registered successfully']);
     setTimeout(() => {
-      return _this.redirect('login');
+      return _this.redirect('login'+this.after);
     }, 3000);
   }
   
@@ -68,7 +71,7 @@ class Login extends BaseComponent {
               {this.getError(this.variant)}
               
               <div className="p-2 d-block w-100">
-                <Link className="btn btn-link text-dark float-right" to='/login'>LOGIN</Link>
+                <Link className="btn btn-link text-dark float-right" to={'/login'+this.after}>LOGIN</Link>
                 <span className="mt-2 d-block">Already have an account?</span>
               </div>
 

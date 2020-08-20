@@ -8,6 +8,8 @@ class Forget extends BaseComponent {
     super();
     this.variant = 'danger';
     this.state.email = '';
+    const { location: { search } } = props;
+    this.after = search;
   }
 
   afterSubmit(response){
@@ -18,7 +20,7 @@ class Forget extends BaseComponent {
     let _this = this;
     this.setError(['New password sent to your email id']);
     setTimeout(() => {
-      return _this.redirect('login');
+      return _this.redirect('login'+this.after);
     }, 3000);
   }
   

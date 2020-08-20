@@ -37,6 +37,7 @@ export default class Landing extends BaseComponent {
     ];
     this.imageType = ['back_ground', 'product', 'another', 'top','followup'];
     this.handleModal = this.handleModal.bind(this);
+    this.afterSubmit = this.afterSubmit.bind(this);
   }
 
   handleModal(){
@@ -44,10 +45,11 @@ export default class Landing extends BaseComponent {
   }
 
   afterSubmit(e){
+    e.preventDefault();
     this.setState({brocher: true});
     setTimeout(() => {
       document.getElementById('download').click();
-    }, 3000);
+    }, 1500);
   }
 
   content(){
@@ -68,7 +70,7 @@ export default class Landing extends BaseComponent {
 
         <div className="landing">
           <img alt="top" className="w-100 img-fluid" src={require('./img/Landing-01.png')} />
-          <a className="btn btn-primary" href={"/products"}>Buy now</a>
+          <a className="btn btn-primary" href={"#buy"}>Buy now</a>
         </div>
         
         <div className="landing-2 mb-2">
@@ -112,7 +114,7 @@ export default class Landing extends BaseComponent {
           </div>
         </div>
 
-        <div className="landing-3 mb-2 bg-gray py-3" >
+        <div className="landing-3 landing-2 mb-2 bg-gray py-3" style={{backgroundImage: 'url('+require('./img/Landing-04.png')+')'}} id="buy">
           <Container>
             <Row className="_3d">
               <Col lg="5" md="6">
@@ -136,7 +138,7 @@ export default class Landing extends BaseComponent {
           </Container>
         </div>
 
-        <div className="landing-4 mb-2 mx-2 bg-gray" >
+        <div className="landing-4 mb-2 mx-2">
           <h2 className="text-uppercase color-primary font-weight-bold" >
             BENEFITS OF P.U.R.E SMOKE THERAPY
           </h2>
@@ -173,7 +175,7 @@ export default class Landing extends BaseComponent {
             <Modal.Title>Download E-brocher</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form className="lform" data-action="brocher" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
+            <Form className="lform" data-action="brocher" data-method="post" data-callback="afterSubmit" onSubmit={this.afterSubmit}>
               <Form.Group controlId="formBasicName">
                 <Form.Control placeholder="Enter Name" name="name" onChange={this.onChange} value={this.state.name} required/>
               </Form.Group>
@@ -185,8 +187,6 @@ export default class Landing extends BaseComponent {
               <Form.Group controlId="formBasicPhone">
                 <Form.Control type="number" name="phone" onChange={this.onChange} value={this.state.phone} placeholder="Enter phone number" required/>
               </Form.Group>
-
-              <a id="download" href="/PURE-PRODUCT-BOOK-2.pdf" download className="d-none">.</a>
 
               <Button variant="secondary" type="submit" disabled={this.state.disabled}>
                 {this.state.disabled?'Downloading':'Download'}
@@ -201,6 +201,7 @@ export default class Landing extends BaseComponent {
   thankyou(){
     return(
       <div className="main center">
+        <a id="download" href="/PURE-PRODUCT-BOOK-2.pdf" download className="d-none">.</a>
         <div className="main-content text-left">
           <img src={require('../Shop/img/tick.png')} alt="tick" style={{width:35}} className="img-fluid" /><h1 className="w-100" style={{color: '#7ac043'}}>THANK YOU</h1>
           <p className="b-left border-teal">
