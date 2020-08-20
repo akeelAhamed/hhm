@@ -1,4 +1,5 @@
 .logout{position: absolute;right: 15px;margin-top: -31px;}
+.welcome{color:#FFF;position: absolute;left: 15px;margin-top: -27px;}
 .pro{width: 100%;}
 .mw{max-width: 480px;}
 .pro.true{box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);}

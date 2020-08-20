@@ -12,6 +12,7 @@
     width: 70px;
     right: 0;
     margin-top: 1em;
+    z-index: 9;
 }
 ._3d #slideshow{padding: 0em;width:50%; margin: auto;}
 

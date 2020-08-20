@@ -1,7 +1,7 @@
-import BaseComponent from '../BaseComponent';
 import React from "react";
 import has from "lodash/has";
 import { Col, Form, Button, Row } from "react-bootstrap";
+import BaseComponent from '../BaseComponent';
 import "./custom.css";
 
 class ContactUs extends BaseComponent {

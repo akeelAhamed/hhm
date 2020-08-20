@@ -25,7 +25,7 @@ export default class BaseComponent extends React.Component {
 
     window.scrollTo(0, 0);
 
-    const exceptApi = ['/register', '/login', '/forgot', '/reset', '/dashboard', '/track', '/cart', '/checkout','/privacy','/terms', '/about', '/benifits', '/hypothesis', '/science', '/contact'];
+    const exceptApi = ['/register', '/login', '/forgot', '/reset', '/dashboard', '/track', '/cart', '/checkout','/privacy','/terms', '/about', '/benifits', '/hypothesis', '/science', '/contact', '/landing'];
 
     this.pageContent = null;
     this.page = window.location.pathname;
@@ -140,14 +140,21 @@ export default class BaseComponent extends React.Component {
   onChange(event){
     const {name, value} = event.target;
     let name2 = name.split('.');
-    (name2.length === 2)?
-    this.setState({
-      [name2[0]]:{
-        ...this.state[name2[0]],
-        [name2[1]]: value
+    if(name2.length === 2){
+      if(name2[1].toLowerCase() === 'phone' && value.length > 10){
+        return false;
       }
-    })
-    :this.setState({[name]: value});
+      return this.setState({
+        [name2[0]]:{
+          ...this.state[name2[0]],
+          [name2[1]]: value
+        }
+      })
+    }
+    if(name.toLowerCase() === 'phone' && value.length > 10){
+      return false;
+    }
+    return this.setState({[name]: value});
   }
   
   /**

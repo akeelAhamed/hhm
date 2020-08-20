@@ -176,6 +176,7 @@ export default class Index extends BaseComponent {
    * @param {object} response 
    */
   afterTrack(response){
+    alert(response.result);
     if(has(response, 'Staus')){
       return this.redirect('track?'+this.state.orderid+'='+response.Staus);
     }
@@ -190,7 +191,6 @@ export default class Index extends BaseComponent {
     if(has(response, 'errors')){
       return this.setError(response.errors);
     }
-    console.log(this.state);
     switch (this.state.tab) {
       case 0:
         // Profile
@@ -219,6 +219,7 @@ export default class Index extends BaseComponent {
   content() {
     return (
       <>
+        <strong className="welcome">Welcome: {this.state.profile.name}</strong>
         <Card className={"my-3 pro mw "+(this.state.tab === 0)}>
           <h5 className="header" data-key={0} onClick={this.toggle}>Profile</h5>
           <Collapse in={this.state.tab === 0}>
@@ -321,7 +322,9 @@ export default class Index extends BaseComponent {
 
                 <FormControl placeholder="Order id" id="order" name="orderid" value={this.state.orderid} onChange={this.onChange} required/>
 
-                <Button type="submit" variant="light">Track</Button>
+                <Button type="submit" variant="light"disabled={this.state.disabled}>
+                  {this.state.disabled?'Tracking...':'Track'}
+                </Button>
 
               </form>
             </div>
