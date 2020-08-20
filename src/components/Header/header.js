@@ -69,15 +69,13 @@ class Header extends React.Component {
               {
                 this.state.headerFooter.heade_menu.map(el => {
                   return(<Nav.Link key={el.id} active={window.location.pathname === '/' + el.slug} as={Link} to={'/' + el.slug}>{el.title}</Nav.Link>);
-
-                  //return(<Nav.Link key={el.id} active={window.location.pathname === '/' + el.slug} href={'/' + el.slug} >{el.title}</Nav.Link>)
                 })
               }
 
               {
                 (this.props.isLoggedIn)
                 ?<Nav.Link active={window.location.pathname === '/dashboard'} as={Link} to='/dashboard'>Dashboard</Nav.Link>
-                :<Nav.Link active={window.location.pathname === '/login'} as={Link} to='/login'>Login</Nav.Link>
+                :<Nav.Link active={window.location.pathname === '/login'} as={Link} to='/login?item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100'>Login</Nav.Link>
               }
               
               <Nav.Link active={window.location.pathname === '/cart'} as={Link} to='/cart'><GiShoppingCart /></Nav.Link>

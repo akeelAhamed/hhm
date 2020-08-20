@@ -105,8 +105,9 @@ export default class Index extends BaseComponent {
       const info = map(JSON.parse(order.orders_items))[0];
       return(
         <section className="c">
-          <p>Order id&nbsp;: <Button variant="link" data-key={3} data-track={order.order_number} onClick={this.toggle}>{order.order_number}</Button></p>
-          <p>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;{order.created_at}</p>
+          <p className="mb-1">Order id&nbsp;: <Button variant="link" data-key={3} data-track={order.order_number} onClick={this.toggle}>{order.order_number}</Button></p>
+          <p className="mb-1">Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <span style={{padding: '.375rem .75rem'}}>{order.created_at}</span></p>
+          <p>Delivery : <span style={{padding: '.375rem .75rem'}}>{order.delivery_date}</span></p>
           <h5>{info.item.name}</h5>
           {/* <p>Seller      : {order.seller_information}</p> */}
           <div className="d-flex">
