@@ -15,8 +15,8 @@ export default class Index extends BaseComponent {
     this.state.profileLoaded = null;
     this.state.profile  = {
       name: '',
-      phone: '',
       email: '',
+      phone: '',
       zip: '',
       city: '',
       country: '',
@@ -106,7 +106,7 @@ export default class Index extends BaseComponent {
       return(
         <section className="c">
           <p>Order id&nbsp;: <Button variant="link" data-key={3} data-track={order.order_number} onClick={this.toggle}>{order.order_number}</Button></p>
-          <p>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </p>
+          <p>Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;&nbsp;{order.created_at}</p>
           <h5>{info.item.name}</h5>
           {/* <p>Seller      : {order.seller_information}</p> */}
           <div className="d-flex">
@@ -124,7 +124,7 @@ export default class Index extends BaseComponent {
               </ul>
           </div>
           <div>
-              <p>Total weight: {order.views}</p>
+              <p>Total weight: 12 Kg</p>
               <small>One year pack</small><br/>
               <p>Qty: {info.qty}</p>
               <h5 className="border py-2"><b>ORDER TOTAL : Rs.{info.item.price}</b> <small>(Inclusive of all tax)</small></h5>
@@ -229,7 +229,7 @@ export default class Index extends BaseComponent {
 
                 <FormControl placeholder="Mobile no" id="phone" name="profile.phone" value={this.state.profile.phone} onChange={this.onChange} required />
 
-                <FormControl placeholder="Email" type="email" id="email" name="profile.email" value={this.state.profile.email} onChange={this.onChange} required />
+                <FormControl placeholder="Email" type="email" id="email" name="profile.email" value={this.state.profile.email} readOnly required />
 
                 {this.getError(this.variant)}
                 
