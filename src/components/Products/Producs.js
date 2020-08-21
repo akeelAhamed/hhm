@@ -18,7 +18,7 @@ export default class Products extends BaseComponent {
         file: '02',
       },
       {
-        img : require('./img/Product-Page-03b-Lamp.png'),
+        img : require('./img/Product-Page-03b-Lamp-02.png'),
         file: '02'
       },
     

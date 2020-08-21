@@ -22,7 +22,7 @@ export default class Landing extends BaseComponent {
           file: '02',
         },
         {
-          img : require('../Products/img/Product-Page-03b-Lamp.png'),
+          img : require('../Products/img/Product-Page-03b-Lamp-02.png'),
           file: '02'
         },
         {
