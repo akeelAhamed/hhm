@@ -6,7 +6,7 @@
 .landing-2{
     min-height: 400px;
     background: url('./img/Landing-02.png');
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
 }

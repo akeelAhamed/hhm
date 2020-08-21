@@ -15,7 +15,6 @@ export default class Landing extends BaseComponent {
     this.state.email   = '';
     this.state.name    = '';
     this.state.phone   = '';
-    this.state.email   = '';
     this.state.current = '';
     this.state._3d     = [
         {
@@ -46,9 +45,12 @@ export default class Landing extends BaseComponent {
 
   afterSubmit(e){
     e.preventDefault();
-    this.setState({brocher: true});
+    this.setState({brocher: true, modal:false, email: '',name: '', phone: ''});
     setTimeout(() => {
       document.getElementById('download').click();
+      setTimeout(() => {
+        this.setState({brocher: false});
+      }, 1500);
     }, 1500);
   }
 
@@ -60,11 +62,10 @@ export default class Landing extends BaseComponent {
 
           <Nav className="m-auto bg-light w-100">
             <Button variant="secondary" size="sm"  onClick={this.handleModal}>E-Brocher &nbsp;&nbsp; <BsDownload /></Button>
-            <Nav.Link href="https://wa.me/" target="_blank" rel="noreferrer"><FaWhatsapp /></Nav.Link>
-            <Nav.Link href="#link"><BsEnvelopeFill /></Nav.Link>
-            <Nav.Link href="tel:123456"><FaPhoneAlt /></Nav.Link>
-            <Nav.Link href="tel:917025470022" className="">+91 70254 70022 ,</Nav.Link>
-            <Nav.Link href="tel:917510470022">+91 75104 70022</Nav.Link>
+            <Nav.Link href={"https://wa.me/send?phone=918086511100&text=Hi, i am "+this.state.name+"&source="+this.url()} target="_blank" rel="noreferrer"><FaWhatsapp /></Nav.Link>
+            <Nav.Link href="mailto:support@hhmworld.com"><BsEnvelopeFill /></Nav.Link>
+            <Nav.Link href="tel:918086511100"><FaPhoneAlt /></Nav.Link>
+            <Nav.Link href="tel:918086511100" className="">+91 80865 11100</Nav.Link>
           </Nav>
         </Navbar>
 
