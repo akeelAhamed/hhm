@@ -57,7 +57,7 @@ class App extends React.Component{
       headerFooter: null,
       pageLoaded: false
     };
-    this.noHeader = ['/landing']
+    this.noHeader = ['/promo']
   }
 
   component(props, Component) {
@@ -71,7 +71,7 @@ class App extends React.Component{
       return (
         <Router>
           <Switch>
-            <Route path="/landing" exact component={(props) => this.component(props, Landing)} />
+            <Route path="/promo" exact component={(props) => this.component(props, Landing)} />
           </Switch>
         </Router>
       )
