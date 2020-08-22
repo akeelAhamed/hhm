@@ -2,6 +2,7 @@ import React from "react";
 import BaseComponent from '../BaseComponent';
 import './custom.css';
 import { Button, Container, Card, Row, Col, Collapse, FormControl, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import has from "lodash/has";
 import map from "lodash/map";
 import pick from "lodash/pick";
@@ -343,10 +344,16 @@ export default class Index extends BaseComponent {
           <Button size="sm" variant="link" className="logout text-light" onClick={this.logOut}>Logout</Button>
           
           <Row>
-            <Col sm={{ span: 9, offset:1 }} className="border-primary m-auto">
+            <Col sm={{ span: 5, offset:1 }} className="border-primary">
               
               {this.state.profileLoaded === null?<div className="center"><Spinner animation="border" variant="info"/></div>:this.content()}
 
+            </Col>
+
+            <Col sm={{ span: 6 }} className="border-primary mt-sm-5 mb-3">
+              <Link to="/item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100">
+                <img alt="ad" className="img-fluid" src={require('./img/ad.jpg')} />
+              </Link>
             </Col>
           </Row>
         </Container>
