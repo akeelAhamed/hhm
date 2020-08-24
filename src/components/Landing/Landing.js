@@ -76,11 +76,11 @@ export default class Landing extends BaseComponent {
         
         <div className="landing-2 mb-2">
           <div className="text">
-            <h3 className="text-uppercase border-teal color-primary" >
+            <h2 className="text-uppercase border-teal color-primary" >
               HOLISTIC<br/>
               HUMAN METAPHYSICS<br/>
               A SCIENTIFIC WAY OF LIFE
-            </h3>
+            </h2>
             <br />
             <div className="small">
               <p>
@@ -96,10 +96,10 @@ export default class Landing extends BaseComponent {
 
         <div className="landing-2 mb-2" style={{backgroundImage: 'url('+require('./img/Landing-03.png')+')'}}>
           <div className="text">
-            <h3 className="text-uppercase border-teal color-primary" >
+            <h2 className="text-uppercase border-teal color-primary" >
               HHM PURE -<br/>
               RE ENERGING YOUR LIFE
-            </h3>
+            </h2>
             <br />
             <div className="small">
               <p>
@@ -118,32 +118,32 @@ export default class Landing extends BaseComponent {
         <div className="landing-3 landing-2 mb-2 bg-gray py-3" style={{backgroundImage: 'url('+require('./img/Landing-04.png')+')'}} id="buy">
           <Container>
             <Row className="_3d">
-              <Col lg="5" md="6">
+              <Col lg="5" md="6" className="pt-md-5">
                 <Gallery img={this.state._3d[0].img} gallery={map(this.state._3d, 'img')} _3d={this.state._3d}/>
               </Col>
               
               <Col lg="7" md="6">
-                <h3 className="text-uppercase color-primary" >
+                <h2 className="text-uppercase color-primary" >
                   Panacea Ultimate for<br/>
                   Rousing Energy
-                </h3>
+                </h2>
 
                 <div className="home-bg-2-text">
                   <div>
                   Inspired from ancient traditions developed by great scholars of the past, H.H.M brings you Panacea Ultimate for Rousing Energy (P.U.R.E), a smoke therapy that will make you feel alive from within. Cosmic energy strikes the earth from all directions. The process of P.U.R.E helps to attract, absorb, and direct cosmic energy to travel towards the brain and energize the seven chakras in the body. P.U.R.E package contains the PANACEA ULTIMATE powder which is a mixture of 43 different herbs with tremendous health benefits. This smoke therapy has created many people to live their life with utmost potential and the well being of a holistic lifestyle. The theories that are set out to a benefit that humans could gain are set out by HHM so that people can live the complete while they achieve a perfect goal-oriented life to make a difference in the nature and in the lifestyle.  It can be smoked at anytime in your living room/any part of your house regardless of religion anyone can use the P.U.R.E to elevate their life.
                   </div>
-                  <a className="mt-3 btn btn-primary" href={"/item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100"}>Buy now</a>
+                  <a className="mt-3 btn btn-primary btn-lg" href={"/item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100"}>Buy now</a>
                 </div>
               </Col>
             </Row>
           </Container>
         </div>
 
-        <div className="landing-4 mb-2 mx-2">
-          <h2 className="text-uppercase color-primary font-weight-bold" >
+        <div className="landing-4 mb-2 mx-2 bg-gray px-md-5">
+          <h2 className="text-uppercase color-primary font-weight-bold mx-md-5">
             BENEFITS OF P.U.R.E SMOKE THERAPY
           </h2>
-          <Row>
+          <Row className="mx-md-5">
               <Col md="4">
                 <ul>
                   <li>Breaks addictions</li>
