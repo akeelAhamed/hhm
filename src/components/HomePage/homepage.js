@@ -39,13 +39,13 @@ export default class HomePage extends BaseComponent {
           <img className="img-fluid w-100" alt="banner" src={this.pageContent.sliders[0].photo} />
         </div>
 
-        <Container fluid className="my-md-2">
+        <Container fluid>
           <Row className="no-gutters">
             <Col md="5" className="m-auto">
               <img className="img-fluid w-100" alt="banner" src={this.pageContent.about_home.photo} />
             </Col>
 
-            <Col md="7" className="p-4 mt-md-5">
+            <Col md="7" className="p-4 mt-md-3">
               <h3 className="border-teal text-uppercase pl-4" dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.title }} />
               <p className="pl-4 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.link }} /></p>
             </Col>
