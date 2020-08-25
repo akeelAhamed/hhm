@@ -78,7 +78,7 @@ class Header extends React.Component {
                 :<Nav.Link active={window.location.pathname === '/login'} as={Link} to='/login?item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100'>Login</Nav.Link>
               }
               
-              <Nav.Link active={window.location.pathname === '/cart'} as={Link} to='/cart'><GiShoppingCart /></Nav.Link>
+              <Nav.Link active={window.location.pathname === '/cart'} className="cart" as={Link} to='/cart'><GiShoppingCart size="2rem" /></Nav.Link>
 
             </Nav>
 

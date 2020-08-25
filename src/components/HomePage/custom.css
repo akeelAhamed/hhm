@@ -1,3 +1,10 @@
+.b-absolute{
+    position: absolute;
+    padding: 8%;
+    font-weight: bolder;
+    color: #00a09b;
+    font-size: 4rem;
+}
 .home-bg-1{
     min-height: 24em;
     background-position: center;
@@ -66,6 +73,9 @@
 }
 
 @media (max-width:768px){
+    .b-absolute{
+        font-size: 2rem;
+    }
     .home-bg-2_text{
         padding-left: 1%;
     }
