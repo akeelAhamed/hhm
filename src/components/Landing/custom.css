@@ -30,6 +30,6 @@
     .top .navbar-nav{padding-right: 15em;}
     .top.navbar{display: flex;}
     .landing .btn{position: inherit;;margin-top: -18%;margin-left: 35%;text-transform: uppercase;font-size:16px;letter-spacing: 2px;}
-    .landing-2 .text{padding: 5% 40% 0% 5%;}
+    .landing-2 .text{padding: 5% 0% 0% 5%;width: 50%;margin-left: 5%;}
     .landing-3 ._3d-button{right: -70px;margin-top: -2em;}
 }

@@ -71,6 +71,16 @@
     border-left: 5px solid #00a09b;
     padding-left: 4px;
 }
+.author-info{
+    align-items: center;
+    border: 1px solid #DDD;
+    padding-left: 1em;
+    border-right: none;
+    border-left: 0;
+    margin-bottom: 1em;
+    justify-content: space-between;
+}
+.author-info ul{margin-bottom: 0em;margin-left: 3em;}  
 
 @media (max-width:768px){
     .b-absolute{

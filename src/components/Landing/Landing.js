@@ -75,7 +75,7 @@ export default class Landing extends BaseComponent {
         </div>
         
         <div className="landing-2 mb-2">
-          <div className="text">
+          <div className="text w-50">
             <h2 className="text-uppercase border-teal color-primary" >
               HOLISTIC<br/>
               HUMAN METAPHYSICS<br/>
@@ -85,9 +85,11 @@ export default class Landing extends BaseComponent {
             <div className="small">
               <p>
               HHM leads you to ultimate  happiness and wellness, by utilizing the planetary energies for betterment of our lives. The importance of intangible forces around us that affect our life is seldom focused upon. T.P. Jayakrishnan, the brain behind HHM, wishes to harness the attraction of the scientific community towards the evidence that holds these hypotheses and investigate further on them.
-
+              </p>
+              <p>
               Holistic Human Metaphysics opens the door to infinite possibilities that could very well lead to the dawn of a new era in the field of healthcare. The HHM profound methods of HHM has helped it's followers in leading a fruitful and successful life.
-
+              </p>
+              <p>
               Holistic Human Metaphysics guides you towards a different perspective of life, where you attain a simpler, better wellness lifestyle. Even though our physical body is important, the effect of intangible energy around us is no lesser. Holistic Human Metaphysics aids in the flow of positive energy throughout the body and mind to lead a holistic lifestyle and well being.
               </p>
             </div>

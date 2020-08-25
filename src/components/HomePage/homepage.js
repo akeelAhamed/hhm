@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from 'react-router-dom';
+import { FaFacebook, FaGooglePlus, FaTwitter, FaLinkedin } from "react-icons/fa";
 import BaseComponent from '../BaseComponent';
 import './custom.css';
 
@@ -10,6 +11,26 @@ export default class HomePage extends BaseComponent {
   }
 
   content() {
+
+    this.social = {
+      "facebook": {
+        name: 'Facebook',
+        icon: <FaFacebook />
+      },
+      "gplus": {
+        name: 'Google +',
+        icon: <FaGooglePlus />
+      },
+      "twitter": {
+        name: 'Twitter',
+        icon: <FaTwitter />
+      },
+      "linkedin": {
+        name: 'LinkedIn',
+        icon: <FaLinkedin />
+      }
+    }
+
     return (
       <div className="main-container">
 
@@ -20,12 +41,12 @@ export default class HomePage extends BaseComponent {
 
         <Container fluid className="my-md-2">
           <Row className="no-gutters">
-            <Col md="5">
+            <Col md="5" className="m-auto">
               <img className="img-fluid w-100" alt="banner" src={this.pageContent.about_home.photo} />
             </Col>
 
             <Col md="7" className="p-4 mt-md-5">
-              <h5 className="border-teal text-uppercase pl-4" dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.title }} />
+              <h3 className="border-teal text-uppercase pl-4" dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.title }} />
               <p className="pl-4 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.link }} /></p>
             </Col>
           </Row>
@@ -42,14 +63,38 @@ export default class HomePage extends BaseComponent {
 
         <Container fluid>
           <Row>
-            <Col md lg xl="6" sm="auto">
+            <Col md lg xl="6" className="m-auto">
               <img className="img-fluid" alt="" src={this.pageContent.about_author.photo} />
             </Col>
 
-            <Col md lg xl="6" sm="auto" className="mt-5 ">
-              <h5 className="text-uppercase border-teal" dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.title }}/>
+            <Col md lg xl="6" className="mt-5 ">
+              <h5 className="text-uppercase border-teal  pl-5" dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.title }}/>
               <br />
               <div dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} />
+
+              <div className="author-info d-flex ml-5">
+                <strong>
+                  DR. T.P.JAYAKRISHNAN
+                </strong>
+
+                <ul className="list-unstyled social">
+                {
+                  this.pageContent.sociallinks.map((links, index) => {
+                    let social = [];
+                    for (const key in links) {
+                      social.push(
+                        <li key={key}>
+                          <a href={links[key]} className="text-dark" target="_blank" rel="noopener noreferrer">
+                            {this.social[key].icon}
+                          </a>
+                        </li>
+                      ) 
+                    }
+                    return social;
+                  })
+                }
+              </ul>
+              </div>
             </Col>
           </Row>
         </Container>

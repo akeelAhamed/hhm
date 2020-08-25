@@ -42,7 +42,7 @@ export default class FooterPage extends React.Component {
                 className="d-inline-block align-top"
                 alt="logo"
               />
-           
+
               <ul className="list-unstyled social">
                 {
                   this.props.page.sociallinks.map((links, index) => {
