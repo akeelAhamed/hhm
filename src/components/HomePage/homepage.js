@@ -39,7 +39,7 @@ export default class HomePage extends BaseComponent {
           <img className="img-fluid w-100" alt="banner" src={this.pageContent.sliders[0].photo} />
         </div>
 
-        <Container fluid>
+        <Container fluid className="my-mdnew">
           <Row className="no-gutters">
             <Col md="5" className="m-auto">
               <img className="img-fluid w-100" alt="banner" src={this.pageContent.about_home.photo} />
@@ -55,12 +55,19 @@ export default class HomePage extends BaseComponent {
         <div className="bpart" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
           <div className="content">
             <h4 className="text-uppercase border-teal pl-3"> {this.pageContent.feature_products[0].name} </h4>
-            <small className="pl-3 d-block" dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} /><br />
-            <Link className="mt-3 btn btn-primaryhome" to={"/item/"+this.pageContent.feature_products[0].slug}>Buy now</Link>
+            <small className="pl-3 d-block mb-3" dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} />
+            <img
+            src='https://admin.hhmworld.com/assets/images/sliders/purlogo.jpg'
+            width="100"
+            height="68"
+            className="btn-primaryhomedata n ml-3 "
+            alt="logo"
+          />
+           <Link className="btn-primaryhomenew" to={"/item/"+this.pageContent.feature_products[0].slug}>Buy now</Link>
           </div>
           <img className="img-fluid w-100" alt="banner" src={this.pageContent.feature_products[0].photo} />
         </div>
-
+        
         <Container fluid>
           <Row>
             <Col md lg xl="6" className="m-auto">
