@@ -93,16 +93,14 @@
 }
 
 .btn-primaryhomenew {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 5px 20px;
     font-size: 1.6rem;
     margin-left: 4%;
     color: #FFFFFF;
     background-color: #00a19c;
     border-color: #00a19c;
 }
+.btn-primaryhomenew:hover{    color: #FFF;text-decoration: none;}
 
 .btn-primaryhomedata {
     width: auto;

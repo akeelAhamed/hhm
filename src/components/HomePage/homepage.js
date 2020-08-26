@@ -79,7 +79,7 @@ export default class HomePage extends BaseComponent {
               <br />
               <div dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} />
 
-              <div className="author-info d-flex ml-5">
+              {/* <div className="author-info d-flex ml-5">
                 <strong>
                   DR. T.P.JAYAKRISHNAN
                 </strong>
@@ -100,8 +100,8 @@ export default class HomePage extends BaseComponent {
                     return social;
                   })
                 }
-              </ul>
-              </div>
+                </ul>
+              </div> */}
             </Col>
           </Row>
         </Container>
