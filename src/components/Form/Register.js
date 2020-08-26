@@ -16,6 +16,7 @@ class Login extends BaseComponent {
 
     const { location: { search } } = props;
     this.after = search;
+    this.onSubmitSelf = this.onSubmitSelf.bind(this);
   }
 
   afterSubmit(response){
@@ -30,6 +31,23 @@ class Login extends BaseComponent {
     }, 3000);
   }
   
+  /**
+   * Capture Submit event
+   * @param {object} e 
+   */
+  onSubmitSelf(e){
+    e.preventDefault();
+    let regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+    if(this.state.phone.length !== 10){
+      return this.setError(['Mobile number should be 10 digits.']);
+    }else if(!regex.test(this.state.password)){
+      return this.setError(['Password must contain Alpha-numeric, Uppercase and special characters(!@#$%^&*).']);
+    }else if(this.state.password !== this.state.password_confirmation){
+      return this.setError(['The password confirmation does not match.']);
+    }
+    return this.onSubmit(e);
+  }
+
   render() {
     return (
       <div className="main-container">
@@ -42,7 +60,7 @@ class Login extends BaseComponent {
 
             <Col md={4} xl={3}>
 
-              <Form data-action="register" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmit}>
+              <Form data-action="register" data-method="post" data-callback="afterSubmit" onSubmit={this.onSubmitSelf}>
                   <Form.Group controlId="formname">
                       <Form.Control type="text" name="name" onChange={this.onChange} value={this.state.name} placeholder="Full Name" required autoFocus/>
                   </Form.Group>
