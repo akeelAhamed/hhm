@@ -1,0 +1,35 @@
+.top.navbar{display: block;text-align: center;}
+.top .navbar-nav{align-items: center;justify-content: flex-end;min-height: 50px;overflow: auto;white-space: nowrap;padding: 0em 2em;}
+.top .navbar-nav button{background: rgba(146,143,143,0.7);border-color: rgba(146,143,143,0.7);}
+.top .navbar-nav a{font-weight: bolder;padding: 0.5em !important;color: rgba(103,99,99,0.7) !important;}
+.landing .btn{position:absolute;left: 35%;padding: 5px;margin-top: 29%;font-size:12px;}
+.landing-2{
+    min-height: 400px;
+    background: url('./img/Landing-02.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.landing-2 .text h2{font-weight: bolder;padding-left: 1em;}
+.landing-2 .text .small{display: block;padding-left: 2em;font-size: 100%;}
+.landing-3 ._3d .color-primary{margin-top: 17%;}
+.landing-4{padding: 1em 2em;}
+.landing-4 ul{list-style: none;}
+.landing-4 ul li{
+    font-size: 1.2em;
+    background: #00a19c;
+    color: #FFF;
+    padding: 5px;
+    display: table;
+    margin: 0.5em 0em;
+}
+.landing-5{background: #00a19c;color: #FFF;}
+.lform .form-control{border: none;border-bottom: 1.5px solid #00a09b;border-radius: 0;}
+@media(min-width:768px){
+    .top .navbar-nav{padding-right: 15em;}
+    .top.navbar{display: flex;}
+    .landing .btn{position: inherit;;margin-top: -18%;margin-left: 35%;text-transform: uppercase;font-size:16px;letter-spacing: 2px;}
+    .landing-2 .text{padding: 5% 0% 0% 5%;width: 50%;margin-left: 5%;}
+    .landing-3 ._3d-button{right: -70px;margin-top: -2em;}
+}
