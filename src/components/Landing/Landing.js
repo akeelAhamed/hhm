@@ -6,6 +6,7 @@ import "./custom.css";
 export default class Landing extends BaseComponent {
   constructor(props) {
     super();
+    this.mr = undefined;
     this.state.modal   = false;
     this.state.brocher = false;
     this.state.email   = '';
@@ -15,7 +16,8 @@ export default class Landing extends BaseComponent {
     this.afterSubmit = this.afterSubmit.bind(this);
   }
 
-  handleModal(){
+  handleModal(e){
+    this.mr = e.target.dataset.href;
     this.setState({modal: !this.state.modal});
   }
 
@@ -25,7 +27,11 @@ export default class Landing extends BaseComponent {
     setTimeout(() => {
       document.getElementById('download').click();
       setTimeout(() => {
-        this.setState({brocher: false});
+        if(this.mr === undefined){
+          this.setState({brocher: false});
+        }else{
+          window.location.href = this.mr;
+        }
       }, 1500);
     }, 1500);
   }
@@ -40,12 +46,12 @@ export default class Landing extends BaseComponent {
           <li><a href="tel:918086511100">Call</a></li>
         </ul>
         <span onClick={this.handleModal} className="fix e-brocher"></span>
-        <a href="/products" className="fix k-more">&nbsp;</a>
+        <span onClick={this.handleModal} data-href="/products" className="fix k-more">&nbsp;</span>
         <a href="/item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100" className="fix b-now">&nbsp;</a>
         
         <img alt="page" src={require('./img/landing.jpg')} className='img-fluid' draggable={false} />
         
-        <Modal show={this.state.modal} onHide={this.handleModal}>
+        <Modal show={this.state.modal} onHide={() => this.setState({modal: !this.state.modal})}>
           <Modal.Header closeButton>
             <Modal.Title>Download E-brocher</Modal.Title>
           </Modal.Header>
