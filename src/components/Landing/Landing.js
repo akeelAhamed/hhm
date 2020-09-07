@@ -7,7 +7,7 @@ export default class Landing extends BaseComponent {
   constructor(props) {
     super();
     this.state.modal   = false;
-    this.state.brocher = !false;
+    this.state.brocher = false;
     this.state.email   = '';
     this.state.name    = '';
     this.state.phone   = '';
@@ -33,11 +33,17 @@ export default class Landing extends BaseComponent {
   content(){
     return (
       <div className="l-container">
+        <ul className="fix contact">
+          <li className="hr"></li>
+          <li><a href="mailto:support@hhmworld.com">Email</a></li>
+          <li><a rel="noreferrer" href="https://wa.me/send?phone=918086511100&amp;text=Hi, i am &amp;source=https://hhmworld.com/">Whatsapp</a></li>
+          <li><a href="tel:918086511100">Call</a></li>
+        </ul>
         <span onClick={this.handleModal} className="fix e-brocher"></span>
-        <span className="fix k-more">k-more</span>
-        <span className="fix b-now">b-now</span>
+        <a href="/products" className="fix k-more">&nbsp;</a>
+        <a href="/item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100" className="fix b-now">&nbsp;</a>
         
-        <img alt="page" src={require('./img/landing.jpg')} className='img-fluid' />
+        <img alt="page" src={require('./img/landing.jpg')} className='img-fluid' draggable={false} />
         
         <Modal show={this.state.modal} onHide={this.handleModal}>
           <Modal.Header closeButton>
