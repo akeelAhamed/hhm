@@ -36,7 +36,7 @@ export default class FooterPage extends React.Component {
           <Col lg="5" md="6" className="footer-content-1">
             <div className="d-flex align-items-baseline">
               <img
-                src='https://admin.hhmworld.com/assets/images/1596980432HHM-Logo-White.png'
+                src='https://admin.hhmworld.com/assets/images/15983473231596980432HHM-Logo-White.png'
                 width="70"
                 height="40"
                 className="d-inline-block align-top"

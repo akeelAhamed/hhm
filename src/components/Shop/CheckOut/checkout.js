@@ -106,7 +106,7 @@ export default class CheckOut extends BaseComponent {
             if(this.rzp === null){
                 let _this = this;
                 let options = {
-                    "key": "rzp_live_SNlNlPuzZfSpD1",
+                    "key": "rzp_live_WKGmFHukrq59Cm",
                     "image": this.cart.photo,
                     "amount": this.order_info.amount * 100, // 100 paise = INR 1, amount in paisa
                     "name": this.cart.name,

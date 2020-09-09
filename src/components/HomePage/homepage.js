@@ -54,17 +54,9 @@ export default class HomePage extends BaseComponent {
 
         <div className="bpart" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
           <div className="content">
-            <h4 className="text-uppercase border-teal pl-3"> {this.pageContent.feature_products[0].name} </h4>
+           
             <small className="pl-3 d-block mb-3" dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} />
-            <img
-            src='https://admin.hhmworld.com/assets/images/sliders/purlogo.jpg'
-            width="100"
-            height="68"
-            className="btn-primaryhomedata n ml-3 "
-            alt="logo"
-          />
-           <Link className="btn-primaryhomenew" to={"/item/"+this.pageContent.feature_products[0].slug}>Buy now</Link>
-          </div>
+                  </div>
           <img className="img-fluid w-100" alt="banner" src={this.pageContent.feature_products[0].photo} />
         </div>
         
@@ -77,8 +69,8 @@ export default class HomePage extends BaseComponent {
             <Col md lg xl="6" className="mt-5 ">
               <h5 className="text-uppercase border-teal  pl-5" dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.title }}/>
               <br />
-              <div dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} />
 
+              <p className="pl-4 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} /></p>
               {/* <div className="author-info d-flex ml-5">
                 <strong>
                   DR. T.P.JAYAKRISHNAN

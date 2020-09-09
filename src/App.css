@@ -58,7 +58,7 @@ a{color: #758595;}
         margin-left: 1em;
     }
     .bpart{background-image: none!important;min-height: 550px;overflow: auto;}
-    .bpart img:not(.n){height: 550px;}
+    .bpart img:not(.n){height: auto;}
     .bpart .content{position: absolute;width: 60%;margin-left: calc(100% - 60%);}
   
 }
