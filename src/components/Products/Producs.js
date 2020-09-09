@@ -94,7 +94,7 @@ export default class Products extends BaseComponent {
           </Container>
         </div>
 
-        <div className="home-bg-1" style={{backgroundImage: 'url('+'https://admin.hhmworld.com/assets/images/sliders/productpagebeifits.jpg'+')'}}>
+        <div className="home-bg-1" style={{backgroundImage: 'url(https://admin.hhmworld.com/assets/images/sliders/productpagebeifits.jpg)'}}>
         <Container fluid>
           <Row>
             <Col md={12} className="p-5">

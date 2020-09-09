@@ -14,8 +14,7 @@ class ProductPage extends BaseComponent {
     this.state.qty = (this.cart !== '')?this.cart._qty:1;
     this.state.availability = '';
     this.days  = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-];
+    this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     this.buy = this.buy.bind(this);
     this.loginBuy = this.loginBuy.bind(this);
     this.toCart = this.toCart.bind(this);
@@ -61,11 +60,11 @@ class ProductPage extends BaseComponent {
    */
   qtyClick(e){
     if(has(e.target.dataset, 'qty')){
-      if(e.target.dataset.qty === "1"){
+      if(e.target.dataset.qty === "1" && this.state.qty < 7){
         this.setState({
           qty: ++this.state.qty
         })
-      }else if(this.state.qty > 1){
+      }else if(e.target.dataset.qty === "0" && this.state.qty > 1){
         this.setState({
           qty: --this.state.qty
         })
@@ -147,7 +146,7 @@ class ProductPage extends BaseComponent {
 
                 <div>
                   <small>One year pack</small><br/>
-                  <p>Qty:<span data-qty="0" onClick={this.qtyClick} className="btn">-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className="btn">+</span></p>
+                  <p>Qty:<span data-qty="0" onClick={this.qtyClick} className={(this.state.qty > 1)?"btn":"btn disabled"}>-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className={(this.state.qty < 7)?"btn":"btn disabled"}>+</span></p>
                   <b>Total amount: RS.{this.pageContent.price}</b> /- <cite>(Inclusive of all tax)</cite><br/>
                   <small className="d-block">Free shipping inside india</small>
                   <small className="d-block">Expected arrival date: {this.pageContent.ship}</small>

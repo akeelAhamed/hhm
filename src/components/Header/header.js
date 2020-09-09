@@ -13,7 +13,7 @@ class Header extends React.Component {
       headerFooter: null
     }
 
-    this.exceptBorder = ['', 'products', 'item','about','benifits','science','hypothesis','privacy','terms','contact'];
+    this.exceptBorder = ['', 'products', 'about','benifits','science','hypothesis','privacy','terms','contact'];
   }
 
   /**

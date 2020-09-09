@@ -157,6 +157,27 @@ export default class CheckOut extends BaseComponent {
     chekout(e){
         return this.initRzp();
     }
+
+    /**
+     * Check if all form fields are filled
+     * 
+     * @param {string} form 
+     */
+    fields(form){
+        let state = this.state[form];
+        let stateInfo = {
+            len: Object.keys(state).length,
+            i  : 0
+        }
+        for (const key in state) {
+            stateInfo.i++;
+            if(state[key] === '' || state[key] === null){
+                this.error = true;
+                break;
+            }
+        }
+        this.error = !(stateInfo.i === stateInfo.len);
+    }
   
     /**
      * Handle toggle event
@@ -164,21 +185,10 @@ export default class CheckOut extends BaseComponent {
      * @param {object} e 
      */
     toggle(e){
+        console.log(e.target);
         if(has(e.target.dataset, 'form')){
             let form = (this.state.same)?'baddress':e.target.dataset.form;
-            let state = this.state[form];
-            let stateInfo = {
-                len: Object.keys(state).length,
-                i  : 0
-            }
-            for (const key in state) {
-                stateInfo.i++;
-                if(state[key] === '' || state[key] === null){
-                    this.error = true;
-                    break;
-                }
-            }
-            this.error = !(stateInfo.i === stateInfo.len);
+            this.fields(form);
         }
         
         if(!this.error){
@@ -217,23 +227,7 @@ export default class CheckOut extends BaseComponent {
     }
 
     content() {
-        if(!this.state.isLoggedIn){
-            return (
-                <div className="main-container">
-                    <Container fluid>
-                        <Row className="justify-content-center pt-3" style={{height: '70vh'}}>
-                            <Col sm={5} className="m-auto text-center">
-                                <section className="p-1">
-                                    <img className="img-fluid d-block m-auto" src={require("../img/emptycart.png")} alt="cart is empty" />
-                                    <strong>Your cart is empty</strong>
-                                    <Link to="/products" className="btn btn-info d-block m-auto w-75">Shop now</Link>
-                                </section>
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
-            );
-        }else if(this.cart === ''){
+        if(!this.state.isLoggedIn || this.cart === ''){
             return (
                 <div className="main-container">
                     <Container fluid>

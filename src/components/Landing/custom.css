@@ -9,6 +9,7 @@
 }
 .hr{
     margin-right: 160%;
+    border-right: none !important;
 }
 .hr::after{
     content: '';
@@ -52,14 +53,9 @@
 }
 
 @media (max-width:599px){
-    .hr{
-        margin-right: 100%;
-    }
-    .hr::after{
-        width:100%;
-    }
+    .contact{position: fixed;}
+    .hr{margin-right: 100%;}
+    .hr::after{width:100%;}
     .contact li:nth-child(2){margin-left: 105%;}
-    .contact a{
-        font-size: 65%;
-    }
+    .contact a{font-size: 80%;}
 }
