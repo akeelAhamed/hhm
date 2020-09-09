@@ -23,17 +23,17 @@ export default class Landing extends BaseComponent {
 
   afterSubmit(e){
     e.preventDefault();
-    this.setState({brocher: true, modal:false, email: '',name: '', phone: ''});
-    setTimeout(() => {
-      document.getElementById('download').click();
+    if(this.mr === undefined){
+      this.setState({brocher: true, modal:false, email: '',name: '', phone: ''});
       setTimeout(() => {
-        if(this.mr === undefined){
+        document.getElementById('download').click();
+        setTimeout(() => {
           this.setState({brocher: false});
-        }else{
-          window.location.href = this.mr;
-        }
+        }, 1500);
       }, 1500);
-    }, 1500);
+    }else{
+      window.location.href = this.mr;
+    }
   }
 
   content(){
