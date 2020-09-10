@@ -49,7 +49,7 @@ export default class Products extends BaseComponent {
     return (
       <div className="main-container">
 
-<div className="ml-3 mr-3">
+        <div className="ml-3 mr-3">
           <p className="b-absolute">HIGHER LIVING</p>
           <img className="img-fluid w-100" alt="banner" src={this.getImage(product.allimages, 'top')} />
         </div>

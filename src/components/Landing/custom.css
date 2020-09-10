@@ -53,7 +53,7 @@
 }
 
 @media (max-width:599px){
-    .contact{position: fixed;}
+    .contact{position: fixed;right: -70px;}
     .hr{margin-right: 100%;}
     .hr::after{width:100%;}
     .contact li:nth-child(2){margin-left: 105%;}

@@ -73,7 +73,6 @@
     overflow: auto;
     white-space: nowrap;
     margin: auto;
-    max-width: 365px;
     width: 100%;
     padding: 1em 0em;
     text-align: center;
@@ -104,7 +103,7 @@
     pointer-events: none;
 }
 
-@media (min-width:768px){
+@media (min-width:900px){
     .player > div{
         width: 50%!important;
         height: 25vh;

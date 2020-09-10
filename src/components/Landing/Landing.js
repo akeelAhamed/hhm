@@ -8,7 +8,6 @@ export default class Landing extends BaseComponent {
     super();
     this.mr = undefined;
     this.state.modal   = false;
-    this.state.brocher = false;
     this.state.email   = '';
     this.state.name    = '';
     this.state.phone   = '';
@@ -24,36 +23,36 @@ export default class Landing extends BaseComponent {
   afterSubmit(e){
     e.preventDefault();
     if(this.mr === undefined){
-      this.setState({brocher: true, modal:false, email: '',name: '', phone: ''});
+      document.getElementById('download').click();
+      this.setState({modal:false, email: '',name: '', phone: ''});
       setTimeout(() => {
-        document.getElementById('download').click();
-        setTimeout(() => {
-          this.setState({brocher: false});
-        }, 1500);
-      }, 1500);
+        window.location.href = '/promo/thankyou';
+      }, 2500);
     }else{
       window.location.href = this.mr;
     }
   }
 
   content(){
+    const img = window.innerWidth > 600?require('./img/landing.jpg'):require('./img/landing_mobile.jpg');
     return (
       <div className="l-container">
         <ul className="fix contact">
           <li className="hr"></li>
           <li><a href="mailto:support@hhmworld.com">Email</a></li>
-          <li><a rel="noreferrer" href="https://wa.me/send?phone=918086511100&amp;text=Hi, i am &amp;source=https://hhmworld.com/">Whatsapp</a></li>
+          <li><a rel="noreferrer" href="https://wa.me/918086511100?text=Hi, i am&source=https://hhmworld.com/">Whatsapp</a></li>
           <li><a href="tel:918086511100">Call</a></li>
         </ul>
         <span onClick={this.handleModal} className="fix e-brocher"></span>
         <span onClick={this.handleModal} data-href="/products" className="fix k-more">&nbsp;</span>
         <a href="/item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100" className="fix b-now">&nbsp;</a>
         
-        <img alt="page" src={require('./img/landing.jpg')} className='img-fluid' draggable={false} />
+        <img alt="page" src={img} className='img-fluid' draggable={false} />
+        <a id="download" href="/PURE-PRODUCT-BOOK-2.pdf" download className="d-none">.</a>
         
         <Modal show={this.state.modal} onHide={() => this.setState({modal: !this.state.modal})}>
           <Modal.Header closeButton>
-            <Modal.Title>Download E-brocher</Modal.Title>
+            <Modal.Title>Know more</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form className="lform" data-action="brocher" data-method="post" data-callback="afterSubmit" onSubmit={this.afterSubmit}>
@@ -70,7 +69,7 @@ export default class Landing extends BaseComponent {
               </Form.Group>
 
               <Button variant="secondary" type="submit" disabled={this.state.disabled}>
-                {this.state.disabled?'Downloading':'Download'}
+                {this.state.disabled?'Loading...':'Submit'}
               </Button>
             </Form>
           </Modal.Body>
@@ -79,21 +78,7 @@ export default class Landing extends BaseComponent {
     );
   }
 
-  thankyou(){
-    return(
-      <div className="main center">
-        <a id="download" href="/PURE-PRODUCT-BOOK-2.pdf" download className="d-none">.</a>
-        <div className="main-content text-left">
-          <img src={require('../Shop/img/tick.png')} alt="tick" style={{width:35}} className="img-fluid" /><h1 className="w-100" style={{color: '#7ac043'}}>THANK YOU</h1>
-          <p className="b-left border-teal">
-            For downloading E-brocher.<br/> Go to <a className="text-dark border-bottom" href="/">Home</a>
-          </p>
-        </div>
-      </div>
-    )
-  }
-
   render(){
-    return (this.state.brocher)?this.thankyou():this.content();
+    return this.content();
   }
 }

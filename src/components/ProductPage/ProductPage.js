@@ -114,7 +114,7 @@ class ProductPage extends BaseComponent {
         <Container fluid>
           <h5 className="border-teal text-uppercase pl-2" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
           <Row className="no-gutters">
-            <Col md="6" sm="auto" className="">
+            <Col md="6" sm="auto">
               <strong className="text-uppercase">Gallery</strong>
               <div className="border-teal-top px-2">
                 <Gallery img={this.pageContent.photo} _3dFor="1" gallery={this.pageContent.gallery.split(',')} />

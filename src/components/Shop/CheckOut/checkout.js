@@ -185,19 +185,25 @@ export default class CheckOut extends BaseComponent {
      * @param {object} e 
      */
     toggle(e){
-        console.log(e.target);
+        if(!has(e.target.dataset, 'key') || (parseInt(e.target.dataset.key) === this.state.tab)){
+            return false;
+        }
+
+        let tab = parseInt(e.target.dataset.key);
+
         if(has(e.target.dataset, 'form')){
             let form = (this.state.same)?'baddress':e.target.dataset.form;
             this.fields(form);
+        }else{
+            let form = (this.state.same)?'baddress':'daddress';
+            this.fields(form);
         }
         
-        if(!this.error){
+        if(!this.error || tab === 0){
             this.setError();
-            if(has(e.target.dataset, 'key')){
-                this.setState({
-                    tab: parseInt(e.target.dataset.key)
-                })
-            }
+            this.setState({
+                tab: tab
+            })
         }else{
             this.setError(['All fields are required']);
         }
@@ -245,6 +251,8 @@ export default class CheckOut extends BaseComponent {
             );
         }
 
+        const click = this.error || this.state.tab === 0?{}:{onClick: this.toggle};
+
         return (
             <div className="main-container">
                 <Container fluid>
@@ -278,7 +286,7 @@ export default class CheckOut extends BaseComponent {
                             </Card>
 
                             <Card className={"my-3 pro "+(this.state.tab === 1)}>
-                                <h5 className="header" data-key={1} data-form="daddress" onClick={this.toggle}>Delivery address</h5>
+                                <h5 className="header" data-key={1} data-form="daddress" {...click}>Delivery address</h5>
                                 <Collapse in={this.state.tab === 1}>
                                     <div id="_address" className="c-body">
                                         <form data-key={2} data-form="daddress" onSubmit={this.onSubmitSelf}>
@@ -306,7 +314,7 @@ export default class CheckOut extends BaseComponent {
                             </Card>
 
                             <Card className={"my-3 pro "+(this.state.tab === 2)}>
-                                <h5 className="header" data-key={2} onClick={this.toggle}>Order summary</h5>
+                                <h5 className="header" data-key={2} {...click}>Order summary</h5>
                                 <Collapse in={this.state.tab === 2}>
                                     <div id="_order" className="c-body">
                                         {/* <Link className="text-dark" to="/products">Back to store</Link> */}
@@ -336,7 +344,7 @@ export default class CheckOut extends BaseComponent {
                             </Card>
 
                             <Card className={"my-3 pro "+(this.state.tab === 3)}>
-                                <h5 className="header" data-key={3} onClick={this.toggle}>Payment option</h5>
+                                <h5 className="header" data-key={3} {...click}>Payment option</h5>
                                 <Collapse in={this.state.tab === 3}>
                                     <div id="_track" className="c-body">
                                         <section className="p-1 c">
