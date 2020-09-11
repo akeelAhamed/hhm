@@ -87,7 +87,8 @@ export default class Products extends BaseComponent {
                   <div dangerouslySetInnerHTML={{ __html:'<b>BENEFITS OF P.U.R.E SMOKE THERAPY</b><br/>Breaks addictions<br/>Energizes the chakras<br/>Improves focus<br/>Enhances memory<br/>Purifies air<br/>Heals respiratory disorders<br/>Eliminates free radicals<br/>Has anti-inflammatory and antioxidant effects<br/>Absorbs cosmic energy' }} /><br />
                 
                 
-                  <Link className="mt-3 btn btn-primary" to={"/item/"+product.slug}>Buy now</Link>
+                  <Link className="mt-3 mr-1 btn btn-primary" to={"/item/"+product.slug}>Buy now</Link>
+                  <a href="/PURE-PRODUCT-BOOK-SM.pdf" className="dpb mt-3 btn" download>Download product booklet</a>
                 </div>
               </Col>
             </Row>

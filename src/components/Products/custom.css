@@ -16,6 +16,14 @@
 }
 ._3d #slideshow{padding: 0em;width:50%; margin: auto;}
 
+.dpb{
+    border: 1px solid #00a19c;
+    color: #00a19c;
+    border-radius: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
 @media(min-width:768px){
     ._3d .full-img{padding-top: 0;height: 400px;width: 400px;}
     ._3d .home-bg-2_text{padding-left: 40%;}
