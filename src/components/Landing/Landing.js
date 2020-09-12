@@ -47,14 +47,16 @@ export default class Landing extends BaseComponent {
         
         <Container fluid className="p-0 top w-100">
           <img alt="banner" src={require('./img/banner.jpg')} className='img-fluid w-100' draggable={false} />
-          <div className="section"></div>
+          <img alt="HHM-logo" src={require('./img/HHM-logo.svg')} className='img-fluid h-logo' draggable={false} />
         </Container>
+
+        <div className="hrw"></div>
 
         <Container className="section lamp">
           <h1>Benefits</h1>
           <Row>
             <Col md="12">
-              <section class="timeline overflow-hidden">
+              <section class="timeline">
                 <ul>
                   <li className="d-none"></li>
                   <li>
