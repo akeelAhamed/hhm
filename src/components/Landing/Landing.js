@@ -42,7 +42,7 @@ export default class Landing extends BaseComponent {
           <li className="hr"></li>
           <li><a href="mailto:support@hhmworld.com">Email</a></li>
           <li><a rel="noreferrer" href="https://wa.me/918086511100?text=Hi, i am&source=https://hhmworld.com/">Whatsapp</a></li>
-          <li><a href="tel:918086511100">Call</a></li>
+          <li><a href="tel:+918086511100">Call</a></li>
         </ul>
         
         <Container fluid className="p-0 top w-100">
