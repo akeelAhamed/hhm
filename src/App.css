@@ -68,7 +68,6 @@ a{color: #758595;}
         min-height: 400px;
         background-repeat: no-repeat;
         background-size: cover;
-        background-position: center right;
     }
 
     .bpart img:not(.n){display: none;}

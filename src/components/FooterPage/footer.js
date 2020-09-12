@@ -2,7 +2,7 @@ import React from "react";
 import "./custom.css";
 import { Container, Row, Col, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { FaFacebook, FaGooglePlus, FaTwitter, FaLinkedin } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 export default class FooterPage extends React.Component {
   constructor(props){
@@ -13,16 +13,16 @@ export default class FooterPage extends React.Component {
           icon: <FaFacebook />
         },
         "gplus": {
-          name: 'Google +',
-          icon: <FaGooglePlus />
+          name: 'Instagram',
+          icon: <FaInstagram />
         },
         "twitter": {
           name: 'Twitter',
           icon: <FaTwitter />
         },
         "linkedin": {
-          name: 'LinkedIn',
-          icon: <FaLinkedin />
+          name: 'Youtube',
+          icon: <FaYoutube />
         }
     }
   }

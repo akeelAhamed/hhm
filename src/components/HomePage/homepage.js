@@ -51,49 +51,28 @@ export default class HomePage extends BaseComponent {
           </Row>
         </Container>
 
-        <div className="bpart" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
-          <div className="content">
-           
-            <small className="pl-3 d-block mb-3" dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} />
-                  </div>
-          <img className="img-fluid w-100" alt="banner" src={this.pageContent.feature_products[0].photo} />
-        </div>
+        <Container fluid className="bpart" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
+          <Row>
+            <Col md="12" className="m-auto">
+              <div className="content">
+                <small className="pl-3 d-block mb-3" dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} />
+              </div>
+              <img className="img-fluid w-100" alt="banner" style={{visibility: 'hiddens'}} src={this.pageContent.feature_products[0].photo} />
+            </Col>
+          </Row>
+        </Container>
         
         <Container fluid>
           <Row>
-            <Col md lg xl="6" className="m-auto">
-              <img className="img-fluid" alt="" src={this.pageContent.about_author.photo} />
+            <Col md="5" className="m-auto">
+              <img className="img-fluid w-100" alt="banner" src={this.pageContent.about_author.photo} />
             </Col>
 
-            <Col md lg xl="6" className="mt-5 ">
-              <h5 className="text-uppercase border-teal  pl-5" dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.title }}/>
-              <br />
-
-              <p className="pl-4 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} /></p>
-              {/* <div className="author-info d-flex ml-5">
-                <strong>
-                  DR. T.P.JAYAKRISHNAN
-                </strong>
-
-                <ul className="list-unstyled social">
-                {
-                  this.pageContent.sociallinks.map((links, index) => {
-                    let social = [];
-                    for (const key in links) {
-                      social.push(
-                        <li key={key}>
-                          <a href={links[key]} className="text-dark" target="_blank" rel="noopener noreferrer">
-                            {this.social[key].icon}
-                          </a>
-                        </li>
-                      ) 
-                    }
-                    return social;
-                  })
-                }
-                </ul>
-              </div> */}
+            <Col md="7" className="p-4 mt-md-3">
+              <h3 className="border-teal text-uppercase pl-4" dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.title }} />
+              <p className="pl-2 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} /></p>
             </Col>
+
           </Row>
         </Container>
       </div >

@@ -1,8 +1,7 @@
 .footer{
     background-image: url('../HomePage/Img/footer.png');
     background-size: cover;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding: 50px 15px;
     color:rgba(255, 255, 255, 0.8);    
 }
 
@@ -19,6 +18,12 @@
 .social li{display:inline;padding-left: 1em;}
 .social li a{color:#FFF;font-size: 1.5em;}
 .footer .nav a{padding:0.5rem;}
+
+@media (min-width:1080px){
+    .footer{
+        padding: 5% 10%; 
+    }
+}
 
 @media (min-width:900px){
     .footer-content-1{
