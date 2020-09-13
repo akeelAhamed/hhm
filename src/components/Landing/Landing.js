@@ -97,7 +97,9 @@ export default class Landing extends BaseComponent {
                 </ul>
               </section>
 
-              <img alt="lamp-min" src={require('./img/lamp-min.png')} className='img-fluid mb-3' draggable={false} />
+              <div className="overflow-hidden">
+                <img alt="lamp-min" src={require('./img/lamp-min.png')} className='img-fluid mb-3' draggable={false} />
+              </div>
             </Col>
             <Col md="12">
               <button className="btn btn-border" onClick={this.handleModal}>download broucher</button>
@@ -131,7 +133,7 @@ export default class Landing extends BaseComponent {
               </p>
             </Col>
             <Col md="12">
-              <button className="btn btn-border" onClick={this.handleModal}>Know more</button>
+              <button className="btn btn-border" data-href="/products" onClick={this.handleModal}>Know more</button>
             </Col>
           </Row>
         </Container>
@@ -163,7 +165,7 @@ export default class Landing extends BaseComponent {
           <p>&copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
         </div>
 
-        <a id="download" href="/PURE-PRODUCT-BOOK-2.pdf" download className="d-none">.</a>
+        <a id="download" href="/HHM-PURE-Brochure.pdf" download className="d-none">.</a>
         <Modal show={this.state.modal} onHide={() => this.setState({modal: !this.state.modal})}>
           <Modal.Header closeButton>
             <Modal.Title>Know more</Modal.Title>

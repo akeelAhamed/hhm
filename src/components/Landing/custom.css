@@ -57,7 +57,7 @@
   left: 10%;
 }
 .section .row{align-items: center;text-align: center;}
-.section img{width: 55%;}
+.section img{width: 75%;}
 .section p{text-align: left;}
 .section .btn{border: 1px solid #FFF;border-radius: 0px;}
 .btn-buy{background: #FFF;color: #363636 !important;}
@@ -95,7 +95,7 @@
   -webkit-transform: translateX(-50%);
   width: 15px;
   height: 15px;
-  border: 1px dashed #faf8eb;
+  border: 1px solid #faf8eb;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -107,7 +107,9 @@
   padding: 0px 20px;
 }
 .timeline ul li .content p {
+  text-transform: uppercase;
   margin-bottom: 0px;
+  font-size: 90%;
 }
 .timeline ul li .content:before {
   content: '';
@@ -148,34 +150,37 @@
     .hr::after{width:100%;}
     .contact li:nth-child(2){margin-left: 105%;}
     .contact a{font-size: 80%;}
-    .lamp img{width:80%}
+    .lamp img{width:90%}
     .timeline ul {
       max-width: 360px;
-      margin: 10% auto;
+      margin: 5% auto;
     }
     .timeline ul li{padding-bottom: 3%;}
     .timeline ul li .content{width: 25%;min-width: 200px;}
     .timeline ul li:nth-child(odd) .content{
-      padding-left: 35px;
+      padding-left: 50px;
     }
     .timeline ul li:nth-child(even) .content {
       left: calc(-25% - 235px);
-      padding-right: 40px;
+      padding-right: 15px;
     }
     .timeline ul li .content p{font-size: 80%;}
 }
 
 @media (max-width: 500px){
+  .contact{right: -70px;}
+  .lamp{overflow: hidden;}
   .lamp img {
     width: 100%;
+    margin-left:5em
   }
-  .timeline{overflow: hidden;}
+  .timeline{padding-left: 10em;}
   .timeline ul {margin: 5% auto;}
   .timeline ul li{padding-bottom: 4.5%;}
   .timeline ul li:nth-child(even) .content, .timeline ul li:nth-child(odd) .content {
-    left: calc(-25% - 200px);
+    left: calc(-25% - 250px);
     width: 100%;
-    min-width: 165px;
+    min-width: 200px;
     padding-right: 0px;
     padding-left: 1.5em;
   }
@@ -183,8 +188,8 @@
     font-size: 70%;
     text-align: right;
   }
-  .timeline ul li:nth-child(odd) .content:before {
-    right: -38px;
+  .timeline ul li:nth-child(even) .content:before, .timeline ul li:nth-child(odd) .content:before{
+    right: -55px;
     left: initial;
   }
 }
