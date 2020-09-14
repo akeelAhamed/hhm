@@ -66,7 +66,7 @@ export default class Landing extends BaseComponent {
                   </li>
                   <li>
                     <div class="content">
-                      <p>Scavenges Free Radicals against Anti-Aging</p>
+                      <p>Scavenges Free Radicals Against Aging</p>
                     </div>
                   </li>
                   <li>
