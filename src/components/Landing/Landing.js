@@ -76,7 +76,7 @@ export default class Landing extends BaseComponent {
                   </li>
                   <li>
                     <div class="content">
-                      <p>Generating Neuro-modulators to Enhances Memory</p>
+                      <p>Generating Neuro-modulators to Enhance Memory</p>
                     </div>
                   </li>
                   <li>
