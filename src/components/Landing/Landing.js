@@ -102,7 +102,7 @@ export default class Landing extends BaseComponent {
               </div>
             </Col>
             <Col md="12">
-              <button className="btn btn-border" onClick={this.handleModal}>download broucher</button>
+              <button className="btn btn-border" onClick={this.handleModal}>download Brochure</button>
             </Col>
           </Row>
         </Container>
