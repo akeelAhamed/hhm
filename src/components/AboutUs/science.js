@@ -12,12 +12,13 @@ export default class Science extends BaseComponent {
   content() {
     return (
       <div id="main">
-        <img className="img-fluid" alt="..." src={require('./img/science-Banner.png')}/>
+      
+        <img className="img-fluid" alt="..." src='https://admin.hhmworld.com/assets/images/logo/science-Banner.jpg'/>
 
         <Container fluid>
           <Row>
             <Col md={12} className="p-5">
-              <h3 className="text-uppercase border-teal ml-md-5">Science behind HHM</h3>
+              <h3 className="border-teal text-uppercase pl-4">Science behind HHM</h3>
               <div className="pl-md-5">
                 <div className="px-md-3">
                     <img className="img-fluid li" alt="..." src={require('./img/science-01.png')}/>

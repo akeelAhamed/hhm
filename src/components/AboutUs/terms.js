@@ -17,7 +17,7 @@ export default class Terms extends BaseComponent {
         <Container fluid>
           <Row>
             <Col md={12} className="p-5">
-              <h3 className="text-uppercase border-teal ml-md-5">TERMS AND CONDITIONS</h3>
+              <h3 className="border-teal text-uppercase pl-4">TERMS AND CONDITIONS</h3>
               <div className="pl-md-5">
                 <p className="px-md-3">
                     <img className="img-fluid li" alt="..." src={require('./img/science-01.png')}/>

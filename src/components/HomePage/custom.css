@@ -66,7 +66,11 @@
    padding-right: 2%;
    width: auto;
 }
-
+.mt-md-test, .my-md-test {
+   
+    margin-top: 1rem!important;
+    margin-left: 33rem;
+}
 .tesimonial img{max-width: 300px;}
 
 @media (max-width: 570px){
@@ -82,8 +86,22 @@
         margin-bottom: 0;
     }
 }
-
-
+.my-mdnewimage{
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-top: 0!important;
+    margin-bottom: 0;
+}
+.p-text {
+    padding: 0.0rem!important;
+  
+    
+}
+@media (min-width:1920px){
+    .p-text{
+        margin-bottom: 100px;
+    }
+}
 .bg-gray{
     background-color: #ccc;
 }

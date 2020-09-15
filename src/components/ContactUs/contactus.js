@@ -29,8 +29,9 @@ class ContactUs extends BaseComponent {
   render() {
     return (
       <div className="main-container ">
-        <div className="bkgcontact text-uppercase">
-          <h3 className="bkg-text">Higher living</h3>
+       <div className="ml-3 mr-3">
+          <p className="b-absolute">HIGHER LIVING</p>
+          <img className="img-fluid w-100" alt="banner" src='https://admin.hhmworld.com/assets/images/sliders/1599557871banner1.jpg' />
         </div>
 
         <section className="m-auto px-lg-5 w-75">

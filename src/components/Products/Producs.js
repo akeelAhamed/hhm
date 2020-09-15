@@ -21,6 +21,14 @@ export default class Products extends BaseComponent {
         img : require('./img/Product-Page-03b-Lamp-02.png'),
         file: '02'
       },
+      {
+        img : require('./img/Product-Page-03c-Sachets.png'),
+        file: '02'
+      },
+      {
+        img : require('./img/Product-Page-03d-Spatula.png'),
+        file: '02'
+      },
     
     ];
     this.imageType = ['back_ground', 'product', 'another', 'top','followup'];

@@ -13,7 +13,7 @@ class Header extends React.Component {
       headerFooter: null
     }
 
-    this.exceptBorder = ['', 'products', 'about','benifits','science','hypothesis','privacy','terms','contact'];
+    this.exceptBorder = ['', 'products', 'about','benifits','science','hypothesis','privacy','terms','contact','brandphilsophy'];
   }
 
   /**
@@ -45,14 +45,14 @@ class Header extends React.Component {
         </div>
       )
     }
-
+    
     return (
       <>
         <Navbar className="header-nav bg-white border-bottom" expand="md">
           <Navbar.Brand>
             <Nav.Link as={Link} to='/'>
             <img
-              src={this.state.headerFooter.heade_footer.logo}
+             src='https://admin.hhmworld.com/assets/images/logo/hhmpuresvg.svg'
               height="50"
               className="d-inline-block align-top"
               alt="logo"

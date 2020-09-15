@@ -25,7 +25,7 @@ export default class BaseComponent extends React.Component {
 
     window.scrollTo(0, 0);
 
-    const exceptApi = ['/register', '/login', '/forgot', '/reset', '/dashboard', '/track', '/cart', '/checkout','/privacy','/terms', '/about', '/benifits', '/hypothesis', '/science', '/contact', '/promo'];
+    const exceptApi = ['/register', '/login', '/forgot', '/reset', '/dashboard', '/track', '/cart', '/checkout','/privacy','/terms', '/about', '/benifits', '/hypothesis', '/science', '/contact', '/promo','/brandphilsophy'];
 
     this.pageContent = null;
     this.page = window.location.pathname;

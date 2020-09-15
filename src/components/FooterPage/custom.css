@@ -1,7 +1,7 @@
 .footer{
     background-image: url('../HomePage/Img/footer.png');
     background-size: cover;
-    padding: 50px 15px;
+    
     color:rgba(255, 255, 255, 0.8);    
 }
 
@@ -21,7 +21,7 @@
 
 @media (min-width:1080px){
     .footer{
-        padding: 5% 10%; 
+        padding: 2% 2%; 
     }
 }
 

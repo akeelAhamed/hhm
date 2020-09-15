@@ -51,17 +51,20 @@ export default class HomePage extends BaseComponent {
           </Row>
         </Container>
 
-        <Container fluid className="bpart" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
-          <Row>
-            <Col md="12" className="m-auto">
-              <div className="content">
-                <small className="pl-3 d-block mb-3" dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} />
-              </div>
-              <img className="img-fluid w-100" alt="banner" style={{visibility: 'hiddens'}} src={this.pageContent.feature_products[0].photo} />
+
+
+        <Container fluid className="my-mdnewimage" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
+          <Row className="no-gutters" >
+           <Col md="5" className="m-auto">
+              <img className="img-fluid w-100" alt="banner" src='https://admin.hhmworld.com/assets/images/partner/transparentimage.png' /> </Col>
+
+            
+          <Col md="7" className="p-text mt-md-3">
+            
+              <p className="pl-4 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} /></p>
             </Col>
           </Row>
         </Container>
-        
         <Container fluid>
           <Row>
             <Col md="5" className="m-auto">
