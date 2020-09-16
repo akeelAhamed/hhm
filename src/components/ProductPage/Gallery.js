@@ -11,8 +11,13 @@ export default class Gallery extends React.Component{
             default: props.img,
             current: props.img,
             is3d   : props._3d !== undefined,
-            modal  : false
+            modal  : false,
+            slide  : true
         }
+        this.gallery = !this.state.is3d?[props.img, ...props.gallery]:[...props.gallery];
+        console.log(this.state.is3d, this.gallery);
+        this.interval = '';
+        this.autoSlide();
         this.changeImg = this.changeImg.bind(this);
     }
 
@@ -26,9 +31,24 @@ export default class Gallery extends React.Component{
             let key = e.target.dataset.key;
             this.setState({
                 ckey   : key,
-                current: (key >= 0)?this.props.gallery[key]:this.state.default
+                current: (key >= 0)?this.gallery[key]:this.state.default
             })
         }
+    }
+
+    autoSlide(){
+        clearInterval(this.interval);
+        this.interval = setInterval(() => {
+            if(this.state.slide){
+                console.log(this.state.ckey);
+                let key = parseInt(this.state.ckey) + 1;
+                key = key >= this.gallery.length?0:key;
+                this.setState({
+                    ckey   : ""+key+"",
+                    current: (key >= 0)?this.gallery[key]:this.state.default
+                })
+            }
+        }, 5000);
     }
 
     render(){
@@ -41,8 +61,9 @@ export default class Gallery extends React.Component{
         {
             className: "img-fluid"
         };
+        
         return(
-            <>
+            <div onMouseEnter={() => this.setState({slide: false})} onMouseLeave={() => this.setState({slide: true})}>
                 {
                     (!this.state.is3d)
                     ?''
@@ -54,13 +75,7 @@ export default class Gallery extends React.Component{
                 
                 <div id="slideshow">
                     {
-                        (this.state.is3d)
-                        ?''
-                        :<img alt='gallery' className={"img-fluid "+ (this.props.img === this.state.current)} src={this.props.img} data-key={-1} onClick={this.changeImg} />
-                    }
-                    
-                    {
-                        this.props.gallery.map((img, i) => {
+                        this.gallery.map((img, i) => {
                             if(this.state.is3d){
                                 return(<span key={i} data-key={i} className={"dots "+ (img === this.state.current)} onClick={this.changeImg}/>)
                             }
@@ -78,7 +93,7 @@ export default class Gallery extends React.Component{
                         current={this.state.current}
                     />
                 }
-            </>
+            </div>
         )
     }
 

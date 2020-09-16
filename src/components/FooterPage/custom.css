@@ -1,7 +1,7 @@
 .footer{
+    padding: 25px; 
     background-image: url('../HomePage/Img/footer.png');
     background-size: cover;
-    
     color:rgba(255, 255, 255, 0.8);    
 }
 

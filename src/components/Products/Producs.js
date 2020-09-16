@@ -57,33 +57,32 @@ export default class Products extends BaseComponent {
     return (
       <div className="main-container">
 
-        <div className="ml-3 mr-3">
+        <div className="mx-3">
           <p className="b-absolute">HIGHER LIVING</p>
           <img className="img-fluid w-100" alt="banner" src={this.getImage(product.allimages, 'top')} />
         </div>
         
-        <div className="home-bg-prod" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'back_ground')+')'}}>
+        <div className="home-bg-prod mx-3" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'back_ground')+')'}}>
           <div className="home-bg-2_text">
             <h5 className="text-uppercase border-teal" dangerouslySetInnerHTML={{ __html: product.name }} />
             <br />
             <small dangerouslySetInnerHTML={{ __html: 'Inspired from ancient traditions developed by great scholars of the past, H.H.M brings you Panacea Ultimate for Rousing Energy (P.U.R.E), a smoke therapy that will make you feel alive from within. Cosmic energy strikes the earth from all directions. The process of P.U.R.E helps to attract, absorb, and direct cosmic energy to travel towards the brain and energize the seven chakras in the body. P.U.R.E package contains the PANACEA ULTIMATE powder which is a mixture of 43 different herbs with tremendous health benefits. This smoke therapy has created many people to live their life with utmost potential and the well being of a holistic lifestyle. The theories that are set out to a benefit that humans could gain are set out by HHM so that people can live the complete while they achieve a perfect goal-oriented life to make a difference in the nature and in the lifestyle.  It can be smoked at any time in your living room/any part of your house regardless of religion anyone can use the P.U.R.E to elevate their life.'}} /><br />
             <img
-            src={require('../Landing/img/HHM-logo.svg')}
-            width="100"
-            height="100"
-            className="btn-primaryhomedata n ml-3 "
-            alt="logo"
-          />
-            <Link className="mt-3 btn btn-primaryhomenew" to={"/item/"+product.slug}>Buy now</Link>
+              src={require('../Landing/img/HHM-logo.svg')}
+              width="150"
+              height="150"
+              className="btn-primaryhomedata n ml-3 "
+              alt="logo"
+            />
+            <Link className="btn btn-primaryhomenew" to={"/item/"+product.slug}>Buy now</Link>
           </div>
         </div>
 
-
-        <div className="pproduct">
+        <div className="pproduct mx-3">
           <img src={this.getImage(product.allimages, 'followup')} className="img-fluid w-100" alt="..." />
         </div>
 
-        <div className="home-bg-1" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'another')+')'}}>
+        <div className="home-bg-1 mx-3" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'another')+')'}}>
           <Container>
             <Row className="_3d">
               <Col md="5">
@@ -103,7 +102,7 @@ export default class Products extends BaseComponent {
           </Container>
         </div>
 
-        <div className="home-bg-1" style={{backgroundImage: 'url(https://admin.hhmworld.com/assets/images/sliders/productpagebeifits.jpg)'}}>
+        <div className="home-bg-1 mx-3" style={{backgroundImage: 'url(https://admin.hhmworld.com/assets/images/sliders/productpagebeifits.jpg)'}}>
         <Container fluid>
           <Row>
             <Col md={12} className="p-5">
@@ -121,7 +120,6 @@ export default class Products extends BaseComponent {
         </Container>
         </div>
        
-        
       </div>
     );
   }

@@ -126,6 +126,7 @@ class ProductPage extends BaseComponent {
       trigger="click"
       placement="bottom"
       overlay={popShipp}
+      rootClose
     >
       <p className="color-primary btn p-0">
         Shipping
@@ -159,7 +160,7 @@ class ProductPage extends BaseComponent {
       trigger="click"
       placement="bottom"
       overlay={popShipp}
-      arrowProps
+      rootClose
     >
       <p className="color-primary btn p-0">
         <img
@@ -189,7 +190,7 @@ class ProductPage extends BaseComponent {
             <Col md="6" sm="auto">
               <strong className="text-uppercase">Gallery</strong>
               <div className="border-teal-top px-2">
-                <Gallery img={this.pageContent.photo} _3dFor="1" gallery={this.pageContent.gallery.split(',')} />
+                <Gallery img={this.pageContent.photo} _3dFor="2" gallery={this.pageContent.gallery.split(',')} />
               </div>
             </Col>
 
