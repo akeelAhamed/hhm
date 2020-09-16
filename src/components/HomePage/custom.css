@@ -97,6 +97,10 @@
   
     
 }
+p::first-letter {
+    font-size: 200%;
+   
+  }
 @media (min-width:1920px){
     .p-text{
         margin-bottom: 100px;
