@@ -31,7 +31,7 @@ export default class HomePage extends BaseComponent {
     }
 
     return (
-      <div className="main-container">
+      <div className="main-container h-page">
 
         <div className="ml-3 mr-3">
           <p className="b-absolute">{this.pageContent.sliders[0].details_text}</p>
@@ -45,7 +45,7 @@ export default class HomePage extends BaseComponent {
             </Col>
 
             <Col md="7" className="p-4 mt-md-3">
-              <h3 className="border-teal text-uppercase pl-4" dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.title }} />
+              <h2 className="border-teal text-uppercase pl-4" dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.title }} />
               <p className="pl-4 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.link }} /></p>
             </Col>
           </Row>
@@ -60,11 +60,11 @@ export default class HomePage extends BaseComponent {
 
             
           <Col md="7" className="p-text mt-md-3">
-            
               <p className="pl-4 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} /></p>
             </Col>
           </Row>
         </Container>
+
         <Container fluid>
           <Row>
             <Col md="5" className="m-auto">

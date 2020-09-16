@@ -18,7 +18,7 @@ class Vision extends BaseComponent {
                         </p>
                     </Col>
                     <Col sm="auto" md lg xl="6">
-                        <img className="img-fluid m-1" src={require('./img/Vission.jpg')} alt="" />
+                        {/* <img className="img-fluid m-1" src={require('./img/Vission.jpg')} alt="" /> */}
                     </Col>
                 </Row>
 

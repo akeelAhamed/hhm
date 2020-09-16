@@ -32,9 +32,9 @@ import Reset from "./components/Form/Reset";
 // Dashboard
 import Dashboard from "./components/Dashboard/Index";
 import Track from "./components/Dashboard/Track";
-import LandingView from "./components/Landing/LandingView";
+// import LandingView from "./components/Landing/LandingView";
 
-import BrandP from "./components/AboutUs/brandp";
+// import BrandP from "./components/AboutUs/brandp";
 import Landing from "./components/Landing/Landing";
 import Thankyou from "./components/Landing/Thankyou";
 
@@ -88,7 +88,7 @@ class App extends React.Component{
           <Switch>
             <Route path="/" exact component={(props) => this.component(props, HomePage)} />
             <Route path="/about" component={(props) => this.component(props, AboutUs)} />
-            <Route path="/brandphilsophy" component={(props) => this.component(props, BrandP)} />
+            {/* <Route path="/brandphilsophy" component={(props) => this.component(props, BrandP)} /> */}
             <Route path="/benifits" component={(props) => this.component(props, Benifits)} />
             <Route path="/privacy" component={(props) => this.component(props, Privacy)} />
             <Route path="/terms" component={(props) => this.component(props, Terms)} />

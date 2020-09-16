@@ -5,6 +5,7 @@ import BaseComponent from '../BaseComponent';
 import Gallery from './Gallery';
 import "./custom.css";
 import { Link } from "react-router-dom";
+import { FaLock } from "react-icons/fa";
 
 class ProductPage extends BaseComponent {
   constructor(props) {
@@ -92,7 +93,7 @@ class ProductPage extends BaseComponent {
             </InputGroup.Append>
 
             <div className="d-block w-100 my-2">
-              <small>Secure transaction</small>
+              <small> <FaLock /> Secure transaction</small>
               <small className="ml-2">EMI</small>
             </div>
 
@@ -156,9 +157,34 @@ class ProductPage extends BaseComponent {
 
                 {this.buyButtom()}
 
+                <div className="d-flex align-items-center w-100 my-2 color-primary">
+                    {this.pageContent.stock > 0?"In stock":<span className="text-danger">Out of stock</span>}
+
+                    <div className="mx-3">
+                      Shipping
+                      <img
+                        src={require('../Products/img/Shipping.png')}
+                        width="50"
+                        height="50"
+                        alt="logo"
+                        className="img-fluid px-2"
+                      />
+                    </div>
+
+                    <div className="mx-3">
+                      <img
+                        src={require('../Products/img/Refund.png')}
+                        width="50"
+                        height="50"
+                        alt="logo"
+                        className="img-fluid px-2"
+                      />
+                      Refund policy
+                    </div>
+                </div>
+
+
                 <div>
-                  {this.pageContent.stock > 0?<span className="text-success">In stock</span>:<span className="text-danger">Out of stock</span>}
-                  <br/>
                   <small>{this.pageContent.youtube}</small>
                   <hr/>
                   {/* <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} /> */}
