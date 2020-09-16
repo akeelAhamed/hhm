@@ -30,6 +30,10 @@
     padding-left: 1.5rem!important;
     font-size: 1.2rem;
 }
+.h-page .my-mdnewimage p::first-letter {
+    font-size: 200%;
+   
+  }
 .home-bg-new{
     height: 89h;
     background-position:top;
@@ -103,10 +107,7 @@
   
     
 }
-p::first-letter {
-    font-size: 200%;
-   
-  }
+
 @media (min-width:1920px){
     .p-text{
         margin-bottom: 100px;

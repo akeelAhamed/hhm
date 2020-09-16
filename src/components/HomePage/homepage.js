@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { FaFacebook, FaGooglePlus, FaTwitter, FaLinkedin } from "react-icons/fa";
 import BaseComponent from '../BaseComponent';
 import './custom.css';
@@ -33,12 +33,12 @@ export default class HomePage extends BaseComponent {
     return (
       <div className="main-container h-page">
 
-        <div className="ml-3 mr-3">
+        <div className="mx-3">
           <p className="b-absolute">{this.pageContent.sliders[0].details_text}</p>
           <img className="img-fluid w-100" alt="banner" src={this.pageContent.sliders[0].photo} />
         </div>
 
-        <Container fluid className="my-mdnew">
+        <div className="mx-3 my-mdnew">
           <Row className="no-gutters">
             <Col md="5" className="m-auto">
               <img className="img-fluid w-100" alt="banner" src={this.pageContent.about_home.photo} />
@@ -49,11 +49,9 @@ export default class HomePage extends BaseComponent {
               <p className="pl-4 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.link }} /></p>
             </Col>
           </Row>
-        </Container>
+        </div>
 
-
-
-        <Container fluid className="my-mdnewimage" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
+        <div className="mx-3 my-mdnewimage" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
           <Row className="no-gutters" >
            <Col md="5" className="m-auto">
               <img className="img-fluid w-100" alt="banner" src='https://admin.hhmworld.com/assets/images/partner/transparentimage.png' /> </Col>
@@ -63,9 +61,9 @@ export default class HomePage extends BaseComponent {
               <p className="pl-4 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} /></p>
             </Col>
           </Row>
-        </Container>
+        </div>
 
-        <Container fluid>
+        <div className="mx-3">
           <Row>
             <Col md="5" className="m-auto">
               <img className="img-fluid w-100" alt="banner" src={this.pageContent.about_author.photo} />
@@ -77,7 +75,7 @@ export default class HomePage extends BaseComponent {
             </Col>
 
           </Row>
-        </Container>
+        </div>
       </div >
     );
   }

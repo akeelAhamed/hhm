@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Row, Col, InputGroup } from 'react-bootstrap';
+import { Button, Container, Row, Col, InputGroup, OverlayTrigger, Popover } from 'react-bootstrap';
 import has from "lodash/has";
 import BaseComponent from '../BaseComponent';
 import Gallery from './Gallery';
@@ -105,10 +105,81 @@ class ProductPage extends BaseComponent {
     return(<Button className="mt-3 btn btn-primary" onClick={this.loginBuy} data-to={"login?checkout"}>Login & buy</Button>);
   }
 
+  popShipp(){
+    const popShipp = (
+      <Popover id="popover-ship">
+        <Popover.Content>
+          <strong>Shipping</strong>
+          <ul className="ml-3">
+            <li>Free shipping inside India.</li>
+            <li>Shipping and delivery done through third party service.</li>
+            <li>Once the shipment Dispatched, the Tracking ID will be provided.</li>
+            <li>Shipment can be tracked with the provided Tracking ID on our website.</li>
+            <li>As per the Shipping Service, a Signature might be needed for the delivery.</li>
+          </ul>
+        </Popover.Content>
+      </Popover>
+    );
+
+    return(
+    <OverlayTrigger
+      trigger="click"
+      placement="bottom"
+      overlay={popShipp}
+    >
+      <p className="color-primary btn p-0">
+        Shipping
+        <img
+          src={require('../Products/img/Shipping.png')}
+          width="50"
+          height="50"
+          alt="logo"
+          className="img-fluid px-2"
+        />
+      </p>
+    </OverlayTrigger>
+    )
+  }
+
+  popPoly(){
+    const popShipp = (
+      <Popover id="popover-poly">
+        <Popover.Content>
+          <strong>Refund Policy</strong>
+          <ul className="ml-3">
+            <li>Once the Order is placed there is no Cancelation/Refund.</li>
+            <li>Product replacement can be done on reporting within Four days from the delivery date, over any damage occurred on the Product while receiving. Conditions Apply.</li>
+          </ul>
+        </Popover.Content>
+      </Popover>
+    );
+
+    return(
+    <OverlayTrigger
+      trigger="click"
+      placement="bottom"
+      overlay={popShipp}
+      arrowProps
+    >
+      <p className="color-primary btn p-0">
+        <img
+          src={require('../Products/img/Refund.png')}
+          width="50"
+          height="50"
+          alt="logo"
+          className="img-fluid px-2"
+        />
+        Refund policy
+      </p>
+    </OverlayTrigger>
+    )
+  }
+
   content() {
     // let d = new Date();
     // d.setDate(d.getDate() + parseInt(this.pageContent.ship));
     // this.days[d.getDay()]+', '+d.getDate()+','+this.months[d.getMonth()]+' - '+d.getFullYear()
+
     return(
       <div className="main-container py-4">
 
@@ -157,29 +228,18 @@ class ProductPage extends BaseComponent {
 
                 {this.buyButtom()}
 
-                <div className="d-flex align-items-center w-100 my-2 color-primary">
-                    {this.pageContent.stock > 0?"In stock":<span className="text-danger">Out of stock</span>}
+                <div className="d-flex mt-3 align-items-top w-100 my-2 color-primary">
 
-                    <div className="mx-3">
-                      Shipping
-                      <img
-                        src={require('../Products/img/Shipping.png')}
-                        width="50"
-                        height="50"
-                        alt="logo"
-                        className="img-fluid px-2"
-                      />
+                    <div className="pt-1">
+                      {this.pageContent.stock > 0?"In stock":<span className="text-danger">Out of stock</span>}
                     </div>
 
                     <div className="mx-3">
-                      <img
-                        src={require('../Products/img/Refund.png')}
-                        width="50"
-                        height="50"
-                        alt="logo"
-                        className="img-fluid px-2"
-                      />
-                      Refund policy
+                      {this.popShipp()}
+                    </div>
+
+                    <div className="mx-3">
+                      {this.popPoly()}
                     </div>
                 </div>
 

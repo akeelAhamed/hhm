@@ -1,3 +1,7 @@
+.arrow {
+    display: none !important;
+}
+.popover{border: 1px solid #00a19c;}
 .img-fluid._3d{
     cursor: pointer;
     border: 2px ridge gold;

@@ -46,6 +46,15 @@ a{color: #758595;}
     padding-top: 3%;
     overflow: auto;
 }
+@media screen and (min-width : 1400px)
+{
+  body{
+    font-size:1.3vw;
+  }
+  p{
+    font-size:1.3vw;
+  }
+}
 @media (min-width: 768px){
     .header-nav .navbar-collapse a:not(:last-child):after {
         content: '';
