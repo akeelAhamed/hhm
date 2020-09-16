@@ -231,15 +231,15 @@ class ProductPage extends BaseComponent {
 
                 <div className="d-flex mt-3 align-items-top w-100 my-2 color-primary">
 
-                    <div className="pt-1">
+                    <div className="pt-1 mr-2">
                       {this.pageContent.stock > 0?"In stock":<span className="text-danger">Out of stock</span>}
                     </div>
 
-                    <div className="mx-3">
+                    <div className="mx-2">
                       {this.popShipp()}
                     </div>
 
-                    <div className="mx-3">
+                    <div className="mx-2">
                       {this.popPoly()}
                     </div>
                 </div>

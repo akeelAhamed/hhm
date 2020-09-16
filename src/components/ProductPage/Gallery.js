@@ -15,9 +15,7 @@ export default class Gallery extends React.Component{
             slide  : true
         }
         this.gallery = !this.state.is3d?[props.img, ...props.gallery]:[...props.gallery];
-        console.log(this.state.is3d, this.gallery);
         this.interval = '';
-        this.autoSlide();
         this.changeImg = this.changeImg.bind(this);
     }
 
@@ -40,7 +38,6 @@ export default class Gallery extends React.Component{
         clearInterval(this.interval);
         this.interval = setInterval(() => {
             if(this.state.slide){
-                console.log(this.state.ckey);
                 let key = parseInt(this.state.ckey) + 1;
                 key = key >= this.gallery.length?0:key;
                 this.setState({
@@ -52,6 +49,7 @@ export default class Gallery extends React.Component{
     }
 
     render(){
+        this.autoSlide();
         const hasModal = this.state.is3d || this.props._3dFor !== undefined;
         const props = (typeof this.props._3dFor === 'string' && this.props._3dFor === this.state.ckey)?
         {
