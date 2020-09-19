@@ -123,7 +123,7 @@ class ProductPage extends BaseComponent {
 
     return(
     <OverlayTrigger
-      trigger="click"
+      trigger="hover"
       placement="bottom"
       overlay={popShipp}
       rootClose
@@ -157,7 +157,7 @@ class ProductPage extends BaseComponent {
 
     return(
     <OverlayTrigger
-      trigger="click"
+      trigger="hover"
       placement="bottom"
       overlay={popShipp}
       rootClose

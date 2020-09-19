@@ -62,7 +62,7 @@ export default class FooterPage extends React.Component {
               </ul>
             </div>
             
-            <p dangerouslySetInnerHTML={{ __html: this.props.page.heade_footer.footer }}/>
+            {/* <p dangerouslySetInnerHTML={{ __html: this.props.page.heade_footer.footer }}/> */}
             <p>&copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
           </Col>
   

@@ -13,7 +13,7 @@ export default class AboutUs extends BaseComponent {
     return (
       <div id="main">
         <div className="ml-3 mr-3">
-          <p className="b-absolute">HIGHER LIVING</p>
+          <p className="b-absolute">Higher Living</p>
           <img className="img-fluid w-100" alt="banner" src='https://admin.hhmworld.com/assets/images/sliders/aboutus.jpg' />
         </div>
 
