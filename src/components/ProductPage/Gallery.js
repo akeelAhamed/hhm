@@ -48,6 +48,10 @@ export default class Gallery extends React.Component{
         }, 5000);
     }
 
+    componentWillUnmount(){
+        clearInterval(this.interval);
+    }
+
     render(){
         this.autoSlide();
         const hasModal = this.state.is3d || this.props._3dFor !== undefined;

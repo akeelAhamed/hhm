@@ -8,8 +8,6 @@
     padding: 25px; 
     background-image: url('../HomePage/Img/footer.png');
     background-size: cover;
-
-      
 }
 
 .footer a{
@@ -33,14 +31,13 @@
 
 @media (min-width:1080px){
     .footer{
-        padding: 2% 2%; 
+        padding: 5% 2%; 
     }
 }
 .pscoical{
-    margin-left: 6rem;
+    margin-left: 30%;
     margin-top: 0;
-    /* margin-bottom: 1rem; */
-    font-size: 0.5rem;
+    font-size: 0.5rem !important;
 }
 
 .iamgefooter{

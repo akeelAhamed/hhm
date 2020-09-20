@@ -45,8 +45,8 @@ export default class HomePage extends BaseComponent {
             </Col>
 
             <Col md="7" className="p-4 mt-md-3">
-              <h2 className="border-teal text-uppercase pl-4" dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.title }} />
-              <p className="pl-4 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.link }} /></p>
+              <h2 className="border-teal text-uppercase" dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.title }} />
+              <p className="ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.about_home.link }} /></p>
             </Col>
           </Row>
         </div>
@@ -58,7 +58,7 @@ export default class HomePage extends BaseComponent {
 
             
           <Col md="7" className="p-text mt-md-3">
-              <p className="pl-4 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} /></p>
+              <p className="ml-1" dangerouslySetInnerHTML={{ __html: this.pageContent.feature_products[0].details }} />
             </Col>
           </Row>
         </div>
@@ -70,8 +70,8 @@ export default class HomePage extends BaseComponent {
             </Col>
 
             <Col md="7" className="p-4 mt-md-3">
-              <h3 className="border-teal text-uppercase pl-4" dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.title }} />
-              <p className="pl-2 ml-1"><small dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} /></p>
+              <h3 className="border-teal text-uppercase" dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.title }} />
+              <p className="ml-1" dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} />
             </Col>
 
           </Row>

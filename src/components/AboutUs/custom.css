@@ -13,26 +13,10 @@
     color: #00a09b;
 }
 
-.MsoNormal
-{
-    font-size: 0.9rem;
-     text-align: justify;
-     text-justify: inter-word;
-}
-.pl-innerpage{
-    padding-left: 1rem!important;
-    font-size: 1rem;
-    text-align: justify;
-    text-justify: inter-word;
-}
-.pl-home {
-     padding-left: 1.5rem!important; 
-     font-size: 0.9rem;
-     text-align: justify;
-     text-justify: inter-word;
-}
-.li{
-    width: 300px;
-    float: right;
-    padding-left: 0.5em;
+@media (min-width:600px){
+    .li{
+        width: 40%;
+        float: right;
+        padding: 2vh;
+    }
 }
