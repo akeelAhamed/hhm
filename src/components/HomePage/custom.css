@@ -30,10 +30,7 @@
     padding-left: 1.5rem!important;
     font-size: 1.2rem;
 }
-.h-page .my-mdnewimage p::first-letter {
-    font-size: 200%;
-   
-  }
+
 .home-bg-new{
     height: 89h;
     background-position:top;
@@ -68,13 +65,28 @@
     padding-bottom: 10%;
     padding-right: 2%;
     width: auto;
+    text-align: justify;
+    text-justify: inter-word;
  }
+
+ .home-justtext {
+    font-size: 1.0rem;
+    padding-left: 45%;
+    padding-top: 10%;
+    padding-bottom: 3%;
+    padding-right: 2%;
+    width: auto;
+    text-align: justify;
+    text-justify: inter-word;
+}
 .home-bg-2_text{
    padding-left: 45%;
    padding-top: 10%;
    padding-bottom: 3%;
    padding-right: 2%;
    width: auto;
+   text-align: justify;
+   text-justify: inter-word;
 }
 .mt-md-test, .my-md-test {
    
@@ -117,6 +129,13 @@
     background-color: #ccc;
 }
 
+.pl-inner {
+    padding-left: 1rem!important;
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 0.9rem;
+}
+
 .home-bg-3{
     height: fit-content;
     background-image: url('./Img/fwdhhmhomepagedummypics/Home\ 07.jpg');
@@ -148,6 +167,12 @@
 .border-teal{
     border-left: 5px solid #00a09b;
     padding-left: 14px!important;
+}
+
+.border-teal1{
+    border-left: 5px solid #00a09b;
+    padding-left: 14px!important;
+    font-size: 1.2rem;
 }
 .author-info{
     align-items: center;

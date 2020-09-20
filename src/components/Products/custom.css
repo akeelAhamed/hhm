@@ -16,6 +16,14 @@
 }
 ._3d #slideshow{padding: 0em;width:50%; margin: auto;}
 
+.list-juststyled {
+    font-size: 1.0rem;
+    padding-left: 0;
+    list-style: none;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 .dpb{
     border: 1px solid #00a19c;
     color: #00a19c;

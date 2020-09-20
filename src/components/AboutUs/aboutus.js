@@ -20,8 +20,8 @@ export default class AboutUs extends BaseComponent {
         <Container fluid>
           <Row>
             <Col md={12} className="p-5">
-              <h1 className="border-teal text-uppercase pl-4">About us</h1>
-              <div className="pl-3">
+              <h1 className="border-teal1 text-uppercase pl-4">About Us</h1>
+              <div className="pl-inner">
                 <p>
                   HHM leads you to ultimate  happiness and wellness, by utilizing the planetary energies for betterment of our lives. The importance of intangible forces around us that affect our life is seldom focused upon. T.P. Jayakrishnan, the brain behind HHM, wishes to harness the attraction of the scientific community towards the evidence that holds these hypotheses and investigate further on them.
                 </p>

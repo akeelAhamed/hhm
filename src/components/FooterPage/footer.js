@@ -34,8 +34,9 @@ export default class FooterPage extends React.Component {
         
         <Row>
           <Col lg="5" md="6" className="footer-content-1">
-            <div className="d-flex align-items-baseline">
+            <div className="d-flex align-items-center">
               <img
+               
                 src='https://admin.hhmworld.com/assets/images/15983473231596980432HHM-Logo-White.png'
                 width="70"
                 height="40"
@@ -63,10 +64,10 @@ export default class FooterPage extends React.Component {
             </div>
             
             {/* <p dangerouslySetInnerHTML={{ __html: this.props.page.heade_footer.footer }}/> */}
-            <p>&copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
+            <p className="pscoical"> &copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
           </Col>
   
-          <Col lg="7" md="6" className="d-flex align-items-center">
+          <Col lg="7" md="6" className="d-flex1 align-items-center">
             <section>
               <Nav>
                 <Nav.Item>

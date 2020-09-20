@@ -84,7 +84,7 @@ class ContactUs extends BaseComponent {
           <Row className="my-auto">
             <Col lg xl md sm="auto" className="my-auto">
               <h3 className="text-uppercase">India Office</h3>
-              <ul className="list-unstyled  mt-3">
+              <ul className="list-juststyled mt-3">
                 <li>HHM World</li>
                 <li>Door No, 12/524-B</li>
                 <li>Kayiliad Post</li>
