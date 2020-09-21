@@ -14,7 +14,9 @@
     color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
 }
-
+.ml-home {
+    margin-left: .9rem!important;
+}
 .footer-content-1{
     font-size: 13px;
     
