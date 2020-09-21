@@ -123,10 +123,9 @@ class ProductPage extends BaseComponent {
 
     return(
     <OverlayTrigger
-      trigger="hover"
+      trigger={['hover', 'focus']}
       placement="bottom"
       overlay={popShipp}
-      rootClose
     >
       <p className="color-primary btn p-0">
         Shipping
@@ -157,10 +156,9 @@ class ProductPage extends BaseComponent {
 
     return(
     <OverlayTrigger
-      trigger="hover"
+      trigger={['hover', 'focus']}
       placement="bottom"
       overlay={popShipp}
-      rootClose
     >
       <p className="color-primary btn p-0">
         <img
