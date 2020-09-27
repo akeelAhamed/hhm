@@ -31,7 +31,7 @@ export default class CheckOut extends BaseComponent {
         this.state.profile = null;
         this.state.chekout = null;
         this.state.complete= false; // after amount payed request send status
-        this.state.same = !false;
+        this.state.same = false;
         this.state.baddress= {
             name: '',
             phone: '',
