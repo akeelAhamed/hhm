@@ -222,10 +222,11 @@ export default class BaseComponent extends React.Component {
   /**
    * Empty cart data
    * 
+   * @param bool r
    */
-  emptyCart(){
+  emptyCart(r=true){
     window.ls.remove('_CART')
-    return window.history.go(-1);;
+    return !r||window.history.go(-1);;
   }
 
   /**

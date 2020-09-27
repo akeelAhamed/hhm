@@ -110,7 +110,8 @@ class App extends React.Component{
             {/* Auth routes */}
             <PrivateRoute authed={this.state.isLoggedIn} path='/dashboard' component={(props) => this.component(props, Dashboard)}/>
             <PrivateRoute authed={this.state.isLoggedIn} path='/track' component={(props) => this.component(props, Track)}/>
-            <PrivateRoute authed={this.state.isLoggedIn} path="/checkout" component={(props) => this.component(props, CheckOut) } />
+            <PrivateRoute authed={this.state.isLoggedIn} exact path="/checkout" component={(props) => this.component(props, CheckOut) } />
+            <PrivateRoute authed={this.state.isLoggedIn} path="/checkout/:id" component={(props) => this.component(props, OrderConfirm) } />
             <PrivateRoute authed={this.state.isLoggedIn} path="/orderconfirm" component={(props) => this.component(props, OrderConfirm) } />
 
             <Route component={NotFound} />

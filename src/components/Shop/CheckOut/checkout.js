@@ -1,8 +1,7 @@
 import React from 'react';
 import './custom.css';
 import BaseComponent from '../../BaseComponent';
-import Success from '../OrderConfirm/orderconfirm';
-import { Container, Row, Col, Spinner, Card, Button, Collapse, FormControl, Form } from 'react-bootstrap';
+import { Container, Row, Col, Spinner, Card, Button, Collapse, FormControl, Form, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import has from "lodash/has";
 
@@ -12,16 +11,27 @@ export default class CheckOut extends BaseComponent {
 
         this.order_info = null;
         this.rzp        = null;
+        this.ccav       = {
+            merchant_id: 272752,
+            url        : {
+                test   : 'https://test.ccavenue.com/transaction/transaction.do?command=initiateTransaction',
+                live   : 'https://secure.ccavenue.com/transaction/transaction.do?command=initiateTransaction',
+            },
+            redirect_url: 'https://admin.hhmworld.com/gateway/ccavResponseHandler.php'
+        };
         this.cart  = this.getCart();
-        this.error = true;
-        this.state.tab = 0;
+        this.error = !true;
+        this.state.encData = null;
+        this.state.payment = '1';
+        this.state.modal = false;
+        this.state.tab = 3;
         this.state.promo = '';
         this.state.discount = 0;
         this.state.tinfo = 0;
         this.state.profile = null;
         this.state.chekout = null;
         this.state.complete= false; // after amount payed request send status
-        this.state.same = false;
+        this.state.same = !false;
         this.state.baddress= {
             name: '',
             phone: '',
@@ -45,6 +55,7 @@ export default class CheckOut extends BaseComponent {
         }
         
         this.toggle = this.toggle.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
         this.onChangeSelf = this.onChangeSelf.bind(this);
         this.onSubmitSelf = this.onSubmitSelf.bind(this);
     }
@@ -99,6 +110,42 @@ export default class CheckOut extends BaseComponent {
     }
 
     /**
+     * Get customer address
+     * 
+     * @param string d
+     */
+    getCD(d='&',e='='){
+        let query = '';
+        for (const key in this.state.baddress) {
+            query += d+"customer_"+key+e+this.state.baddress[key];
+        }
+        let same = this.state.same?this.state.baddress:this.state.daddress
+        for (const key in same) {
+            query += d+"shipping_"+key+e+same[key];
+        }
+        return query;
+    }
+
+    /**
+     * Order completed
+     * 
+     * @param {object} _this 
+     * @param {object} response 
+     */
+    complete(_this, response){
+        _this.setState({
+            chekout: response
+        });
+        
+        window._axios.get("/payreturn?text=3&type=1&token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&product_id="+_this.cart.id+this.getCD())
+        .then((result) => {
+            return window.location.href = '/checkout/'+response.razorpay_payment_id;
+        }).catch(function(error){
+            console.log(error.response);
+        });
+    }
+
+    /**
      * Init razorpay
      */
     initRzp(){
@@ -113,26 +160,7 @@ export default class CheckOut extends BaseComponent {
                     "description": this.cart.seller_information+" | Price: Rs."+this.cart.price+" | Qty :"+this.cart._qty,
                     "order_id": this.order_info.id,
                     "handler": function (response){
-                        _this.emptyCart();
-                        _this.setState({
-                            chekout: response
-                        });
-                        let query = '';
-                        for (const key in _this.state.baddress) {
-                            query += "&customer_"+key+"="+_this.state.baddress[key];
-                        }
-                        let same = _this.state.same?_this.state.baddress:_this.state.daddress
-                        for (const key in same) {
-                            query += "&shipping_"+key+"="+same[key];
-                        }
-                        window._axios.get("/payreturn?text=3&token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&product_id="+_this.cart.id+query)
-                        .then((result) => {
-                            _this.setState({
-                                complete: true
-                            })
-                        }).catch(function(error){
-                          console.log(error.response);
-                        });
+                        return _this.complete(_this, response);
                     },
                     "prefill": {
                         "email": this.state.user.email,
@@ -149,13 +177,66 @@ export default class CheckOut extends BaseComponent {
         }
         console.log('order id was not created');
     }
+
+    /**
+     * Init Ccavenue
+     */
+    initCcv(){
+        if(this.order_info !== null){
+            this.toggleModal();
+            let query = {
+                tid     : Math.round(new Date().getTime()/1000),
+                merchant_param1: window._axios.defaults.baseURL+"payreturn",
+                merchant_param2: "text|3@type|2@token|"+this.state.user.token+"@product_id|"+this.cart.id+this.getCD('@', '|'),
+                language: 'EN',
+                currency: 'INR',
+                order_id: this.order_info.id,
+                amount  : this.order_info.amount/100,
+                merchant_id: this.ccav.merchant_id,
+                redirect_url: this.ccav.redirect_url,
+                cancel_url : this.ccav.redirect_url,
+                billing_email: this.state.user.email
+            }
+            let same = this.state.baddress;
+            for (const key in same) {
+                query["billing_"+key] = same[key];
+            }
+            query = new URLSearchParams(query).toString();
+            window._axios.get("https://admin.hhmworld.com/gateway/ccavRequestHandler.php?"+query)
+            .then((result) => {
+                result = result.data;
+                if(result.status){
+                    this.setState({
+                        encData: result.data
+                    })
+                    setTimeout(() => {
+                        document.getElementById('ccas').click();
+                    }, 500);
+                }
+            }).catch(function(error){
+                console.log(error.response);
+            });
+        }
+    }
     
     /**
      * Checkout and trigger razorpay
      * @param {object} e 
      */
     chekout(e){
-        return this.initRzp();
+        switch (parseInt(this.state.payment)) {
+            case 1:
+                this.initRzp();
+                break;
+
+            case 2:
+                this.initCcv();
+                break;
+        
+            default:
+                this.initRzp();
+                break;
+        }
     }
 
     /**
@@ -209,6 +290,16 @@ export default class CheckOut extends BaseComponent {
         }
     }
 
+    /**
+     * Handle toggle modal
+     * 
+     */
+    toggleModal(){
+        this.setState({
+            modal: !this.state.modal
+        })
+    }
+
     onChangeSelf(e){
         const {name, value} = e.target;
         if(name === 'same'){
@@ -252,6 +343,35 @@ export default class CheckOut extends BaseComponent {
         }
 
         const click = this.error || this.state.tab === 0?{}:{onClick: this.toggle};
+
+        if(this.state.modal){
+            return(
+                <Modal show={this.state.modal} backdrop="static" keyboard={false}>
+                    <Modal.Body>
+                        <form method="post" action={this.ccav.url.live}>
+                            <p>Dont't close this window. You will be redirect to Ccavenue</p>
+                            <div className="center" style={{height:'auto'}}>
+                                <Spinner animation="border" variant="info"/>
+                            </div>
+                            {
+                                (this.state.encData === null)
+                                ||
+                                <>
+                                <input type="hidden" name="encRequest" value={this.state.encData[0]} />
+                                <input type="hidden" name="access_code" value={this.state.encData[1]} />
+                                <button type="submit" id="ccas" style={{display:'none'}}></button>    
+                                </>
+                            }
+                        </form>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={this.toggleModal}>
+                            Close
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            );
+        }
 
         return (
             <div className="main-container">
@@ -348,13 +468,18 @@ export default class CheckOut extends BaseComponent {
                                 <Collapse in={this.state.tab === 3}>
                                     <div id="_track" className="c-body">
                                         <section className="p-1 c">
-                                            {/* <FormControl className="text-center" aria-label="Promo code" placeholder='Have a promo code...' value={this.state.promo} name="promo" onChange={this.onChange}/> */}
                                             <p>Choose a way to pay for your order:</p>
 
                                             <div className="border text-center p-2">
-                                                <img src={require('../img/razorpay.png')} className="img-fluid" alt="rpay" />
-                                                <input type="radio" id="razor" name="razor" value="razor" checked readOnly/>
-                                                <label className="" htmlFor="razor">Pay with razorpay</label>
+                                                <img src={require('../img/razorpay.png')} className="img-fluid w-100" alt="rpay" />
+                                                <input type="radio" id="razor" name="payment" value="1" onChange={this.onChange} checked={this.state.payment === '1'}/>
+                                                <label className="" htmlFor="razor"> Pay with razorpay</label>
+                                            </div>
+
+                                            <div className="border text-center p-2">
+                                                <img src={require('../img/ccavenue.png')} className="img-fluid w-100" alt="ccavenue" />
+                                                <input type="radio" id="ccavenue" name="payment" value="2" onChange={this.onChange} checked={this.state.payment === '2'}/>
+                                                <label className="" htmlFor="ccavenue"> Pay with ccavenue</label>
                                             </div>
 
                                             <Button className="mb-4 mt-2" variant="info" block onClick={this.chekout} disabled={this.error}>Place Order</Button>
@@ -375,8 +500,12 @@ export default class CheckOut extends BaseComponent {
     }
 
     render(){
-        if(this.state.chekout !== null){
-            return(<Success complete={this.state.complete} cart={this.cart} payment_id={this.state.chekout.razorpay_payment_id}/>);
+        if(this.state.chekout !== null && !this.state.complete){
+            return (
+                <div className='center'>
+                    <Spinner animation="border" variant="info" /><span className="pl-md-2">Validating order, don't close or navigate browser...</span>
+                </div>
+            )
         }
         
         return this.state.profile === null?<div className="center"><Spinner animation="border" variant="info"/></div>:this.content();
