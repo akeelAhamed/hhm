@@ -56,41 +56,41 @@ export default class Landing extends BaseComponent {
           <h1>Benefits</h1>
           <Row>
             <Col md="12">
-              <section class="timeline overflow-hidden">
+              <section className="timeline overflow-hidden">
                 <ul>
                   <li className="d-none"></li>
                   <li>
-                    <div class="content">
+                    <div className="content">
                       <p>Induces Anti-inflammatory and Antioxidant Effects</p>
                     </div>
                   </li>
                   <li>
-                    <div class="content">
+                    <div className="content">
                       <p>Scavenges Free Radicals Against Aging</p>
                     </div>
                   </li>
                   <li>
-                    <div class="content">
+                    <div className="content">
                       <p>Heals Chronic Respiratory Tract Disorders</p>
                     </div>
                   </li>
                   <li>
-                    <div class="content">
+                    <div className="content">
                       <p>Generating Neuro-modulators to Enhance Memory</p>
                     </div>
                   </li>
                   <li>
-                    <div class="content">
+                    <div className="content">
                       <p>Breaks Addiction to induce Mental Tranquility</p>
                     </div>
                   </li>
                   <li>
-                    <div class="content">
+                    <div className="content">
                       <p>Purifies Air by Killing Bacteria</p>
                     </div>
                   </li>
                   <li>
-                    <div class="content">
+                    <div className="content">
                       <p>Energises Seven Chakras</p>
                     </div>
                   </li>
