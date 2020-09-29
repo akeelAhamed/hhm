@@ -141,7 +141,7 @@
     padding:0.7em 0em;
 }
 .pfooter img{height: 40px;margin-top:0.5em;}
-.pfooter p{font-size: 80%;margin-top:0.5em;}
+.pfooter p{font-size: 80%;margin-top:0.5em;text-align: center;}
 
 @media (max-width:768px){
     .contact{position: fixed;right: -80px;}
@@ -168,7 +168,7 @@
 }
 
 @media (max-width: 500px){
-  .contact{right: -70px;}
+  .contact{right: -85px;}
   .lamp{overflow: hidden;}
   .lamp img {
     width: 100%;
@@ -178,9 +178,9 @@
   .timeline ul {margin: 5% auto;}
   .timeline ul li{padding-bottom: 4.5%;}
   .timeline ul li:nth-child(even) .content, .timeline ul li:nth-child(odd) .content {
-    left: calc(-25% - 250px);
+    left: calc(-25% - 280px);
     width: 100%;
-    min-width: 200px;
+    min-width: 250px;
     padding-right: 0px;
     padding-left: 1.5em;
   }
@@ -189,7 +189,8 @@
     text-align: right;
   }
   .timeline ul li:nth-child(even) .content:before, .timeline ul li:nth-child(odd) .content:before{
-    right: -55px;
+    right: -40px;
     left: initial;
+    width: 50px
   }
 }

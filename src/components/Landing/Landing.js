@@ -56,7 +56,7 @@ export default class Landing extends BaseComponent {
           <h1>Benefits</h1>
           <Row>
             <Col md="12">
-              <section class="timeline">
+              <section class="timeline overflow-hidden">
                 <ul>
                   <li className="d-none"></li>
                   <li>
@@ -97,7 +97,7 @@ export default class Landing extends BaseComponent {
                 </ul>
               </section>
 
-              <div className="overflow-hidden">
+              <div>
                 <img alt="lamp-min" src={require('./img/lamp-min.png')} className='img-fluid mb-3' draggable={false} />
               </div>
             </Col>
