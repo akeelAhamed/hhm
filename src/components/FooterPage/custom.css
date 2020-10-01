@@ -1,5 +1,5 @@
 .footer{
-    padding: 25px; 
+    padding: 5% 10%; 
     background-image: url('../HomePage/Img/footer.png');
     background-size: cover;
       
@@ -13,6 +13,7 @@
 .footer a{
     color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
+    padding:0.2em 0.5rem;
 }
 .footer-content-1{
     font-size: 13px;
@@ -26,7 +27,6 @@
 .social{padding-left: 1em;white-space: nowrap;}
 .social li{display:inline;padding-left: 1em;}
 .social li a{color:#FFF;font-size: 1.5em;}
-.footer .nav a{padding:0.5rem;}
 
 @media (min-width:1080px){
     .footer{
@@ -48,4 +48,8 @@
     .footer-content-1{
         padding-left: 200px;
     }
+    .footer{
+        padding: 25px; 
+    }
+    .footer .nav a{padding:0.5rem;}
 }

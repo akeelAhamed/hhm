@@ -34,9 +34,8 @@ export default class FooterPage extends React.Component {
         
         <Row>
           <Col lg="5" md="6" className="footer-content-1">
-            <div className="d-flex align-items-center">
+            <div className="d-md-flex align-items-center">
               <img
-               
                 src='https://admin.hhmworld.com/assets/images/15983473231596980432HHM-Logo-White.png'
                 width="70"
                 height="40"
@@ -44,7 +43,7 @@ export default class FooterPage extends React.Component {
                 alt="logo"
               />
 
-              <ul className="list-unstyled social">
+              <ul className="list-unstyled social float-right">
                 {
                   this.props.page.sociallinks.map((links, index) => {
                     let social = [];
@@ -64,12 +63,13 @@ export default class FooterPage extends React.Component {
             </div>
             
             {/* <p dangerouslySetInnerHTML={{ __html: this.props.page.heade_footer.footer }}/> */}
-            <p className="pscoical"> &copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
+            <p className="pscoical d-none d-md-block"> &copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
           </Col>
   
-          <Col lg="7" md="6" className="d-flex1 align-items-center">
+          <Col lg="7" md="6" sm="6" className="align-items-center mt-sm-3 mt-md-0">
             <section>
-              <Nav>
+              <b className="text-white d-block d-md-none">Usefull link</b>
+              <Nav className="d-sm-block d-md-flex">
                 <Nav.Item>
                   <Nav.Link as={Link} to="/">Home</Nav.Link>
                 </Nav.Item>
@@ -106,6 +106,24 @@ export default class FooterPage extends React.Component {
             </section>
           </Col>
 
+          <Col sm="6" className="d-block d-md-none">
+            <b className="text-white">Contact details</b>
+            <p>
+              Aushmath Holistic Living Pvt Ltd<br/>
+              Door No. 2/1, First Floor<br/>
+              Devaraj Corner<br/>
+              Marudhamalai main Road<br/>
+              Vadavalli, Coimbatore District<br/>
+              Tamil Nadu. 641041<br/>
+              info@hhm.world | +91 1234 456 789<br/>
+              Toll-Free 1800-00-0000<br/>
+            </p>
+          </Col>
+
+          <Col sm="12" className="d-block">
+            <hr/>
+            <p className="d-block d-md-none text-center"> &copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
+          </Col>
         </Row>
         
       </Container>

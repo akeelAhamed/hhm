@@ -40,7 +40,7 @@ export default class HomePage extends BaseComponent {
 
         <div className="mx-3 my-mdnew">
           <Row className="no-gutters">
-            <Col md="5" className="m-auto">
+            <Col md="5" className="m-auto d-none d-md-block">
               <img className="img-fluid w-100" alt="banner" src={this.pageContent.about_home.photo} />
             </Col>
 
@@ -53,7 +53,7 @@ export default class HomePage extends BaseComponent {
 
         <div className="mx-3 my-mdnewimage" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
           <Row className="no-gutters" >
-           <Col md="5" className="m-auto">
+           <Col md="5" className="m-auto d-none d-md-block">
               <img className="img-fluid w-100" alt="banner" src='https://admin.hhmworld.com/assets/images/partner/transparentimage.png' />
            </Col>
 
@@ -66,11 +66,12 @@ export default class HomePage extends BaseComponent {
         <div className="mx-3">
           <Row>
             <Col md="5" className="m-auto">
+              <h3 className="border-teal text-uppercase ml-4 mt-2 d-block d-md-none" dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.title }} />
               <img className="img-fluid w-100" alt="banner" src={this.pageContent.about_author.photo} />
             </Col>
 
             <Col md="7" className="p-4 mt-md-3">
-              <h3 className="border-teal text-uppercase" dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.title }} />
+              <h3 className="border-teal text-uppercase d-none d-md-block" dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.title }} />
               <p dangerouslySetInnerHTML={{ __html: this.pageContent.about_author.link }} />
             </Col>
 

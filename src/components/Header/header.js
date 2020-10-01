@@ -48,7 +48,7 @@ class Header extends React.Component {
     
     return (
       <>
-        <Navbar className="header-nav bg-white border-bottom" expand="md">
+        <Navbar className="header-nav bg-white border-bottom overflow-auto" expand="md">
           <Navbar.Brand>
             <Nav.Link as={Link} to='/'>
             <img
@@ -60,7 +60,11 @@ class Header extends React.Component {
             </Nav.Link>
           </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <div className="d-flex">
+            <Link className="cart d-block d-md-none" to='/cart'><GiShoppingCart size="2rem" /></Link>
+
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          </div>
           
           <Navbar.Collapse id="basic-navbar-nav ">
             <Nav className="ml-auto text-uppercase">
@@ -78,10 +82,9 @@ class Header extends React.Component {
                 :<Nav.Link active={window.location.pathname === '/login'} as={Link} to='/login?item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100'>Login</Nav.Link>
               }
               
-              <Nav.Link active={window.location.pathname === '/cart'} className="cart" as={Link} to='/cart'><GiShoppingCart size="2rem" /></Nav.Link>
+              <Nav.Link active={window.location.pathname === '/cart'} className="cart d-none d-md-block" as={Link} to='/cart'><GiShoppingCart size="2rem" /></Nav.Link>
 
             </Nav>
-
           </Navbar.Collapse>
         </Navbar>
 
