@@ -36,3 +36,9 @@
     ._3d .full-img{padding-top: 0;max-height: 400px;max-width: 400px;}
     ._3d .home-bg-2_text{padding-left: 40%;}
 }
+
+@media(max-width:575px){
+    .home-bg-prod {
+        background-position: 100% 95px;
+    }
+}

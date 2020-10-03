@@ -197,4 +197,11 @@
     .btn-primaryhome{margin-left: 0px;}
     .home-bg-prod{background-position: right;}
     .home-justtext{padding-left: 0px;}
+    .h-page .col-md-7{padding-right: 1rem!important;}
+}
+
+@media (max-width:600px){
+    .my-mdnewimage {
+        background-position: 40%;
+    }
 }

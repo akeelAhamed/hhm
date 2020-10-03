@@ -53,8 +53,8 @@ export default class HomePage extends BaseComponent {
 
         <div className="mx-3 my-mdnewimage" style={{backgroundImage: 'url('+this.pageContent.feature_products[0].photo+')'}}>
           <Row className="no-gutters" >
-           <Col md="5" className="m-auto d-none d-md-block">
-              <img className="img-fluid w-100" alt="banner" src='https://admin.hhmworld.com/assets/images/partner/transparentimage.png' />
+           <Col md="5" className="m-auto">
+              <img className="img-fluid d-sm-none w-100" alt="banner" src={require('./Img/bg.jpg')} />
            </Col>
 
           <Col md="7" className="p-text mt-md-3">

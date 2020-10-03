@@ -11,22 +11,23 @@ class Vision extends BaseComponent {
         return (
             <div>
                 <Row>
-                    <Col sm="auto" md lg xl="6" className="p-5">
+                    <Col sm="auto" md="6" className="order-md-12">
+                        <img className="img-fluid m-1" src={require('./img/Vission.jpg')} alt="" />
+                    </Col>
+                    <Col sm="auto" md="6" className="p-5 order-md-1">
                         <h1 className="border-teal1 text-uppercase pl-4">Vision</h1>
                         <p className="pl-inner">
                             Dr. Jayakrishnan envisions the scope of applying scientific thoughts, techniques and tools to unravel the underlying link between ancient knowledge and concepts of modern science for the sustainable prosperity of mankind in all areas of life. ART is dedicated to endorse committed and passionate researchers having impeccable skill-set to utilize their expertise to undertake research, training, and education of the masses either of its own or in cooperation aiding in the well being of the people to conduct a healthy holistic life. The practice of HHM can create a special difference in your life as you can see and feel the difference that is taken place within you after following the principles that can gain you more well being and holistic health.
                         </p>
                     </Col>
-                    <Col sm="auto" md lg xl="6">
-                        <img className="img-fluid m-1" src={require('./img/Vission.jpg')} alt="" />
-                    </Col>
+                    
                 </Row>
 
                 <Row>
-                    <Col sm="auto" md lg xl="6" >
+                    <Col sm="auto" md="6" >
                         <img className="img-fluid m-1" src={require('./img/mission.jpg')} alt="" />
                     </Col>
-                    <Col sm="auto" md lg xl="6" className="p-5 ">
+                    <Col sm="auto" md="6" className="p-5 ">
                         <h1 className="border-teal1 text-uppercase pl-4">Mission</h1>
                         
                         <div className="pl-inner">

@@ -66,10 +66,10 @@ export default class FooterPage extends React.Component {
             <p className="pscoical d-none d-md-block"> &copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
           </Col>
   
-          <Col lg="7" md="6" sm="6" className="align-items-center mt-sm-3 mt-md-0">
+          <Col lg="7" md="6" className="align-items-center mt-sm-3 mt-md-0">
             <section>
               <b className="text-white d-block d-md-none">Usefull link</b>
-              <Nav className="d-sm-block d-md-flex">
+              <Nav>
                 <Nav.Item>
                   <Nav.Link as={Link} to="/">Home</Nav.Link>
                 </Nav.Item>
@@ -106,22 +106,8 @@ export default class FooterPage extends React.Component {
             </section>
           </Col>
 
-          <Col sm="6" className="d-block d-md-none">
-            <b className="text-white">Contact details</b>
-            <p>
-              Aushmath Holistic Living Pvt Ltd<br/>
-              Door No. 2/1, First Floor<br/>
-              Devaraj Corner<br/>
-              Marudhamalai main Road<br/>
-              Vadavalli, Coimbatore District<br/>
-              Tamil Nadu. 641041<br/>
-              info@hhm.world | +91 1234 456 789<br/>
-              Toll-Free 1800-00-0000<br/>
-            </p>
-          </Col>
-
           <Col sm="12" className="d-block">
-            <hr/>
+            <hr className="d-block d-md-none"/>
             <p className="d-block d-md-none text-center"> &copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
           </Col>
         </Row>

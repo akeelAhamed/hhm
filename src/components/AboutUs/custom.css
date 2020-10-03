@@ -18,5 +18,6 @@
         width: 40%;
         float: right;
         padding: 2vh;
+        display: none;
     }
 }

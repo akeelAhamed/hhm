@@ -65,7 +65,9 @@ export default class Products extends BaseComponent {
         <div className="home-bg-prod mx-3" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'back_ground')+')'}}>
           <div className="home-bg-2_text">
             <h4 className="text-uppercase border-teal" dangerouslySetInnerHTML={{ __html: product.name }} />
-           
+            
+            <img className="img-fluid w-100 d-sm-none" alt="banner" src={this.state._3d[0].img} />
+
 		        <p className="pl-4" dangerouslySetInnerHTML={{ __html: 'Inspired from ancient traditions developed by great scholars of the past, H.H.M brings you Panacea Ultimate for Rousing Energy (P.U.R.E), a smoke therapy that will make you feel alive from within. Cosmic energy strikes the earth from all directions. The process of P.U.R.E helps to attract, absorb, and direct cosmic energy to travel towards the brain and energize the seven chakras in the body. P.U.R.E package contains the PANACEA ULTIMATE powder which is a mixture of 43 different herbs with tremendous health benefits. This smoke therapy has created many people to live their life with utmost potential and the well being of a holistic lifestyle. The theories that are set out to a benefit that humans could gain are set out by HHM so that people can live the complete while they achieve a perfect goal-oriented life to make a difference in the nature and in the lifestyle.  It can be smoked at any time in your living room/any part of your house regardless of religion anyone can use the P.U.R.E to elevate their life.'}} />
                <img
               src={require('../Landing/img/HHM-logo.svg')}
@@ -79,7 +81,8 @@ export default class Products extends BaseComponent {
         </div>
 
         <div className="pproduct mx-3">
-          <img src={this.getImage(product.allimages, 'followup')} className="img-fluid w-100" alt="..." />
+          <img src={this.getImage(product.allimages, 'followup')} className="img-fluid w-100 d-none d-sm-block" alt="bg" />
+          <img src={require('./img/mb-bg.jpg')} className="img-fluid w-100 d-sm-none" alt="bg" />
         </div>
 
         <div className="home-bg-1 mx-3" style={{backgroundImage: 'url('+this.getImage(product.allimages, 'another')+')'}}>
@@ -92,7 +95,6 @@ export default class Products extends BaseComponent {
               <Col md="7">
                 <div className="home-justtext">
                   <div dangerouslySetInnerHTML={{ __html:'<b>BENEFITS OF P.U.R.E SMOKE THERAPY</b><br/>Breaks addictions<br/>Energizes the chakras<br/>Improves focus<br/>Enhances memory<br/>Purifies air<br/>Heals respiratory disorders<br/>Eliminates free radicals<br/>Has anti-inflammatory and antioxidant effects<br/>Absorbs cosmic energy' }} /><br />
-                
                 
                   <Link className="mt-3 mr-1 btn btn-primary" to={"/item/"+product.slug}>Buy now</Link>
                   <a href="/PURE-PRODUCT-BOOK-SM.pdf" className="dpb mt-3 btn" download>Download product booklet</a>

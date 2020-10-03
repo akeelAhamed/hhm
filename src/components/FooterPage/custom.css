@@ -1,7 +1,7 @@
 .footer{
     padding: 5% 10%; 
     background-image: url('../HomePage/Img/footer.png');
-    background-size: cover;
+    background-size: contain;
       
 }
 .footerbg{
@@ -9,11 +9,13 @@
     background-image: url('../HomePage/Img/footer.png');
     background-size: cover;
 }
-
+.footer hr{
+    border-bottom: 1px solid #FFFFFF;
+}
 .footer a{
     color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
-    padding:0.2em 0.5rem;
+    padding:0.5rem;
 }
 .footer-content-1{
     font-size: 13px;
@@ -49,7 +51,7 @@
         padding-left: 200px;
     }
     .footer{
-        padding: 25px; 
+        padding: 25px;
+        background-size: cover;
     }
-    .footer .nav a{padding:0.5rem;}
 }
