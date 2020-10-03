@@ -38,12 +38,12 @@ class ContactUs extends BaseComponent {
           <h2 className="mt-5 border-teal">Contact Us</h2>
           <form data-action="contact" data-method="post" data-callback="afterSubmit" className="pt-5 pform bg-light mx-md-3" onSubmit={this.onSubmit}>
             <Form.Row className="m-2">
-              <Form.Group as={Col} controlId="formGridName">
+              <Form.Group className="col-sm-6"controlId="formGridName">
                 <Form.Control
                   placeholder="YOUR NAME (REQUIRED)" name="name" onChange={this.onChange} value={this.state.name} required />
               </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridMail">
+              <Form.Group className="col-sm-6"controlId="formGridMail">
                 <Form.Control
                   type="email"
                   placeholder="YOUR MAIL(REQUIRED)" name="email" onChange={this.onChange} value={this.state.email} required />
@@ -52,13 +52,13 @@ class ContactUs extends BaseComponent {
             </Form.Row>
 
             <Form.Row className="m-2">
-              <Form.Group as={Col} controlId="formGridSubject">
+              <Form.Group className="col-sm-6"controlId="formGridSubject">
                 <Form.Control
                   type="text"
                   placeholder="SUBJECT" name="subject" onChange={this.onChange} value={this.state.subject} required />
               </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridPhone">
+              <Form.Group className="col-sm-6"controlId="formGridPhone">
                 <Form.Control 
                   type="number"
                   placeholder="YOUR PHONE" name="phone" onChange={this.onChange} value={this.state.phone} />
@@ -66,7 +66,7 @@ class ContactUs extends BaseComponent {
             </Form.Row>
 
             <Form.Row className="m-2">
-              <Form.Group as={Col} controlId="formGridmessage">
+              <Form.Group className="col-sm-12"controlId="formGridmessage">
                 <Form.Control
                   placeholder="Your message"
                   as="textarea" name="text" onChange={this.onChange} value={this.state.text} rows="3" />

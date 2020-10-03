@@ -20,4 +20,7 @@
         padding: 2vh;
         display: none;
     }
+    .about-p{
+        padding-right: 2rem;
+    }
 }
