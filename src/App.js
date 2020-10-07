@@ -36,6 +36,7 @@ import Track from "./components/Dashboard/Track";
 
 import BrandP from "./components/AboutUs/brandp";
 import Landing from "./components/Landing/Landing";
+import LandingVideo from "./components/Landing/LandingVideo";
 import Thankyou from "./components/Landing/Thankyou";
 
 function PrivateRoute ({component: Component, authed, ...rest}) {
@@ -61,7 +62,7 @@ class App extends React.Component{
       headerFooter: null,
       pageLoaded: false
     };
-    this.noHeader = ['/promo', '/promo/thankyou']
+    this.noHeader = ['/promo', '/promo-video', '/promo/thankyou']
   }
 
   component(props, Component) {
@@ -76,6 +77,7 @@ class App extends React.Component{
         <Router>
           <Switch>
             <Route path="/promo" exact component={(props) => this.component(props, Landing)} />
+            <Route path="/promo-video" exact component={(props) => this.component(props, LandingVideo)} />
             <Route path="/promo/thankyou" component={(props) => this.component(props, Thankyou)} />
           </Switch>
         </Router>

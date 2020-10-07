@@ -477,11 +477,11 @@ export default class CheckOut extends BaseComponent {
                                                 <label className="" htmlFor="razor"> Pay with razorpay</label>
                                             </div>
 
-                                            {/* <div className="border text-center p-2">
+                                            <div className="border text-center p-2">
                                                 <img src={require('../img/ccavenue.png')} className="img-fluid w-100" alt="ccavenue" />
                                                 <input type="radio" id="ccavenue" name="payment" value="2" onChange={this.onChange} checked={this.state.payment === '2'}/>
                                                 <label className="" htmlFor="ccavenue"> Pay with ccavenue</label>
-                                            </div> */}
+                                            </div>
 
                                             <Button className="mb-4 mt-2" variant="info" block onClick={this.chekout} disabled={this.error}>Place Order</Button>
                                         </section>
