@@ -1,7 +1,6 @@
 import React from "react"
 import { Button,Modal,Form, Row, Col, Container } from 'react-bootstrap';
 import { FaPlayCircle, FaPauseCircle, FaVolumeMute, FaVolumeUp } from "react-icons/fa";
-import ReactPlayer from "react-player";
 import BaseComponent from '../BaseComponent';
 import "./custom.css";
 
@@ -13,7 +12,7 @@ export default class Landing extends BaseComponent {
     this.mr = undefined;
     this.state.modal   = false;
     this.state.video = {
-      pus:  false,
+      pus:  !true,
       mut:  true
     };
     this.state.email   = '';
@@ -50,7 +49,6 @@ export default class Landing extends BaseComponent {
         value: !this.state.video.pus
       }
     });
-    this.video = (this.video === null)?document.getElementById('lvideo'):this.video;
     (this.video.paused)?this.video.play():this.video.pause();
   }
 
@@ -61,13 +59,16 @@ export default class Landing extends BaseComponent {
         value: !this.state.video.mut
       }
     });
-    this.video = (this.video === null)?document.getElementById('lvideo'):this.video;
+    
     this.video.muted = !this.video.muted;
+  }
+
+  componentDidMount(){
+    this.video = document.getElementById('lvideo');
   }
 
   content(){
     const date = new Date();
-    console.log(this.video, this.state.video);
     return (
       <div className="l-container">
         <ul className="fix contact">
@@ -82,8 +83,8 @@ export default class Landing extends BaseComponent {
         </Container> */}
 
         <Container fluid className="p-0 top w-100">
-          <video loop autoPlay poster={require('./img/banner.jpg')} id="lvideo">
-            <source src="video/landing.mp4" type="video/mp4" />
+          <video loop={true} autoPlay={true} poster='https://admin.hhmworld.com/assets/landing/banner.jpg' id="lvideo">
+            <source src="https://admin.hhmworld.com/assets/landing/video.mp4" type="video/mp4" />
           </video>
           
           <div className="action-toolbar">
