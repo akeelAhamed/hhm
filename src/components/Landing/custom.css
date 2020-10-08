@@ -202,7 +202,8 @@
 
 @media (max-width: 500px){
   .contact{right: -85px;}
-  .lamp{overflow: hidden;}
+  #lvideo{position: relative;}
+  .lamp{overflow: hidden;margin-top:0px}
   .lamp img {
     width: 100%;
     margin-left:5em
