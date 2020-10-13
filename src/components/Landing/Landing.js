@@ -91,7 +91,7 @@ export default class Landing extends BaseComponent {
                   </li>
                   <li>
                     <div className="content">
-                      <p>Energises Seven Chakras</p>
+                      <p>ENERGISES SEVEN ENERGY CENTERS</p>
                     </div>
                   </li>
                 </ul>
