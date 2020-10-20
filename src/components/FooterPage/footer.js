@@ -90,6 +90,9 @@ export default class FooterPage extends React.Component {
                   <Nav.Link as={Link} to="/products">Product</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
+                  <Nav.Link as={Link} to="/faq">Faq</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
                   <Nav.Link as={Link} to="/privacy">Privacy Policy</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>

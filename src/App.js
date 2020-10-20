@@ -15,6 +15,7 @@ import Terms from "./components/AboutUs/terms";
 import Hypothesis from "./components/AboutUs/hypothesis";
 import Science from "./components/AboutUs/science";
 import Vision from "./components/VisionPage/vision";
+import Faq from "./components/AboutUs/faq";
 // import BlogPage from './components/BlogPage/blogpage';
 import CartPage from './components/Shop/CartPage/CartPage';
 import ContactUs from './components/ContactUs/contactus';
@@ -100,6 +101,7 @@ class App extends React.Component{
             <Route path="/item/:name" component={(props) => this.component(props, ProductPage) } />
             <Route path="/cart" component={(props) => this.component(props, CartPage) } />
             <Route path="/vision" component={(props) => this.component(props, Vision) } />
+            <Route path="/faq" component={(props) => this.component(props, Faq) } />
             <Route path="/contact" component={(props) => this.component(props, ContactUs) } />
 
             {/* Form */}
