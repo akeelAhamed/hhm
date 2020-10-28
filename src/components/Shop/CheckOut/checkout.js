@@ -186,6 +186,8 @@ export default class CheckOut extends BaseComponent {
         if(this.order_info !== null){
             this.toggleModal();
             let query = {
+                test    : 'hi',
+                product : this.cart.slug,
                 tid     : Math.round(new Date().getTime()/1000),
                 merchant_param1: window._axios.defaults.baseURL+"payreturn",
                 merchant_param2: "text|3@type|2@token|"+this.state.user.token+"@product_id|"+this.cart.id+this.getCD('@', '|'),
@@ -203,9 +205,11 @@ export default class CheckOut extends BaseComponent {
                 query["billing_"+key] = same[key];
             }
             query = new URLSearchParams(query).toString();
-            window._axios.get("https://admin.hhmworld.com/gateway/ccavRequestHandler.php?"+query)
+            //https://admin.hhmworld.com/gateway/ccavRequestHandler.php
+            window._axios.get("/ccav?"+query)
             .then((result) => {
                 result = result.data;
+                console.log(this.cart, result);
                 if(result.status){
                     this.setState({
                         encData: result.data
