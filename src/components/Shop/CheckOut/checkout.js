@@ -54,7 +54,6 @@ export default class CheckOut extends BaseComponent {
             this.cart.ship = this.cart.ship === null?0:0;
             this.chekout = this.chekout.bind(this);
         }
-        
         this.toggle = this.toggle.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.onChangeSelf = this.onChangeSelf.bind(this);
@@ -188,6 +187,7 @@ export default class CheckOut extends BaseComponent {
             let query = {
                 test    : 'hi',
                 product : this.cart.slug,
+                count   : this.cart._qty,
                 tid     : Math.round(new Date().getTime()/1000),
                 merchant_param1: window._axios.defaults.baseURL+"payreturn",
                 merchant_param2: "text|3@type|2@token|"+this.state.user.token+"@product_id|"+this.cart.id+this.getCD('@', '|'),
@@ -215,7 +215,7 @@ export default class CheckOut extends BaseComponent {
                         encData: result.data
                     })
                     setTimeout(() => {
-                        document.getElementById('ccas').click();
+                        //document.getElementById('ccas').click();
                     }, 500);
                 }
             }).catch(function(error){
