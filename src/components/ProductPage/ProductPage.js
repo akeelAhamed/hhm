@@ -102,7 +102,7 @@ class ProductPage extends BaseComponent {
           </InputGroup>
       );
     }
-    return(<Button className="mt-3 btn btn-primary" onClick={this.loginBuy} data-to={"login?checkout"}>Login & buy</Button>);
+    return(<Button className="mt-3 btn btn-primary" onClick={this.loginBuy} data-to={"register?checkout"}>Login & buy</Button>);
   }
 
   popShipp(){

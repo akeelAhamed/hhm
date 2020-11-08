@@ -25,7 +25,7 @@ export default class CheckOut extends BaseComponent {
         this.state.encData = null;
         this.state.payment = '1';
         this.state.modal = false;
-        this.state.tab = 0;
+        this.state.tab = 1;
         this.state.promo = '';
         this.state.discount = 0;
         this.state.tinfo = 0;
@@ -209,13 +209,12 @@ export default class CheckOut extends BaseComponent {
             window._axios.get("/ccav?"+query)
             .then((result) => {
                 result = result.data;
-                console.log(this.cart, result);
                 if(result.status){
                     this.setState({
                         encData: result.data
                     })
                     setTimeout(() => {
-                        //document.getElementById('ccas').click();
+                        document.getElementById('ccas').click();
                     }, 500);
                 }
             }).catch(function(error){
@@ -383,7 +382,8 @@ export default class CheckOut extends BaseComponent {
                 <Container fluid>
                     <Row>
                         <Col className="bg-light" sm={{ span: 7, offset:1 }}>
-                            <Card className={"my-3 pro c "+(this.state.tab === 0)}>
+                            <div>
+                                {/* <Card className={"my-3 pro c "+(this.state.tab === 0)}>
                                 <h5 className="header" data-key={0} onClick={this.toggle}>Billing address</h5>
                                 <Collapse in={this.state.tab === 0}>
                                     <div id="_profile" className="c-body">
@@ -408,7 +408,9 @@ export default class CheckOut extends BaseComponent {
                                     
                                     </div>
                                 </Collapse>
-                            </Card>
+                            </Card> */}
+                            </div>
+                            
 
                             <Card className={"my-3 pro "+(this.state.tab === 1)}>
                                 <h5 className="header" data-key={1} data-form="daddress" {...click}>Delivery address</h5>
@@ -427,7 +429,7 @@ export default class CheckOut extends BaseComponent {
 
                                             <FormControl type="number" placeholder="Pincode" name="daddress.zip" value={(this.state.same)?this.state.baddress.zip:this.state.daddress.zip} onChange={this.onChangeSelf} />
 
-                                            <Form.Check id="sameas" type="checkbox" label="Same as billing address" name="same" value={this.state.same} onChange={this.onChangeSelf} />
+                                            {/* <Form.Check id="sameas" type="checkbox" label="Same as billing address" name="same" value={this.state.same} onChange={this.onChangeSelf} /> */}
 
                                             {this.getError()}
 

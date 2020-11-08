@@ -87,12 +87,16 @@ class Login extends BaseComponent {
               </Form>
               
               {this.getError(this.variant)}
-              
-              <div className="p-2 d-block w-100">
-                <Link className="btn btn-link text-dark float-right" to={'/login'+this.after}>LOGIN</Link>
-                <span className="mt-2 d-block">Already have an account?</span>
-              </div>
 
+            </Col>
+          </Row>
+
+          <Row className="my-5">
+            <Col md={8}>
+                <h4 className="mt-2 text-right color-primary">If you are an existing customer<br/>please login here with the<br/> HHM Username and Password</h4>
+            </Col>
+            <Col md={4} style={{alignItems: 'center',display: 'flex', borderWidth: 3}} className="border-teal1">
+              <Link className="btn color-primary btn-link text-left" style={{fontSize: '1.5rem'}} to={'/login'+this.after}>LOGIN</Link>
             </Col>
           </Row>
         </Container>
