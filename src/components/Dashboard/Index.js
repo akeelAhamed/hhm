@@ -352,7 +352,7 @@ export default class Index extends BaseComponent {
 
             <Col sm={{ span: 6 }} className="border-primary mt-sm-5 mb-3">
               <Link to="/item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100">
-                <img alt="ad" className="img-fluid" src={require('./img/ad.jpg')} />
+                <img alt="ad" className="img-fluid" src={require('./img/anubhuvan.png')} />
               </Link>
             </Col>
           </Row>
