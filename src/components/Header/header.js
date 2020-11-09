@@ -68,15 +68,11 @@ class Header extends React.Component {
           
           <Navbar.Collapse id="basic-navbar-nav ">
             <Nav className="ml-auto text-uppercase">
-              <Nav.Link active={window.location.pathname === '/'} as={Link} to='/'>Home</Nav.Link>
-            
-              {
-                this.state.headerFooter.heade_menu.map(el => {
-                  return(<Nav.Link key={el.id} active={window.location.pathname === '/' + el.slug} as={Link} to={'/' + el.slug}>{el.title}</Nav.Link>);
-                })
-              }
-              <Nav.Link active={window.location.pathname === '/products'} as={Link} to='/products'>Product</Nav.Link>
-              {
+              <Nav.Link href='https://www.hhmworld.com/'>Home</Nav.Link>
+              <Nav.Link href='https://www.hhmworld.com/science'>The science</Nav.Link>
+              <Nav.Link href='https://www.hhmworld.com/product'>Product</Nav.Link>
+              <Nav.Link href='https://www.hhmworld.com/about'>About US</Nav.Link>
+               {
                 (this.props.isLoggedIn)
                 ?<Nav.Link active={window.location.pathname === '/dashboard'} as={Link} to='/dashboard'>Dashboard</Nav.Link>
                 :<Nav.Link active={window.location.pathname === '/login'} as={Link} to='/login?item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100'>Login</Nav.Link>

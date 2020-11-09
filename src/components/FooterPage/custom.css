@@ -1,6 +1,6 @@
 .footer{
     padding: 5% 10%; 
-    background-image: url('../HomePage/Img/footer.png');
+    background-color: #000000;
     background-size: contain;
       
 }
@@ -16,6 +16,10 @@
     color: rgba(255, 255, 255, 0.8);
     font-size: 14px;
     padding:0.5rem;
+}
+.d-inlinefoo {
+    margin-left: 70px;
+    /* display: inline-block!important; */
 }
 .footer-content-1{
     font-size: 13px;
@@ -40,7 +44,46 @@
     margin-top: 0;
     font-size: 0.5rem !important;
 }
+ ._3BQmz {
+    display: flex;
+    position: relative;
+    width: calc(100% - var(10)*2);
+    margin: 0 auto;
+}
+._1HpZ_ {
+  
+        font-size: 22px;
+        font-weight: 300;
+        color: #555;
+        line-height: 30px;
+        font-style: italic;
+    
+}
+.pscoicaldat{
+    margin-left: 70px;
+    margin-top: 0;
+    font-size: 1.5rem !important;
+}
+.pscoicaldatho{
+    margin-left: 20px;
+   
+}
+.pscoicalv{
+   
+    margin-top: 10px;
+    margin-left: 40px;
+    font-size: 0.8rem !important;
+}
+.pscoicalnoleft{
+   
+    margin-top: 2px;
+   
+    font-size: 0.8rem !important;
+}
 
+.socialview{padding-left: 1em;white-space: nowrap;margin-left: 30px;}
+.socialview li{display:inline;padding-left: 0.5em;}
+.socialview li a{color:#FFF;font-size: 1.5em;}
 .iamgefooter{
    
     margin-top: 0.5rem;

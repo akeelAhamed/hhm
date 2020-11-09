@@ -153,7 +153,7 @@ export default class CheckOut extends BaseComponent {
             if(this.rzp === null){
                 let _this = this;
                 let options = {
-                    "key": "rzp_live_WKGmFHukrq59Cm",
+                    "key": "rzp_live_Ppc08KQLcJtu29",
                     "image": this.cart.photo,
                     "amount": this.order_info.amount * 100, // 100 paise = INR 1, amount in paisa
                     "name": this.cart.name,
@@ -462,7 +462,7 @@ export default class CheckOut extends BaseComponent {
                                                 <p>Total weight: {this.cart.views}</p>
                                                 <small>One year pack</small><br/>
                                                 <p>Qty: {this.cart._qty}</p>
-                                                <h5 className="border py-2"><b>ORDER TOTAL : Rs.{parseFloat(this.cart.ship + (this.cart.price * this.cart._qty) - this.state.discount)}</b> <small>(Inclusive of all tax)</small></h5>
+                                                <h5 className="border py-2"><b>ORDER TOTAL : ₹.{parseFloat(this.cart.ship + (this.cart.price * this.cart._qty) - this.state.discount)}</b> <small>(Inclusive of all tax)</small></h5>
                                             </div>
                                             <Button type="button" variant="dark" className="c" data-key={3} onClick={this.toggle} disabled={this.error}>Continue</Button>
                                         </section>
@@ -483,11 +483,11 @@ export default class CheckOut extends BaseComponent {
                                                 <label className="" htmlFor="razor"> Pay with razorpay</label>
                                             </div>
 
-                                            <div className="border text-center p-2">
+                                            {<div className="border text-center p-2">
                                                 <img src={require('../img/ccavenue.png')} className="img-fluid w-100" alt="ccavenue" />
                                                 <input type="radio" id="ccavenue" name="payment" value="2" onChange={this.onChange} checked={this.state.payment === '2'}/>
                                                 <label className="" htmlFor="ccavenue"> Pay with ccavenue</label>
-                                            </div>
+                                            </div> }
 
                                             <Button className="mb-4 mt-2" variant="info" block onClick={this.chekout} disabled={this.error}>Place Order</Button>
                                         </section>

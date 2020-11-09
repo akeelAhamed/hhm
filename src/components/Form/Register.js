@@ -40,8 +40,6 @@ class Login extends BaseComponent {
     let regex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     if(this.state.phone.length !== 10){
       return this.setError(['Mobile number should be 10 digits.']);
-    }else if(!regex.test(this.state.password)){
-      return this.setError(['Password must contain Alpha-numeric, Uppercase and special characters(!@#$%^&*).']);
     }else if(this.state.password !== this.state.password_confirmation){
       return this.setError(['The password confirmation does not match.']);
     }

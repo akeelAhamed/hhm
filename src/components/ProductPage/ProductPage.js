@@ -4,6 +4,7 @@ import has from "lodash/has";
 import BaseComponent from '../BaseComponent';
 import Gallery from './Gallery';
 import "./custom.css";
+
 import { Link } from "react-router-dom";
 import { FaLock } from "react-icons/fa";
 
@@ -102,7 +103,7 @@ class ProductPage extends BaseComponent {
           </InputGroup>
       );
     }
-    return(<Button className="mt-3 btn btn-primary" onClick={this.loginBuy} data-to={"register?checkout"}>Login & buy</Button>);
+    return(<Button className="mt-3 btn btn-primary" onClick={this.loginBuy} data-to={"register?checkout"}>Buy Now</Button>);
   }
 
   popShipp(){
@@ -202,7 +203,7 @@ class ProductPage extends BaseComponent {
                   <span>Seller</span>      : {this.pageContent.seller_information}
                 </p>
                 <div className="d-flex">
-                  <span>Pack contain</span> : 
+                  <span>Pack contains</span> : 
                   <ul className="ml-1" style={{listStyle: "none"}}>
                     {
                       this.pageContent.size.map((p, i) => (
@@ -216,10 +217,10 @@ class ProductPage extends BaseComponent {
                 <hr />
 
                 <div>
-                  <small>One year pack</small><br/>
+                  <small>365 days pack</small><br/>
                   <p>Qty:<span data-qty="0" onClick={this.qtyClick} className={(this.state.qty > 1)?"btn":"btn disabled"}>-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className={(this.state.qty < 7)?"btn":"btn disabled"}>+</span></p>
-                  <b>Total amount: RS.{this.pageContent.price}</b> /- <cite>(Inclusive of all tax)</cite><br/>
-                  <small className="d-block">Free shipping inside india</small>
+                  <b>Total amount: ₹.59,999(Fifty nine thousand nine hundred  and ninety nine)</b> /- <cite>(Inclusive all taxes)</cite><br/>
+                  <small className="d-block">Free shipping inside India</small>
                   <small className="d-block">Expected arrival date: {this.pageContent.ship}</small>
                 </div>
                 

@@ -33,17 +33,20 @@ export default class FooterPage extends React.Component {
       <Container fluid className="footer text-white">
         
         <Row>
-          <Col lg="5" md="6" className="footer-content-1">
+
+        <Col lg="3" md="3" className="col-md-3">
             <div className="d-md-flex align-items-center">
               <img
-                src='https://admin.hhmworld.com/assets/images/15983473231596980432HHM-Logo-White.png'
-                width="70"
-                height="40"
-                className="d-inline-block align-top"
+                src='https://admin.hhmworld.com/assets/images/logo/hhmpuresvg.svg'
+                width="125px"
+                height="75px"
+                className="d-inlinefoo align-top"
                 alt="logo"
               />
 
-              <ul className="list-unstyled social float-right">
+             
+            </div>
+            <ul className="list-unstyled socialview">
                 {
                   this.props.page.sociallinks.map((links, index) => {
                     let social = [];
@@ -60,56 +63,26 @@ export default class FooterPage extends React.Component {
                   })
                 }
               </ul>
-            </div>
-            
             {/* <p dangerouslySetInnerHTML={{ __html: this.props.page.heade_footer.footer }}/> */}
-            <p className="pscoical d-none d-md-block"> &copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
+            <p className="pscoicalv d-none d-md-block"> &copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
           </Col>
-  
-          <Col lg="7" md="6" className="align-items-center mt-sm-3 mt-md-0">
-            <section>
-              <b className="text-white d-block d-md-none">Usefull link</b>
-              <Nav>
-                <Nav.Item>
-                  <Nav.Link as={Link} to="/">Home</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link as={Link} to="/about">About Us</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link as={Link} to="/science">Science</Nav.Link>
-                </Nav.Item>
+         
 
-                
-                <Nav.Item>
-                  <Nav.Link as={Link} to="/brandphilsophy">Brand philosophy</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link as={Link} to="/hypothesis">Hypothesis</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link as={Link} to="/products">Product</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link as={Link} to="/faq">Faq</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link as={Link} to="/privacy">Privacy Policy</Nav.Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Nav.Link as={Link} to="/terms">Terms & Conditions</Nav.Link>
-                </Nav.Item>
-                
-                <Nav.Item>
-                  <Nav.Link as={Link} to="/contact">Contact us</Nav.Link>
-                </Nav.Item>
-              </Nav>
-            </section>
+          <Col lg="3" md="3" className="col-md-4">
+          <h2 className="pscoicaldatho">Hours of  <br/> operation</h2>
+            <p > Mon-Fri: 9AM to 6PM</p>
+            <p > Sat-Sun: Closed</p>
           </Col>
 
-          <Col sm="12" className="d-block">
-            <hr className="d-block d-md-none"/>
-            <p className="d-block d-md-none text-center"> &copy; {date.getFullYear()} HHM WORLD. All rights reserved.</p>
+          <Col lg="3" md="3" className="col-md-4">
+          <h2 className="pscoicaldatho"><br/>contact us</h2>
+            <p >Mail: support@hhmworld.com</p>
+            <p >Tel: +91 808 6511 100</p>
+          </Col>
+
+          <Col lg="3" md="3" className="col-md-4">
+          <h2 className="pscoicaldatho"><br/><br/> </h2>
+          <button type="button" class="btn btn-primary rounded btn btn-primary" href="http://store.hhmworld.com/item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100">Buy now</button>
           </Col>
         </Row>
         
