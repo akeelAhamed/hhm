@@ -26,8 +26,11 @@ class Login extends BaseComponent {
     this.variant = 'success';
     let _this = this;
     this.setError(['Registered successfully']);
+    response.email = this.state.email;
+    
     setTimeout(() => {
-      return _this.redirect('login'+this.after);
+      _this.login(response, this.after.replace('?', ''))
+      //return _this.redirect('login'+this.after);
     }, 3000);
   }
   
@@ -41,7 +44,7 @@ class Login extends BaseComponent {
     if(this.state.phone.length !== 10){
       return this.setError(['Mobile number should be 10 digits.']);
     }else if(!regex.test(this.state.password)){
-      return this.setError(['Password must contain Alpha-numeric, Uppercase and special characters(!@#$%^&*).']);
+      //return this.setError(['Password must contain Alpha-numeric, Uppercase and special characters(!@#$%^&*).']);
     }else if(this.state.password !== this.state.password_confirmation){
       return this.setError(['The password confirmation does not match.']);
     }
