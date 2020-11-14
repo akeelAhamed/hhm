@@ -103,6 +103,16 @@
     pointer-events: none;
 }
 
+.nav-tabs{
+    background: #00a19c;
+    border-radius: .25em .25rem 0em;
+    padding-top: 0.3em;
+    padding-left: 0.5em;
+}
+.nav-tabs .nav-link{
+    color: #ffffff;
+}
+
 @media (min-width:900px){
     .player > div{
         width: 50%!important;

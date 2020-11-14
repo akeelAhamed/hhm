@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Row, Col, InputGroup, OverlayTrigger, Popover } from 'react-bootstrap';
+import { Button, Container, Row, Col, InputGroup, OverlayTrigger, Popover, Tabs, Tab } from 'react-bootstrap';
 import has from "lodash/has";
 import BaseComponent from '../BaseComponent';
 import Gallery from './Gallery';
@@ -15,12 +15,15 @@ class ProductPage extends BaseComponent {
     this.cart = this.getCart();
     this.state.qty = (this.cart !== '')?this.cart._qty:1;
     this.state.availability = '';
+    this.state.tab = '12';
+    this.state.gallery = [];
     this.days  = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     this.buy = this.buy.bind(this);
     this.loginBuy = this.loginBuy.bind(this);
     this.toCart = this.toCart.bind(this);
     this.qtyClick = this.qtyClick.bind(this);
+    this.setTab = this.setTab.bind(this);
   }
 
   /**
@@ -33,7 +36,6 @@ class ProductPage extends BaseComponent {
     })
     return this.addCart(this.pageContent, this.state.qty);
   }
-
   
   /**
    * Cart added and checkout
@@ -175,21 +177,161 @@ class ProductPage extends BaseComponent {
     )
   }
 
-  content() {
-    // let d = new Date();
-    // d.setDate(d.getDate() + parseInt(this.pageContent.ship));
-    // this.days[d.getDay()]+', '+d.getDate()+','+this.months[d.getMonth()]+' - '+d.getFullYear()
+  gallery(){
+    const gall = this.pageContent.gallery.split(',');
+    return gall;
+  }
 
+  setTab(e){
+    this.setState({tab: e, gallery: this.gallery()});
+  }
+
+  varient(){
+    if(this.state.tab === '12'){
+      //  year pack
+      return(
+        <>
+          <div className="border-teal-top px-2">
+            <b className="text-uppercase border-teal" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
+            <p>
+              <span>Seller</span>      : {this.pageContent.seller_information}
+            </p>
+            <div className="d-flex">
+              <span>Pack contains</span> : 
+              <ul className="ml-1" style={{listStyle: "none"}}>
+                {
+                  this.pageContent.size.map((p, i) => (
+                    <li key={i}>{p}</li>
+                  ))
+                }
+              </ul>
+            </div>
+            <p>Total weight: {this.pageContent.views}</p>
+            
+            <hr />
+
+            <div>
+              <small>365 days pack</small><br/>
+              <p>Qty:<span data-qty="0" onClick={this.qtyClick} className={(this.state.qty > 1)?"btn":"btn disabled"}>-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className={(this.state.qty < 7)?"btn":"btn disabled"}>+</span></p>
+              <b>Total amount: ₹.59,999(Fifty nine thousand nine hundred  and ninety nine)</b> /- <cite>(Inclusive all taxes)</cite><br/>
+              <small className="d-block">Free shipping inside India</small>
+              <small className="d-block">Expected arrival date: {this.pageContent.ship}</small>
+            </div>
+            
+            <hr/>
+
+            {this.buyButtom()}
+
+            <div className="d-flex mt-3 align-items-top w-100 my-2 color-primary">
+
+                <div className="pt-1 mr-2">
+                  {this.pageContent.stock > 0?"In stock":<span className="text-danger">Out of stock</span>}
+                </div>
+
+                <div className="mx-2">
+                  {this.popShipp()}
+                </div>
+
+                <div className="mx-2">
+                  {this.popPoly()}
+                </div>
+            </div>
+
+
+            <div>
+              <small>{this.pageContent.youtube}</small>
+              <hr/>
+              {/* <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} /> */}
+              <div className="pl-3" dangerouslySetInnerHTML={{ __html: this.pageContent.policy }}/>
+
+            </div>
+          </div>
+        </>
+      )
+    }
+
+    return(
+      <>
+        <div className="border-teal-top px-2">
+          <b className="text-uppercase border-teal" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
+          <p>
+            <span>Seller</span>      : {this.pageContent.seller_information}
+          </p>
+          <div className="d-flex">
+            <span>Pack contains</span> : 
+            <ul className="ml-1" style={{listStyle: "none"}}>
+              {
+                this.pageContent.size.map((p, i) => (
+                  <li key={i}>{p}</li>
+                ))
+              }
+            </ul>
+          </div>
+          <p>Total weight: {this.pageContent.views}</p>
+          
+          <hr />
+
+          <div>
+            <small>90 days pack</small><br/>
+            <p>Qty:<span data-qty="0" onClick={this.qtyClick} className={(this.state.qty > 1)?"btn":"btn disabled"}>-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className={(this.state.qty < 7)?"btn":"btn disabled"}>+</span></p>
+            <b>Total amount: ₹.19,999(Ninteen thousand nine hundred and ninety nine)</b> /- <cite>(Inclusive all taxes)</cite><br/>
+            <small className="d-block">Free shipping inside India</small>
+            <small className="d-block">Expected arrival date: {this.pageContent.ship}</small>
+          </div>
+          
+          <hr/>
+
+          {this.buyButtom()}
+
+          <div className="d-flex mt-3 align-items-top w-100 my-2 color-primary">
+
+              <div className="pt-1 mr-2">
+                {this.pageContent.stock > 0?"In stock":<span className="text-danger">Out of stock</span>}
+              </div>
+
+              <div className="mx-2">
+                {this.popShipp()}
+              </div>
+
+              <div className="mx-2">
+                {this.popPoly()}
+              </div>
+          </div>
+
+
+          <div>
+            <small>{this.pageContent.youtube}</small>
+            <hr/>
+            {/* <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} /> */}
+            <div className="pl-3" dangerouslySetInnerHTML={{ __html: this.pageContent.policy }}/>
+
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  content() {
     return(
       <div className="main-container py-4">
 
         <Container fluid>
-          <h5 className="border-teal text-uppercase pl-2" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
+          <Row className="no-gutters">
+            <Col md="7" sm="auto">
+              <h5 className="border-teal text-uppercase pl-2" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
+            </Col>
+            <Col md="5" sm="auto">
+              <Tabs id="controlled-tab" activeKey={this.state.tab} onSelect={(k) => this.setTab(k)}>
+                <Tab eventKey="12" title="1 Year"></Tab>
+                <Tab eventKey="3" title="3 Months"></Tab>
+              </Tabs>
+            </Col>
+          </Row>
           <Row className="no-gutters">
             <Col md="6" sm="auto">
               <strong className="text-uppercase">Gallery</strong>
               <div className="border-teal-top px-2">
-                <Gallery img={this.pageContent.photo} _3dFor="2" gallery={this.pageContent.gallery.split(',')} />
+                <Gallery img={this.pageContent.photo} _3dFor="2" gallery={this.gallery()} />
               </div>
             </Col>
 
@@ -197,61 +339,7 @@ class ProductPage extends BaseComponent {
 
             <Col md="5" sm="auto">
               <strong className="text-uppercase">Product summary</strong>
-              <div className="border-teal-top px-2">
-                <b className="text-uppercase border-teal" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
-                <p>
-                  <span>Seller</span>      : {this.pageContent.seller_information}
-                </p>
-                <div className="d-flex">
-                  <span>Pack contains</span> : 
-                  <ul className="ml-1" style={{listStyle: "none"}}>
-                    {
-                      this.pageContent.size.map((p, i) => (
-                        <li key={i}>{p}</li>
-                      ))
-                    }
-                  </ul>
-                </div>
-                <p>Total weight: {this.pageContent.views}</p>
-                
-                <hr />
-
-                <div>
-                  <small>365 days pack</small><br/>
-                  <p>Qty:<span data-qty="0" onClick={this.qtyClick} className={(this.state.qty > 1)?"btn":"btn disabled"}>-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className={(this.state.qty < 7)?"btn":"btn disabled"}>+</span></p>
-                  <b>Total amount: ₹.59,999(Fifty nine thousand nine hundred  and ninety nine)</b> /- <cite>(Inclusive all taxes)</cite><br/>
-                  <small className="d-block">Free shipping inside India</small>
-                  <small className="d-block">Expected arrival date: {this.pageContent.ship}</small>
-                </div>
-                
-                <hr/>
-
-                {this.buyButtom()}
-
-                <div className="d-flex mt-3 align-items-top w-100 my-2 color-primary">
-
-                    <div className="pt-1 mr-2">
-                      {this.pageContent.stock > 0?"In stock":<span className="text-danger">Out of stock</span>}
-                    </div>
-
-                    <div className="mx-2">
-                      {this.popShipp()}
-                    </div>
-
-                    <div className="mx-2">
-                      {this.popPoly()}
-                    </div>
-                </div>
-
-
-                <div>
-                  <small>{this.pageContent.youtube}</small>
-                  <hr/>
-                  {/* <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} /> */}
-                  <div className="pl-3" dangerouslySetInnerHTML={{ __html: this.pageContent.policy }}/>
-
-                </div>
-              </div>
+              {this.varient()}
             </Col>
           </Row>
         </Container>

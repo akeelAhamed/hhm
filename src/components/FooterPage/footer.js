@@ -82,7 +82,7 @@ export default class FooterPage extends React.Component {
 
           <Col lg="3" md="3" className="col-md-4">
           <h2 className="pscoicaldatho"><br/><br/> </h2>
-          <button type="button" class="btn btn-primary rounded btn btn-primary" href="http://store.hhmworld.com/item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100">Buy now</button>
+          <button type="button" className="btn btn-primary rounded btn btn-primary" href="http://store.hhmworld.com/item/hhm-pure-panacea-ultimate-for-rousing-energy-hhm00100">Buy now</button>
           </Col>
         </Row>
         
