@@ -1,12 +1,12 @@
 import React from "react";
-import { Button, Container, Row, Col, InputGroup, OverlayTrigger, Popover, Tabs, Tab } from 'react-bootstrap';
+import { Button, Container, Row, Col, InputGroup, OverlayTrigger, Popover} from 'react-bootstrap';
 import has from "lodash/has";
 import BaseComponent from '../BaseComponent';
-import Gallery from './Gallery';
+import Gallery2 from './Gallery2';
 import "./custom.css";
 
 import { Link } from "react-router-dom";
-import { FaLock } from "react-icons/fa";
+import { FaCheckCircle, FaLock } from "react-icons/fa";
 
 class ProductPage extends BaseComponent {
   constructor(props) {
@@ -15,7 +15,7 @@ class ProductPage extends BaseComponent {
     this.cart = this.getCart();
     this.state.qty = (this.cart !== '')?this.cart._qty:1;
     this.state.availability = '';
-    this.state.tab = '12';
+    this.state.tab = 12;
     this.state.gallery = [];
     this.days  = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -87,15 +87,15 @@ class ProductPage extends BaseComponent {
       return(
           <InputGroup className="buy">
             <InputGroup.Append className="d-block">
-              <Button className="btn btn-primary rounded" onClick={this.buy}>Buy now</Button>
+              <Button className="btn btn-primary buy-btn" onClick={this.buy}>Buy now</Button>
               {
-                (this.cart === '')
-                ?<Button className="btn btn-primary rounded ml-1" onClick={this.toCart}>Add to cart</Button>
-                :<Link className="btn btn-primary rounded ml-1" to="/cart">Cart</Link>
+                // (this.cart === '')
+                // ?<Button className="btn btn-primary rounded ml-1" onClick={this.toCart}>Add to cart</Button>
+                // :<Link className="btn btn-primary rounded ml-1" to="/cart">Cart</Link>
               }
             </InputGroup.Append>
 
-            <div className="d-block w-100 my-2">
+            <div className="d-none w-100 my-2">
               <small> <FaLock /> Secure transaction</small>
               <small className="ml-2">EMI</small>
             </div>
@@ -105,7 +105,7 @@ class ProductPage extends BaseComponent {
           </InputGroup>
       );
     }
-    return(<Button className="mt-3 btn btn-primary" onClick={this.loginBuy} data-to={"register?checkout"}>Buy Now</Button>);
+    return(<Button className="mt-3 btn btn-primary buy-btn" onClick={this.loginBuy} data-to={"register?checkout"}>Buy Now</Button>);
   }
 
   popShipp(){
@@ -127,10 +127,10 @@ class ProductPage extends BaseComponent {
     return(
     <OverlayTrigger
       trigger={['hover', 'focus']}
-      placement="bottom"
+      placement="top"
       overlay={popShipp}
     >
-      <p className="color-primary btn p-0">
+      <p className="btn p-0">
         Shipping
         <img
           src={require('../Products/img/Shipping.png')}
@@ -160,10 +160,11 @@ class ProductPage extends BaseComponent {
     return(
     <OverlayTrigger
       trigger={['hover', 'focus']}
-      placement="bottom"
+      placement="top"
       overlay={popShipp}
     >
-      <p className="color-primary btn p-0">
+      <p className="btn p-0">
+        Refund policy
         <img
           src={require('../Products/img/Refund.png')}
           width="50"
@@ -171,7 +172,6 @@ class ProductPage extends BaseComponent {
           alt="logo"
           className="img-fluid px-2"
         />
-        Refund policy
       </p>
     </OverlayTrigger>
     )
@@ -186,19 +186,18 @@ class ProductPage extends BaseComponent {
     this.setState({tab: e, gallery: this.gallery()});
   }
 
-  varient(){
-    if(this.state.tab === '12'){
+  variant(){
+    const AMB = (
+      <p><b>Select Quantity</b> <span data-qty="0" onClick={this.qtyClick} className={(this.state.qty > 1)?"btn":"btn disabled"}>-</span><span className="qty">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className={(this.state.qty < 7)?"btn":"btn disabled"}>+</span> <b>Total weight: {this.state.tab === 12?this.pageContent.views:this.pageContent.packageweight}</b></p>
+    );
+
+    if(this.state.tab === 12){
       //  year pack
       return(
         <>
-          <div className="border-teal-top px-2">
-            <b className="text-uppercase border-teal" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
-            <p>
-              <span>Seller</span>      : {this.pageContent.seller_information}
-            </p>
-            <div className="d-flex">
+          <div className="d-block">
               <span>Pack contains</span> : 
-              <ul className="ml-1" style={{listStyle: "none"}}>
+              <ul className="ml-3" style={{listStyle: "dots"}}>
                 {
                   this.pageContent.size.map((p, i) => (
                     <li key={i}>{p}</li>
@@ -206,140 +205,111 @@ class ProductPage extends BaseComponent {
                 }
               </ul>
             </div>
-            <p>Total weight: {this.pageContent.views}</p>
             
             <hr />
 
             <div>
-              <small>365 days pack</small><br/>
-              <p>Qty:<span data-qty="0" onClick={this.qtyClick} className={(this.state.qty > 1)?"btn":"btn disabled"}>-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className={(this.state.qty < 7)?"btn":"btn disabled"}>+</span></p>
-              <b>Total amount: ₹.59,999(Fifty nine thousand nine hundred  and ninety nine)</b> /- <cite>(Inclusive all taxes)</cite><br/>
-              <small className="d-block">Free shipping inside India</small>
-              <small className="d-block">Expected arrival date: {this.pageContent.ship}</small>
+              <div className="d-flex align-items-center">
+                {AMB}
+              </div>
+              <b>Total amount: ₹.59,999</b> /- <cite>(Inclusive all taxes)</cite><br/>
+              <small className="d-block">(Rupees Fifty nine thousand nine hundred  and ninety nine)</small>
+              <p>
+                <small>Free shipping inside India</small> | 
+                <small>Expected arrival date: {this.pageContent.ship}</small>
+              </p>
             </div>
-            
-            <hr/>
-
-            {this.buyButtom()}
-
-            <div className="d-flex mt-3 align-items-top w-100 my-2 color-primary">
-
-                <div className="pt-1 mr-2">
-                  {this.pageContent.stock > 0?"In stock":<span className="text-danger">Out of stock</span>}
-                </div>
-
-                <div className="mx-2">
-                  {this.popShipp()}
-                </div>
-
-                <div className="mx-2">
-                  {this.popPoly()}
-                </div>
-            </div>
-
-
-            <div>
-              <small>{this.pageContent.youtube}</small>
-              <hr/>
-              {/* <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} /> */}
-              <div className="pl-3" dangerouslySetInnerHTML={{ __html: this.pageContent.policy }}/>
-
-            </div>
-          </div>
         </>
       )
     }
 
     return(
       <>
-        <div className="border-teal-top px-2">
-          <b className="text-uppercase border-teal" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
-          <p>
-            <span>Seller</span>      : {this.pageContent.seller_information}
-          </p>
-          <div className="d-flex">
+        <div className="d-block">
             <span>Pack contains</span> : 
-            <ul className="ml-1" style={{listStyle: "none"}}>
-              {
-                this.pageContent.size.map((p, i) => (
-                  <li key={i}>{p}</li>
-                ))
-              }
+            <ul className="ml-3" style={{listStyle: "dots"}}>
+              <li>3 Monthly boxes each having 30 sachet</li>
+              <li>1 PURE Lamp with box</li>
+              <li>1 Spatula</li>
+              <li>1 Product Booklet</li>
             </ul>
           </div>
-          <p>Total weight: {this.pageContent.views}</p>
           
           <hr />
 
           <div>
-            <small>90 days pack</small><br/>
-            <p>Qty:<span data-qty="0" onClick={this.qtyClick} className={(this.state.qty > 1)?"btn":"btn disabled"}>-</span><span className="px-2 py-1 border">{this.state.qty}</span><span data-qty="1" onClick={this.qtyClick}className={(this.state.qty < 7)?"btn":"btn disabled"}>+</span></p>
-            <b>Total amount: ₹.19,999(Ninteen thousand nine hundred and ninety nine)</b> /- <cite>(Inclusive all taxes)</cite><br/>
-            <small className="d-block">Free shipping inside India</small>
-            <small className="d-block">Expected arrival date: {this.pageContent.ship}</small>
+            <div className="d-flex align-items-center">
+              {AMB}
+            </div>
+            <b>Total amount: ₹.19,999</b> /- <cite>(Inclusive all taxes)</cite><br/>
+            <small className="d-block">(Rupees Ninteen thousand nine hundred and ninety nine)</small>
+            <p>
+              <small>Free shipping inside India</small> | 
+              <small>Expected arrival date: {this.pageContent.ship}</small>
+            </p>
           </div>
-          
-          <hr/>
+      </>
+    )
+  }
+
+  product(){
+    return(
+      <>
+        <div className="">
+          <b className="text-uppercase" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
+          <small className="d-block w-100">
+            <span>Seller</span>      : {this.pageContent.seller_information}
+          </small>
+
+          <div className="d-block my-2">
+            <div className="d-flex align-items-center">
+              <b>Select pack</b>
+              <div className="variant-button">
+                <Button onClick={() => this.setTab(12)} className={this.state.tab === 12?'a':''}>12 Month</Button>
+                <Button onClick={() => this.setTab(3)} className={this.state.tab !== 12?'a':''}>3 Month</Button>
+              </div>
+              <div className="stock">
+                {this.pageContent.stock > 0?<strong className="text-success">In stock <FaCheckCircle/> </strong>:<strong className="text-danger">Out of stock</strong>}
+              </div>
+            </div>
+          </div>
+
+          {this.variant()}
 
           {this.buyButtom()}
 
-          <div className="d-flex mt-3 align-items-top w-100 my-2 color-primary">
-
-              <div className="pt-1 mr-2">
-                {this.pageContent.stock > 0?"In stock":<span className="text-danger">Out of stock</span>}
+          <div className="d-flex mt-3 align-items-top w-100 my-2">
+              <div className="d-block w-50">
+                <small style={{fontSize: '70%'}}>{this.pageContent.youtube}</small>
               </div>
-
-              <div className="mx-2">
-                {this.popShipp()}
-              </div>
-
-              <div className="mx-2">
+              <div className="mx-1">
                 {this.popPoly()}
               </div>
+
+              <div className="mx-1">
+                {this.popShipp()}
+              </div>
           </div>
 
-
-          <div>
-            <small>{this.pageContent.youtube}</small>
-            <hr/>
-            {/* <div dangerouslySetInnerHTML={{ __html: this.pageContent.details }} /> */}
-            <div className="pl-3" dangerouslySetInnerHTML={{ __html: this.pageContent.policy }}/>
-
-          </div>
         </div>
       </>
-    );
+    )
   }
 
   content() {
     return(
-      <div className="main-container py-4">
+      <div className="main-container py-4 np-page">
 
         <Container fluid>
-          <Row className="no-gutters">
-            <Col md="7" sm="auto">
-              <h5 className="border-teal text-uppercase pl-2" dangerouslySetInnerHTML={{ __html: this.pageContent.name }} />
-            </Col>
-            <Col md="5" sm="auto">
-              <Tabs id="controlled-tab" activeKey={this.state.tab} onSelect={(k) => this.setTab(k)}>
-                <Tab eventKey="12" title="1 Year"></Tab>
-                <Tab eventKey="3" title="3 Months"></Tab>
-              </Tabs>
-            </Col>
-          </Row>
-          <Row className="no-gutters">
-            <Col md="6" sm="auto">
-              <strong className="text-uppercase">Gallery</strong>
-              <div className="border-teal-top px-2">
-                <Gallery img={this.pageContent.photo} _3dFor="2" gallery={this.gallery()} />
-              </div>
+          
+          <Row className="align-items-center no-gutters">
+            <Col md="7" sm="auto" className="pr-md-5">
+              <Gallery2 variant={this.state.tab === 12} page={this.pageContent} img={this.pageContent.photo} _3dFor="2" gallery={this.gallery()} />
             </Col>
 
-            <Col md="1"></Col>
-
             <Col md="5" sm="auto">
-              <strong className="text-uppercase">Product summary</strong>
-              {this.varient()}
+              <span className="text-uppercase">Product summary</span>
+              {this.product()}
             </Col>
           </Row>
         </Container>
