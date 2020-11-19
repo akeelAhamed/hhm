@@ -15,7 +15,7 @@ class ProductPage extends BaseComponent {
     this.cart = this.getCart();
     this.state.qty = (this.cart !== '')?this.cart._qty:1;
     this.state.availability = '';
-    this.state.tab = 12;
+    this.state.tab = (this.cart !== '')?this.cart._variant:12;
     this.state.gallery = [];
     this.days  = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -34,7 +34,7 @@ class ProductPage extends BaseComponent {
     this.setState({
       qty: this.state.qty
     })
-    return this.addCart(this.pageContent, this.state.qty);
+    return this.addCart(this.pageContent, this.state.qty, this.state.tab);
   }
   
   /**
@@ -130,15 +130,15 @@ class ProductPage extends BaseComponent {
       placement="top"
       overlay={popShipp}
     >
-      <p className="btn p-0">
-        Shipping
+      <p className="btn p-0 d-flex">
         <img
           src={require('../Products/img/Shipping.png')}
-          width="50"
-          height="50"
+          width="40"
+          height="40"
           alt="logo"
-          className="img-fluid px-2"
+          className="img-fluid"
         />
+        <span>Shipping policy</span>
       </p>
     </OverlayTrigger>
     )
@@ -163,15 +163,15 @@ class ProductPage extends BaseComponent {
       placement="top"
       overlay={popShipp}
     >
-      <p className="btn p-0">
-        Refund policy
+      <p className="btn p-0 d-flex">
         <img
           src={require('../Products/img/Refund.png')}
-          width="50"
-          height="50"
+          width="40"
+          height="40"
           alt="logo"
-          className="img-fluid px-2"
+          className="img-fluid"
         />
+        <span>Refund policy</span>
       </p>
     </OverlayTrigger>
     )
@@ -265,7 +265,7 @@ class ProductPage extends BaseComponent {
             <div className="d-flex align-items-center">
               <b>Select pack</b>
               <div className="variant-button">
-                <Button onClick={() => this.setTab(12)} className={this.state.tab === 12?'a':''}>12 Month</Button>
+                <Button onClick={() => this.setTab(12)} className={this.state.tab === 12?'a':''}>1  Year</Button>
                 <Button onClick={() => this.setTab(3)} className={this.state.tab !== 12?'a':''}>3 Month</Button>
               </div>
               <div className="stock">
@@ -282,11 +282,9 @@ class ProductPage extends BaseComponent {
               <div className="d-block w-50">
                 <small style={{fontSize: '70%'}}>{this.pageContent.youtube}</small>
               </div>
-              <div className="mx-1">
+              <div className="d-flex ship">
                 {this.popPoly()}
-              </div>
 
-              <div className="mx-1">
                 {this.popShipp()}
               </div>
           </div>

@@ -12,6 +12,10 @@ export default class CartPage extends BaseComponent {
     this.state.discount = 0;
     this.cart = this.getCart();
 
+    if(this.cart !== ''){
+      this.cart.price = this.cart._variant === 12?this.cart.price:this.cart.previous_price;      
+    }
+
     this.edit = this.edit.bind(this);
   }
 

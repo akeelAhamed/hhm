@@ -205,9 +205,11 @@ export default class BaseComponent extends React.Component {
    * 
    * @param {object} data
    * @param {int}    qty 
+   * @param {int}    variant 
    */
-  addCart(data, qty=1){
+  addCart(data, qty=1, variant=12){
     data._qty = qty;
+    data._variant = variant;
     return window.ls.set('_CART', data);
   }
 

@@ -61,7 +61,11 @@ p{
     width : 300px;
     overflow: hidden;
 }
-
+.ship p{
+    align-items: center;
+    align-content: center;
+    text-align: justify;
+}
 .full-img img{height: 100%;}
 
 #slideshow{

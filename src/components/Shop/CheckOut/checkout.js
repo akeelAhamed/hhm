@@ -22,6 +22,7 @@ export default class CheckOut extends BaseComponent {
         };
         this.cart  = this.getCart();
         this.error = true;
+        this.price = 0;
         this.state.encData = null;
         this.state.payment = '1';
         this.state.modal = false;
@@ -42,18 +43,20 @@ export default class CheckOut extends BaseComponent {
             zip: ''
         }
         this.state.daddress= {
-            name: '',
-            phone: '',
-            address: '',
-            city: '',
-            country: '',
-            zip: ''
+            name: 'sdas',
+            phone: '86989',
+            address: 'sdfd',
+            city: 'dfgdf',
+            country: 'gdfg',
+            zip: '8978'
         }
         
         if(this.cart !== ''){
             this.cart.ship = this.cart.ship === null?0:0;
+            this.cart.price = this.cart._variant === 12?this.cart.price:this.cart.previous_price;
             this.chekout = this.chekout.bind(this);
         }
+        
         this.toggle = this.toggle.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.onChangeSelf = this.onChangeSelf.bind(this);
@@ -137,7 +140,7 @@ export default class CheckOut extends BaseComponent {
             chekout: response
         });
         
-        window._axios.get("/payreturn?text=3&type=1&token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&product_id="+_this.cart.id+this.getCD())
+        window._axios.get("/payreturn?text=3&type=1&token="+_this.state.user.token+"&txn_id="+response.razorpay_payment_id+"&method="+_this.cart._variant+"&product_id="+_this.cart.id+this.getCD())
         .then((result) => {
             return window.location.href = '/checkout/'+response.razorpay_payment_id;
         }).catch(function(error){
@@ -188,6 +191,7 @@ export default class CheckOut extends BaseComponent {
                 test    : 'hi',
                 product : this.cart.slug,
                 count   : this.cart._qty,
+                variant   : this.cart._variant,
                 tid     : Math.round(new Date().getTime()/1000),
                 merchant_param1: window._axios.defaults.baseURL+"payreturn",
                 merchant_param2: "text|3@type|2@token|"+this.state.user.token+"@product_id|"+this.cart.id+this.getCD('@', '|'),
@@ -409,8 +413,7 @@ export default class CheckOut extends BaseComponent {
                                     </div>
                                 </Collapse>
                             </Card> */}
-                            </div>
-                            
+                            </div> 
 
                             <Card className={"my-3 pro "+(this.state.tab === 1)}>
                                 <h5 className="header" data-key={1} data-form="daddress" {...click}>Delivery address</h5>
@@ -450,17 +453,28 @@ export default class CheckOut extends BaseComponent {
                                             <p>Seller      : {this.cart.seller_information}</p>
                                             <div className="d-flex">
                                                 <span>Pack contain</span> : 
-                                                <ul className="ml-1" style={{listStyle: "none"}}>
-                                                    {
-                                                    this.cart.size.map((p, i) => (
-                                                        <li key={i}>{p}</li>
-                                                    ))
-                                                    }
-                                                </ul>
+                                                {
+                                                    this.cart._variant === 12
+                                                    ?
+                                                    <ul className="ml-1" style={{listStyle: "none"}}>
+                                                        {
+                                                        this.cart.size.map((p, i) => (
+                                                            <li key={i}>{p}</li>
+                                                        ))
+                                                        }
+                                                    </ul>
+                                                    :
+                                                    <ul className="ml-1" style={{listStyle: "none"}}>
+                                                        <li>3 Monthly boxes each having 30 sachet</li>
+                                                        <li>1 PURE Lamp with box</li>
+                                                        <li>1 Spatula</li>
+                                                        <li>1 Product Booklet</li>
+                                                    </ul>
+                                                }
                                             </div>
                                             <div>
-                                                <p>Total weight: {this.cart.views}</p>
-                                                <small>One year pack</small><br/>
+                                                <p>Total weight: {(this.cart._variant === 12)?this.cart.views:this.cart.packageweight}</p>
+                                                <small>{this.cart._variant === 12?"One year pack":"3 Month Pack"}</small><br/>
                                                 <p>Qty: {this.cart._qty}</p>
                                                 <h5 className="border py-2"><b>ORDER TOTAL : ₹.{parseFloat(this.cart.ship + (this.cart.price * this.cart._qty) - this.state.discount)}</b> <small>(Inclusive of all tax)</small></h5>
                                             </div>
