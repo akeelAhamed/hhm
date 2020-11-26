@@ -1,7 +1,7 @@
 import React from 'react';
 import './custom.css';
 import BaseComponent from '../../BaseComponent';
-import { Container, Row, Col, Spinner, Card, Button, Collapse, FormControl, Form, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Spinner, Card, Button, Collapse, FormControl, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import has from "lodash/has";
 
@@ -43,12 +43,12 @@ export default class CheckOut extends BaseComponent {
             zip: ''
         }
         this.state.daddress= {
-            name: 'sdas',
-            phone: '86989',
-            address: 'sdfd',
-            city: 'dfgdf',
-            country: 'gdfg',
-            zip: '8978'
+            name: '',
+            phone: '',
+            address: '',
+            city: '',
+            country: '',
+            zip: ''
         }
         
         if(this.cart !== ''){
@@ -194,7 +194,7 @@ export default class CheckOut extends BaseComponent {
                 variant   : this.cart._variant,
                 tid     : Math.round(new Date().getTime()/1000),
                 merchant_param1: window._axios.defaults.baseURL+"payreturn",
-                merchant_param2: "text|3@type|2@token|"+this.state.user.token+"@product_id|"+this.cart.id+this.getCD('@', '|'),
+                merchant_param2: "text|3@type|2@token|"+this.state.user.token+"@method|"+this.cart._variant+"@product_id|"+this.cart.id+this.getCD('@', '|'),
                 language: 'EN',
                 currency: 'INR',
                 order_id: this.order_info.id,
