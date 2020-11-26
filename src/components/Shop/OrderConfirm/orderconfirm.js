@@ -28,7 +28,6 @@ class OrderConfirm extends BaseComponent {
     cart.price = cart._variant === 12?cart.price:cart.previous_price;
     window._axios.get('/profile?param=true&token='+this.state.user.token)
     .then((result) => {
-      console.log(cart);
       const user = result.data;
         if(user !== ''){
           window._axios.post('http://15.206.203.160/api/add_purchase_customer', {
@@ -47,8 +46,7 @@ class OrderConfirm extends BaseComponent {
             this.setState({
               saved: true
             })
-            console.log(result.data, cart);
-            //this.emptyCart(false);
+            this.emptyCart(false);
           })
         }else{
           this.logOut();
