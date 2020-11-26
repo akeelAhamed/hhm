@@ -20,8 +20,9 @@ class Header extends React.Component {
    * Has border
    */
   hasBorder(){
-    let path = this.props.location.pathname.split('/');
-    return !includes(this.exceptBorder, path[1]);
+    return false;
+    // let path = this.props.location.pathname.split('/');
+    // return !includes(this.exceptBorder, path[1]);
   }
   
   componentDidMount(){
@@ -48,7 +49,7 @@ class Header extends React.Component {
     
     return (
       <>
-        <Navbar className="header-nav bg-white border-bottom overflow-auto" expand="md">
+        <Navbar className="header-nav bg-white border-bottom overflow-auto shadow-sm" expand="md">
           <Navbar.Brand>
             <Nav.Link as={Link} to='/'>
             <img

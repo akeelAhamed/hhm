@@ -22,9 +22,9 @@ p{
     padding: 0.25rem 0.75rem;
 }
 .variant-button .a.btn, .variant-button .btn:active{
-    background-color: rgba(0,161, 156, 10%)!important;
-    color: #00a19c!important;
-    box-shadow: 1px 1px 0px #00a19c;
+    background-color: rgb(255 247 2 / 10%)!important;
+    color: #9e6a61!important;
+    box-shadow: 1px 1px 0px #a78d0b;
 }
 .variant-button .a.btn{
     pointer-events: none;
